@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>结构体和链表（1） | Phantom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="结构体可以看做是一种自定义的数据类型，它还有一个很重要的特性，就是结构体可以相互嵌套使用，但也是有条件的，结构体可以包含结构体指针，但绝对不能在结构体中包含结构体变量。struct test{    char name[10];    float socre;     test *next;};//这样是正确的!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="结构体和链表（1）">
+<meta property="og:url" content="chengong.me/2015/12/28/结构体和链表（1）/index.html">
+<meta property="og:site_name" content="Phantom">
+<meta property="og:description" content="结构体可以看做是一种自定义的数据类型，它还有一个很重要的特性，就是结构体可以相互嵌套使用，但也是有条件的，结构体可以包含结构体指针，但绝对不能在结构体中包含结构体变量。struct test{    char name[10];    float socre;     test *next;};//这样是正确的!">
+<meta property="og:updated_time" content="2015-12-28T07:54:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="结构体和链表（1）">
+<meta name="twitter:description" content="结构体可以看做是一种自定义的数据类型，它还有一个很重要的特性，就是结构体可以相互嵌套使用，但也是有条件的，结构体可以包含结构体指针，但绝对不能在结构体中包含结构体变量。struct test{    char name[10];    float socre;     test *next;};//这样是正确的!">
+  
+    <link rel="alternative" href="/atom.xml" title="Phantom" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/avatar.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<script src="//cdn.bootcss.com/JQuery-Snowfall/1.7.4/snowfall.jquery.min.js"></script>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Phantom</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">是我的海</p>
+		
+		
+		<form><input type="text" class="search" placeholder=" Search..."></form>
+				
+
+
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives/">所有文章</a></li>
+				        
+							<li><a href="/tags/">标签云</a></li>
+				        
+							<li><a href="/about/">留言板</a></li>
+				        
+							<li><a href="/built/">建站记事</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:admin@chengong.me" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/iphantom" title="GitHub"></a></li>
+					        
+								<li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+					        
+								<li id="LinkedIn"><a class="LinkedIn" target="_blank" href="https://cn.linkedin.com/in/gong-chen-805212a5" title="LinkedIn"></a></li>
+					        
+						</ul>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Oracle/" style="font-size: 12.5px;">Oracle</a> <a href="/tags/PyDev/" style="font-size: 10px;">PyDev</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/SQL用法/" style="font-size: 10px;">SQL用法</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/duoshuo/" style="font-size: 10px;">duoshuo</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hexo用法/" style="font-size: 10px;">hexo用法</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/makedown/" style="font-size: 10px;">makedown</a> <a href="/tags/namecheap/" style="font-size: 10px;">namecheap</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/使用指南/" style="font-size: 10px;">使用指南</a> <a href="/tags/华为/" style="font-size: 10px;">华为</a> <a href="/tags/博客/" style="font-size: 12.5px;">博客</a> <a href="/tags/安装方法/" style="font-size: 10px;">安装方法</a> <a href="/tags/小七/" style="font-size: 12.5px;">小七</a> <a href="/tags/心情/" style="font-size: 12.5px;">心情</a> <a href="/tags/感悟/" style="font-size: 17.5px;">感悟</a> <a href="/tags/感言/" style="font-size: 12.5px;">感言</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/求助/" style="font-size: 10px;">求助</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/生日/" style="font-size: 10px;">生日</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/研究生/" style="font-size: 10px;">研究生</a> <a href="/tags/离职/" style="font-size: 10px;">离职</a> <a href="/tags/纪念日/" style="font-size: 10px;">纪念日</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/结构体/" style="font-size: 12.5px;">结构体</a> <a href="/tags/编程修养/" style="font-size: 15px;">编程修养</a> <a href="/tags/网页/" style="font-size: 10px;">网页</a> <a href="/tags/转载/" style="font-size: 20px;">转载</a> <a href="/tags/链表/" style="font-size: 12.5px;">链表</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">————对不起，不告诉你————</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Phantom</a></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+				<img lazy-src="/img/avatar.png" class="js-avatar">
+			</a>
+			<hgroup>
+			  <h1 class="header-author"><a href="/" title="回到主页">Phantom</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">是我的海</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">所有文章</a></li>
+		        
+					<li><a href="/tags/">标签云</a></li>
+		        
+					<li><a href="/about/">留言板</a></li>
+		        
+					<li><a href="/built/">建站记事</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:admin@chengong.me" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/iphantom" title="GitHub"></a></li>
+					        
+								<li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+					        
+								<li id="LinkedIn"><a class="LinkedIn" target="_blank" href="https://cn.linkedin.com/in/gong-chen-805212a5" title="LinkedIn"></a></li>
+					        
+						</ul>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-结构体和链表（1）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/28/结构体和链表（1）/" class="article-date">
+  	<time datetime="2015-12-28T02:16:00.000Z" itemprop="datePublished">2015-12-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      结构体和链表（1）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+	</div>
+
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/结构体/">结构体</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>结构体可以看做是一种自定义的数据类型，它还有一个很重要的特性，就是结构体可以相互嵌套使用，但也是有条件的，结构体可以包含结构体指针，但绝对不能在结构体中包含结构体变量。<br>struct test<br>{<br>    char name[10];<br>    float socre;<br>     test *next;<br>};//这样是正确的!<a id="more"></a><br>struct test<br>{<br>    char name[10];<br>    float socre;<br>     test next;<br>};//这样是错误的!<br>　　利用结构体的这点特殊特性，我们就可以自己生成一个环环相套的一种射线结构，一个指向另一个。</p>
+<p>链表的学习不像想象的那么那么容易，很多人学习到这里的时候都会碰到困难，很多人也因此而放弃了学习，在这里我说,一定不能放弃，对应它的学习我们要进 行分解式学习，方法很重要，理解需要时间，不必要把自己逼迫的那么紧，学习前你也得做一些最基本的准备工作，你必须具备对堆内存的基本知识的了解，还有就 是对结构体的基本认识，有了这两个重要的条件，再进行分解式学习就可以比较轻松的掌握这一节内容的难点。</p>
+<p>下面我们给出一个完整的创建链表的程序，不管看的懂看不懂希望读者先认真看一下，想一想，看不懂没有关系，因为我下面会有分解式的教程，但之前的基本思考一定要做，要不即使我分解了你也是无从理解的。</p>
+<p>代码如下，我在重要部分做了注解：</p>
+<p>#include <iostream><br>using namespace std;</iostream></p>
+<p>struct test<br>{<br>    char name[10];<br>    float socre;<br>     test *next;<br>};</p>
+<p>test *head;//创建一个全局的引导进入链表的指针</p>
+<p>test <em>create()<br>{<br>     test </em>ls;//节点指针<br>     test *le;//链尾指针<br>     ls = new test;//把ls指向动态开辟的堆内存地址<br>    cin&gt;&gt;ls-&gt;name&gt;&gt;ls-&gt;socre;<br>     head=NULL;//进入的时候先不设置head指针指向任何地址,因为不知道是否一上来就输入null跳出程序<br>     le=ls;//把链尾指针设置成刚刚动态开辟的堆内存地址,用于等下设置le-&gt;next,也就是下一个节点的位置</p>
+<pre><code>while(strcmp(ls-&gt;name,&quot;null&quot;)!=0)//创建循环条件为ls-&gt;name的值不是null,用于循环添加节点
+ {
+    if(head==NULL)//判断是否是第一次进入循环
+     {
+         head=ls;//如果是第一次进入循环,那么把引导进入链表的指针指向第一次动态开辟的堆内存地址
+     }
+    else
+     {
+         le-&gt;next=ls;//如果不是第一次进入那么就把上一次的链尾指针的le-&gt;next指向上一次循环结束前动态创建的堆内存地址
+     }
+     le=ls;//设置链尾指针为当前循环中的节点指针,用于下一次进入循环的时候把上一次的节点的next指向上一次循环结束前动态创建的堆内存地址
+     ls=new test;//为下一个节点在堆内存中动态开辟空间
+    cin&gt;&gt;ls-&gt;name&gt;&gt;ls-&gt;socre;
+ }
+
+ le-&gt;next=NULL;//把链尾指针的next设置为空,因为不管如何循环总是要结束的,设置为空才能够在循环显链表的时候不至于死循环
+delete ls;//当结束的时候最后一个动态开辟的内存是无效的,所以必须清除掉
+return head;//返回链首指针
+</code></pre><p>}</p>
+<p>void showl(test *head)<br>{<br>    cout&lt;&lt;”链首指针:”&lt;<head<<endl; while(head)="" 以内存指向为null为条件循环显示先前输入的内容="" {="" cout<<head-="">name&lt;&lt;”|”&lt;<head->socre&lt;<endl; head="head-">next;<br>     }<br>}</endl;></head-></head<<endl;></p>
+<p>void main()<br>{<br>     showl(create());<br>    cin.get();<br>    cin.get();<br>}<br>　　上面的代码我们是要达到一个目的：就是要存储你输入的人名和他们的得分，并且以链状结构把它们组合成一个链状结构。</p>
+<p>程序种有两个组成部分<br>test <em>create()<br>和<br>void showl(test </em>head)<br>这两个函数，create是用来创建链表的 ，showl是用来显示链表的。</p>
+<p>create函数的返回类型是一个结构体指针，在程序调用的时候我们用了showl(create());，而不用引用的目的原因是引导指针是一个全局 指针变量，我们不能在showl()内改变它，因为showl()函数内有一个移动操作head=head-&gt;next;，如果是引用的话我们就破 坏了head指针的位置，以至于我们再也无法找会首地址的位置了。</p>
+<p>下面我们来分解整个程序，以一个初学者的思想来思考整个程序，由浅入深的逐步解释。</p>
+<p>首先，我们写这个程序，要考虑到由于是一个链表结构，我们不可能知道它的大小到底是多大，这个问题我们可以用动态开辟堆内存来解决，因为堆内存在程序结 束前始终是有效的，不受函数栈空间生命期的限制，但要注意的是我们必须有一个指针变量来存储这一链状结构的进入地址，而在函数内部来建立这一指针变量显然 是不合适的，因为函数一旦退出，这个指针变量也随之失效，所以我们在程序的开始声明了一个全局指针变量。<br>test *head;//创建一个全局的引导进入链表的指针<br>　　好解决了这两个问题，我们接下去思考</p>
+<p>有输入就必然有输出，由于输出函数和输入函数是相对独立的，为了不断测试程序的正确性好调试我们先写好输出函数和main函数捏的调用，创建函数我们先约定好名为create。</p>
+<p>我们先写出如下的代码：</p>
+<p>#include <iostream><br>using namespace std;</iostream></p>
+<p>struct test<br>{<br>    char name[10];<br>    float socre;<br>     test *next;<br>};</p>
+<p>test *head;//创建一个全局的引导进入链表的指针</p>
+<p>test *create()<br>{</p>
+<pre><code>return head;//返回链首指针
+</code></pre><p>}</p>
+<p>void showl(test *head)<br>{<br>    cout&lt;&lt;”链首指针:”&lt;<head<<endl; while(head)="" 以内存指向为null为条件循环显示先前输入的内容="" {="" cout<<head-="">name&lt;&lt;”|”&lt;<head->socre&lt;<endl; head="head-">next;<br>     }<br>}</endl;></head-></head<<endl;></p>
+<p>void main()<br>{<br>     showl(create());<br>    cin.get();<br>    cin.get();<br>}<br>　　程序写到这里，基本形态已经出来，输入和调用我们已经有了。<br>　　下面我们来解决输入问题，链表的实现我们是通过循环输入来实现的，既然是循环我们就一定得考虑终止循环的条件，避免死循环和无效循环的发生。</p>
+<p>　　在create()函数内部我们先写成这样：<br>test <em>create()<br>{<br>     test </em>ls;//节点指针<br>     test *le;//链尾指针<br>     ls = new test;//把ls指向动态开辟的堆内存地址<br>    cin&gt;&gt;ls-&gt;name&gt;&gt;ls-&gt;socre;<br>     head=NULL;//进入的时候先不设置head指针指向任何地址,因为不知道是否一上来就输入null跳出程序<br>     le=ls;//把链尾指针设置成刚刚动态开辟的堆内存地址,用于等下设置le-&gt;next,也就是下一个节点的位置</p>
+<pre><code> le-&gt;next=NULL;//把链尾指针的next设置为空,因为不管如何循环总是要结束的,设置为空才能够在循环显链表的时候不至于死循环
+delete ls;//当结束的时候最后一个动态开辟的内存是无效的,所以必须清除掉
+return head;//返回链首指针
+</code></pre><p>}<br>　　在循环创建之前我们必须考虑一个都不输入的情况。</p>
+<p>程序一单进入create函数我们首先必然要创建一个节点，我们先创建一个节点指针，后把者个节点指针指向到动态开辟的test类型的动态内存地址位置上。</p>
+<p>所以我们有了<br>test <em>ls;<br>ls = new test;<br>　　程序既然是循环输入，而结构成员test </em>next又是用来存储下一个接点的内存地址的，每次循环我们又要动态创建一个新的内存空间，所以我们必须要有一个指针来存储上一次循环动态开辟的内存地址，于是就有了<br>test *le;<br>　　接下来在进入循环前我们要创建链表的第一个节点，第一个节点必然是在循环外创建，于是就有了<br>cin&gt;&gt;ls-&gt;name&gt;&gt;ls-&gt;socre;<br>　　程序执行者的情况是位置的，所以我们必然要考虑，一上来就不想继续运行程序的情况，所以我们一开始先把head引导指针设置为不指向任何地址也就是<br>head=NULL;<br>　　为了符合le也就是链尾指针的设计思路，我们在循环前一定要保存刚刚动态开辟的内存地址，好在下一次循环的时候设置上一个节点中的next成员指向，于是我们便有了：<br>le=ls;<br>　　为了实现循环输入我们又了下面的代码：<br>while(strcmp(ls-&gt;name,”null”)!=0)<br>{<br>if(head==NULL)<br>{<br>head=ls;<br>}<br>else<br>{<br>le-&gt;next=ls;<br>}<br>le=ls;<br>ls=new test;<br>cin&gt;&gt;ls-&gt;name&gt;&gt;ls-&gt;socre;<br>}<br>　　程序是循环必然要有终止循环的条件，所以我们的循环条件是：<br>while(strcmp(ls-&gt;name,”null”)!=0)<br>　　输入的名字是null的时候就停止循环。</p>
+<p>为了保证第一次进入循环，也就是在循环内准备创建第二个节点前，设置引导指针的指向我们有了如下的判断代码：<br>if(head==NULL)<br>{<br>head=ls;<br>}<br>else<br>{<br>le-&gt;next=ls;<br>}</p>
+<p>代码中的else条件是为了设置前一个节点next指向而写的,这点我们记住先看下面的代码,稍后大家回过头想就明白了<br>le=ls;<br>ls=new test;<br>cin&gt;&gt;ls-&gt;name&gt;&gt;ls-&gt;socre;<br>　　le=ls;这么写就是为了保存上一次循环指针的位置而设的,正是为了上面的else代码而做的预先保留<br>ls=new test;<br>cin&gt;&gt;ls-&gt;name&gt;&gt;ls-&gt;socre;<br>　　这两行代码的意思就是继续开辟下一个节点空间,和输入节点内容!</p>
+<p>循环一旦结束也就结束了程序,为了保持程序不出错,也就是最后一个节点的next成员指向为空我们有了下面的代码<br>le-&gt;next=NULL;<br>　　程序的思路始终是以先开辟后判断为思路的,所以到最后一个不成立的时候总会有一个多开辟的内存空间,为了删除掉它,我们有了下面的代码<br>delete ls;<br>　　程序到最后由于返回head指针<br>return head;<br>　　显示链表的函数没有什么太多特别的也只需要注意下面这样就可以了！<br>head=head-&gt;next;<br>　　我们之所以不用head+=1;来写就是因为链表是我们动态开辟的，而每一个节点的位置并不是相连的，next成员指针的意义也就是下一个节点的内存地址。<br>　　到这里整个创建函数的设计思路也都说完了，笔者不一定说的很好，但基本思路是这样的，希望读者多思考，多对比，相信此教程还是对大家有帮助的，程序设计就是利用逐步思考的方式进行的，写好的代码往往直接看看不懂就是因为中间的细节并不是一次都能够想到的。<br>　　下面我们来说一下链表节点的删除!</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<div class="copyright">
+  <p><span>本文标题:</span><a href="/2015/12/28/结构体和链表（1）/">结构体和链表（1）</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Phantom 的个人博客">Phantom</a></p>
+  <p><span>发布时间:</span>2015年12月28日 - 10时16分</p>
+  <p><span>最后更新:</span>2015年12月28日 - 15时54分</p>
+  <p>
+    <span>原始链接:</span><a class="post-url" href="/2015/12/28/结构体和链表（1）/" title="结构体和链表（1）">chengong.me/2015/12/28/结构体和链表（1）/</a>
+    <span class="copy-path" data-clipboard-text="原文: chengong.me/2015/12/28/结构体和链表（1）/　　作者: Phantom" title="点击复制文章链接">
+        <i class="fa fa-clipboard"></i>
+    </span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。</p>
+  <script src="/js/clipboard.min.js"></script>
+  <script> var clipboard = new Clipboard('.copy-path'); </script>
+</div>
+
+
+
+
+<nav id="article-nav">
+  
+    <div id="article-nav-newer" class="article-nav-title">
+      <a href="/2015/12/28/结构体和链表（2）/">
+        结构体和链表（2）
+      </a>
+    </div>
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2015/12/27/编程修养（3）/">
+        编程修养（3）
+      </a>
+    </div>
+  
+</nav>
+
+  
+</article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+
+<div class="share">
+	<div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+	<a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+	<a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+	</div>
+	<script>
+	window._bd_share_config={
+		"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+	</script>
+</div>
+
+
+
+  
+  <div class="duoshuo" id="comments">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="结构体和链表（1）" data-title="结构体和链表（1）" data-url="chengong.me/2015/12/28/结构体和链表（1）/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chengong"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://chengong.me/js/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+
+
+
+
+
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
+
+
+  
+  
+    
+    <div  class="post-nav-button">
+    <a href="/2015/12/28/结构体和链表（2）/" title="上一篇: 结构体和链表（2）">
+    <i class="fa fa-angle-left"></i>
+    </a>
+    <a href="/2015/12/27/编程修养（3）/" title="下一篇: 编程修养（3）">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+     
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2016 Phantom
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+        </div>
+    </div>
+    <div class="visit">
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257065196'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1257065196%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+<script>
+  var backgroundnum = 5;
+  var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+
+  $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+<a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+<a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<script>
+var option = {
+  engineKey: '990f4c9c13b06ab1d082'
+};
+(function(w,d,t,u,n,s,e){
+   s = d.createElement(t);
+   s.src = u;
+   s.async = 1;
+   w[n] = function(r){
+     w[n].opts = r;
+   };
+   e = d.getElementsByTagName(t)[0];
+   e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+</script>
+  </div>
+</body>
+</html>

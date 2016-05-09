@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>编程修养（1） | Phantom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="版权和版本———————好的程序员会给自己的每个函数，每个文件，都注上版权和版本。  
+对于C/C++的文件，文件头应该有类似这样的注释：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编程修养（1）">
+<meta property="og:url" content="chengong.me/2015/12/27/编程修养（1）/index.html">
+<meta property="og:site_name" content="Phantom">
+<meta property="og:description" content="版权和版本———————好的程序员会给自己的每个函数，每个文件，都注上版权和版本。  
+对于C/C++的文件，文件头应该有类似这样的注释：">
+<meta property="og:updated_time" content="2015-12-28T07:55:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编程修养（1）">
+<meta name="twitter:description" content="版权和版本———————好的程序员会给自己的每个函数，每个文件，都注上版权和版本。  
+对于C/C++的文件，文件头应该有类似这样的注释：">
+  
+    <link rel="alternative" href="/atom.xml" title="Phantom" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/avatar.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<script src="//cdn.bootcss.com/JQuery-Snowfall/1.7.4/snowfall.jquery.min.js"></script>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Phantom</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">是我的海</p>
+		
+		
+		<form><input type="text" class="search" placeholder=" Search..."></form>
+				
+
+
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives/">所有文章</a></li>
+				        
+							<li><a href="/tags/">标签云</a></li>
+				        
+							<li><a href="/about/">留言板</a></li>
+				        
+							<li><a href="/built/">建站记事</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:admin@chengong.me" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/iphantom" title="GitHub"></a></li>
+					        
+								<li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+					        
+								<li id="LinkedIn"><a class="LinkedIn" target="_blank" href="https://cn.linkedin.com/in/gong-chen-805212a5" title="LinkedIn"></a></li>
+					        
+						</ul>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Oracle/" style="font-size: 12.5px;">Oracle</a> <a href="/tags/PyDev/" style="font-size: 10px;">PyDev</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/SQL用法/" style="font-size: 10px;">SQL用法</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/duoshuo/" style="font-size: 10px;">duoshuo</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hexo用法/" style="font-size: 10px;">hexo用法</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/makedown/" style="font-size: 10px;">makedown</a> <a href="/tags/namecheap/" style="font-size: 10px;">namecheap</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/使用指南/" style="font-size: 10px;">使用指南</a> <a href="/tags/华为/" style="font-size: 10px;">华为</a> <a href="/tags/博客/" style="font-size: 12.5px;">博客</a> <a href="/tags/安装方法/" style="font-size: 10px;">安装方法</a> <a href="/tags/小七/" style="font-size: 12.5px;">小七</a> <a href="/tags/心情/" style="font-size: 12.5px;">心情</a> <a href="/tags/感悟/" style="font-size: 17.5px;">感悟</a> <a href="/tags/感言/" style="font-size: 12.5px;">感言</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/求助/" style="font-size: 10px;">求助</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/生日/" style="font-size: 10px;">生日</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/研究生/" style="font-size: 10px;">研究生</a> <a href="/tags/离职/" style="font-size: 10px;">离职</a> <a href="/tags/纪念日/" style="font-size: 10px;">纪念日</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/结构体/" style="font-size: 12.5px;">结构体</a> <a href="/tags/编程修养/" style="font-size: 15px;">编程修养</a> <a href="/tags/网页/" style="font-size: 10px;">网页</a> <a href="/tags/转载/" style="font-size: 20px;">转载</a> <a href="/tags/链表/" style="font-size: 12.5px;">链表</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">————对不起，不告诉你————</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Phantom</a></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+				<img lazy-src="/img/avatar.png" class="js-avatar">
+			</a>
+			<hgroup>
+			  <h1 class="header-author"><a href="/" title="回到主页">Phantom</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">是我的海</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">所有文章</a></li>
+		        
+					<li><a href="/tags/">标签云</a></li>
+		        
+					<li><a href="/about/">留言板</a></li>
+		        
+					<li><a href="/built/">建站记事</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:admin@chengong.me" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/iphantom" title="GitHub"></a></li>
+					        
+								<li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+					        
+								<li id="LinkedIn"><a class="LinkedIn" target="_blank" href="https://cn.linkedin.com/in/gong-chen-805212a5" title="LinkedIn"></a></li>
+					        
+						</ul>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-编程修养（1）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/27/编程修养（1）/" class="article-date">
+  	<time datetime="2015-12-27T13:55:10.000Z" itemprop="datePublished">2015-12-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      编程修养（1）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+	</div>
+
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/感悟/">感悟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程修养/">编程修养</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="版权和版本"><a href="#版权和版本" class="headerlink" title="版权和版本"></a>版权和版本</h2><p>———————<br>好的程序员会给自己的每个函数，每个文件，都注上版权和版本。  </p>
+<p>对于C/C++的文件，文件头应该有类似这样的注释：  <a id="more"></a></p>
+<p>而对于函数来说，应该也有类似于这样的注释：  </p>
+<p>这样的描述可以让人对一个函数，一个文件有一个总体的认识，对代码的易读性和易维护性有</p>
+<p>很大的好处 </p>
+<h2 id="缩进、空格、换行、空行、对齐"><a href="#缩进、空格、换行、空行、对齐" class="headerlink" title="缩进、空格、换行、空行、对齐"></a>缩进、空格、换行、空行、对齐</h2><p>————————————————<br>i) 缩进应该是每个程序都会做的，只要学程序过程序就应该知道这个，但是我仍然看过不缩进</p>
+<p>的程序，或是乱缩进的程序，如果你的公司还有写程序不缩进的程序员，请毫不犹豫的开除他</p>
+<p>吧，并以破坏源码罪起诉他，还要他赔偿读过他程序的人的精神损失费。缩进，这是不成文规</p>
+<p>矩，我再重提一下吧，一个缩进一般是一个TAB键或是4个空格。（最好用TAB键）  </p>
+<p>ii) 空格。空格能给程序代来什么损失吗？没有，有效的利用空格可以让你的程序读进来更加赏</p>
+<p>心悦目。而不一堆表达式挤在一起。看看下面的代码：  </p>
+<p>ha=(ha<em>128+</em>key++)%tabPtr-&gt;size;  </p>
+<p>ha = ( ha <em> 128 + </em>key++ ) % tabPtr-&gt;size;  </p>
+<p>有空格和没有空格的感觉不一样吧。一般来说，语句中要在各个操作符间加空格，函数调用时</p>
+<p>，要以各个参数间加空格。如下面这种加空格的和不加的：  </p>
+<p>if ((hProc=OpenProcess(PROCESS_ALL_ACCESS,FALSE,pid))==NULL){<br>}  </p>
+<p>if ( ( hProc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid) ) == NULL ){<br>}  </p>
+<p>iii) 换行。不要把语句都写在一行上，这样很不好。如：  </p>
+<p>for(i=0;i’9’)&amp;&amp;(a[i]&lt;’a’||a[i]&gt;’z’)) break;  </p>
+<p>我拷，这种即无空格，又无换行的程序在写什么啊？加上空格和换行吧。  </p>
+<p>for ( i=0; i if ( ( a[i] &lt; ‘0’ || a[i] &gt; ‘9’ ) &amp;&amp;<br>( a[i] &lt; ‘a’ || a[i] &gt; ‘z’ ) ) {<br>break;<br>}<br>}  </p>
+<p>好多了吧？有时候，函数参数多的时候，最好也换行，如：  </p>
+<p>CreateProcess(<br>NULL,<br>cmdbuf,<br>NULL,<br>NULL,<br>bInhH,<br>dwCrtFlags,<br>enVBuf,<br>NULL,<br>&amp;siStartInfo,<br>&amp;prInfo<br>);  </p>
+<p>条件语句也应该在必要时换行：  </p>
+<p>if ( ch &gt;= ‘0’ || ch &lt;= ‘9’ ||<br>ch &gt;= ‘a’ || ch &lt;= ‘z’ ||<br>ch &gt;= ‘A’ || ch &lt;= ‘Z’ )  </p>
+<p>iv) 空行。不要不加空行，空行可以区分不同的程序块，程序块间，最好加上空行。如：  </p>
+<p>HANDLE hProcess;<br>PROCESS_T procInfo;  </p>
+<p>if((hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid)) == NULL)<br>{<br>return LSE_MISC_SYS;<br>}  </p>
+<p>memset(&amp;procInfo, 0, sizeof(procInfo));<br>procInfo.idProc = pid;<br>procInfo.hdProc = hProcess;<br>procInfo.misc |= MSCAVA_PROC;  </p>
+<p>return(0);  </p>
+<p>v) 对齐。用TAB键对齐你的一些变量的声明或注释，一样会让你的程序好看一些。如：  </p>
+<p>typedef struct _pt_man<em>t</em> {<br>int numProc;<br>int maxProc;<br>int numEvnt;<br>int maxEvnt;<br>HANDLE* pHndEvnt;<br>DWORD timeout;<br>HANDLE hPipe;<br>TCHAR usr[MAXUSR];<br>int numMsg;<br>int Msg[MAXMSG];<br>} PT_MAN_T;  </p>
+<h2 id="程序注释"><a href="#程序注释" class="headerlink" title="程序注释"></a>程序注释</h2><p>i) 对于行注释（“//”）比块注释（“”）要好的说法，我并不是很同意。因为一些老版本的C编</p>
+<p>译器并不支持行注释，所以为了你的程序的移植性，请你还是尽量使用块注释。  </p>
+<p>ii) 你也许会为块注释的不能嵌套而不爽，那么你可以用预编译来完成这个功能。使用“#if 0”和</p>
+<p>“#endif”括起来的代码，将不被编译，而且还可以嵌套。  </p>
+<h2 id="函数的-in-out-参数"><a href="#函数的-in-out-参数" class="headerlink" title="函数的[in][out]参数"></a>函数的[in][out]参数</h2><p>———————————  </p>
+<p>我经常看到这样的程序：<br>FuncName(char* str)<br>{<br>int len = strlen(str);<br>…..<br>}  </p>
+<p>char<em><br>GetUserName(struct user</em> pUser)<br>{<br>return pUser-&gt;name;<br>}  </p>
+<p>不！请不要这样做。  </p>
+<p>你应该先判断一下传进来的那个指针是不是为空。如果传进来的指针为空的话，那么，你的一</p>
+<p>个大的系统就会因为这一个小的函数而崩溃。一种更好的技术是使用断言（assert），这里我就</p>
+<p>不多说这些技术细节了。当然，如果是在C++中，引用要比指针好得多，但你也需要对各个参</p>
+<p>数进行检查。  </p>
+<p>写有参数的函数时，首要工作，就是要对传进来的所有参数进行合法性检查。而对于传出的参</p>
+<p>数也应该进行检查，这个动作当然应该在函数的外部，也就是说，调用完一个函数后，应该对</p>
+<p>其传出的值进行检查。  </p>
+<p>当然，检查会浪费一点时间，但为了整个系统不至于出现“非法操作”或是“Core Dump”的系统级</p>
+<p>的错误，多花这点时间还是很值得的。  </p>
+<h2 id="对系统调用的返回进行判断"><a href="#对系统调用的返回进行判断" class="headerlink" title="对系统调用的返回进行判断"></a>对系统调用的返回进行判断</h2><p>——————————————<br>继续上一条，对于一些系统调用，比如打开文件，我经常看到，许多程序员对fopen返回的指针</p>
+<p>不做任何判断，就直接使用了。然后发现文件的内容怎么也读出不，或是怎么也写不进去。还</p>
+<p>是判断一下吧：  </p>
+<p>fp = fopen(“log.txt”, “a”);<br>if ( fp == NULL ){<br>printf(“Error: open file error\n”);<br>return FALSE;<br>}  </p>
+<p>其它还有许多啦，比如：socket返回的socket号，malloc返回的内存。请对这些系统调用返回的</p>
+<p>东西进行判断。</p>
+<h2 id="if-语句对出错的处理"><a href="#if-语句对出错的处理" class="headerlink" title="if 语句对出错的处理"></a>if 语句对出错的处理</h2><p>———————————<br>我看见你说了，这有什么好说的。还是先看一段程序代码吧。<br>if ( ch &gt;= ‘0’ &amp;&amp; ch &lt;= ‘9’ ){  </p>
+<p>}else{  </p>
+<p>printf(“error ……\n”);<br>return ( FALSE );<br>}  </p>
+<p>这种结构很不好，特别是如果“正常处理代码”很长时，对于这种情况，最好不要用else。先判断</p>
+<p>错误，如：  </p>
+<p>if ( ch &lt; ‘0’ || ch &gt; ‘9’ ){  </p>
+<p>printf(“error ……\n”);<br>return ( FALSE );<br>}  </p>
+<p>……  </p>
+<p>这样的结构，不是很清楚吗？突出了错误的条件，让别人在使用你的函数的时候，第一眼就能</p>
+<p>看到不合法的条件，于是就会更下意识的避免。  </p>
+<h2 id="头文件中的-ifndef"><a href="#头文件中的-ifndef" class="headerlink" title="头文件中的#ifndef"></a>头文件中的#ifndef</h2><p>——————————<br>千万不要忽略了头件的中的#ifndef，这是一个很关键的东西。比如你有两个C文件，这两个C文</p>
+<p>件都include了同一个头文件。而编译时，这两个C文件要一同编译成一个可运行文件，于是问</p>
+<p>题来了，大量的声明冲突。  </p>
+<p>还是把头文件的内容都放在#ifndef和#endif中吧。不管你的头文件会不会被多个文件引用，你都</p>
+<p>要加上这个。一般格式是这样的：  </p>
+<p>#ifndef &lt;标识&gt;  </p>
+<p>#define &lt;标识&gt;  </p>
+<p>……<br>……  </p>
+<p>#endif  </p>
+<p>&lt;标识&gt;在理论上来说可以是自由命名的，但每个头文件的这个“标识”都应该是唯一的。标识的</p>
+<p>命名规则一般是头文件名全大写，前后加下划线，并把文件名中的“.”也变成下划线，如：</p>
+<p>stdio.h  </p>
+<p>#ifndef _STDIO<em>H</em>  </p>
+<p>#define _STDIO<em>H</em>  </p>
+<p>……  </p>
+<p>#endif  </p>
+<p>（BTW：预编译有多很有用的功能。你会用预编译吗？）  </p>
+<h2 id="在堆上分配内存"><a href="#在堆上分配内存" class="headerlink" title="在堆上分配内存"></a>在堆上分配内存</h2><p>—————————<br>可能许多人对内存分配上的“栈 stack”和“堆 heap”还不是很明白。包括一些科班出身的人也不明</p>
+<p>白这两个概念。我不想过多的说这两个东西。简单的来讲，stack上分配的内存系统自动释放，</p>
+<p>heap上分配的内存，系统不释放，哪怕程序退出，那一块内存还是在那里。stack一般是静态分</p>
+<p>配内存，heap上一般是动态分配内存。  </p>
+<p>由malloc系统函数分配的内存就是从堆上分配内存。从堆上分配的内存一定要自己释放。用free</p>
+<p>释放，不然就是术语——“内存泄露”（或是“内存漏洞”）—— Memory Leak。于是，系统的可分</p>
+<p>配内存会随malloc越来越少，直到系统崩溃。还是来看看“栈内存”和“堆内存”的差别吧。  </p>
+<p>栈内存分配<br>—————<br>char*<br>AllocStrFromStack()<br>{<br>char pstr[100];<br>return pstr;<br>}  </p>
+<p>堆内存分配<br>—————<br>char<em><br>AllocStrFromHeap(int len)<br>{<br>char </em>pstr;  </p>
+<p>if ( len &lt;= 0 ) return NULL;<br>return ( char* ) malloc( len );<br>}  </p>
+<p>对于第一个函数，那块pstr的内存在函数返回时就被系统释放了。于是所返回的char*什么也没</p>
+<p>有。而对于第二个函数，是从堆上分配内存，所以哪怕是程序退出时，也不释放，所以第二个</p>
+<p>函数的返回的内存没有问题，可以被使用。但一定要调用free释放，不然就是Memory Leak！  </p>
+<p>在堆上分配内存很容易造成内存泄漏，这是C/C++的最大的“克星”，如果你的程序要稳定，那么</p>
+<p>就不要出现Memory Leak。所以，我还是要在这里千叮咛万嘱付，在使用malloc系统函数（包</p>
+<p>括calloc，realloc）时千万要小心。  </p>
+<p>记得有一个UNIX上的服务应用程序，大约有几百的C文件编译而成，运行测试良好，等使用时</p>
+<p>，每隔三个月系统就是down一次，搞得许多人焦头烂额，查不出问题所在。只好，每隔两个月</p>
+<p>人工手动重启系统一次。出现这种问题就是Memery Leak在做怪了，在C/C++中这种问题总是</p>
+<p>会发生，所以你一定要小心。一个Rational的检测工作——Purify，可以帮你测试你的程序有没</p>
+<p>有内存泄漏。  </p>
+<p>我保证，做过许多C/C++的工程的程序员，都会对malloc或是new有些感冒。当你什么时候在使</p>
+<p>用malloc和new时，有一种轻度的紧张和惶恐的感觉时，你就具备了这方面的修养了。  </p>
+<p>对于malloc和free的操作有以下规则：  </p>
+<p>1) 配对使用，有一个malloc，就应该有一个free。（C++中对应为new和delete）<br>2) 尽量在同一层上使用，不要像上面那种，malloc在函数中，而free在函数外。最好在同一调用</p>
+<p>层上使用这两个函数。<br>3) malloc分配的内存一定要初始化。free后的指针一定要设置为NULL。  </p>
+<p>注：虽然现在的操作系统（如：UNIX和Win2k/NT）都有进程内存跟踪机制，也就是如果你有没</p>
+<p>有释放的内存，操作系统会帮你释放。但操作系统依然不会释放你程序中所有产生了Memory  </p>
+<p>Leak的内存，所以，最好还是你自己来做这个工作。（有的时候不知不觉就出现Memory Leak</p>
+<p>了，而且在几百万行的代码中找无异于海底捞针，Rational有一个工具叫Purify，可能很好的帮</p>
+<p>你检查程序中的Memory Leak）  </p>
+<h2 id="变量的初始化"><a href="#变量的初始化" class="headerlink" title="变量的初始化"></a>变量的初始化</h2><p>————————<br>接上一条，变量一定要被初始化再使用。C/C++编译器在这个方面不会像Java一样帮你初始化</p>
+<p>，这一切都需要你自己来，如果你使用了没有初始化的变量，结果未知。好的程序员从来都会</p>
+<p>在使用变量前初始化变量的。如：  </p>
+<p>1) 对malloc分配的内存进行memset清零操作。（可以使用calloc分配一块全零的内存）<br>2) 对一些栈上分配的struct或数组进行初始化。（最好也是清零）  </p>
+<p>不过话又说回来了，初始化也会造成系统运行时间有一定的开销，所以，也不要对所有的变量</p>
+<p>做初始化，这个也没有意义。好的程序员知道哪些变量需要初始化，哪些则不需要。如：以下</p>
+<p>这种情况，则不需要。  </p>
+<p>char <em>pstr;<br>pstr = ( char</em> ) malloc( 50 );<br>if ( pstr == NULL ) exit(0);<br>strcpy( pstr, “Hello Wrold” );  </p>
+<p>但如果是下面一种情况，最好进行内存初始化。（指针是一个危险的东西，一定要初始化）  </p>
+<p>char <strong>pstr;<br>pstr = ( char</strong> ) malloc( 50 );<br>if ( pstr == NULL ) exit(0);  </p>
+<p>memset( pstr, 0, 50<em>sizeof(char</em>) );  </p>
+<p>而对于全局变量，和静态变量，一定要声明时就初始化。因为你不知道它第一次会在哪里被使</p>
+<p>用。所以使用前初始这些变量是比较不现实的，一定要在声明时就初始化它们。如：  </p>
+<p>Links *plnk = NULL;   </p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<div class="copyright">
+  <p><span>本文标题:</span><a href="/2015/12/27/编程修养（1）/">编程修养（1）</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Phantom 的个人博客">Phantom</a></p>
+  <p><span>发布时间:</span>2015年12月27日 - 21时55分</p>
+  <p><span>最后更新:</span>2015年12月28日 - 15时55分</p>
+  <p>
+    <span>原始链接:</span><a class="post-url" href="/2015/12/27/编程修养（1）/" title="编程修养（1）">chengong.me/2015/12/27/编程修养（1）/</a>
+    <span class="copy-path" data-clipboard-text="原文: chengong.me/2015/12/27/编程修养（1）/　　作者: Phantom" title="点击复制文章链接">
+        <i class="fa fa-clipboard"></i>
+    </span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。</p>
+  <script src="/js/clipboard.min.js"></script>
+  <script> var clipboard = new Clipboard('.copy-path'); </script>
+</div>
+
+
+
+
+<nav id="article-nav">
+  
+    <div id="article-nav-newer" class="article-nav-title">
+      <a href="/2015/12/27/编程修养（2）/">
+        编程修养（2）
+      </a>
+    </div>
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2015/12/16/Python入门网络爬虫之精华版/">
+        Python入门网络爬虫之精华版
+      </a>
+    </div>
+  
+</nav>
+
+  
+</article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#版权和版本"><span class="toc-number">1.</span> <span class="toc-text">版权和版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缩进、空格、换行、空行、对齐"><span class="toc-number">2.</span> <span class="toc-text">缩进、空格、换行、空行、对齐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序注释"><span class="toc-number">3.</span> <span class="toc-text">程序注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数的-in-out-参数"><span class="toc-number">4.</span> <span class="toc-text">函数的[in][out]参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对系统调用的返回进行判断"><span class="toc-number">5.</span> <span class="toc-text">对系统调用的返回进行判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#if-语句对出错的处理"><span class="toc-number">6.</span> <span class="toc-text">if 语句对出错的处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#头文件中的-ifndef"><span class="toc-number">7.</span> <span class="toc-text">头文件中的#ifndef</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在堆上分配内存"><span class="toc-number">8.</span> <span class="toc-text">在堆上分配内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量的初始化"><span class="toc-number">9.</span> <span class="toc-text">变量的初始化</span></a></li></ol>
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+
+<div class="share">
+	<div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+	<a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+	<a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+	</div>
+	<script>
+	window._bd_share_config={
+		"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+	</script>
+</div>
+
+
+
+  
+  <div class="duoshuo" id="comments">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="编程修养（1）" data-title="编程修养（1）" data-url="chengong.me/2015/12/27/编程修养（1）/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chengong"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://chengong.me/js/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+
+
+
+
+
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
+
+
+  
+  
+    
+    <div  class="post-nav-button">
+    <a href="/2015/12/27/编程修养（2）/" title="上一篇: 编程修养（2）">
+    <i class="fa fa-angle-left"></i>
+    </a>
+    <a href="/2015/12/16/Python入门网络爬虫之精华版/" title="下一篇: Python入门网络爬虫之精华版">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+     
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2016 Phantom
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+        </div>
+    </div>
+    <div class="visit">
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257065196'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1257065196%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+<script>
+  var backgroundnum = 5;
+  var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+
+  $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+<a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+<a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<script>
+var option = {
+  engineKey: '990f4c9c13b06ab1d082'
+};
+(function(w,d,t,u,n,s,e){
+   s = d.createElement(t);
+   s.src = u;
+   s.async = 1;
+   w[n] = function(r){
+     w[n].opts = r;
+   };
+   e = d.getElementsByTagName(t)[0];
+   e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+</script>
+  </div>
+</body>
+</html>

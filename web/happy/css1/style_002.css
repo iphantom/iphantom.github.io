@@ -1,0 +1,82 @@
+/*
+=== Sohu Blog PPP StyleSheet File ================================
+	Style Name: default
+	Version: 2.0
+	Author: blogworld (www.blogworld.com.cn)
+	Copyright: www.blogworld.com.cn
+==============================================================
+*/
+
+/****** General Styles ******/
+html{	border-right:1px solid #ccc;}
+
+div,table,ul,p{color:#9A0038;}
+a{
+    color: #333;
+	text-decoration: underline;	
+}
+a:hover{
+    color: #f60;
+	text-decoration: underline;
+}
+textarea{
+	/*
+	background-color: white;
+	border: 1px solid #ccc;
+	*/
+}
+select{
+	/*
+	background-color: white;
+	border: 1px solid #ccc;
+	*/
+}
+input.text{
+	/*
+	background-color: white;
+	border: 1px solid #ccc;
+	*/
+}
+input.button{
+	/*
+	background-color: white;
+	border: 1px solid #ccc;
+	*/
+}
+/****** Main Layout Styles ******/
+.texta:link {color:#9A0038;}
+.texta:hover{color:#f60;}
+.referItem a{color:#9A0038;}
+.referItem a:hover{color:#f60;}
+/*ÏÂ»®Ïß*/
+.profile-content hr{
+	margin: 5px 0px !important;
+	margin: -5px 0px;
+	height: 1px;
+	border: none;
+	border-top: 1px solid #FBDCE4;
+	clear:both;
+}
+.profile-content .profileMng{
+	text-align: right;
+	border-bottom: 1px solid #FBDCE4;
+	margin-bottom: 3px;
+}
+.messages-content .msg{
+	padding-top: 2px;
+	margin-bottom: 3px;
+	border-bottom: 1px solid #FBDCE4;
+	clear: both;
+}
+.links-content .link, .Custom_Links-content .link{
+	padding-top: 2px;
+	margin-bottom: 3px;
+	border-bottom: 1px solid #FBDCE4;
+	clear: both;
+}
+.links-content .linksAdd, .Custom_Links-content .linksAdd{
+	text-align: right;
+	border-bottom: 1px solid #FBDCE4;
+	padding-bottom: 2px;
+	margin-bottom: 3px;
+}
