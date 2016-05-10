@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>pythonの读取oracle数据库字段名类型等 | Phantom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="完成任务：通过给出的SQL语句，获得所操作表的字段名类型等信息
+
+安装cx_oracle插件  确定返回值类型12345678# -*- coding:utf-8 -*-import cx_Oracle#类使用方法：用来查询数据库表中name, type_code, display_size, internal_size#return [状态位，错误信息,col_data]#col_data=[">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pythonの读取oracle数据库字段名类型等">
+<meta property="og:url" content="chengong.me/2016/05/05/pythonの读取oracle数据库字段名类型等/index.html">
+<meta property="og:site_name" content="Phantom">
+<meta property="og:description" content="完成任务：通过给出的SQL语句，获得所操作表的字段名类型等信息
+
+安装cx_oracle插件  确定返回值类型12345678# -*- coding:utf-8 -*-import cx_Oracle#类使用方法：用来查询数据库表中name, type_code, display_size, internal_size#return [状态位，错误信息,col_data]#col_data=[">
+<meta property="og:updated_time" content="2016-05-10T14:09:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pythonの读取oracle数据库字段名类型等">
+<meta name="twitter:description" content="完成任务：通过给出的SQL语句，获得所操作表的字段名类型等信息
+
+安装cx_oracle插件  确定返回值类型12345678# -*- coding:utf-8 -*-import cx_Oracle#类使用方法：用来查询数据库表中name, type_code, display_size, internal_size#return [状态位，错误信息,col_data]#col_data=[">
+  
+    <link rel="alternative" href="/atom.xml" title="Phantom" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/avatar.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<script src="//cdn.bootcss.com/JQuery-Snowfall/1.7.4/snowfall.jquery.min.js"></script>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Phantom</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">是我的海</p>
+		
+		
+		<form><input type="text" class="search" placeholder=" Search..."></form>
+				
+
+
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives/">所有文章</a></li>
+				        
+							<li><a href="/tags/">标签云</a></li>
+				        
+							<li><a href="/about/">留言板</a></li>
+				        
+							<li><a href="/built/">建站记事</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:admin@chengong.me" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/iphantom" title="GitHub"></a></li>
+					        
+								<li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+					        
+								<li id="LinkedIn"><a class="LinkedIn" target="_blank" href="https://cn.linkedin.com/in/gong-chen-805212a5" title="LinkedIn"></a></li>
+					        
+						</ul>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Oracle/" style="font-size: 12.5px;">Oracle</a> <a href="/tags/PyDev/" style="font-size: 10px;">PyDev</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/SQL用法/" style="font-size: 10px;">SQL用法</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/duoshuo/" style="font-size: 10px;">duoshuo</a> <a href="/tags/excel/" style="font-size: 10px;">excel</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hexo用法/" style="font-size: 10px;">hexo用法</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/makedown/" style="font-size: 10px;">makedown</a> <a href="/tags/namecheap/" style="font-size: 10px;">namecheap</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/使用指南/" style="font-size: 10px;">使用指南</a> <a href="/tags/华为/" style="font-size: 10px;">华为</a> <a href="/tags/博客/" style="font-size: 12.5px;">博客</a> <a href="/tags/安装方法/" style="font-size: 10px;">安装方法</a> <a href="/tags/小七/" style="font-size: 12.5px;">小七</a> <a href="/tags/心情/" style="font-size: 12.5px;">心情</a> <a href="/tags/感悟/" style="font-size: 17.5px;">感悟</a> <a href="/tags/感言/" style="font-size: 12.5px;">感言</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/求助/" style="font-size: 10px;">求助</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/生日/" style="font-size: 10px;">生日</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/研究生/" style="font-size: 10px;">研究生</a> <a href="/tags/离职/" style="font-size: 10px;">离职</a> <a href="/tags/纪念日/" style="font-size: 10px;">纪念日</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/结构体/" style="font-size: 12.5px;">结构体</a> <a href="/tags/编程修养/" style="font-size: 15px;">编程修养</a> <a href="/tags/网页/" style="font-size: 10px;">网页</a> <a href="/tags/转载/" style="font-size: 20px;">转载</a> <a href="/tags/链表/" style="font-size: 12.5px;">链表</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">————对不起，不告诉你————</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Phantom</a></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+				<img lazy-src="/img/avatar.png" class="js-avatar">
+			</a>
+			<hgroup>
+			  <h1 class="header-author"><a href="/" title="回到主页">Phantom</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">是我的海</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">所有文章</a></li>
+		        
+					<li><a href="/tags/">标签云</a></li>
+		        
+					<li><a href="/about/">留言板</a></li>
+		        
+					<li><a href="/built/">建站记事</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:admin@chengong.me" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/iphantom" title="GitHub"></a></li>
+					        
+								<li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+					        
+								<li id="LinkedIn"><a class="LinkedIn" target="_blank" href="https://cn.linkedin.com/in/gong-chen-805212a5" title="LinkedIn"></a></li>
+					        
+						</ul>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-pythonの读取oracle数据库字段名类型等" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/05/pythonの读取oracle数据库字段名类型等/" class="article-date">
+  	<time datetime="2016-05-05T13:10:20.000Z" itemprop="datePublished">2016-05-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      pythonの读取oracle数据库字段名类型等
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+	</div>
+
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>完成任务：通过给出的SQL语句，获得所操作表的字段名类型等信息</p>
+</blockquote>
+<h2 id="安装cx-oracle插件-确定返回值类型"><a href="#安装cx-oracle插件-确定返回值类型" class="headerlink" title="安装cx_oracle插件  确定返回值类型"></a>安装cx_oracle插件  确定返回值类型</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> cx_Oracle</span><br><span class="line"><span class="comment">#类使用方法：用来查询数据库表中name, type_code, display_size, internal_size</span></span><br><span class="line"><span class="comment">#return [状态位，错误信息,col_data]</span></span><br><span class="line"><span class="comment">#col_data=[name, type_code, display_size, internal_size]</span></span><br><span class="line"><span class="comment">#状态位 0为正确 1为错误</span></span><br><span class="line"><span class="comment">#若状态位为0，则错误信息为空，</span></span><br><span class="line"><span class="comment">#若状态位为1，则只返回错误信息，不返回查询值</span></span><br></pre></td></tr></table></figure>
+<h2 id="DB-ALL类执行对数据库的操作"><a href="#DB-ALL类执行对数据库的操作" class="headerlink" title="DB_ALL类执行对数据库的操作"></a>DB_ALL类执行对数据库的操作</h2><h4 id="输入是一个表名"><a href="#输入是一个表名" class="headerlink" title="输入是一个表名"></a>输入是一个表名</h4><blockquote>
+<p>首先获取数据库登录信息 登录数据库<br>若输入时一段表名 则首先校验此表是否在数据库内  若不在 则直接返回<br>若表在数据库内 则通过SQL语句 直接查询该表 获得返回信息</p>
+</blockquote>
+<h4 id="输入时一段SQL语句"><a href="#输入时一段SQL语句" class="headerlink" title="输入时一段SQL语句"></a>输入时一段SQL语句</h4><blockquote>
+<p>执行此SQL语句 获得返回值<br>若SQL语句执行有错误  则返回oracle数据库返回的错误信息</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#-------DB Class------------------</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DB_ALL</span>:</span>    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,Execute_Sql)</span>:</span>  <span class="comment">#初始化</span></span><br><span class="line">        <span class="comment">#----读取Oracle配置信息------------</span></span><br><span class="line">        F_Config=open(<span class="string">'Config.txt'</span>)</span><br><span class="line">        Connect_Oracle=F_Config.readline()</span><br><span class="line">        F_Config.close()</span><br><span class="line">        <span class="comment">#参数初始化</span></span><br><span class="line">        self.con_Oracle=Connect_Oracle</span><br><span class="line">        self.exe_Sql=Execute_Sql</span><br><span class="line">        self.exe_Sql_temp=<span class="string">'select * from '</span>+self.exe_Sql                         </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">db_Get_Name_List</span><span class="params">(self)</span>:</span> </span><br><span class="line">        conn=cx_Oracle.connect(self.con_Oracle)     <span class="comment">#链接数据库</span></span><br><span class="line">        cursor = conn.cursor ()                     <span class="comment">#获取操作符</span></span><br><span class="line">        Check_Sql=<span class="string">'SELECT count(*) FROM dba_OBJECTS WHERE OBJECT_NAME = UPPER(\''</span>+self.exe_Sql+<span class="string">'\')'</span>  <span class="comment">#执行此SQL</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            cursor.execute (Check_Sql)        <span class="comment">#校验SQL </span></span><br><span class="line">            check_row = cursor.fetchone ()</span><br><span class="line">            <span class="keyword">if</span> (check_row[<span class="number">0</span>]==<span class="number">0</span>):</span><br><span class="line">                <span class="keyword">return</span> [<span class="number">1</span>,<span class="string">"DatabaseError(table name is error)"</span>]</span><br><span class="line">        <span class="keyword">except</span> cx_Oracle.DatabaseError, msg:  <span class="comment">#输出Oracle错误信息</span></span><br><span class="line">            cursor.close ()</span><br><span class="line">            conn.close ()</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">        cursor.execute (self.exe_Sql_temp)     <span class="comment">#执行SQL          </span></span><br><span class="line">        <span class="comment">#一行行读取SQL结果</span></span><br><span class="line">        col_name_list = [tuple[<span class="number">0</span>] <span class="keyword">for</span> tuple <span class="keyword">in</span> cursor.description]</span><br><span class="line">        col_type_code_temp = [tuple[<span class="number">1</span>] <span class="keyword">for</span> tuple <span class="keyword">in</span> cursor.description]</span><br><span class="line">        col_display_size = [tuple[<span class="number">2</span>] <span class="keyword">for</span> tuple <span class="keyword">in</span> cursor.description]</span><br><span class="line">        col_internal_size = [tuple[<span class="number">3</span>] <span class="keyword">for</span> tuple <span class="keyword">in</span> cursor.description]</span><br><span class="line">        <span class="comment">#对col_type_code数据进行处理</span></span><br><span class="line">        col_type_code=col_type_code_temp  <span class="comment">#映射后修改值</span></span><br><span class="line">        n=len(col_type_code_temp)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,n):</span><br><span class="line">            aa=str(col_type_code_temp[i])</span><br><span class="line">            <span class="keyword">if</span> <span class="string">"STRING"</span> <span class="keyword">in</span> aa:</span><br><span class="line">                col_type_code[i]=<span class="string">"STRING"</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="string">"DATETIME"</span> <span class="keyword">in</span> aa:</span><br><span class="line">                col_type_code[i]=<span class="string">"DATE"</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="string">"NUMBER"</span> <span class="keyword">in</span> aa:</span><br><span class="line">                col_type_code[i]=<span class="string">"NUMBER"</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="string">"BLOB"</span> <span class="keyword">in</span> aa:</span><br><span class="line">                col_type_code[i]=<span class="string">"BLOB"</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="string">"CHAR"</span> <span class="keyword">in</span> aa:</span><br><span class="line">                col_type_code[i]=<span class="string">"CHAR"</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="string">"CLOB"</span> <span class="keyword">in</span> aa:</span><br><span class="line">                col_type_code[i]=<span class="string">"CLOB"</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                col_type_code[i]=<span class="string">"unknown type"</span></span><br><span class="line">        cursor.close ()</span><br><span class="line">        conn.close ()</span><br><span class="line">        <span class="comment">#对col_name_list,col_type_code,col_display_size,col_internal_size数据进行打包</span></span><br><span class="line">        col_temp=map(<span class="keyword">lambda</span> x:[[e[<span class="number">1</span>]] <span class="keyword">for</span> e <span class="keyword">in</span> enumerate(x)],[col_name_list,col_type_code,col_display_size,col_internal_size])</span><br><span class="line">        col_data=[col_temp[<span class="number">0</span>][i[<span class="number">0</span>]]+col_temp[<span class="number">1</span>][i[<span class="number">0</span>]]+col_temp[<span class="number">2</span>][i[<span class="number">0</span>]]+col_temp[<span class="number">3</span>][i[<span class="number">0</span>]] <span class="keyword">for</span> i <span class="keyword">in</span> enumerate(col_temp[<span class="number">0</span>])]</span><br><span class="line">        <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>,col_data]</span><br><span class="line"><span class="comment">#--------执行SQL语句并输出-------------</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">db_Get_Other_List</span><span class="params">(self)</span>:</span></span><br><span class="line">        conn=cx_Oracle.connect(self.con_Oracle)     <span class="comment">#链接数据库</span></span><br><span class="line">        cursor = conn.cursor ()                     <span class="comment">#获取操作符</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            cursor.execute (self.exe_Sql)          <span class="comment">#执行SQL</span></span><br><span class="line">            <span class="comment">#一行行读取SQL结果</span></span><br><span class="line">            col_name_list = [tuple[<span class="number">0</span>] <span class="keyword">for</span> tuple <span class="keyword">in</span> cursor.description]</span><br><span class="line">            col_type_code_temp = [tuple[<span class="number">1</span>] <span class="keyword">for</span> tuple <span class="keyword">in</span> cursor.description]</span><br><span class="line">            col_display_size = [tuple[<span class="number">2</span>] <span class="keyword">for</span> tuple <span class="keyword">in</span> cursor.description]</span><br><span class="line">            col_internal_size = [tuple[<span class="number">3</span>] <span class="keyword">for</span> tuple <span class="keyword">in</span> cursor.description]</span><br><span class="line">            <span class="comment">#对col_type_code数据进行处理</span></span><br><span class="line">            col_type_code=col_type_code_temp  <span class="comment">#映射后修改值</span></span><br><span class="line">            n=len(col_type_code_temp)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,n):</span><br><span class="line">                aa=str(col_type_code_temp[i])</span><br><span class="line">                <span class="keyword">if</span> <span class="string">"STRING"</span> <span class="keyword">in</span> aa:</span><br><span class="line">                    col_type_code[i]=<span class="string">"STRING"</span></span><br><span class="line">                <span class="keyword">elif</span> <span class="string">"DATETIME"</span> <span class="keyword">in</span> aa:</span><br><span class="line">                    col_type_code[i]=<span class="string">"DATE"</span></span><br><span class="line">                <span class="keyword">elif</span> <span class="string">"NUMBER"</span> <span class="keyword">in</span> aa:</span><br><span class="line">                    col_type_code[i]=<span class="string">"NUMBER"</span></span><br><span class="line">                <span class="keyword">elif</span> <span class="string">"BLOB"</span> <span class="keyword">in</span> aa:</span><br><span class="line">                    col_type_code[i]=<span class="string">"BLOB"</span></span><br><span class="line">                <span class="keyword">elif</span> <span class="string">"CHAR"</span> <span class="keyword">in</span> aa:</span><br><span class="line">                    col_type_code[i]=<span class="string">"CHAR"</span></span><br><span class="line">                <span class="keyword">elif</span> <span class="string">"CLOB"</span> <span class="keyword">in</span> aa:</span><br><span class="line">                    col_type_code[i]=<span class="string">"CLOB"</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    col_type_code[i]=<span class="string">"unknown type"</span></span><br><span class="line">            cursor.close ()</span><br><span class="line">            conn.close ()</span><br><span class="line">            <span class="comment">#对col_name_list,col_type_code,col_display_size,col_internal_size数据进行打包</span></span><br><span class="line">            col_temp=map(<span class="keyword">lambda</span> x:[[e[<span class="number">1</span>]] <span class="keyword">for</span> e <span class="keyword">in</span> enumerate(x)],[col_name_list,col_type_code,col_display_size,col_internal_size])</span><br><span class="line">            col_data=[col_temp[<span class="number">0</span>][i[<span class="number">0</span>]]+col_temp[<span class="number">1</span>][i[<span class="number">0</span>]]+col_temp[<span class="number">2</span>][i[<span class="number">0</span>]]+col_temp[<span class="number">3</span>][i[<span class="number">0</span>]] <span class="keyword">for</span> i <span class="keyword">in</span> enumerate(col_temp[<span class="number">0</span>])]  </span><br><span class="line">            <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>,col_data]</span><br><span class="line">        <span class="keyword">except</span> cx_Oracle.DatabaseError, msg:      <span class="comment">#输出Oracle错误信息</span></span><br><span class="line">            cursor.close ()</span><br><span class="line">            conn.close ()</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br></pre></td></tr></table></figure>
+<h3 id="完成对SQL语句的判断"><a href="#完成对SQL语句的判断" class="headerlink" title="完成对SQL语句的判断"></a>完成对SQL语句的判断</h3><blockquote>
+<p>判断是表名还是一段SQL语句</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">Exe_Sql</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">E_Sql</span><span class="params">(self,Execute_Sql)</span>:</span></span><br><span class="line">        <span class="comment">#------SQL 预处理-------</span></span><br><span class="line">        Execute_Sql=Execute_Sql.lstrip()           <span class="comment">#去除最左侧空格</span></span><br><span class="line">        Separate_Name=Execute_Sql.split(<span class="string">' '</span>)       <span class="comment">#按照空格分隔字符串</span></span><br><span class="line">        Separate_Name[<span class="number">0</span>]=Separate_Name[<span class="number">0</span>].upper()  <span class="comment">#将第一个全部字符串大写</span></span><br><span class="line">        <span class="keyword">if</span> Separate_Name[<span class="number">0</span>]==<span class="string">'SELECT'</span>:             <span class="comment">#判断输入语句是表名还是SQL语句</span></span><br><span class="line">            <span class="comment">#对SQL语句进行预处理</span></span><br><span class="line">            p=DB_ALL(Execute_Sql)            </span><br><span class="line">            <span class="keyword">return</span> p.db_Get_Other_List()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment">#查询表名</span></span><br><span class="line">            Execute_Sql=Execute_Sql.upper()            <span class="comment">#全部大写</span></span><br><span class="line">            p=DB_ALL(Execute_Sql)</span><br><span class="line">            <span class="keyword">return</span> p.db_Get_Name_List()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+<div class="copyright">
+  <p><span>本文标题:</span><a href="/2016/05/05/pythonの读取oracle数据库字段名类型等/">pythonの读取oracle数据库字段名类型等</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Phantom 的个人博客">Phantom</a></p>
+  <p><span>发布时间:</span>2016年05月05日 - 21时10分</p>
+  <p><span>最后更新:</span>2016年05月10日 - 22时09分</p>
+  <p>
+    <span>原始链接:</span><a class="post-url" href="/2016/05/05/pythonの读取oracle数据库字段名类型等/" title="pythonの读取oracle数据库字段名类型等">chengong.me/2016/05/05/pythonの读取oracle数据库字段名类型等/</a>
+    <span class="copy-path" data-clipboard-text="原文: chengong.me/2016/05/05/pythonの读取oracle数据库字段名类型等/　　作者: Phantom" title="点击复制文章链接">
+        <i class="fa fa-clipboard"></i>
+    </span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。</p>
+  <script src="/js/clipboard.min.js"></script>
+  <script> var clipboard = new Clipboard('.copy-path'); </script>
+</div>
+
+
+
+
+<nav id="article-nav">
+  
+    <div id="article-nav-newer" class="article-nav-title">
+      <a href="/2016/05/10/pythonの读取excel内容/">
+        pythonの读取excel内容
+      </a>
+    </div>
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2016/04/30/pythonのoracle数据库操作/">
+        pythonのoracle数据库操作
+      </a>
+    </div>
+  
+</nav>
+
+  
+</article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装cx-oracle插件-确定返回值类型"><span class="toc-number">1.</span> <span class="toc-text">安装cx_oracle插件  确定返回值类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DB-ALL类执行对数据库的操作"><span class="toc-number">2.</span> <span class="toc-text">DB_ALL类执行对数据库的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#输入是一个表名"><span class="toc-number">2.0.1.</span> <span class="toc-text">输入是一个表名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输入时一段SQL语句"><span class="toc-number">2.0.2.</span> <span class="toc-text">输入时一段SQL语句</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完成对SQL语句的判断"><span class="toc-number">2.1.</span> <span class="toc-text">完成对SQL语句的判断</span></a></li></ol></li></ol>
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+
+<div class="share">
+	<div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+	<a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+	<a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+	</div>
+	<script>
+	window._bd_share_config={
+		"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+	</script>
+</div>
+
+
+
+  
+  <div class="duoshuo" id="comments">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="pythonの读取oracle数据库字段名类型等" data-title="pythonの读取oracle数据库字段名类型等" data-url="chengong.me/2016/05/05/pythonの读取oracle数据库字段名类型等/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chengong"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://chengong.me/js/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+
+
+
+
+
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
+
+
+  
+  
+    
+    <div  class="post-nav-button">
+    <a href="/2016/05/10/pythonの读取excel内容/" title="上一篇: pythonの读取excel内容">
+    <i class="fa fa-angle-left"></i>
+    </a>
+    <a href="/2016/04/30/pythonのoracle数据库操作/" title="下一篇: pythonのoracle数据库操作">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+     
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2016 Phantom
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+        </div>
+    </div>
+    <div class="visit">
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257065196'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1257065196%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+<script>
+  var backgroundnum = 5;
+  var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+
+  $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+<a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+<a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<script>
+var option = {
+  engineKey: '990f4c9c13b06ab1d082'
+};
+(function(w,d,t,u,n,s,e){
+   s = d.createElement(t);
+   s.src = u;
+   s.async = 1;
+   w[n] = function(r){
+     w[n].opts = r;
+   };
+   e = d.getElementsByTagName(t)[0];
+   e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+</script>
+  </div>
+</body>
+</html>
