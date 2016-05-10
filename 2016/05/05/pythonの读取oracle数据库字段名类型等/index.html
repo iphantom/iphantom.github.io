@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="完成任务：通过给出的SQL语句，获得所操作表的字段名类型等信息
 
-安装cx_oracle插件  确定返回值类型12345678# -*- coding:utf-8 -*-import cx_Oracle#类使用方法：用来查询数据库表中name, type_code, display_size, internal_size#return [状态位，错误信息,col_data]#col_data=[">
+安装cx_oracle插件  确定返回值类型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pythonの读取oracle数据库字段名类型等">
 <meta property="og:url" content="chengong.me/2016/05/05/pythonの读取oracle数据库字段名类型等/index.html">
 <meta property="og:site_name" content="Phantom">
 <meta property="og:description" content="完成任务：通过给出的SQL语句，获得所操作表的字段名类型等信息
 
-安装cx_oracle插件  确定返回值类型12345678# -*- coding:utf-8 -*-import cx_Oracle#类使用方法：用来查询数据库表中name, type_code, display_size, internal_size#return [状态位，错误信息,col_data]#col_data=[">
-<meta property="og:updated_time" content="2016-05-10T14:09:06.000Z">
+安装cx_oracle插件  确定返回值类型">
+<meta property="og:updated_time" content="2016-05-10T14:13:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pythonの读取oracle数据库字段名类型等">
 <meta name="twitter:description" content="完成任务：通过给出的SQL语句，获得所操作表的字段名类型等信息
 
-安装cx_oracle插件  确定返回值类型12345678# -*- coding:utf-8 -*-import cx_Oracle#类使用方法：用来查询数据库表中name, type_code, display_size, internal_size#return [状态位，错误信息,col_data]#col_data=[">
+安装cx_oracle插件  确定返回值类型">
   
     <link rel="alternative" href="/atom.xml" title="Phantom" type="application/atom+xml">
   
@@ -257,7 +257,8 @@
         <blockquote>
 <p>完成任务：通过给出的SQL语句，获得所操作表的字段名类型等信息</p>
 </blockquote>
-<h2 id="安装cx-oracle插件-确定返回值类型"><a href="#安装cx-oracle插件-确定返回值类型" class="headerlink" title="安装cx_oracle插件  确定返回值类型"></a>安装cx_oracle插件  确定返回值类型</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> cx_Oracle</span><br><span class="line"><span class="comment">#类使用方法：用来查询数据库表中name, type_code, display_size, internal_size</span></span><br><span class="line"><span class="comment">#return [状态位，错误信息,col_data]</span></span><br><span class="line"><span class="comment">#col_data=[name, type_code, display_size, internal_size]</span></span><br><span class="line"><span class="comment">#状态位 0为正确 1为错误</span></span><br><span class="line"><span class="comment">#若状态位为0，则错误信息为空，</span></span><br><span class="line"><span class="comment">#若状态位为1，则只返回错误信息，不返回查询值</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装cx-oracle插件-确定返回值类型"><a href="#安装cx-oracle插件-确定返回值类型" class="headerlink" title="安装cx_oracle插件  确定返回值类型"></a>安装cx_oracle插件  确定返回值类型</h2><a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> cx_Oracle</span><br><span class="line"><span class="comment">#类使用方法：用来查询数据库表中name, type_code, display_size, internal_size</span></span><br><span class="line"><span class="comment">#return [状态位，错误信息,col_data]</span></span><br><span class="line"><span class="comment">#col_data=[name, type_code, display_size, internal_size]</span></span><br><span class="line"><span class="comment">#状态位 0为正确 1为错误</span></span><br><span class="line"><span class="comment">#若状态位为0，则错误信息为空，</span></span><br><span class="line"><span class="comment">#若状态位为1，则只返回错误信息，不返回查询值</span></span><br></pre></td></tr></table></figure>
 <h2 id="DB-ALL类执行对数据库的操作"><a href="#DB-ALL类执行对数据库的操作" class="headerlink" title="DB_ALL类执行对数据库的操作"></a>DB_ALL类执行对数据库的操作</h2><h4 id="输入是一个表名"><a href="#输入是一个表名" class="headerlink" title="输入是一个表名"></a>输入是一个表名</h4><blockquote>
 <p>首先获取数据库登录信息 登录数据库<br>若输入时一段表名 则首先校验此表是否在数据库内  若不在 则直接返回<br>若表在数据库内 则通过SQL语句 直接查询该表 获得返回信息</p>
 </blockquote>
@@ -279,7 +280,7 @@
   <p><span>本文标题:</span><a href="/2016/05/05/pythonの读取oracle数据库字段名类型等/">pythonの读取oracle数据库字段名类型等</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Phantom 的个人博客">Phantom</a></p>
   <p><span>发布时间:</span>2016年05月05日 - 21时10分</p>
-  <p><span>最后更新:</span>2016年05月10日 - 22时09分</p>
+  <p><span>最后更新:</span>2016年05月10日 - 22时13分</p>
   <p>
     <span>原始链接:</span><a class="post-url" href="/2016/05/05/pythonの读取oracle数据库字段名类型等/" title="pythonの读取oracle数据库字段名类型等">chengong.me/2016/05/05/pythonの读取oracle数据库字段名类型等/</a>
     <span class="copy-path" data-clipboard-text="原文: chengong.me/2016/05/05/pythonの读取oracle数据库字段名类型等/　　作者: Phantom" title="点击复制文章链接">
