@@ -7,29 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="无意间发现这篇文章，文章讲解由浅入深，读完后感触很深特全文转到自己的博客，方便以后自己随时查看文章转载自爱技术的华仔的博客[http://blog.csdn.net/yunhua_lee]非常感谢爱技术的华仔
 
-第十一章 “封装” 详解封装的概念本身很好理解，意思就是把一堆东东装起来。
-但要想真正理解封装，这样还远远不够。第一个问题是：我们要封装什么？这个问题很好回答，封装当然是封装不想让别人知">
+第十一章 “封装” 详解封装的概念本身很好理解，意思就是把一堆东东装起来。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="连载：面向对象葵花宝典：思想、技巧与实践(11-20章)">
 <meta property="og:url" content="chengong.me/2016/05/12/面向对象葵花宝典2/index.html">
 <meta property="og:site_name" content="Phantom">
 <meta property="og:description" content="无意间发现这篇文章，文章讲解由浅入深，读完后感触很深特全文转到自己的博客，方便以后自己随时查看文章转载自爱技术的华仔的博客[http://blog.csdn.net/yunhua_lee]非常感谢爱技术的华仔
 
-第十一章 “封装” 详解封装的概念本身很好理解，意思就是把一堆东东装起来。
-但要想真正理解封装，这样还远远不够。第一个问题是：我们要封装什么？这个问题很好回答，封装当然是封装不想让别人知">
+第十一章 “封装” 详解封装的概念本身很好理解，意思就是把一堆东东装起来。">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-383ae6fb29327e10?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-c6661e6c2ee64bc4?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-0446205833b3ef35?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-f202bb2bbeb85e1d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-2bb0e9b2bd24e070?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-31dcde23ec6fede4?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-05-12T14:56:01.000Z">
+<meta property="og:updated_time" content="2016-05-12T15:05:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="连载：面向对象葵花宝典：思想、技巧与实践(11-20章)">
 <meta name="twitter:description" content="无意间发现这篇文章，文章讲解由浅入深，读完后感触很深特全文转到自己的博客，方便以后自己随时查看文章转载自爱技术的华仔的博客[http://blog.csdn.net/yunhua_lee]非常感谢爱技术的华仔
 
-第十一章 “封装” 详解封装的概念本身很好理解，意思就是把一堆东东装起来。
-但要想真正理解封装，这样还远远不够。第一个问题是：我们要封装什么？这个问题很好回答，封装当然是封装不想让别人知">
+第十一章 “封装” 详解封装的概念本身很好理解，意思就是把一堆东东装起来。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1985459-383ae6fb29327e10?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="Phantom" type="application/atom+xml">
@@ -267,8 +264,7 @@
         <blockquote>
 <p>无意间发现这篇文章，文章讲解由浅入深，读完后感触很深<br>特全文转到自己的博客，方便以后自己随时查看<br>文章转载自爱技术的华仔的博客[<a href="http://blog.csdn.net/yunhua_lee" target="_blank" rel="external">http://blog.csdn.net/yunhua_lee</a>]<br>非常感谢<a href="http://blog.csdn.net/yunhua_lee" target="_blank" rel="external">爱技术的华仔</a></p>
 </blockquote>
-<h1 id="第十一章-“封装”-详解"><a href="#第十一章-“封装”-详解" class="headerlink" title="第十一章 “封装” 详解"></a>第十一章 “封装” 详解</h1><p>封装的概念本身很好理解，意思就是把一堆东东装起来。</p>
-<p>但要想真正理解封装，这样还远远不够。<br>第一个问题是：我们要封装什么？<br>这个问题很好回答，封装当然是封装不想让别人知道或者看到的东东了。<br>例如：<br>你的身家。。。。。。<br>漂亮MM的年龄。。。。。。<br>富二代的女朋友数。。。。。<br>明星是否整过容。。。。。。<br>你是如何赚到100万的（想想什么样的赚钱方法不想让人知道？）。。。。。。<br>你是如何消磨时间的（想想什么样的消磨时间方法不想让人知道？）。。。。。。<br>等等<br>站在面向对象的角度来说，封装就是“类”的一个功能，你可以封装“类”的属性（比如身家、年龄等），也可以封装“类”的方法（比如说如何赚钱、如何消磨时间），也就是说，面向对象通过“类”来实现了封装。</p>
+<h1 id="第十一章-“封装”-详解"><a href="#第十一章-“封装”-详解" class="headerlink" title="第十一章 “封装” 详解"></a>第十一章 “封装” 详解</h1><p>封装的概念本身很好理解，意思就是把一堆东东装起来。<br> <a id="more"></a><br>但要想真正理解封装，这样还远远不够。<br>第一个问题是：我们要封装什么？<br>这个问题很好回答，封装当然是封装不想让别人知道或者看到的东东了。<br>例如：<br>你的身家。。。。。。<br>漂亮MM的年龄。。。。。。<br>富二代的女朋友数。。。。。<br>明星是否整过容。。。。。。<br>你是如何赚到100万的（想想什么样的赚钱方法不想让人知道？）。。。。。。<br>你是如何消磨时间的（想想什么样的消磨时间方法不想让人知道？）。。。。。。<br>等等<br>站在面向对象的角度来说，封装就是“类”的一个功能，你可以封装“类”的属性（比如身家、年龄等），也可以封装“类”的方法（比如说如何赚钱、如何消磨时间），也就是说，面向对象通过“类”来实现了封装。</p>
 <p>第二个问题是：我们为什么要封装？<br>封装数据的主要原因是“<strong>保护隐私</strong>”，因为有“隐私”，所以要“封装”。如果没有封装，你的隐私就暴露在所有人面前了，别人也可以控制你的隐私，那样将是非常危险的。</p>
 <p>例如面向过程的设计中，数据结构是公开的，任何能够获取到数据的人都可以随意修改，也可以使用不同的方式修改，如果某个不小心的程序员或者菜鸟或者一个准备离职又心怀不满的开发人员，无意或有意改错了，那么其它依赖这个数据的函数都会受到影响，要么导致业务出错，甚至导致程序崩溃。</p>
 <p>而面向对象的类封装了属性后，对属性的修改只能通过类的方法进行，一来不会暴露内部的具体属性，二来对属性的操作都是统一的，不会出现乱改的情况。</p>
@@ -570,7 +566,7 @@
   <p><span>本文标题:</span><a href="/2016/05/12/面向对象葵花宝典2/">连载：面向对象葵花宝典：思想、技巧与实践(11-20章)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Phantom 的个人博客">Phantom</a></p>
   <p><span>发布时间:</span>2016年05月12日 - 22时22分</p>
-  <p><span>最后更新:</span>2016年05月12日 - 22时56分</p>
+  <p><span>最后更新:</span>2016年05月12日 - 23时05分</p>
   <p>
     <span>原始链接:</span><a class="post-url" href="/2016/05/12/面向对象葵花宝典2/" title="连载：面向对象葵花宝典：思想、技巧与实践(11-20章)">chengong.me/2016/05/12/面向对象葵花宝典2/</a>
     <span class="copy-path" data-clipboard-text="原文: chengong.me/2016/05/12/面向对象葵花宝典2/　　作者: Phantom" title="点击复制文章链接">
@@ -589,8 +585,8 @@
   
   
     <div id="article-nav-older" class="article-nav-title">
-      <a href="/2016/05/11/面向对象葵花宝典1/">
-        连载：面向对象葵花宝典：思想、技巧与实践(1-10章)
+      <a href="/2016/05/11/面向对象葵花宝典3/">
+        连载：面向对象葵花宝典：思想、技巧与实践(21-30章)
       </a>
     </div>
   
@@ -696,7 +692,7 @@
   
     <div  class="post-nav-button">
     <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
-    <a href="/2016/05/11/面向对象葵花宝典1/" title="下一篇: 连载：面向对象葵花宝典：思想、技巧与实践(1-10章)">
+    <a href="/2016/05/11/面向对象葵花宝典3/" title="下一篇: 连载：面向对象葵花宝典：思想、技巧与实践(21-30章)">
     <i class="fa fa-angle-right"></i>
     </a>
     </div>
