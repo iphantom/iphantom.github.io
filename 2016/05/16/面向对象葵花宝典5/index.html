@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>连载：面向对象葵花宝典：思想、技巧与实践(28-35章) | Phantom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="无意间发现这篇文章，文章讲解由浅入深，读完后感触很深特全文转到自己的博客，方便以后自己随时查看文章转载自爱技术的华仔的博客[http://blog.csdn.net/yunhua_lee]非常感谢爱技术的华仔
+
+第三十六章经过前面深入的阐述，SOLID的原则我们已经基本上讲清楚了，但如果想熟练的应用SOLID原则，仅仅知道SOLID是什么（what）还不够，我们还需要知道SOLID原则在什么时候">
+<meta property="og:type" content="article">
+<meta property="og:title" content="连载：面向对象葵花宝典：思想、技巧与实践(28-35章)">
+<meta property="og:url" content="chengong.me/2016/05/16/面向对象葵花宝典5/index.html">
+<meta property="og:site_name" content="Phantom">
+<meta property="og:description" content="无意间发现这篇文章，文章讲解由浅入深，读完后感触很深特全文转到自己的博客，方便以后自己随时查看文章转载自爱技术的华仔的博客[http://blog.csdn.net/yunhua_lee]非常感谢爱技术的华仔
+
+第三十六章经过前面深入的阐述，SOLID的原则我们已经基本上讲清楚了，但如果想熟练的应用SOLID原则，仅仅知道SOLID是什么（what）还不够，我们还需要知道SOLID原则在什么时候">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-9b4ba2ba780c143c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-05-16T12:52:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="连载：面向对象葵花宝典：思想、技巧与实践(28-35章)">
+<meta name="twitter:description" content="无意间发现这篇文章，文章讲解由浅入深，读完后感触很深特全文转到自己的博客，方便以后自己随时查看文章转载自爱技术的华仔的博客[http://blog.csdn.net/yunhua_lee]非常感谢爱技术的华仔
+
+第三十六章经过前面深入的阐述，SOLID的原则我们已经基本上讲清楚了，但如果想熟练的应用SOLID原则，仅仅知道SOLID是什么（what）还不够，我们还需要知道SOLID原则在什么时候">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1985459-9b4ba2ba780c143c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternative" href="/atom.xml" title="Phantom" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/avatar.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<script src="//cdn.bootcss.com/JQuery-Snowfall/1.7.4/snowfall.jquery.min.js"></script>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Phantom</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">是我的海</p>
+		
+		
+		<form><input type="text" class="search" placeholder=" Search..."></form>
+				
+
+
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives/">所有文章</a></li>
+				        
+							<li><a href="/tags/">标签云</a></li>
+				        
+							<li><a href="/about/">留言板</a></li>
+				        
+							<li><a href="/built/">建站记事</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:admin@chengong.me" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/iphantom" title="GitHub"></a></li>
+					        
+								<li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+					        
+								<li id="LinkedIn"><a class="LinkedIn" target="_blank" href="https://cn.linkedin.com/in/gong-chen-805212a5" title="LinkedIn"></a></li>
+					        
+						</ul>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Oracle/" style="font-size: 12.5px;">Oracle</a> <a href="/tags/PyDev/" style="font-size: 10px;">PyDev</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/SQL用法/" style="font-size: 10px;">SQL用法</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/duoshuo/" style="font-size: 10px;">duoshuo</a> <a href="/tags/excel/" style="font-size: 10px;">excel</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hexo用法/" style="font-size: 10px;">hexo用法</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/makedown/" style="font-size: 10px;">makedown</a> <a href="/tags/namecheap/" style="font-size: 10px;">namecheap</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/使用指南/" style="font-size: 10px;">使用指南</a> <a href="/tags/华为/" style="font-size: 10px;">华为</a> <a href="/tags/博客/" style="font-size: 12.5px;">博客</a> <a href="/tags/安装方法/" style="font-size: 10px;">安装方法</a> <a href="/tags/小七/" style="font-size: 12.5px;">小七</a> <a href="/tags/心情/" style="font-size: 12.5px;">心情</a> <a href="/tags/感悟/" style="font-size: 17.5px;">感悟</a> <a href="/tags/感言/" style="font-size: 12.5px;">感言</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/求助/" style="font-size: 10px;">求助</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/生日/" style="font-size: 10px;">生日</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/研究生/" style="font-size: 10px;">研究生</a> <a href="/tags/离职/" style="font-size: 10px;">离职</a> <a href="/tags/纪念日/" style="font-size: 10px;">纪念日</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/结构体/" style="font-size: 12.5px;">结构体</a> <a href="/tags/编程修养/" style="font-size: 15px;">编程修养</a> <a href="/tags/网页/" style="font-size: 10px;">网页</a> <a href="/tags/转载/" style="font-size: 20px;">转载</a> <a href="/tags/链表/" style="font-size: 12.5px;">链表</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a> <a href="/tags/面向对象/" style="font-size: 17.5px;">面向对象</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">————对不起，不告诉你————</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Phantom</a></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+				<img lazy-src="/img/avatar.png" class="js-avatar">
+			</a>
+			<hgroup>
+			  <h1 class="header-author"><a href="/" title="回到主页">Phantom</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">是我的海</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">所有文章</a></li>
+		        
+					<li><a href="/tags/">标签云</a></li>
+		        
+					<li><a href="/about/">留言板</a></li>
+		        
+					<li><a href="/built/">建站记事</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:admin@chengong.me" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/iphantom" title="GitHub"></a></li>
+					        
+								<li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+					        
+								<li id="LinkedIn"><a class="LinkedIn" target="_blank" href="https://cn.linkedin.com/in/gong-chen-805212a5" title="LinkedIn"></a></li>
+					        
+						</ul>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-面向对象葵花宝典5" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/16/面向对象葵花宝典5/" class="article-date">
+  	<time datetime="2016-05-16T12:50:50.000Z" itemprop="datePublished">2016-05-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      连载：面向对象葵花宝典：思想、技巧与实践(28-35章)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+	</div>
+
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>无意间发现这篇文章，文章讲解由浅入深，读完后感触很深<br>特全文转到自己的博客，方便以后自己随时查看<br>文章转载自爱技术的华仔的博客[<a href="http://blog.csdn.net/yunhua_lee" target="_blank" rel="external">http://blog.csdn.net/yunhua_lee</a>]<br>非常感谢<a href="http://blog.csdn.net/yunhua_lee" target="_blank" rel="external">爱技术的华仔</a></p>
+</blockquote>
+<h1 id="第三十六章"><a href="#第三十六章" class="headerlink" title="第三十六章"></a>第三十六章</h1><p>经过前面深入的阐述，SOLID的原则我们已经基本上讲清楚了，但如果想熟练的应用SOLID原则，仅仅知道SOLID是什么（what）还不够，我们还需要知道SOLID原则在什么时候和什么场景应用（when或where）。<a id="more"></a></p>
+<p>幸运的是，SOLID原则的5个独立原则在实际应用中基本上都是独挡一面，并不会在某个地方需要同时从可选的几个原则中挑选一个最优的原则来应用，这样大大降低了我们应用SOLID原则的难度。</p>
+<p>SOLID原则具体的应用场景如下：</p>
+<p>SRP原则：用于类的设计</p>
+<p>当我们想出一个类，或者设计出一个类的原型后，使用SRP原则核对一下类的设计是否符合SRP要求。</p>
+<p>OCP原则：总的指导思想</p>
+<p>OCP原则是一个总的指导思想，在面向对象的设计中，如果能够符合LSP/ISP/DIP原则，一般情况下就能够符合OCP原则了。<br>除了在面向对象的软件设计中外，OCP也可以用于指导系统<a href="http://lib.csdn.net/base/16" target="_blank" rel="external">架构</a>设计，例如常见的CORBA、COM协议，其实都可以认为是OCP原则的具体应用和实现。</p>
+<p>LSP原则：用于指导类继承的设计</p>
+<p>当我们设计类之间的继承关系时，使用LSP原则来判断这种继承关系是否符合LSP要求。</p>
+<p>ISP原则：用于指导接口的设计</p>
+<p>ISP原则可以认为是SRP原则的一个变种，本质上和SRP的思想是一样。SRP用于指导类的设计，而ISP用于指导接口的设计。</p>
+<p>DIP原则：用于指导类依赖的设计</p>
+<p>当我们设计类之间的依赖关系时，可以使用DIP原则来判断这种依赖是否符合DIP原则。<br>DIP原则和LSP原则相辅相成：DIP原则用于指导抽象出接口或者抽象类，而LSP原则指导从接口或者抽象类派生出新的子类。</p>
+<h1 id="第三十七章"><a href="#第三十七章" class="headerlink" title="第三十七章"></a>第三十七章</h1><p>设计模式”这个词几乎成为了软件设计的代名词，很多人非常天真的以为掌握了设计模式就掌握了软件设计，但实际上如果只是握了设计模式，软件设计的门都还没摸到！</p>
+<p>========================================================</p>
+<p>谈起设计模式，那是几乎无人不知，无人不晓，大名鼎鼎的“GOF”（中文有的翻译为“四人帮”）惊世之作，真是“平生不识GOF，学尽设计也枉然！”</p>
+<p>然而，设计模式真的是软件设计的“瑞士军刀”，切、削、锯、钻样样精通么？</p>
+<p>读过设计模式的朋友估计不少，但真正注意过《设计模式》的副标题的估计很少，而这个副标题却是避免误解设计模式的关键。《设计模式》的副标题是：可复用面向对象软件的基础！</p>
+<p> 不要小看了这短短的一句话，如果你没有看这句话，或者只是一扫而过并没有仔细体会，那么你很可能就认为设计模式是一把“瑞士军刀”，能够解决所有的设计问题，而实际上“<strong>设计模式只是一把锤子</strong>”，有个谚语叫做“如果你手里有一把锤子，那么所有的问题都变成了钉子”，如果你拿着设计模式这把锤子倒出去敲，要么东西被敲坏，要么就不起作用。</p>
+<p>为什么说设计模式只是一把锤子呢？我们还是从副标题来看。《设计模式》的副标题揭示了《设计模式》的两个主要约束：</p>
+<p>1）设计模式解决的是“可复用”的设计问题；<br>2）设计模式应用的领域是“面向对象”；</p>
+<p>相信经过我这么一提醒，大家基本上都能够明白了为什么“设计模式只是一把锤子”了：</p>
+<p>1）设计模式只能解决“可复用”的设计问题，其它的例如性能设计、可靠性设计、安全性设计、可服务性设计等都不是设计模式能够解决的；</p>
+<p>2）设计模式只是在面向对象的语言中应用，如果是非面向对象的语言，就不怎么好用了。当然，你可以在C语言中用上设计模式，但毕竟要折腾不少，用起来也不那么得心用手。</p>
+<p>所以，当你遇到一个问题就想到设计模式的时候，一定要注意“设计模式只是一把锤子”，不要拿着这把锤子到处去敲！</p>
+<h1 id="第三十八章"><a href="#第三十八章" class="headerlink" title="第三十八章"></a>第三十八章</h1><h1 id="很多人能够熟练背诵出所有的设计模式，能够快速画出各种设计模式的UML类图，也能够熟练的写出《设计模式》一书中各个模式的样例代码。但一到实际的项目设计和开发的时候，往往都会陷入迷茫：要么无从下手，不知道哪个地方要用设计模式；要么生搬硬套，胡乱使用设计模式，将方案和代码搞得一团乱麻。"><a href="#很多人能够熟练背诵出所有的设计模式，能够快速画出各种设计模式的UML类图，也能够熟练的写出《设计模式》一书中各个模式的样例代码。但一到实际的项目设计和开发的时候，往往都会陷入迷茫：要么无从下手，不知道哪个地方要用设计模式；要么生搬硬套，胡乱使用设计模式，将方案和代码搞得一团乱麻。" class="headerlink" title="很多人能够熟练背诵出所有的设计模式，能够快速画出各种设计模式的UML类图，也能够熟练的写出《设计模式》一书中各个模式的样例代码。但一到实际的项目设计和开发的时候，往往都会陷入迷茫：要么无从下手，不知道哪个地方要用设计模式；要么生搬硬套，胡乱使用设计模式，将方案和代码搞得一团乱麻。"></a>很多人能够熟练背诵出所有的设计模式，能够快速画出各种设计模式的UML类图，也能够熟练的写出《设计模式》一书中各个模式的样例代码。但一到实际的项目设计和开发的时候，往往都会陷入迷茫：要么无从下手，不知道哪个地方要用设计模式；要么生搬硬套，胡乱使用设计模式，将方案和代码搞得一团乱麻。</h1><p>【知易行难 —— 设计模式应用的问题】<br>形而下者谓之器，形而上者谓之道。<br>                                               —《易经·系辞》</p>
+<p>正如很多流行的技术（面向对象、UML等）一样，几乎大部分人都会宣称自己“掌握、熟练掌握”，甚至“精通”，然而，真正掌握的或者精通的，实在是少之又少。</p>
+<p>一种典型的现象是：很多人能够熟练背诵出所有的设计模式，能够快速画出各种设计模式的UML类图，也能够熟练的写出《设计模式》一书中各个模式的样例代码。但一到实际的项目设计和开发的时候，往往都会陷入迷茫：要么无从下手，不知道哪个地方要用设计模式；要么生搬硬套，胡乱使用设计模式，将方案和代码搞得一团乱麻。</p>
+<p>这是什么原因呢，难道是设计模式不好用，或者设计模式根本就是一个噱头？<br>答案不在于设计模式本身是否有用，而是在于我们没有掌握正确的学习和应用设计模式的方法。</p>
+<p>学习《设计模式》一书中的23个设计模式，只是掌握了《设计模式》的“器”，但并没有掌握设计模式的“道”。就像一个工匠，锯、钻、锤、刨样样精通，但如果不知道什么地方该用锯，什么地方该用钻，肯定是一个不合格的工匠。为了能够更好的学习和应用设计模式，我们也需要掌握设计模式的“道”。</p>
+<p>设计模式的“道”就是用来指导我们什么时候用设计模式，为什么要用设计模式，23个设计模式只是告诉了我们how，而设计模式之道却可以告诉我们why和where！</p>
+<p>【拨云见日 —— 寻找设计模式之道】<br>熟悉《设计模式》一书内容的同学可能会想到：《设计模式》一书中，不是每个模式都有“适用性”的说明么？这个其实就是回答了where和why的问题啊！</p>
+<p>例如：Facade模式的“适用性”说明如下（摘自《设计模式》中文版一书）：<br> <img src="http://upload-images.jianshu.io/upload_images/1985459-9b4ba2ba780c143c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>上面这一段文字，看起来回答了where和why的问题，但实际上我个人感觉作用并不大。</p>
+<p>首先，这段描述太长了：以上这段文字是否花了你几分钟的时间去阅读和理解？</p>
+<p>其次，这段描述比较抽象：什么事复杂，什么叫做简单，什么叫做很大依赖性。。。。。。可能每个人理解都不一样。</p>
+<p>再者，23个模式，所有的“适应性”条款加起来估计有几十条条，你能够背住么？即使你能够全部背住，你能够全部理解么？即使你能够全部理解，当面对一个具体问题的时候，你知道几十条里面哪一条适应你的情况么？</p>
+<p>所以，《设计模式》一书关于“适用性”的描述，实际上还是太复杂，太多了，不具备很强的实践知道意义和可操作性。</p>
+<p>我们需要的是一个更简单的指导思想，大道至简，最好是一两句话就能够描述！<br>幸运的是，答案竟然就在《设计模式》一书中，但这个答案并不是那么明显！</p>
+<p>《设计模式》一书的内容侧重点是23个模式的详细阐述，大部分人可能都是直奔主题，逐一去研究每个模式，而对于开头部分第1章和第2章的内容并没有详细研读和思考，或者对于这两章只是简单的浏览，并未认真领会和思考，由此错过了最重要的内容。再加上GoF在这2章的内容中，既要引入一个全新的概念，又要提纲挈领的介绍各个模式，还要引入实例进行分析，以至于大量的内容将真正核心的内容反而给淹没或者冲淡了。</p>
+<p>设计模式之道就隐藏在“2.6.2 封装实现依赖关系”的最后一段，很简单的一句话：<br><strong>对变化的概念进行封装（encapsulate the concept that varies）</strong></p>
+<p>你看到这句话可能有点失望，前面分析了那么久，卖了那么多的关子，结果就这么简简单单一句话，这不是在忽悠么？<br>你可千万别小看了这句话，“大道至简”，设计模式之道也不例外，但“简”并不意味着没用，相反，正因为其“简”，每个人的理解才一致，也更好掌握，实践中才更好应用。正所谓：“真传一句话，假传万卷书”。</p>
+<p>GoF在《设计模式》一书中最早提出这个原则，后来不断的有其他专家进行阐述，其中《设计模式精解》（《Design pattern explained》）一书的阐述我认为是最精辟的：<strong>Find what varies and encapsulate it，翻译一下即“找到变化，封装变化”</strong>。虽然含义和GoF描述的基本一致，但其更加容易理解。</p>
+<p>正所谓：踏破铁鞋无觅处，得来全不费工夫！</p>
+<p>【庖丁解牛 —— 解析设计模式之道】<br>现在，让我们来深入理解“找到变化，然后封装变化”的设计模式之道。<br>首先，“找到变化”解决了“在哪里”使用设计模式的问题，即回答了“where”的问题。</p>
+<p>“找到变化”看起来是比较抽象的一句话，但在实践中非常好应用和操作，而且不同领域、不同行业的系统都可以完美的应用这句话。虽然不同领域、不同行业变化的因素、方式、时机等都不一样，但每个领域或者行业的需求分析人员、设计人员，对自己所处行业和领域的可能变化肯定是有比较深刻的理解的，什么会变化、会如何变化、什么时候会变化。。。。。。等等，肯定都能够自己判断，这种判断并不需要什么高深的技巧和知识水平，只需要一定的经验积累。</p>
+<p>如果我们刚接触一个行业或者领域，经验积累并不够，那怎么办呢？是否就无法“找到变化”了？<br>其实也不然，有一个万能的办法，只是要花费更多的精力了。</p>
+<p>我的这个万能办法就是“唯一不变的是变化本身”，也就是说，如果你不知道什么会变化，那么就抱着怀疑一切的想法，一切都可能是变化的。</p>
+<p>但光有这条指导原则还不行，如果我们真的抱着“一切都是可能变化的”想法，然后封装一切变化，那么就会陷入变化的漩涡无法自拔，因为变化是会递归的，A可能变成B，B也可能继续变化，于是这样无穷无尽，系统是不可能做出来的。</p>
+<p>所以我们需要一个终止条件，避免陷入无穷无尽的变化递归漩涡。这个终止条件就是“有限时间内可能发生的变化”。这里的“有限时间”随行业和领域的不同而变化。例如（以下时间仅供参考）：<br>互联网行业可以说：半年内可能发生的变化。。。。。。<br>电信行业可以说：1年内可能发生的变化。。。。。。<br>金融行业可以说：2年内可能发生的变化。。。。。。<br>政府行业可以说：3年内可能发生的变化。。。。。。</p>
+<p>有了这个指导原则后，你可以这样去问有经验的前辈、大虾、大牛等： XXX在1年内会发生变化么？会怎样变化？</p>
+<p>就这样，即使你是菜鸟，通过这么一招“借花献佛”，也能够轻松发现“变化”的地方。</p>
+<p>其次，“封装变化”解决了“为什么”使用设计模式的问题，即回答了“why”的问题。<br>为什么我们要用设计模式，是因为我们要封装变化！但我们为什么要封装变化呢？<br>答案很明显：变化不好！</p>
+<p>当然这个“不好”不是从业务的角度来说的，而是从系统的角度来说的。从业务的角度来说，“变化”是好的，变化意味着新的机会；但从系统的角度来说，变化并不好，因为变化必然要求系统改动，改动就意味着风险！</p>
+<p>虽然变化给系统带来风险，但我们不能因此而“拒绝变化”，因为拒绝变化就意味着失去了机会，简单来说，赚不到钱的系统，设计再优美，功能再强大，系统再稳定，也不过是一堆无用的摆设：<br>客户给你提了新需求，你不做，能拿到合同么。。。。。。<br>行业正在兴起新的流行功能，你不做，你的系统有人用么。。。。。。<br>一项创新带来了新的机遇，你不做，能抢占市场么。。。。。。</p>
+<p>所以我们要“拥抱变化”，但我们又不能让变化带来太大的风险，所以就提出了“封装变化”。“封装变化”意味着将变化的影响范围控制最小，将风险降到最低。</p>
+<p>我们来看看，变化会带来哪些问题和风险：<br>1）开发人员需要编码以适应变化，设计不好的方案将导致大量的编码工作量、自测工作量；<br>2）测试人员不单要测试因变化而新增的那部分，还要测试受影响的部分，设计不好的方案，牵一发而动全身，导致测试工作量大大增加；<br>3）如果为了适应某个变化而对系统做了比较大的改动，则系统的质量风险将上升，很可能导致上线失败，或者上线后出现各种问题；</p>
+<p>因此，我们要尽量减少变化带来的工作量和风险，而减少的最有效方法就是将变化的影响范围缩小，即：将变化封装起来，使其只在有限的范围内有影响。</p>
+<p>【举一反三 —— 活学活用设计模式之道】<br>就像一个武林高手有了深厚的内功，天下万物皆可成为手中的利器，而不必拘泥于具体的武器和招数一样，掌握了设计模式之道后，我们其实也完全可以不拘泥于只是用《设计模式》一书中的23个设计模式，可以根据需要选择最合适的方案。</p>
+<p>例如：<br>不同的业务有不同的规则排列组合，规则引擎可以封装各种变化的规则。。。。。。<br>类之间的依赖是变化的，<a href="http://lib.csdn.net/base/17" target="_blank" rel="external">spring</a>使用XML配置文件来封装这种变化。。。。。。<br>每个银行的卡都不一样，银联封装了这种变化，使得不同银行可以互通。。。。。。</p>
+<p>总之，你可以使用类和设计模式来封装变化，你也可以使用配置文件和模块来封装变化，你也可以使用一个系统来封装变化。。。。。。</p>
+<h1 id="第三十九章"><a href="#第三十九章" class="headerlink" title="第三十九章"></a>第三十九章</h1><p>又是设计原则，又是设计模式，到底该用哪个呢？ =============================================================================</p>
+<p>在“设计模型”一章中，我们提到设计原则和设计模式是互补的，设计原则和设计模式互补体现在：设计原则主要用于指导“类的定义”的设计，而设计模式主要用于指导“类的行为”的设计。</p>
+<p>举一个很简单的例子：假设我们要设计一个图形类Shape，这个类既支持三角形，又支持矩形，其代码如下：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">package com.oo.designpattern.diagram;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/** </span><br><span class="line"> * 设计不好的Shape类，同时兼顾三角形和矩形的职责，不符合SRP设计原则 </span><br><span class="line"> * </span><br><span class="line"> */</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">BadShape</span> &#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">//三角形的属性  </span></span><br><span class="line">    Position a;  </span><br><span class="line">    Position b;  </span><br><span class="line">    Position c;  </span><br><span class="line">      </span><br><span class="line">    <span class="comment">//矩形的属性  </span></span><br><span class="line">    Position m;  </span><br><span class="line">    <span class="keyword">int</span> length;  </span><br><span class="line">    <span class="keyword">int</span> width;  </span><br><span class="line">      </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drawTriangle</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span> 画出三角形  </span></span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drawRectangle</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">        <span class="comment">//<span class="doctag">TODO:</span> 画出矩形  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>有经验的朋友都会觉得这个设计不太合理，因为其不符合类的SRP设计原则。因此，合理的做法是将这个类按照SRP原则拆分，具体拆分方法如下：<br>NormalShape.java</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">package com.oo.designpattern.diagram;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/** </span><br><span class="line"> * 将BadShape拆开为三角形和矩形两个图形，并提取出NormalShape这个父类 </span><br><span class="line"> * </span><br><span class="line"> */</span>  </span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">NormalShape</span> &#123;  </span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">draw</span>(<span class="params"></span>)</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>NormalTriangle.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.oo.designpattern.diagram;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/** </span><br><span class="line"> * 三角形类 </span><br><span class="line"> * </span><br><span class="line"> */</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NormalTriangle</span> <span class="keyword">extends</span> <span class="title">NormalShape</span> </span>&#123;  </span><br><span class="line">     </span><br><span class="line">    <span class="comment">//三角形的属性  </span></span><br><span class="line">    Position a;  </span><br><span class="line">    Position b;  </span><br><span class="line">    Position c;  </span><br><span class="line">      </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="comment">// TODO：绘画三角形  </span></span><br><span class="line">        <span class="keyword">if</span>(Config.CURRENT_SYSTEM == Config.WINDOWS)&#123;  </span><br><span class="line">            <span class="comment">//<span class="doctag">TODO:</span> 调用Windows的画图方法  </span></span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>( Config.CURRENT_SYSTEM == Config.LINUX)&#123;  </span><br><span class="line">            <span class="comment">//<span class="doctag">TODO:</span> 调用Linux的画图方法  </span></span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>( Config.CURRENT_SYSTEM == Config.MAC)&#123;  </span><br><span class="line">            <span class="comment">//<span class="doctag">TODO:</span> 调用Mac的画图方法  </span></span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>NormalRectangle.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.oo.designpattern.diagram;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/** </span><br><span class="line"> * 矩形类 </span><br><span class="line"> * </span><br><span class="line"> */</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NormalRectangle</span> <span class="keyword">extends</span> <span class="title">NormalShape</span> </span>&#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">//矩形的属性  </span></span><br><span class="line">    Position m;  </span><br><span class="line">    <span class="keyword">int</span> length;  </span><br><span class="line">    <span class="keyword">int</span> width;  </span><br><span class="line">      </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> 绘画矩形  </span></span><br><span class="line">        <span class="keyword">if</span>(Config.CURRENT_SYSTEM == Config.WINDOWS)&#123;  </span><br><span class="line">            <span class="comment">//<span class="doctag">TODO:</span> 调用Windows的画图方法  </span></span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>( Config.CURRENT_SYSTEM == Config.LINUX)&#123;  </span><br><span class="line">            <span class="comment">//<span class="doctag">TODO:</span> 调用Linux的画图方法  </span></span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>( Config.CURRENT_SYSTEM == Config.MAC)&#123;  </span><br><span class="line">            <span class="comment">//<span class="doctag">TODO:</span> 调用Mac的画图方法  </span></span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样拆分之后，从类的设计原则来看，已经是符合要求了。</p>
+<p>接下来我们再使用设计模式来继续完善这个设计，这里就需要使用设计模式之道来指导我们设计了，即：<strong>找到变化，封装变化</strong>。</p>
+<p>关于图形类一个比较明显的变化是跨平台，比如说要同时支持Windows、Linux、Mac三个桌面操作系统，那么实际画图的方法和需要调用的函数可能就随着平台的不同而变化，因此我们要找出一种方法来封装这种变化。</p>
+<p>参考《设计模式》，可以知道这种方法就是“Bridge模式”，使用了Bridge后，会多出几个接口和实现类。<br>具体实现如下：<br>GoodShape.java<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">package com.oo.designpattern.diagram;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/** </span><br><span class="line"> * 在NormalShape的基础上，增加Bridge设计模式的实现，使其更加适应于跨平台 </span><br><span class="line"> * </span><br><span class="line"> */</span>  </span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GoodShape</span> &#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">protected</span> ShapeDraw _draw;  <span class="comment">//将不同平台的实现封装到一个新的接口ShapeDraw  </span></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">draw</span>(<span class="params"></span>)</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>GoodTriangle.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.oo.designpattern.diagram;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/** </span><br><span class="line"> * 按照Bridge设计模式设计的三角形类 </span><br><span class="line"> * </span><br><span class="line"> */</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GoodTriangle</span> <span class="keyword">extends</span> <span class="title">GoodShape</span> </span>&#123;  </span><br><span class="line">  </span><br><span class="line">    GoodTriangle(ShapeDraw draw)&#123;  </span><br><span class="line">        <span class="keyword">this</span>._draw = draw;  </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub  </span></span><br><span class="line">        <span class="keyword">this</span>._draw.drawTriangle();  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>GoodRectangle.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.oo.designpattern.diagram;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/** </span><br><span class="line"> * 按照Bridge设计模式设计的矩形类 </span><br><span class="line"> * </span><br><span class="line"> */</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GoodRectangle</span> <span class="keyword">extends</span> <span class="title">GoodShape</span> </span>&#123;  </span><br><span class="line">  </span><br><span class="line">    GoodRectangle(ShapeDraw draw)&#123;  </span><br><span class="line">        <span class="keyword">this</span>._draw = draw;   </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub  </span></span><br><span class="line">        <span class="keyword">this</span>._draw.drawRectangle();  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>ShapeDraw.java<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">package com.oo.designpattern.diagram;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/** </span><br><span class="line"> * 按照Bridge设计模式进行设计的画图的接口，封装了跨平台不同的实现 </span><br><span class="line"> * </span><br><span class="line"> */</span>  </span><br><span class="line"><span class="keyword">interface</span> <span class="title">ShapeDraw</span> &#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drawTriangle</span>(<span class="params"></span>)</span>;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drawRectangle</span>(<span class="params"></span>)</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>WindowsDraw.java<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">package com<span class="selector-class">.oo</span><span class="selector-class">.designpattern</span><span class="selector-class">.diagram</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/** </span><br><span class="line"> * Windwos上的画图实现 </span><br><span class="line"> * </span><br><span class="line"> */</span>  </span><br><span class="line"><span class="selector-tag">public</span> <span class="selector-tag">class</span> <span class="selector-tag">WindowsDraw</span> <span class="selector-tag">implements</span> <span class="selector-tag">ShapeDraw</span> &#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="variable">@Override</span>  </span><br><span class="line">    public void drawTriangle() &#123;  </span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub  </span></span><br><span class="line">  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="variable">@Override</span>  </span><br><span class="line">    public void drawRectangle() &#123;  </span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub  </span></span><br><span class="line">  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>LinuxDraw.java<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">package com<span class="selector-class">.oo</span><span class="selector-class">.designpattern</span><span class="selector-class">.diagram</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/** </span><br><span class="line"> * Linux上的画图实现 </span><br><span class="line"> * </span><br><span class="line"> */</span>  </span><br><span class="line"><span class="selector-tag">public</span> <span class="selector-tag">class</span> <span class="selector-tag">LinuxDraw</span> <span class="selector-tag">implements</span> <span class="selector-tag">ShapeDraw</span> &#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="variable">@Override</span>  </span><br><span class="line">    public void drawTriangle() &#123;  </span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub  </span></span><br><span class="line">  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="variable">@Override</span>  </span><br><span class="line">    public void drawRectangle() &#123;  </span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub  </span></span><br><span class="line">  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>MacDraw.java<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">package com<span class="selector-class">.oo</span><span class="selector-class">.designpattern</span><span class="selector-class">.diagram</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/** </span><br><span class="line"> * Mac上的画图实现 </span><br><span class="line"> * </span><br><span class="line"> */</span>  </span><br><span class="line"><span class="selector-tag">public</span> <span class="selector-tag">class</span> <span class="selector-tag">MacDraw</span> <span class="selector-tag">implements</span> <span class="selector-tag">ShapeDraw</span> &#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="variable">@Override</span>  </span><br><span class="line">    public void drawTriangle() &#123;  </span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub  </span></span><br><span class="line">  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="variable">@Override</span>  </span><br><span class="line">    public void drawRectangle() &#123;  </span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub  </span></span><br><span class="line">  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，按照设计原则和设计模式进行重构后，原来不合理的设计逐步演变为一个优秀的设计了</p>
+<h1 id="第四十章"><a href="#第四十章" class="headerlink" title="第四十章"></a>第四十章</h1>
+      
+    </div>
+    
+  </div>
+  
+    
+<div class="copyright">
+  <p><span>本文标题:</span><a href="/2016/05/16/面向对象葵花宝典5/">连载：面向对象葵花宝典：思想、技巧与实践(28-35章)</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Phantom 的个人博客">Phantom</a></p>
+  <p><span>发布时间:</span>2016年05月16日 - 20时50分</p>
+  <p><span>最后更新:</span>2016年05月16日 - 20时52分</p>
+  <p>
+    <span>原始链接:</span><a class="post-url" href="/2016/05/16/面向对象葵花宝典5/" title="连载：面向对象葵花宝典：思想、技巧与实践(28-35章)">chengong.me/2016/05/16/面向对象葵花宝典5/</a>
+    <span class="copy-path" data-clipboard-text="原文: chengong.me/2016/05/16/面向对象葵花宝典5/　　作者: Phantom" title="点击复制文章链接">
+        <i class="fa fa-clipboard"></i>
+    </span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。</p>
+  <script src="/js/clipboard.min.js"></script>
+  <script> var clipboard = new Clipboard('.copy-path'); </script>
+</div>
+
+
+
+
+<nav id="article-nav">
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2016/05/16/面向对象葵花宝典4/">
+        连载：面向对象葵花宝典：思想、技巧与实践(28-35章)
+      </a>
+    </div>
+  
+</nav>
+
+  
+</article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第三十六章"><span class="toc-number">1.</span> <span class="toc-text">第三十六章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三十七章"><span class="toc-number">2.</span> <span class="toc-text">第三十七章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三十八章"><span class="toc-number">3.</span> <span class="toc-text">第三十八章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#很多人能够熟练背诵出所有的设计模式，能够快速画出各种设计模式的UML类图，也能够熟练的写出《设计模式》一书中各个模式的样例代码。但一到实际的项目设计和开发的时候，往往都会陷入迷茫：要么无从下手，不知道哪个地方要用设计模式；要么生搬硬套，胡乱使用设计模式，将方案和代码搞得一团乱麻。"><span class="toc-number">4.</span> <span class="toc-text">很多人能够熟练背诵出所有的设计模式，能够快速画出各种设计模式的UML类图，也能够熟练的写出《设计模式》一书中各个模式的样例代码。但一到实际的项目设计和开发的时候，往往都会陷入迷茫：要么无从下手，不知道哪个地方要用设计模式；要么生搬硬套，胡乱使用设计模式，将方案和代码搞得一团乱麻。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三十九章"><span class="toc-number">5.</span> <span class="toc-text">第三十九章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第四十章"><span class="toc-number">6.</span> <span class="toc-text">第四十章</span></a></li></ol>
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+
+<div class="share">
+	<div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+	<a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+	<a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+	</div>
+	<script>
+	window._bd_share_config={
+		"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+	</script>
+</div>
+
+
+
+  
+  <div class="duoshuo" id="comments">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="面向对象葵花宝典5" data-title="连载：面向对象葵花宝典：思想、技巧与实践(28-35章)" data-url="chengong.me/2016/05/16/面向对象葵花宝典5/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chengong"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://chengong.me/js/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+
+
+
+
+
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
+
+
+  
+  
+    <div  class="post-nav-button">
+    <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+    <a href="/2016/05/16/面向对象葵花宝典4/" title="下一篇: 连载：面向对象葵花宝典：思想、技巧与实践(28-35章)">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+    
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+     
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2016 Phantom
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+        </div>
+    </div>
+    <div class="visit">
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257065196'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1257065196%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+<script>
+  var backgroundnum = 5;
+  var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+
+  $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+<a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+<a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<script>
+var option = {
+  engineKey: '990f4c9c13b06ab1d082'
+};
+(function(w,d,t,u,n,s,e){
+   s = d.createElement(t);
+   s.src = u;
+   s.async = 1;
+   w[n] = function(r){
+     w[n].opts = r;
+   };
+   e = d.getElementsByTagName(t)[0];
+   e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+</script>
+  </div>
+</body>
+</html>
