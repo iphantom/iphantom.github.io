@@ -15,14 +15,14 @@
 <meta property="og:description" content="无意间发现这篇文章，文章讲解由浅入深，读完后感触很深特全文转到自己的博客，方便以后自己随时查看文章转载自爱技术的华仔的博客[http://blog.csdn.net/yunhua_lee]非常感谢爱技术的华仔
 
 第二十八章前面通过实例讲解了一个一环扣一环的面向对象的开发流程：用例模型 -&amp;gt; 领域模型 -&amp;gt; 设计模型（类模型 + 动态模型），解答了面向对象如何做的问题。接下来我们就要讲">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-8223921f964fa268?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-05-16T13:03:04.000Z">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/666cc9e3gw1f4977znz1ij208401na9x.jpg">
+<meta property="og:updated_time" content="2016-05-26T15:22:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="连载：面向对象葵花宝典：思想、技巧与实践(28-35章)">
 <meta name="twitter:description" content="无意间发现这篇文章，文章讲解由浅入深，读完后感触很深特全文转到自己的博客，方便以后自己随时查看文章转载自爱技术的华仔的博客[http://blog.csdn.net/yunhua_lee]非常感谢爱技术的华仔
 
 第二十八章前面通过实例讲解了一个一环扣一环的面向对象的开发流程：用例模型 -&amp;gt; 领域模型 -&amp;gt; 设计模型（类模型 + 动态模型），解答了面向对象如何做的问题。接下来我们就要讲">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1985459-8223921f964fa268?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/666cc9e3gw1f4977znz1ij208401na9x.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Phantom" type="application/atom+xml">
   
@@ -377,7 +377,7 @@
 <p>翻译一下就是：子类必须能替换成它们的父类。</p>
 <p>经过Martin大师的两次翻译，我相信LSP原则本身已经解释得比较容易理解了，但问题的关键是：如何满足LSP原则？或者更通俗的讲：什么情况下子类才能替换父类？</p>
 <p>我们知道，对于调用者来说（Liskov解释中提到的P），和父类交互无非就是两部分：调用父类的方法、得到父类方法的输出，中间的处理过程，P是无法知道的。</p>
-<p>也就是说，调用者和父类之间的联系体现在两方面：函数输入，函数输出。详细如下图：<br> <img src="http://upload-images.jianshu.io/upload_images/1985459-8223921f964fa268?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>有了这个图之后，如何做到LSP原则就清晰了：<br>1） <strong>子类必须实现或者继承父类所有的公有函数</strong>，否则调用者调用了一个父类中有的函数，而子类中没有，运行时就会出错；<br>2） <strong>子类每个函数的输入参数必须和父类一样</strong>，否则调用父类的代码不能调用子类；<br>3） <strong>子类每个函数的输出</strong>（返回值、修改全局变量、插入<a href="http://lib.csdn.net/base/14" target="_blank" rel="external">数据库</a>、发送网络数据等）必须不比父类少，否则基于父类的输出做的处理就没法完成。</p>
+<p>也就是说，调用者和父类之间的联系体现在两方面：函数输入，函数输出。详细如下图：<br> <img src="http://ww3.sinaimg.cn/large/666cc9e3gw1f4977znz1ij208401na9x.jpg" alt=""><br>有了这个图之后，如何做到LSP原则就清晰了：<br>1） <strong>子类必须实现或者继承父类所有的公有函数</strong>，否则调用者调用了一个父类中有的函数，而子类中没有，运行时就会出错；<br>2） <strong>子类每个函数的输入参数必须和父类一样</strong>，否则调用父类的代码不能调用子类；<br>3） <strong>子类每个函数的输出</strong>（返回值、修改全局变量、插入数据库、发送网络数据等）必须不比父类少，否则基于父类的输出做的处理就没法完成。</p>
 <p>有了这三条原则后，就可以很方便的判断类设计是否符合LSP原则了。需要注意的是第3条的关键是“不比父类少”，也就是说可以比父类多，即：父类的输出是子类输出的子集。</p>
 <p>有的朋友看到这三条原则可能有点纳闷：这三条原则一出，那子类还有什么区别哦，岂不都是一样的实现了，那还会有不同的子类么？</p>
 <p>其实如果仔细研究这三条原则，就会发现其中<strong>只是约定了输入输出，而并没有约束中间的处理过程</strong>。例如：同样一个写数据库的输出，A类可以是读取XML数据然后写入数据库，B类可以是从其它数据库读取数据然后本地的数据库，C类可以是通过分析业务日志得到数据然后写入数据库。这3个类的处理过程都不一样，但最后都写入数据到数据库了。</p>
@@ -438,7 +438,7 @@
   <p><span>本文标题:</span><a href="/2016/05/15/面向对象葵花宝典4/">连载：面向对象葵花宝典：思想、技巧与实践(28-35章)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Phantom 的个人博客">Phantom</a></p>
   <p><span>发布时间:</span>2016年05月15日 - 20时38分</p>
-  <p><span>最后更新:</span>2016年05月16日 - 21时03分</p>
+  <p><span>最后更新:</span>2016年05月26日 - 23时22分</p>
   <p>
     <span>原始链接:</span><a class="post-url" href="/2016/05/15/面向对象葵花宝典4/" title="连载：面向对象葵花宝典：思想、技巧与实践(28-35章)">chengong.me/2016/05/15/面向对象葵花宝典4/</a>
     <span class="copy-path" data-clipboard-text="原文: chengong.me/2016/05/15/面向对象葵花宝典4/　　作者: Phantom" title="点击复制文章链接">
