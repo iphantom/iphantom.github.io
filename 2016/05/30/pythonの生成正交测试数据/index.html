@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>pythonの生成正交测试数据 | Phantom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="程序说明
+ 输入为数组，如下所示：a=[[1,2,3],[4,5],[6,7]]a[0],a[1],a[2]···表示各个因素，此时表示a有四个因素a[0]=[1,2,3]表示a[0]有三个值可以选
+
+输出为数组，如下所示：b= [[1, 4, 6], [1, 5, 7], [2, 4, 7], [2, 5, 6]]b[0],b[1]···表示正交法生成的测试数据
+程序output_oracle.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pythonの生成正交测试数据">
+<meta property="og:url" content="chengong.me/2016/05/30/pythonの生成正交测试数据/index.html">
+<meta property="og:site_name" content="Phantom">
+<meta property="og:description" content="程序说明
+ 输入为数组，如下所示：a=[[1,2,3],[4,5],[6,7]]a[0],a[1],a[2]···表示各个因素，此时表示a有四个因素a[0]=[1,2,3]表示a[0]有三个值可以选
+
+输出为数组，如下所示：b= [[1, 4, 6], [1, 5, 7], [2, 4, 7], [2, 5, 6]]b[0],b[1]···表示正交法生成的测试数据
+程序output_oracle.">
+<meta property="og:updated_time" content="2016-05-30T14:18:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pythonの生成正交测试数据">
+<meta name="twitter:description" content="程序说明
+ 输入为数组，如下所示：a=[[1,2,3],[4,5],[6,7]]a[0],a[1],a[2]···表示各个因素，此时表示a有四个因素a[0]=[1,2,3]表示a[0]有三个值可以选
+
+输出为数组，如下所示：b= [[1, 4, 6], [1, 5, 7], [2, 4, 7], [2, 5, 6]]b[0],b[1]···表示正交法生成的测试数据
+程序output_oracle.">
+  
+    <link rel="alternative" href="/atom.xml" title="Phantom" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/avatar.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<script src="//cdn.bootcss.com/JQuery-Snowfall/1.7.4/snowfall.jquery.min.js"></script>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Phantom</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">是我的海</p>
+		
+		
+		<form><input type="text" class="search" placeholder=" Search..."></form>
+				
+
+
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives/">所有文章</a></li>
+				        
+							<li><a href="/tags/">标签云</a></li>
+				        
+							<li><a href="/about/">留言板</a></li>
+				        
+							<li><a href="/built/">建站记事</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:admin@chengong.me" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/iphantom" title="GitHub"></a></li>
+					        
+								<li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+					        
+								<li id="LinkedIn"><a class="LinkedIn" target="_blank" href="https://cn.linkedin.com/in/gong-chen-805212a5" title="LinkedIn"></a></li>
+					        
+						</ul>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Oracle/" style="font-size: 15px;">Oracle</a> <a href="/tags/PyDev/" style="font-size: 10px;">PyDev</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/SQL用法/" style="font-size: 10px;">SQL用法</a> <a href="/tags/duoshuo/" style="font-size: 10px;">duoshuo</a> <a href="/tags/excel/" style="font-size: 12.5px;">excel</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hexo用法/" style="font-size: 10px;">hexo用法</a> <a href="/tags/makedown/" style="font-size: 10px;">makedown</a> <a href="/tags/namecheap/" style="font-size: 10px;">namecheap</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/使用指南/" style="font-size: 10px;">使用指南</a> <a href="/tags/华为/" style="font-size: 10px;">华为</a> <a href="/tags/博客/" style="font-size: 12.5px;">博客</a> <a href="/tags/安装方法/" style="font-size: 10px;">安装方法</a> <a href="/tags/小七/" style="font-size: 12.5px;">小七</a> <a href="/tags/心情/" style="font-size: 10px;">心情</a> <a href="/tags/感悟/" style="font-size: 17.5px;">感悟</a> <a href="/tags/感言/" style="font-size: 12.5px;">感言</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/正交/" style="font-size: 10px;">正交</a> <a href="/tags/正交实验/" style="font-size: 10px;">正交实验</a> <a href="/tags/正交表/" style="font-size: 10px;">正交表</a> <a href="/tags/求助/" style="font-size: 10px;">求助</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/生日/" style="font-size: 10px;">生日</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/研究生/" style="font-size: 10px;">研究生</a> <a href="/tags/离职/" style="font-size: 10px;">离职</a> <a href="/tags/纪念日/" style="font-size: 10px;">纪念日</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/结构体/" style="font-size: 12.5px;">结构体</a> <a href="/tags/编程修养/" style="font-size: 15px;">编程修养</a> <a href="/tags/转载/" style="font-size: 20px;">转载</a> <a href="/tags/链表/" style="font-size: 12.5px;">链表</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a> <a href="/tags/面向对象/" style="font-size: 17.5px;">面向对象</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">————对不起，不告诉你————</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Phantom</a></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+				<img lazy-src="/img/avatar.png" class="js-avatar">
+			</a>
+			<hgroup>
+			  <h1 class="header-author"><a href="/" title="回到主页">Phantom</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">是我的海</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">所有文章</a></li>
+		        
+					<li><a href="/tags/">标签云</a></li>
+		        
+					<li><a href="/about/">留言板</a></li>
+		        
+					<li><a href="/built/">建站记事</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:admin@chengong.me" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/iphantom" title="GitHub"></a></li>
+					        
+								<li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+					        
+								<li id="LinkedIn"><a class="LinkedIn" target="_blank" href="https://cn.linkedin.com/in/gong-chen-805212a5" title="LinkedIn"></a></li>
+					        
+						</ul>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-pythonの生成正交测试数据" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/30/pythonの生成正交测试数据/" class="article-date">
+  	<time datetime="2016-05-30T14:14:41.000Z" itemprop="datePublished">2016-05-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      pythonの生成正交测试数据
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+	</div>
+
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正交/">正交</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="程序说明"><a href="#程序说明" class="headerlink" title="程序说明"></a>程序说明</h2><hr>
+<p> 输入为数组，如下所示：<br>a=[[1,2,3],[4,5],[6,7]]<br>a[0],a[1],a[2]···表示各个因素，此时表示a有四个因素<br>a[0]=[1,2,3]表示a[0]有三个值可以选</p>
+<hr>
+<p>输出为数组，如下所示：<br>b= [[1, 4, 6], [1, 5, 7], [2, 4, 7], [2, 5, 6]]<br>b[0],b[1]···表示正交法生成的测试数据</p>
+<h2 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h2><h3 id="output-oracle-py"><a href="#output-oracle-py" class="headerlink" title="output_oracle.py"></a>output_oracle.py</h3><blockquote>
+<p>获取数组的因素数和水平数<br>调用Ort_model.py函数 返回相应的正交表<br>将输入数据替换正交表内数 生成正交测试数据</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Ort_model</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ORT_EXPRESSION</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Output_Ort</span><span class="params">(self,input_array)</span>:</span></span><br><span class="line">        self.in_array=input_array</span><br><span class="line">        i_Factors_temp=len(self.in_array)   <span class="comment">#因素数</span></span><br><span class="line">        i_array=[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(i_Factors_temp)]</span><br><span class="line">        <span class="comment">#求取水平数</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,i_Factors_temp):</span><br><span class="line">            i_array[i]=len(self.in_array[i])</span><br><span class="line">        i_array_temp=&#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> i_array:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> i_array_temp:</span><br><span class="line">                i_array_temp[i] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                i_array_temp[i] += <span class="number">1</span> </span><br><span class="line">        i_levels_temp=max(i_array_temp.iteritems(), key = <span class="keyword">lambda</span> x: x[<span class="number">1</span>])[<span class="number">0</span>]  <span class="comment">#水平数       </span></span><br><span class="line">        <span class="comment">#正交模型</span></span><br><span class="line">        Model_Ort=Ort_model.ORT_MODEL()</span><br><span class="line">        return_ort=Model_Ort.Ort_mod(i_Factors_temp,i_levels_temp)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> return_ort:</span><br><span class="line">            msg=<span class="string">'input is wrong'</span></span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,msg,<span class="string">''</span>]</span><br><span class="line">        <span class="comment">#带入数值</span></span><br><span class="line">        i_L=len(return_ort)</span><br><span class="line">        i_Factors=len(return_ort[<span class="number">0</span>])</span><br><span class="line">        return_array = [[<span class="number">0</span> <span class="keyword">for</span> col <span class="keyword">in</span> range(i_Factors)] <span class="keyword">for</span> row <span class="keyword">in</span> range(i_L)]  </span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,i_Factors):</span><br><span class="line">            l_n=[x[j] <span class="keyword">for</span> x <span class="keyword">in</span> return_ort]</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(l_n)):</span><br><span class="line">                <span class="keyword">if</span> l_n[i]&lt;len(self.in_array[j]):               </span><br><span class="line">                    return_array[i][j]=self.in_array[j][l_n[i]]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    return_array[i][j]=random.choice(self.in_array[j])  <span class="comment">#使用随机函数选择当前可选数据</span></span><br><span class="line">        <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>,return_array]</span><br></pre></td></tr></table></figure>
+<h3 id="Ort-model-py"><a href="#Ort-model-py" class="headerlink" title="Ort_model.py"></a>Ort_model.py</h3><blockquote>
+<p>根据因素数和水平数 得到相应的正交表</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ORT_MODEL</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.L4=[</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>]</span><br><span class="line">                ]  <span class="comment">#2 3 </span></span><br><span class="line">        self.L8=[</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">                ] <span class="comment">#2 7</span></span><br><span class="line">        self.L9=[</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>],</span><br><span class="line">                [<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>]</span><br><span class="line">                ]<span class="comment">#3 4</span></span><br><span class="line">        self.L16=[</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">                 ]<span class="comment">#4 5</span></span><br><span class="line">        self.L25=[</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">                  ]<span class="comment">#5 6</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Ort_mod</span><span class="params">(self,i_factors,i_levels)</span>:</span></span><br><span class="line">        self.i_fac=i_factors</span><br><span class="line">        self.i_lev=i_levels</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">3</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">2</span>):<span class="comment">#2 3 </span></span><br><span class="line">            <span class="keyword">return</span> self.L4</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">7</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">2</span>):<span class="comment">#2 7</span></span><br><span class="line">            <span class="keyword">return</span> self.L8</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">4</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">3</span>):<span class="comment">#3 4</span></span><br><span class="line">            <span class="keyword">return</span> self.L9</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">5</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">4</span>):<span class="comment">#4 5</span></span><br><span class="line">            <span class="keyword">return</span> self.L16</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">6</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">5</span>):<span class="comment">#5 6</span></span><br><span class="line">            <span class="keyword">return</span> self.L25</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+<div class="copyright">
+  <p><span>本文标题:</span><a href="/2016/05/30/pythonの生成正交测试数据/">pythonの生成正交测试数据</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Phantom 的个人博客">Phantom</a></p>
+  <p><span>发布时间:</span>2016年05月30日 - 22时14分</p>
+  <p><span>最后更新:</span>2016年05月30日 - 22时18分</p>
+  <p>
+    <span>原始链接:</span><a class="post-url" href="/2016/05/30/pythonの生成正交测试数据/" title="pythonの生成正交测试数据">chengong.me/2016/05/30/pythonの生成正交测试数据/</a>
+    <span class="copy-path" data-clipboard-text="原文: chengong.me/2016/05/30/pythonの生成正交测试数据/　　作者: Phantom" title="点击复制文章链接">
+        <i class="fa fa-clipboard"></i>
+    </span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。</p>
+  <script src="/js/clipboard.min.js"></script>
+  <script> var clipboard = new Clipboard('.copy-path'); </script>
+</div>
+
+
+
+
+<nav id="article-nav">
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2016/05/29/标准正交表/">
+        标准正交表
+      </a>
+    </div>
+  
+</nav>
+
+  
+</article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#程序说明"><span class="toc-number">1.</span> <span class="toc-text">程序说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序"><span class="toc-number">2.</span> <span class="toc-text">程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#output-oracle-py"><span class="toc-number">2.1.</span> <span class="toc-text">output_oracle.py</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ort-model-py"><span class="toc-number">2.2.</span> <span class="toc-text">Ort_model.py</span></a></li></ol></li></ol>
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+
+<div class="share">
+	<div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+	<a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+	<a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+	</div>
+	<script>
+	window._bd_share_config={
+		"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+	</script>
+</div>
+
+
+
+  
+  <div class="duoshuo" id="comments">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="pythonの生成正交测试数据" data-title="pythonの生成正交测试数据" data-url="chengong.me/2016/05/30/pythonの生成正交测试数据/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chengong"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://chengong.me/js/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+
+
+
+
+
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
+
+
+  
+  
+    <div  class="post-nav-button">
+    <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+    <a href="/2016/05/29/标准正交表/" title="下一篇: 标准正交表">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+    
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+     
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2016 Phantom
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+        </div>
+    </div>
+    <div class="visit">
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257065196'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1257065196%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+<script>
+  var backgroundnum = 5;
+  var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+
+  $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+<a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+<a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<script>
+var option = {
+  engineKey: '990f4c9c13b06ab1d082'
+};
+(function(w,d,t,u,n,s,e){
+   s = d.createElement(t);
+   s.src = u;
+   s.async = 1;
+   w[n] = function(r){
+     w[n].opts = r;
+   };
+   e = d.getElementsByTagName(t)[0];
+   e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+</script>
+  </div>
+</body>
+</html>
