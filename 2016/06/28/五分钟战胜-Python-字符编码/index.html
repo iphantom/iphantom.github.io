@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>五分钟战胜 Python 字符编码 | Phantom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="对于很多接触 Python 的人而言，字符的处理和语言整体的温顺可靠相比显得格外桀骜不驯难以驾驭。
+本文不谈复杂的理论，就经验教你字符处理八字真言：确定编码，同类交互。
+文章针对 Python 2.7 ，主要因为 3 对的编码已经有了很大的改善并且实际原理一样，更改一下操作命令即可。
+了解完本文，你可以轻松解决文字处理，特殊平台（ Windows?）下的编码，爬虫编码等问题。
+阅读建议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="五分钟战胜 Python 字符编码">
+<meta property="og:url" content="chengong.me/2016/06/28/五分钟战胜-Python-字符编码/index.html">
+<meta property="og:site_name" content="Phantom">
+<meta property="og:description" content="对于很多接触 Python 的人而言，字符的处理和语言整体的温顺可靠相比显得格外桀骜不驯难以驾驭。
+本文不谈复杂的理论，就经验教你字符处理八字真言：确定编码，同类交互。
+文章针对 Python 2.7 ，主要因为 3 对的编码已经有了很大的改善并且实际原理一样，更改一下操作命令即可。
+了解完本文，你可以轻松解决文字处理，特殊平台（ Windows?）下的编码，爬虫编码等问题。
+阅读建议">
+<meta property="og:updated_time" content="2016-06-28T15:29:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="五分钟战胜 Python 字符编码">
+<meta name="twitter:description" content="对于很多接触 Python 的人而言，字符的处理和语言整体的温顺可靠相比显得格外桀骜不驯难以驾驭。
+本文不谈复杂的理论，就经验教你字符处理八字真言：确定编码，同类交互。
+文章针对 Python 2.7 ，主要因为 3 对的编码已经有了很大的改善并且实际原理一样，更改一下操作命令即可。
+了解完本文，你可以轻松解决文字处理，特殊平台（ Windows?）下的编码，爬虫编码等问题。
+阅读建议">
+  
+    <link rel="alternative" href="/atom.xml" title="Phantom" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/avatar.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<script src="//cdn.bootcss.com/JQuery-Snowfall/1.7.4/snowfall.jquery.min.js"></script>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Phantom</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">是我的海</p>
+		
+		
+		<form><input type="text" class="search" placeholder=" Search..."></form>
+				
+
+
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives/">所有文章</a></li>
+				        
+							<li><a href="/tags/">标签云</a></li>
+				        
+							<li><a href="/about/">留言板</a></li>
+				        
+							<li><a href="/built/">建站记事</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:admin@chengong.me" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/iphantom" title="GitHub"></a></li>
+					        
+								<li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+					        
+								<li id="LinkedIn"><a class="LinkedIn" target="_blank" href="https://cn.linkedin.com/in/gong-chen-805212a5" title="LinkedIn"></a></li>
+					        
+						</ul>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Oracle/" style="font-size: 14px;">Oracle</a> <a href="/tags/PyDev/" style="font-size: 10px;">PyDev</a> <a href="/tags/Python/" style="font-size: 14px;">Python</a> <a href="/tags/SQL用法/" style="font-size: 10px;">SQL用法</a> <a href="/tags/duoshuo/" style="font-size: 10px;">duoshuo</a> <a href="/tags/excel/" style="font-size: 12px;">excel</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hexo用法/" style="font-size: 10px;">hexo用法</a> <a href="/tags/makedown/" style="font-size: 10px;">makedown</a> <a href="/tags/namecheap/" style="font-size: 10px;">namecheap</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/使用指南/" style="font-size: 10px;">使用指南</a> <a href="/tags/华为/" style="font-size: 10px;">华为</a> <a href="/tags/博客/" style="font-size: 12px;">博客</a> <a href="/tags/字符编码/" style="font-size: 10px;">字符编码</a> <a href="/tags/安装方法/" style="font-size: 10px;">安装方法</a> <a href="/tags/小七/" style="font-size: 12px;">小七</a> <a href="/tags/心情/" style="font-size: 10px;">心情</a> <a href="/tags/感悟/" style="font-size: 16px;">感悟</a> <a href="/tags/感言/" style="font-size: 12px;">感言</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/正交/" style="font-size: 10px;">正交</a> <a href="/tags/正交实验/" style="font-size: 10px;">正交实验</a> <a href="/tags/正交表/" style="font-size: 10px;">正交表</a> <a href="/tags/求助/" style="font-size: 10px;">求助</a> <a href="/tags/测试分类/" style="font-size: 10px;">测试分类</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/生日/" style="font-size: 10px;">生日</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/研究生/" style="font-size: 10px;">研究生</a> <a href="/tags/离职/" style="font-size: 10px;">离职</a> <a href="/tags/纪念日/" style="font-size: 10px;">纪念日</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/结构体/" style="font-size: 12px;">结构体</a> <a href="/tags/编程修养/" style="font-size: 14px;">编程修养</a> <a href="/tags/转载/" style="font-size: 20px;">转载</a> <a href="/tags/链表/" style="font-size: 12px;">链表</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a> <a href="/tags/需求分析/" style="font-size: 10px;">需求分析</a> <a href="/tags/面向对象/" style="font-size: 16px;">面向对象</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">————对不起，不告诉你————</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Phantom</a></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+				<img lazy-src="/img/avatar.png" class="js-avatar">
+			</a>
+			<hgroup>
+			  <h1 class="header-author"><a href="/" title="回到主页">Phantom</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">是我的海</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">所有文章</a></li>
+		        
+					<li><a href="/tags/">标签云</a></li>
+		        
+					<li><a href="/about/">留言板</a></li>
+		        
+					<li><a href="/built/">建站记事</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:admin@chengong.me" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/iphantom" title="GitHub"></a></li>
+					        
+								<li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+					        
+								<li id="LinkedIn"><a class="LinkedIn" target="_blank" href="https://cn.linkedin.com/in/gong-chen-805212a5" title="LinkedIn"></a></li>
+					        
+						</ul>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-五分钟战胜-Python-字符编码" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/28/五分钟战胜-Python-字符编码/" class="article-date">
+  	<time datetime="2016-06-28T15:27:13.000Z" itemprop="datePublished">2016-06-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      五分钟战胜 Python 字符编码
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+	</div>
+
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符编码/">字符编码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>对于很多接触 Python 的人而言，字符的处理和语言整体的温顺可靠相比显得格外桀骜不驯难以驾驭。</p>
+<p>本文不谈复杂的理论，就经验教你字符处理八字真言：确定编码，同类交互。</p>
+<p>文章针对 Python 2.7 ，主要因为 3 对的编码已经有了很大的改善并且实际原理一样，更改一下操作命令即可。</p>
+<p>了解完本文，你可以轻松解决文字处理，特殊平台（ Windows?）下的编码，爬虫编码等问题。</p>
+<p>阅读建议 <a id="more"></a></p>
+<p>本文分为如下几个部分：</p>
+<blockquote>
+<p>原理<br>具体操作<br>建议的使用习惯<br>疑难问题解答</p>
+</blockquote>
+<p>如果想要了解我给出的使用习惯，可以直接跳到建议的使用习惯。</p>
+<p>如果只想要解决相关问题可以直接跳到疑难问题解答。</p>
+<p>希望本文能够帮到你。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>为了理解方便，这里不谈理论只做类比，具体想要进一步了解各种编码的理论的搜狗一下好了。</p>
+<p>首先说一下我们为什么会碰到各式各样的编码问题：</p>
+<p>因为我们没有统一编码<br>因为我们没有用对命令（传对数据）<br>再说一下编码是什么， Python 的编码看似复杂，实际上可以看做只有两类编码： Unicode ，二进制</p>
+<p>Unicode 相信都很熟悉：，就是\u0000这样的<br>二进制编码也很简单，就是\x00\x00这样的，平常看到的utf-8,cp936都是二进制编码<br>二进制编码是具象的，10001100原样就可以存储，而 Unicode 是抽象的，不能这样存<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Unicode 编码演示</span></span><br><span class="line">print(<span class="string">'Unicode:'</span>)</span><br><span class="line">print(repr(<span class="string">u'Unicode 编码'</span>))`</span><br><span class="line"></span><br><span class="line"><span class="comment"># 二进制编码演示</span></span><br><span class="line">print(<span class="string">u'二进制编码:'</span>)</span><br><span class="line">print(repr(<span class="string">'Unicode 编码'</span>))`</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只是看个样子，代码不必去深究</span></span><br></pre></td></tr></table></figure></p>
+<p>再说怎么做，就是只有同种编码之间才可以操作</p>
+<p>举个简单的类比<br>就把一串数据比为烤鸭，我们作为人和鸭子不同种看待烤鸭的态度完全不一样。<br>我们看到的是晚上的配菜，鸭子看到的是自己二舅。<br>那么我在逛烤鸭店的时候用错编码就会报错。<br>因为我在烤鸭店看到了满世界的二舅。<br>这里说的同种就是我们熟悉的各种编码方式：utf-8,unicode,ucs-bom<br>这也就是编码问题的核心，非常重要。<br>最后说一下 Python 的环境</p>
+<p>本身代码是用 Ascii 解码的，文件里有 Ascii 无法解码的内容的话要告知 Python 怎么解码<br>内部大量命令都是默认接受 Unicode<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 告知的命令就是下面这一行，删掉就会报错</span></span><br><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line">print(<span class="string">u'测试编码'</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h2><p>拿到各种编码的内容自然是不用说，那么如果我们想要自己构造怎么做呢，看下面：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串前面加 u 会默认构造出 Unicode 的字符串</span></span><br><span class="line">unicodeString = <span class="string">u'Unicode 字符串'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串前面什么都不加会构造出默认编码（首行限定了现在的 utf8 ）的字符串</span></span><br><span class="line">utf8String = <span class="string">'Utf-8 字符串'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 当然，没有首行，默认的编码是 Ascii</span></span><br><span class="line">那么他们之间怎么转换呢，同样很简单：</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接上一段程序</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Unicode 转化为二进制编码中的一种： utf8</span></span><br><span class="line">unicodeString.encode(<span class="string">'utf8'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 二进制编码根据自己的编码种类转化为 Unicode</span></span><br><span class="line">utf8String.decode(<span class="string">'utf8'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果二进制编码中混进了奇怪的东西可以根据需求用特殊的 decode 策略</span></span><br><span class="line">print(repr(<span class="string">'u8 字\x00 符串'</span>.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line">那么怎么样会出现问题呢：</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接上一段程序</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果我们把他们转化成同样的编码方式就可以操作（例如相加）</span></span><br><span class="line">print(repr(unicodeString + utf8String.decode(<span class="string">'utf8'</span>)))</span><br><span class="line">print(repr(unicodeString.encode(<span class="string">'utf8'</span>) + utf8String))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 但如果不转化，当然就会出现满世界的烤鸭二舅啦</span></span><br><span class="line">unicodeString + utf8String</span><br><span class="line"></span><br><span class="line"><span class="comment"># 所以另一方面也发现，编码转换是需要我们告诉程序怎么做的</span></span><br><span class="line"><span class="comment"># 所有`decode`操作都会生成 Unicode 编码，这是为了方便我之前说的大量接受 Unicode 的内部命令</span></span><br></pre></td></tr></table></figure></p>
+<p>所以我们需要确定程序使用的编码，这是我们需要告诉程序的东西</p>
+<p>一方面在操作字符串的时候确定是同种编码<br>另一方面在使用非自己写的命令时，一般使用 Unicode ，或者使用接收二进制编码的命令<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"><span class="comment"># 这里拿写入文件举例</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 一般使用 Unicode</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'Unicode.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f: f.write(<span class="string">u'Unicode 测试'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者使用接收二进制编码的命令</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'Utf8.txt'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f: f.write(<span class="string">'Utf8 测试'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 你可以反过来做个测试，自然会报错</span></span><br><span class="line"><span class="comment"># 二进制的命令方便了在不知道怎么解码的情况下也能进行操作（写入文件）</span></span><br></pre></td></tr></table></figure></p>
+<p>我建议的使用习惯</p>
+<p>相信到这里我已经把我对于编码的理解讲完了。</p>
+<p>我们为什么会碰到各式各样的编码问题：</p>
+<p>因为我们没有统一编码<br>因为我们没有用对命令（传对数据）<br>所以这里再重申一下八字真言：确定编码，同类交互</p>
+<p>碰到问题，问一下自己，我现在是哪种编码<br>同一种编码才能交互，那我应该是哪种编码<br>这里给出我的使用习惯：</p>
+<p>确定一种内部编码<br>内部编码的选择优先级如下：程序必须使用的编码、第三方包使用的编码、你喜欢的编码、 Unicode<br>在输出时再更改到特定的编码<br>记得在开始整个程序之前确定内部的编码，否则编码一团糟会产生很多不必要的 bug 。</p>
+<p>不要迷信内部 Unicode ，例如 Evernote 开发就应该根据第三方包使用的 Utf8 确定内部编码。</p>
+<h2 id="疑难问题解答"><a href="#疑难问题解答" class="headerlink" title="疑难问题解答"></a>疑难问题解答</h2><p>编码识别</p>
+<p>说了要确定编码，那么拿到一串二进制要怎么确定编码呢？</p>
+<p>最简单的方法是chardet：（需要安装）</p>
+<p>python -m pip install chardet<br>使用非常简单：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> chardet <span class="keyword">import</span> detect</span><br><span class="line">print(detect(<span class="string">'这是一串 utf8 的测试字符'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果：`&#123;'confidence': 0.99, 'encoding': 'utf-8'&#125;`</span></span><br></pre></td></tr></table></figure></p>
+<p>另外例如抓取网站，那么头文件中很有可能有提示如何解码，记得不要忘记了。</p>
+<p>编码转换</p>
+<p>很可能因为字符串中参杂了奇怪的东西，导致即使编码种类正确，依旧无法解码。</p>
+<p>我知道我之前讲过了，但可能有人直接跳疑难问题解答嘛。</p>
+<p>这里可以使用decode的第二个参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
+<p>特殊平台下编码</p>
+<p>很多人都说 Windows 是个坑，即使在 Python 3 下面也一样。</p>
+<p>因为中文文件名出来都是乱码。</p>
+<p>这里使用一个取巧的方法：平台编码再特殊，起码命令行读取和创建一个文件夹不会出乱码吧。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys, os</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> folder <span class="keyword">in</span> os.walk(<span class="string">'.'</span>).next()[<span class="number">1</span>]:</span><br><span class="line">    print(folder.decode(sys.stdin.encoding))</span><br><span class="line">同样的输入输出也可以这样做优化：</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sys_print</span><span class="params">(msg)</span>:</span></span><br><span class="line">    print(msg.encode(sys.stdin.encoding))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sys_input</span><span class="params">(msg)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> raw_input(msg.encode(sys.stdin.encoding)).decode(sys.stdin.encoding)</span><br></pre></td></tr></table></figure></p>
+<p>文件写入</p>
+<p>如果抓下来一个内容不知道怎么解码，但还是想要写入文件怎么办</p>
+<p>写入文件的时候制定用二进制命令即可：<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line">import urllib</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">'Utf8.txt'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f: f.<span class="built_in">write</span>(<span class="string">'Utf8 测试'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 比如抓了个网页，不知道编码也可以写入文件进行一系列操作</span></span><br><span class="line"></span><br><span class="line">content = urllib.urlopen(<span class="string">'http://www.baidu.com'</span>).<span class="built_in">read</span>()</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">'baidu.txt'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f: f.<span class="built_in">write</span>(content)</span><br></pre></td></tr></table></figure></p>
+<p>裸 Unicode 字符</p>
+<p>Unicode 存成六个 Ascii 字符怎么办？其实也可以decode<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"><span class="comment"># 这是普通的 Unicode</span></span><br><span class="line">s = <span class="string">u'测'</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s: print(i)</span><br><span class="line">print(repr(s))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这是裸 Unicode ，实际存成了六个 Ascii</span></span><br><span class="line">s = repr(s)[<span class="number">2</span>:<span class="number">-1</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s: print(i)</span><br><span class="line">print(repr(s))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 转化其实也很简单</span></span><br><span class="line">s = s.decode(<span class="string">'unicode-escape'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s: print(i)</span><br><span class="line">print(repr(s))</span><br></pre></td></tr></table></figure></p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>希望读完这篇文章能对你有帮助，有什么不足之处万望指正（鞠躬）。</p>
+<p>有什么想法或者想要关注我的更新，欢迎来Github上Star或者Fork我的项目。</p>
+<p>160623</p>
+<p>LittleCoder</p>
+<p>EOF<br><a href="http://www.v2ex.com/t/287727#reply23" target="_blank" rel="external">转载自V2EX</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<div class="copyright">
+  <p><span>本文标题:</span><a href="/2016/06/28/五分钟战胜-Python-字符编码/">五分钟战胜 Python 字符编码</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Phantom 的个人博客">Phantom</a></p>
+  <p><span>发布时间:</span>2016年06月28日 - 23时27分</p>
+  <p><span>最后更新:</span>2016年06月28日 - 23时29分</p>
+  <p>
+    <span>原始链接:</span><a class="post-url" href="/2016/06/28/五分钟战胜-Python-字符编码/" title="五分钟战胜 Python 字符编码">chengong.me/2016/06/28/五分钟战胜-Python-字符编码/</a>
+    <span class="copy-path" data-clipboard-text="原文: chengong.me/2016/06/28/五分钟战胜-Python-字符编码/　　作者: Phantom" title="点击复制文章链接">
+        <i class="fa fa-clipboard"></i>
+    </span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。</p>
+  <script src="/js/clipboard.min.js"></script>
+  <script> var clipboard = new Clipboard('.copy-path'); </script>
+</div>
+
+
+
+
+<nav id="article-nav">
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2016/06/13/测试分类/">
+        测试分类
+      </a>
+    </div>
+  
+</nav>
+
+  
+</article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原理"><span class="toc-number">1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体操作"><span class="toc-number">2.</span> <span class="toc-text">具体操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#疑难问题解答"><span class="toc-number">3.</span> <span class="toc-text">疑难问题解答</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结束语"><span class="toc-number">4.</span> <span class="toc-text">结束语</span></a></li></ol>
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+
+<div class="share">
+	<div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+	<a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+	<a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+	</div>
+	<script>
+	window._bd_share_config={
+		"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+	</script>
+</div>
+
+
+
+  
+  <div class="duoshuo" id="comments">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="五分钟战胜-Python-字符编码" data-title="五分钟战胜 Python 字符编码" data-url="chengong.me/2016/06/28/五分钟战胜-Python-字符编码/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chengong"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://chengong.me/js/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+
+
+
+
+
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
+
+
+  
+  
+    <div  class="post-nav-button">
+    <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+    <a href="/2016/06/13/测试分类/" title="下一篇: 测试分类">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+    
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+     
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2016 Phantom
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+        </div>
+    </div>
+    <div class="visit">
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257065196'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1257065196%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+<script>
+  var backgroundnum = 5;
+  var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+
+  $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+<a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+<a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<script>
+var option = {
+  engineKey: '990f4c9c13b06ab1d082'
+};
+(function(w,d,t,u,n,s,e){
+   s = d.createElement(t);
+   s.src = u;
+   s.async = 1;
+   w[n] = function(r){
+     w[n].opts = r;
+   };
+   e = d.getElementsByTagName(t)[0];
+   e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+</script>
+  </div>
+</body>
+</html>
