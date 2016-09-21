@@ -25,7 +25,7 @@ jmeter参数使用方法(1)Paramenters">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/666cc9e3gw1f7zw4o86zxj21fh11qn35.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/666cc9e3gw1f7zw940lqgj21fd10zq8p.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/666cc9e3gw1f7zwbfcq90j21fe0zdgsi.jpg">
-<meta property="og:updated_time" content="2016-09-20T03:46:55.000Z">
+<meta property="og:updated_time" content="2016-09-21T07:58:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jmeter 使用随笔(1)">
 <meta name="twitter:description" content="HTTP信息头管理器 Content-typeContent-type：在Request Hearder里，告诉服务器我们发送的请求信息是那种格式的。
@@ -279,6 +279,10 @@ jmeter参数使用方法(1)Paramenters">
 <p>3 传输文件</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-type:multipart/form-data</span><br></pre></td></tr></table></figure>
 <p>(1)HTTP请求页面，勾选Use multipart/form-data for POST<br>(2)Paramenters中输入除了要上传的文件以外的参数<br><img src="http://ww1.sinaimg.cn/large/666cc9e3gw1f7zw940lqgj21fd10zq8p.jpg" alt=""><br>(3)File Upload中上传文件，填写参数名和MIME类型<br><img src="http://ww1.sinaimg.cn/large/666cc9e3gw1f7zwbfcq90j21fe0zdgsi.jpg" alt=""></p>
+<h2 id="返回值中文乱码"><a href="#返回值中文乱码" class="headerlink" title="返回值中文乱码"></a>返回值中文乱码</h2><p>（1）再jmeter安装文件夹中找到bin文件夹，用记事本打开jmeter.properties文件<br>（2）修改sampleresult.default.encoding=UTF-8</p>
+<blockquote>
+<p>注意去掉sampleresult.default.encoding=UTF-8前面的#号</p>
+</blockquote>
 
       
     </div>
@@ -290,7 +294,7 @@ jmeter参数使用方法(1)Paramenters">
   <p><span>本文标题:</span><a href="/2016/09/19/Jmeter-使用随笔/">Jmeter 使用随笔(1)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Phantom 的个人博客">Phantom</a></p>
   <p><span>发布时间:</span>2016年09月19日 - 14时55分</p>
-  <p><span>最后更新:</span>2016年09月20日 - 11时46分</p>
+  <p><span>最后更新:</span>2016年09月21日 - 15时58分</p>
   <p>
     <span>原始链接:</span><a class="post-url" href="/2016/09/19/Jmeter-使用随笔/" title="Jmeter 使用随笔(1)">chengong.me/2016/09/19/Jmeter-使用随笔/</a>
     <span class="copy-path" data-clipboard-text="原文: chengong.me/2016/09/19/Jmeter-使用随笔/　　作者: Phantom" title="点击复制文章链接">
@@ -323,7 +327,7 @@ jmeter参数使用方法(1)Paramenters">
 <!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
 <div id="toc" class="toc-article">
 <strong class="toc-title">文章目录</strong>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP信息头管理器-Content-type"><span class="toc-number">1.</span> <span class="toc-text">HTTP信息头管理器 Content-type</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP信息头管理器-Content-type"><span class="toc-number">1.</span> <span class="toc-text">HTTP信息头管理器 Content-type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#返回值中文乱码"><span class="toc-number">2.</span> <span class="toc-text">返回值中文乱码</span></a></li></ol>
 </div>
 <style type="text/css">
   .left-col .switch-btn {
