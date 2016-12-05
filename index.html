@@ -235,7 +235,10 @@
       
           
         <p>使用Jmeter的过程中发现，当Jmeter运行一个小时左右，就会报Out of memory error的错误。<br>网上查了下解决该问题的方法，需要两步<br>1）修改配置</p>
-<p>2）修改脚本监控</p>
+<p>使用 jmeter 进行压力测试时遇到一段时间后报内存溢出 outfmenmory 错误，导致 jmeter 卡死了，先尝试在 jmeter.bat 中增加了 JVM_ARGS=”-Xmx2048m -Xms2048m -Xmn256m -XX:PermSize=128m -Xss256k”，但结果运行时间增加了，但最终还是报内存溢出，百度后按照网友的建议更改了如下设置后 jmeter 就没有再卡了：<br>windows 环境下，修改 jmeter.bat：</p>
+<p>set HEAP=-Xms256m -Xmx256m<br>set NEW=-XX:NewSize=128m -XX:MaxNewSize=128m<br>改为：<br>set HEAP=-Xms256m -Xmx1024m<br>set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</p>
+<p>linux 环境下，修改 jmeter.sh：<br>java $JVM_ARGS -Xms1G -Xmx5G -XX:MaxPermSize=512m -Dapple.laf.useScreenMenuBar=true -jar <code>dirname $0</code>/ApacheJMeter.jar “$@”</p>
+<p>2）修改脚本监控<br>在Jmeter脚本中，由于’查看结果树’等监控一直在消耗内容，在前期判断脚本正常后，后期跑长时间高并发时，需要去掉’查看结果树’监控</p>
 
       
     </div>

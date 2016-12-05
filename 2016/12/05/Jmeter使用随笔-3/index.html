@@ -6,18 +6,18 @@
   <title>Jmeter使用随笔（3） | Phantom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="使用Jmeter的过程中发现，当Jmeter运行一个小时左右，就会报Out of memory error的错误。网上查了下解决该问题的方法，需要两步1）修改配置
-2）修改脚本监控">
+使用 jmeter 进行压力测试时遇到一段时间后报内存溢出 outfmenmory 错误，导致 jmeter 卡死了，先尝试在 jmeter.bat 中增加了 JVM_ARGS=”-Xmx2048m -Xms2048m -Xmn256m">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jmeter使用随笔（3）">
 <meta property="og:url" content="chengong.me/2016/12/05/Jmeter使用随笔-3/index.html">
 <meta property="og:site_name" content="Phantom">
 <meta property="og:description" content="使用Jmeter的过程中发现，当Jmeter运行一个小时左右，就会报Out of memory error的错误。网上查了下解决该问题的方法，需要两步1）修改配置
-2）修改脚本监控">
-<meta property="og:updated_time" content="2016-12-05T08:51:46.000Z">
+使用 jmeter 进行压力测试时遇到一段时间后报内存溢出 outfmenmory 错误，导致 jmeter 卡死了，先尝试在 jmeter.bat 中增加了 JVM_ARGS=”-Xmx2048m -Xms2048m -Xmn256m">
+<meta property="og:updated_time" content="2016-12-05T09:06:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jmeter使用随笔（3）">
 <meta name="twitter:description" content="使用Jmeter的过程中发现，当Jmeter运行一个小时左右，就会报Out of memory error的错误。网上查了下解决该问题的方法，需要两步1）修改配置
-2）修改脚本监控">
+使用 jmeter 进行压力测试时遇到一段时间后报内存溢出 outfmenmory 错误，导致 jmeter 卡死了，先尝试在 jmeter.bat 中增加了 JVM_ARGS=”-Xmx2048m -Xms2048m -Xmn256m">
   
     <link rel="alternative" href="/atom.xml" title="Phantom" type="application/atom+xml">
   
@@ -252,7 +252,10 @@
       
           
         <p>使用Jmeter的过程中发现，当Jmeter运行一个小时左右，就会报Out of memory error的错误。<br>网上查了下解决该问题的方法，需要两步<br>1）修改配置</p>
-<p>2）修改脚本监控</p>
+<p>使用 jmeter 进行压力测试时遇到一段时间后报内存溢出 outfmenmory 错误，导致 jmeter 卡死了，先尝试在 jmeter.bat 中增加了 JVM_ARGS=”-Xmx2048m -Xms2048m -Xmn256m -XX:PermSize=128m -Xss256k”，但结果运行时间增加了，但最终还是报内存溢出，百度后按照网友的建议更改了如下设置后 jmeter 就没有再卡了：<br>windows 环境下，修改 jmeter.bat：</p>
+<p>set HEAP=-Xms256m -Xmx256m<br>set NEW=-XX:NewSize=128m -XX:MaxNewSize=128m<br>改为：<br>set HEAP=-Xms256m -Xmx1024m<br>set NEW=-XX:NewSize=128m -XX:MaxNewSize=512m</p>
+<p>linux 环境下，修改 jmeter.sh：<br>java $JVM_ARGS -Xms1G -Xmx5G -XX:MaxPermSize=512m -Dapple.laf.useScreenMenuBar=true -jar <code>dirname $0</code>/ApacheJMeter.jar “$@”</p>
+<p>2）修改脚本监控<br>在Jmeter脚本中，由于’查看结果树’等监控一直在消耗内容，在前期判断脚本正常后，后期跑长时间高并发时，需要去掉’查看结果树’监控</p>
 
       
     </div>
@@ -264,7 +267,7 @@
   <p><span>本文标题:</span><a href="/2016/12/05/Jmeter使用随笔-3/">Jmeter使用随笔（3）</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Phantom 的个人博客">Phantom</a></p>
   <p><span>发布时间:</span>2016年12月05日 - 16时28分</p>
-  <p><span>最后更新:</span>2016年12月05日 - 16时51分</p>
+  <p><span>最后更新:</span>2016年12月05日 - 17时06分</p>
   <p>
     <span>原始链接:</span><a class="post-url" href="/2016/12/05/Jmeter使用随笔-3/" title="Jmeter使用随笔（3）">chengong.me/2016/12/05/Jmeter使用随笔-3/</a>
     <span class="copy-path" data-clipboard-text="原文: chengong.me/2016/12/05/Jmeter使用随笔-3/　　作者: Phantom" title="点击复制文章链接">
