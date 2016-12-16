@@ -3,24 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>ubuntu下sublime 3安装Package Control的超简单方法 | Phantom</title>
+  <title>Tag: 性能测试 | Phantom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简单的安装方法使用Ctrl+`快捷键或者通过View-&amp;gt;Show Console菜单打开命令行，粘贴如下代码：
-
-   import urllib.request,os; pf = ‘Package Control.sublime-package’; ipp = sublime.installed_packages_path(); urllib.request.install_opener(">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu下sublime 3安装Package Control的超简单方法">
-<meta property="og:url" content="chengong.me/2015/12/28/ubuntu下sublime 3安装Package Control的超简单方法/index.html">
+  <meta name="description" content="Phantom blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Phantom">
+<meta property="og:url" content="chengong.me/tags/性能测试/index.html">
 <meta property="og:site_name" content="Phantom">
-<meta property="og:description" content="简单的安装方法使用Ctrl+`快捷键或者通过View-&amp;gt;Show Console菜单打开命令行，粘贴如下代码：
-
-   import urllib.request,os; pf = ‘Package Control.sublime-package’; ipp = sublime.installed_packages_path(); urllib.request.install_opener(">
-<meta property="og:updated_time" content="2015-12-28T07:49:34.000Z">
+<meta property="og:description" content="Phantom blog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ubuntu下sublime 3安装Package Control的超简单方法">
-<meta name="twitter:description" content="简单的安装方法使用Ctrl+`快捷键或者通过View-&amp;gt;Show Console菜单打开命令行，粘贴如下代码：
-
-   import urllib.request,os; pf = ‘Package Control.sublime-package’; ipp = sublime.installed_packages_path(); urllib.request.install_opener(">
+<meta name="twitter:title" content="Phantom">
+<meta name="twitter:description" content="Phantom blog">
   
     <link rel="alternative" href="/atom.xml" title="Phantom" type="application/atom+xml">
   
@@ -212,231 +205,128 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-ubuntu下sublime 3安装Package Control的超简单方法" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2015/12/28/ubuntu下sublime 3安装Package Control的超简单方法/" class="article-date">
-  	<time datetime="2015-12-28T06:17:05.000Z" itemprop="datePublished">2015-12-28</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2016/12/05/Jmeter使用随笔-3/" class="archive-article-date">
+  	<time datetime="2016-12-05T08:28:29.000Z" itemprop="datePublished">12月 5</time>
 </a>
-    </div>
+        </div>
+    	 
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      ubuntu下sublime 3安装Package Control的超简单方法
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/12/05/Jmeter使用随笔-3/">Jmeter使用随笔（3）</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
+        <div class="article-info info-on-archive">
+          
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
 	</div>
 
 
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sublime/">sublime</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安装方法/">安装方法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
-	</div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
           
-        <h3 id="简单的安装方法"><a href="#简单的安装方法" class="headerlink" title="简单的安装方法"></a>简单的安装方法</h3><p>使用Ctrl+`快捷键或者通过View-&gt;Show Console菜单打开命令行，粘贴如下代码：</p>
-<blockquote>
-<p>   import urllib.request,os; pf = ‘Package Control.sublime-package’; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf),’wb’).write(urllib.request.urlopen( ‘<a href="http://sublime.wbond.net/" target="_blank" rel="external">http://sublime.wbond.net/</a>‘ + pf.replace(‘ ‘,’%20’)).read())<br><a id="more"></a><br>如果顺利的话，此时就可以在Preferences菜单下看到Package Settings和Package Control两个菜单了。</p>
-</blockquote>
-<p>顺便贴下Sublime Text2 的代码：</p>
-<blockquote>
-<p>   import urllib2,os; pf=’Package Control.sublime-package’; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( os.path.join( ipp, pf), ‘wb’ ).write( urllib2.urlopen( ‘<a href="http://sublime.wbond.net/" target="_blank" rel="external">http://sublime.wbond.net/</a>‘ +pf.replace( ‘ ‘,’%20’ )).read()); print( ‘Please restart Sublime Text to finish installation’)</p>
-</blockquote>
-<h3 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h3><p>可能由于各种原因，无法使用代码安装，那可以通过以下步骤手动安装Package Control：</p>
-<p>1.点击Preferences &gt; Browse Packages菜单</p>
-<p>2.进入打开的目录的上层目录，然后再进入Installed Packages/目录</p>
-<p>3.下载Package Control.sublime-package并复制到Installed Packages/目录</p>
-<p>4.重启Sublime Text。</p>
-
-      
-    </div>
-    
-  </div>
-  
-    
-<div class="copyright">
-  <p><span>本文标题:</span><a href="/2015/12/28/ubuntu下sublime 3安装Package Control的超简单方法/">ubuntu下sublime 3安装Package Control的超简单方法</a></p>
-  <p><span>文章作者:</span><a href="/" title="访问 Phantom 的个人博客">Phantom</a></p>
-  <p><span>发布时间:</span>2015年12月28日 - 14时17分</p>
-  <p><span>最后更新:</span>2015年12月28日 - 15时49分</p>
-  <p>
-    <span>原始链接:</span><a class="post-url" href="/2015/12/28/ubuntu下sublime 3安装Package Control的超简单方法/" title="ubuntu下sublime 3安装Package Control的超简单方法">chengong.me/2015/12/28/ubuntu下sublime 3安装Package Control的超简单方法/</a>
-    <span class="copy-path" data-clipboard-text="原文: chengong.me/2015/12/28/ubuntu下sublime 3安装Package Control的超简单方法/　　作者: Phantom" title="点击复制文章链接">
-        <i class="fa fa-clipboard"></i>
-    </span>
-  </p>
-  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。</p>
-  <script src="/js/clipboard.min.js"></script>
-  <script> var clipboard = new Clipboard('.copy-path'); </script>
-</div>
-
-
-
-
-<nav id="article-nav">
-  
-    <div id="article-nav-newer" class="article-nav-title">
-      <a href="/2016/01/18/别了！华为8年理工女硕离职感言/">
-        别了！华为8年理工女硕离职感言
-      </a>
-    </div>
-  
-  
-    <div id="article-nav-older" class="article-nav-title">
-      <a href="/2015/12/28/结构体和链表（2）/">
-        结构体和链表（2）
-      </a>
-    </div>
-  
-</nav>
-
-  
-</article>
-
-<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
-<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
-<div id="toc" class="toc-article">
-<strong class="toc-title">文章目录</strong>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单的安装方法"><span class="toc-number">1.</span> <span class="toc-text">简单的安装方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手动安装"><span class="toc-number">2.</span> <span class="toc-text">手动安装</span></a></li></ol>
-</div>
-<style type="text/css">
-  .left-col .switch-btn {
-    display: none;
-  }
-  .left-col .switch-area {
-    display: none;
-  }
-</style>
-
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-<script type="text/javascript">
-  var toc_button= document.getElementById("tocButton");
-  var toc_div= document.getElementById("toc");
-  /* Show or hide toc when click on tocButton.
-  通过点击设置的按钮显示或者隐藏文章目录.*/
-  toc_button.onclick=function(){
-  if(toc_div.style.display=="none"){
-  toc_div.style.display="block";
-  toc_button.value="隐藏目录";
-  document.getElementById("switch-btn").style.display="none";
-  document.getElementById("switch-area").style.display="none";
-  }
-  else{
-  toc_div.style.display="none";
-  toc_button.value="显示目录";
-  document.getElementById("switch-btn").style.display="block";
-  document.getElementById("switch-area").style.display="block";
-  }
-  }
-</script>
-
-
-<div class="share">
-	<div class="bdsharebuttonbox">
-	<a href="#" class="bds_more" data-cmd="more"></a>
-	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
-	<a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
-	<a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
-	<a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jmeter/">Jmeter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/">Mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Out-of-memory-error/">Out of memory error</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能测试/">性能测试</a></li></ul>
 	</div>
-	<script>
-	window._bd_share_config={
-		"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-	</script>
-</div>
 
-
-
-  
-  <div class="duoshuo" id="comments">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="ubuntu下sublime 3安装Package Control的超简单方法" data-title="ubuntu下sublime 3安装Package Control的超简单方法" data-url="chengong.me/2015/12/28/ubuntu下sublime 3安装Package Control的超简单方法/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"chengong"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://chengong.me/js/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-  
-
-
-
-
-
-    <style type="text/css">
-    #scroll {
-      display: none;
-    }
-    </style>
-    <div class="scroll">
-    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
-    </div>
-
-
-  
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
   
     
-    <div  class="post-nav-button">
-    <a href="/2016/01/18/别了！华为8年理工女硕离职感言/" title="上一篇: 别了！华为8年理工女硕离职感言">
-    <i class="fa fa-angle-left"></i>
-    </a>
-    <a href="/2015/12/28/结构体和链表（2）/" title="下一篇: 结构体和链表（2）">
-    <i class="fa fa-angle-right"></i>
-    </a>
-    </div>
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2016/09/21/Jmeter使用随笔-2/" class="archive-article-date">
+  	<time datetime="2016-09-21T08:00:49.000Z" itemprop="datePublished">9月 21</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/09/21/Jmeter使用随笔-2/">Jmeter使用随笔(2)</a>
+    </h1>
   
 
+        <div class="article-info info-on-archive">
+          
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+	</div>
 
+
+          
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jmeter/">Jmeter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/">Mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能测试/">性能测试</a></li></ul>
+	</div>
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2016/09/19/Jmeter-使用随笔/" class="archive-article-date">
+  	<time datetime="2016-09-19T06:55:10.000Z" itemprop="datePublished">9月 19</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/09/19/Jmeter-使用随笔/">Jmeter 使用随笔(1)</a>
+    </h1>
+  
+
+        <div class="article-info info-on-archive">
+          
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+	</div>
+
+
+          
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jmeter/">Jmeter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/">Mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能测试/">性能测试</a></li></ul>
+	</div>
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
 
     
-        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-        <script>
-        var yiliaConfig = {
-        fancybox: true,
-        mathjax: true,
-        animate: true,
-        isHome: false,
-        isPost: true,
-        isArchive: false,
-        isTag: false,
-        isCategory: false,
-        open_in_new: false
-        }
-        </script>
-     
+
 </div>
       <footer id="footer">
   <div class="outer">
@@ -455,6 +345,20 @@
 </footer>
     </div>
     
+	<script>
+		var yiliaConfig = {
+			fancybox: false,
+			mathjax: true,
+			animate: true,
+			isHome: false,
+			isPost: false,
+			isArchive: false,
+			isTag: true,
+			isCategory: false,
+			open_in_new: false
+		}
+	</script>
+
 
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 <script src="/js/main.js"></script>
@@ -494,6 +398,17 @@ MathJax.Hub.Queue(function() {
 <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
 <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
+
+<button class="hide-labels">TAG 开关</button>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $(".article-info").toggle(200);
+  });
+});
+</script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
