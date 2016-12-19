@@ -12,7 +12,7 @@
 阅读建议">
 <meta property="og:type" content="article">
 <meta property="og:title" content="五分钟战胜 Python 字符编码">
-<meta property="og:url" content="i90s.vip/2016/06/28/五分钟战胜-Python-字符编码/index.html">
+<meta property="og:url" content="http://i90s.vip/2016/06/28/五分钟战胜-Python-字符编码/index.html">
 <meta property="og:site_name" content="Phantom">
 <meta property="og:description" content="对于很多接触 Python 的人而言，字符的处理和语言整体的温顺可靠相比显得格外桀骜不驯难以驾驭。
 本文不谈复杂的理论，就经验教你字符处理八字真言：确定编码，同类交互。
@@ -297,7 +297,7 @@
 <p>编码转换</p>
 <p>很可能因为字符串中参杂了奇怪的东西，导致即使编码种类正确，依旧无法解码。</p>
 <p>我知道我之前讲过了，但可能有人直接跳疑难问题解答嘛。</p>
-<p>这里可以使用decode的第二个参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
+<p>这里可以使用decode的第二个参数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
 <p>特殊平台下编码</p>
 <p>很多人都说 Windows 是个坑，即使在 Python 3 下面也一样。</p>
 <p>因为中文文件名出来都是乱码。</p>
@@ -325,8 +325,8 @@
   <p><span>发布时间:</span>2016年06月28日 - 23时27分</p>
   <p><span>最后更新:</span>2016年06月28日 - 23时29分</p>
   <p>
-    <span>原始链接:</span><a class="post-url" href="/2016/06/28/五分钟战胜-Python-字符编码/" title="五分钟战胜 Python 字符编码">i90s.vip/2016/06/28/五分钟战胜-Python-字符编码/</a>
-    <span class="copy-path" data-clipboard-text="原文: i90s.vip/2016/06/28/五分钟战胜-Python-字符编码/　　作者: Phantom" title="点击复制文章链接">
+    <span>原始链接:</span><a class="post-url" href="/2016/06/28/五分钟战胜-Python-字符编码/" title="五分钟战胜 Python 字符编码">http://i90s.vip/2016/06/28/五分钟战胜-Python-字符编码/</a>
+    <span class="copy-path" data-clipboard-text="原文: http://i90s.vip/2016/06/28/五分钟战胜-Python-字符编码/　　作者: Phantom" title="点击复制文章链接">
         <i class="fa fa-clipboard"></i>
     </span>
   </p>
@@ -416,7 +416,7 @@
   
   <div class="duoshuo" id="comments">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="五分钟战胜-Python-字符编码" data-title="五分钟战胜 Python 字符编码" data-url="i90s.vip/2016/06/28/五分钟战胜-Python-字符编码/"></div>
+	<div class="ds-thread" data-thread-key="五分钟战胜-Python-字符编码" data-title="五分钟战胜 Python 字符编码" data-url="http://i90s.vip/2016/06/28/五分钟战胜-Python-字符编码/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
