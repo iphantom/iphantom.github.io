@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://i90s.vip/"/>
-  <updated>2016-12-19T07:19:25.000Z</updated>
+  <updated>2016-12-27T03:32:16.000Z</updated>
   <id>http://i90s.vip/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>后续跟进问题</title>
+    <link href="http://i90s.vip/2016/12/27/%E5%90%8E%E7%BB%AD%E8%B7%9F%E8%BF%9B%E9%97%AE%E9%A2%98/"/>
+    <id>http://i90s.vip/2016/12/27/后续跟进问题/</id>
+    <published>2016-12-27T03:30:13.000Z</published>
+    <updated>2016-12-27T03:32:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>1）时间要取最大值 不能取当天</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1）时间要取最大值 不能取当天&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="任务跟进" scheme="http://i90s.vip/tags/%E4%BB%BB%E5%8A%A1%E8%B7%9F%E8%BF%9B/"/>
+    
+      <category term="产品经理" scheme="http://i90s.vip/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>RF使用笔记(1)</title>
@@ -398,7 +424,7 @@
 <p>编码转换</p>
 <p>很可能因为字符串中参杂了奇怪的东西，导致即使编码种类正确，依旧无法解码。</p>
 <p>我知道我之前讲过了，但可能有人直接跳疑难问题解答嘛。</p>
-<p>这里可以使用decode的第二个参数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
+<p>这里可以使用decode的第二个参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
 <p>特殊平台下编码</p>
 <p>很多人都说 Windows 是个坑，即使在 Python 3 下面也一样。</p>
 <p>因为中文文件名出来都是乱码。</p>
@@ -1216,293 +1242,6 @@
 &lt;p&gt;无意间发现这篇文章，文章讲解由浅入深，读完后感触很深&lt;br&gt;特全文转到自己的博客，方便以后自己随时查看&lt;br&gt;文章转载自爱技术的华仔的博客[&lt;a href=&quot;http://blog.csdn.net/yunhua_lee&quot;&gt;http://blog.csdn.net/yunhua_lee&lt;/a&gt;]&lt;br&gt;非常感谢&lt;a href=&quot;http://blog.csdn.net/yunhua_lee&quot;&gt;爱技术的华仔&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&quot;第二十八章&quot;&gt;&lt;a href=&quot;#第二十八章&quot; class=&quot;headerlink&quot; title=&quot;第二十八章&quot;&gt;&lt;/a&gt;第二十八章&lt;/h1&gt;&lt;p&gt;前面通过实例讲解了一个一环扣一环的面向对象的开发流程：用例模型 -&amp;gt; 领域模型 -&amp;gt; 设计模型（类模型 + 动态模型），解答了面向对象如何做的问题。接下来我们就要讲“如何做好面向对象设计”的技巧了
-    
-    </summary>
-    
-      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="转载" scheme="http://i90s.vip/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-      <category term="面向对象" scheme="http://i90s.vip/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>连载：面向对象葵花宝典：思想、技巧与实践(21-27章)</title>
-    <link href="http://i90s.vip/2016/05/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%91%B5%E8%8A%B1%E5%AE%9D%E5%85%B83/"/>
-    <id>http://i90s.vip/2016/05/13/面向对象葵花宝典3/</id>
-    <published>2016-05-13T14:38:40.000Z</published>
-    <updated>2016-05-26T15:21:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>无意间发现这篇文章，文章讲解由浅入深，读完后感触很深<br>特全文转到自己的博客，方便以后自己随时查看<br>文章转载自爱技术的华仔的博客[<a href="http://blog.csdn.net/yunhua_lee" target="_blank" rel="external">http://blog.csdn.net/yunhua_lee</a>]<br>非常感谢<a href="http://blog.csdn.net/yunhua_lee" target="_blank" rel="external">爱技术的华仔</a></p>
-</blockquote>
-<h1 id="第二十一章-SSD"><a href="#第二十一章-SSD" class="headerlink" title="第二十一章 SSD"></a>第二十一章 SSD</h1><p>用例图是用来描述系统的，而SSD（系统序列图）又是来描述用例的，oh my god，这不是在玩我们么？<img src="http://static.blog.csdn.net/xheditor/xheditor_emot/default/crazy.gif" alt="抓狂"><a id="more"></a></p>
-<p>System Sequence Diagram，缩写为SSD（注意不要与SSD硬盘混淆），中文翻译为“<strong>系统顺序图</strong>”，主要用于描述某个用例的某个分支场景下，外部参与者与系统的交互过程。简单来说：SSD就是用例的可视化描述。</p>
-<p>细心的朋友可能会发现，前面我们在介绍“用例方法”的时候说不需要画图，这里又说SSD是用来描述用例的，这不是互相冲突了么？</p>
-<p>事实上并不冲突，原因在于：用例方法分析需求的时候，确实不需要图；但用例方法分析完成后得到的用例，我们可以使用SSD让用例更直观一些。</p>
-<p>SSD有几点需要特别注意：<br>1）SSD不是标准的UML图形：UML只有顺序图、用例图，但是没有一个专门的“系统顺序图”；之所以叫做“系统”顺序图，是因为这个顺序图中只有两类对象：系统、与系统交互的对象；<br>2）SSD是用来描述某个用例的某个分支，而不是描述系统的结构；<br>3）画SSD的时候，整个系统被当做一个黑盒，不涉及系统的分解；<br>4）不需要为每个用例每个分支都画一个SSD，挑出关键的用例和分支即可；</p>
-<p>有的朋友可能会有疑问：如何知道哪些用例的哪些分支是关键的呢？</p>
-<p>我的答案是：你认为是关键的你就画，你认为不是关键的你就不画；如果你认为所有的用例都很关键，那么所有的用例你都画即可，只要你不怕麻烦或者工作量太大；如果你认为所有的用例都很简单，那么一个都不画也可以。至于你的判断是否正确，主要靠经验积累，当经验不够的时候，也可以求助有经验的人。</p>
-<p>以POS机为例，假如我们认为POS机的正常处理流程是关键分支，则对应的SSD如下：<br> <img src="http://ww4.sinaimg.cn/large/666cc9e3gw1f4972ruegnj20ek0sx761.jpg" alt=""><br>仔细对照SSD和POS机的用例，我们会发现SSD和用例基本上是对应的，但并不完全对应，例如：<br>Ø 用例中第1步是“顾客携带选择好的商品到收银台”，但SSD中第1步是开始交易；<br>Ø 用例中“顾客将钱交给收银员”，但SSD中并没有对应的步骤；<br>Ø 用例中最后一步是“买单完成，顾客携带商品和小票离开”，但SSD中最后一步是“交易结束”；</p>
-<p>为什么会出现这种不对应的情况呢？<br>主要原因在于：用例是整个业务的流程，而SSD是站在系统的角度来描述系统与外部对象的交互，这就需要我们在画SSD的时候做一些技巧性的处理：<br>Ø 删除系统无关的业务步骤<br>例如上述的“顾客将钱交给收银员”，这个步骤和POS机没有关系，因此无需体现，再说了，就算你想体现，你也体现不了；<br>Ø 将业务语言转换为系统语言<br>例如用例中是描述“顾客携带选择好的商品到收银台”，但对应系统来说，这就意味了“交易开始”；同样，“买单完成，顾客携带商品和小票离开”意味着“交易结束”。</p>
-<p>有的朋友可能会认为，应该在用例分析的时候就应该详细写清楚。例如，“买单完成，顾客携带商品和小票离开，收银员告诉POS机交易结束”。<br>这种想法本身没错，但问题在于，理想和现实总是有差距的，用例不可能那么完善，甚至有的时候用例可能都存在错误，如果我们自己没有一定的分析和理解能力，完全依赖原始的用例，这样做是不可能设计出优秀的系统的，甚至连合格的系统都可能做不到。</p>
-<p>综合上面的分析，我们可以看到，SSD虽然来源于用例，但还需要在用例的基础上稍微加工一下，使得SSD能够更加聚焦于“系统”这个主角。</p>
-<p>最后小小吐槽一下：<strong>用例图是用来描述系统的，而SSD又是来描述用例的，oh my god，这不是在玩我们么？</strong></p>
-<h1 id="第二十二章-领域模型"><a href="#第二十二章-领域模型" class="headerlink" title="第二十二章 领域模型"></a>第二十二章 领域模型</h1><p>领域模型是面向对象分析和设计的第一步！！</p>
-<p>完成了需求分析之后，我们已经有了一个良好的开端，但我们的主角“面向对象”还不见踪影。<br>前面我们提到，需求分析和面向对象是没有直接关系的，需求分析阶段是不区分是面向对象还是面向过程，那么什么时候才真正开始面向对象的工作呢？</p>
-<p>答案就在本章：<strong>领域建模</strong>。<br>从领域模型开始，我们就开始了面向对象的分析和设计过程，可以说，领域模型是完成从需求分析到面向对象设计的一座桥梁。</p>
-<p>领域模型，顾名思义，就是需求所涉及的领域的一个建模，更通俗的讲法是业务模型。<br>参考百度百科（<a href="http://baike.baidu.cn/view/757895.htm" target="_blank" rel="external">http://baike.baidu.cn/view/757895.htm</a> ），领域模型定义如下：</p>
-<blockquote>
-<p>领域模型是对领域内的概念类或现实世界中对象的可视化表示，又称概念模型、领域对象模型、分析对象模型。它专注于分析问题领域本身，发掘重要的业务领域概念，并建立业务领域概念之间的关系。</p>
-</blockquote>
-<p>从这个定义我们可以看出，领域模型有两个主要的作用：<br>1）发掘重要的业务领域概念<br>2）建立业务领域概念之间的关系</p>
-<p>【领域建模三字经】<br>领域模型如此重要，很多同学可能会认为领域建模很复杂，需要很高的技巧。然而事实上领域建模非常简单，简单得有点难以让人相信，领域建模的方法概括一下就是“找名词”！</p>
-<p>许多同学看到这个方法后估计都会笑出来：太假了吧，这么简单，找个初中生都会啊，那我们公司那些分析师和设计师还有什么用哦？</p>
-<p>分析师和设计师当然有用，后面我们会看到，即使是简单的找名词这样的操作，也涉及到分析和提炼，而不是简单的摘取出来就可，这种情况下分析师和设计师的经验和技能就能够派上用场了。但领域模型分析也确实相对简单，即使没有丰富的经验和高超的技巧，至少也能完成一个能用的领域模型。</p>
-<p>虽然我们说“找名词”很简单，但一个关键的问题还没有说明：从哪里找？<br>如果你还记得领域模型是“需求到面向对象的桥梁”，那么你肯定一下子就能想到：从需求模型中找，具体来说就是从用例中找。</p>
-<p>归纳一下域建模的方法就是“从用例中找名词”。<br>当然，找到名词后，为了能够更加符合面向对象的要求和特点，我们还需要对这些名词进一步完善，这就是接下来的步骤：加属性，连关系！</p>
-<p>最后我们总结出领域建模的三字经方法：<strong>找名词、加属性、连关系</strong>。</p>
-<p>欲知具体如何操作，请看下回分解</p>
-<h1 id="第二十三章"><a href="#第二十三章" class="headerlink" title="第二十三章"></a>第二十三章</h1><p>看起来有点不可思议，需求阶段“白纸黑字”的用例文档，经过我们一步一步的操作，逐步就得到了“图形化”的领域模型，面向对象初具雏形。</p>
-<p>领域建模的三字经方法：<strong>找名词、加属性、连关系</strong>。</p>
-<p>我们接下来以一个样例看看领域模型具体如何建模。</p>
-<h2 id="1-1-找名词"><a href="#1-1-找名词" class="headerlink" title="1.1 找名词"></a>1.1 找名词</h2><p>我们以POS机买单的用例来看看具体如何建领域模型。</p>
-<p>首先，将用例中所有的名词挑选出来（如下用例文档中<strong>蓝色加粗</strong>的词组）：<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">【用例名称】</span><br><span class="line">买单</span><br><span class="line">【场景】</span><br><span class="line">Who：*<span class="strong">*顾客、收银员*</span>*</span><br><span class="line">Where：商店的*<span class="strong">*收银台*</span>*</span><br><span class="line">When：营业时间</span><br><span class="line">【用例描述】</span><br><span class="line">1. *<span class="strong">*顾客*</span><span class="strong">*携带选择好的*</span><span class="strong">*商品*</span><span class="strong">*到收银台；</span><br><span class="line">（这一步没有异常）</span><br><span class="line">2. 收银员逐一扫描商品*</span><span class="strong">*条形码*</span><span class="strong">*，系统根据条形码查询商品信息；</span><br><span class="line">2.1 *</span><span class="strong">*扫描仪*</span><span class="strong">*坏了，必须支持手工输入条形码；</span><br><span class="line">2.2 商品的*</span><span class="strong">*条形码*</span><span class="strong">*无法扫描，必须支持手工输入条形码；</span><br><span class="line">2.3 条形码能够扫描，但查询不到信息，需要收银员和顾客沟通，放弃购买此产品</span><br><span class="line">3. 扫描完毕，系统显示商品总额，收银员告诉顾客商品总额；</span><br><span class="line">（这一步没有异常）</span><br><span class="line">4. 顾客将*</span><span class="strong">*钱*</span><span class="strong">*交给收银员；</span><br><span class="line">4.1 顾客的钱不够，顾客和收银员沟通，删除某商品；</span><br><span class="line">4.2 顾客的钱不够，顾客和收银员沟通，删除某类商品中的一个或几个（例如买了*</span><span class="strong">*5包烟*</span><span class="strong">*，去掉两包）</span><br><span class="line">4.3 顾客觉得某个商品价格太高，要求删除某商品；</span><br><span class="line">4-A：顾客使用*</span><span class="strong">*信用卡*</span><span class="strong">*支付</span><br><span class="line">4-A.1 信用卡支付流程（请读者自行思考完善，可以写在这里，如果太多，也可以另外写一个子用例）</span><br><span class="line">4-B：顾客使用*</span><span class="strong">*购物卡*</span><span class="strong">*支付</span><br><span class="line">        4-B.1 购物卡支付流程</span><br><span class="line">4-C：顾客使用*</span><span class="strong">*会员卡*</span><span class="strong">*积分支付</span><br><span class="line">        4-C.1 会员卡积分支付流程</span><br><span class="line">5. 收银员清点钱数，输入收到的款额，系统给出找零的数目；</span><br><span class="line">（这一步没有异常）</span><br><span class="line">6. 收银员将找零的钱还给顾客，并打印*</span><span class="strong">*小票*</span><span class="strong">*；</span><br><span class="line">7. *</span><span class="strong">*买单*</span><span class="strong">*完成，顾客携带*</span><span class="strong">*商品*</span><span class="strong">*和*</span><span class="strong">*小票*</span><span class="strong">*离开；</span><br><span class="line">【用例价值】</span><br><span class="line">顾客买完单以后，就可以携带商品离开，而超市也将得到收入；</span><br><span class="line">【约束和限制】</span><br><span class="line">1. POS机必须符合国标XXX；</span><br><span class="line">2. 键盘和屏幕使用*</span><span class="strong">*中文*</span><span class="strong">*，因为收银员都是*</span><span class="strong">*中国人*</span><span class="strong">*；</span><br><span class="line">3. 一次买单数额不能超过99999RMB；</span><br><span class="line">4. POS机要非常稳定，至少一天内不要出现故障；</span></span><br></pre></td></tr></table></figure></p>
-<p>名词列表：<br>顾客、收银员、收银台、商品、条形码、扫描仪、钱、5包烟、信用卡、会员卡、小票、买单、键盘、屏幕、中文、中国人</p>
-<p>通过这种简单的方法，我们很轻松的就识别出了领域中的各种概念，但是还不能高兴的太早，识别领域概念的工作还没有结束，接下来我们还需要提炼。</p>
-<p>有了前面步骤识别的名词列表后，提炼的工作就相对很简单了，只需要删除不是领域对象的名词即可。<br>但具体应该删除什么名词，是和不同的业务领域强相关的，并没有完全统一的标准，此时分析师的行业和领域经验起决定作用，而这也正是菜鸟和专家的区别。</p>
-<p>以我们的收银机为例，提炼的过程如下：<br>1）删除“收银台”：收银台只是一个物理设备，且这个设备与我们的POS机也没有任何交互，所以不能算作领域模型中的一个概念；<br>2）删除“5包烟”：5包烟只是用例中举例时的一个实例，是一个具体的商品，已经包含在“商品”中了；<br>3）删除“中文”：“中文”只是“键盘”和“屏幕”的一个属性，并不是一个独立的领域概念；<br>4）删除“中国人”：“中国人”只是“收银员”的一个属性，并不是一个独立的领域概念；<br>5）删除“条形码”：“条形码”只是“商品”的一个属性，并不是一个独立的领域概念；</p>
-<p>经过上面的提炼步骤后，就得到了真正的POS机领域类，详细如下：<br><strong>顾客、收银员、商品、扫描仪、钱、信用卡、会员卡、小票、买单、键盘、屏幕</strong></p>
-<h2 id="1-2-加属性"><a href="#1-2-加属性" class="headerlink" title="1.2. 加属性"></a>1.2. 加属性</h2><p>找出领域模型的名词后，接下来一个重要工作就是将这些名词相关的属性找出来，使其更加准确。</p>
-<p>但加属性和前面找名词有一点点差别：有的属性并没有在用例中明确给出，需要分析人员和设计人员额外添加，此时也是分析师的行业和领域经验起决定作用。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">名词</th>
-<th style="text-align:center">属性</th>
-<th style="text-align:center">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">顾客</td>
-<td style="text-align:center">NA</td>
-<td style="text-align:center">对于POS机来说，并不需要识别顾客的相关信息，因此在领域模型中，顾客是没有属性的</td>
-</tr>
-<tr>
-<td style="text-align:center">收银员</td>
-<td style="text-align:center">国籍、编号</td>
-<td style="text-align:center">“国籍”由找名词步骤中的“中国人”提炼</td>
-</tr>
-<tr>
-<td style="text-align:center">商品</td>
-<td style="text-align:center">条形码、名称、价格</td>
-<td style="text-align:center">名称和价格并没有在用例中体现，但毫无疑问这是商品最基本的属性</td>
-</tr>
-<tr>
-<td style="text-align:center">扫描仪</td>
-<td style="text-align:center">NA</td>
-<td style="text-align:center">扫描仪是POS机的一个输入设备，POS机不需要识别扫描仪的相关信息，因此在领域模型中，扫描仪也是没有属性的</td>
-</tr>
-<tr>
-<td style="text-align:center">钱（现金）</td>
-<td style="text-align:center">数量，币别</td>
-<td style="text-align:center">从领域分析的角度来讲，“现金”更专业一些</td>
-</tr>
-<tr>
-<td style="text-align:center">信用卡</td>
-<td style="text-align:center">卡号</td>
-<td style="text-align:center">NA</td>
-</tr>
-<tr>
-<td style="text-align:center">会员卡</td>
-<td style="text-align:center">会员号、积分、有效期</td>
-<td style="text-align:center">NA</td>
-</tr>
-<tr>
-<td style="text-align:center">小票</td>
-<td style="text-align:center">交易信息、POS机信息、收银员信息</td>
-<td style="text-align:center">小票的属性在用例中并没有详细体现，但有经验的分析师能够很容易识别出来</td>
-</tr>
-<tr>
-<td style="text-align:center">买单（交易）</td>
-<td style="text-align:center">商品列表、日期时间、总额、支付信息</td>
-<td style="text-align:center">这里的属性看起来和“小票”一样，是因为“小票”本质上是给客户的一个交易记录。这里为了更加符合软件系统的属于习惯，可以将“买单“改为“交易”。</td>
-</tr>
-<tr>
-<td style="text-align:center">键盘</td>
-<td style="text-align:center">NA</td>
-<td style="text-align:center">和扫描仪类似，POS机不需要识别键盘信息</td>
-</tr>
-<tr>
-<td style="text-align:center">屏幕</td>
-<td style="text-align:center">NA</td>
-<td style="text-align:center">和扫描仪类似，POS机不需要识别屏幕信息</td>
-</tr>
-</tbody>
-</table>
-<h2 id="1-3-连关系"><a href="#1-3-连关系" class="headerlink" title="1.3. 连关系"></a>1.3. 连关系</h2><p>有了类，也有了属性，接下来自然就是找出它们的关系了。</p>
-<p>有了前面的工作，看起来连关系自然也是睡到渠成的事情，但不要忘了我们的这个例子是非常简单的，在一些复杂的系统中，领域模型之间的关系并不那么明显，菜鸟可能就只能看到最显而易见的一些联系，而系统分析师和设计师可以凭着丰富的经验、良好的技巧识别出来，这也是系统分析师和设计师的价值所在。</p>
-<p>POS机的领域类关系如下（仅供参考，并不要求每个分析师和设计师都一定是这么理解，但总体来说应该相似）：<br>  <img src="http://ww3.sinaimg.cn/large/666cc9e3gw1f4973bk17xj20wp0g90w8.jpg" alt=""></p>
-<p>看起来有点不可思议，需求阶段白纸黑字的用例文档，经过我们一步一步的操作，最后得到了图形化的领域模型。<br>只要曾经画过甚至只是看过UML类图的同学都应该很容易发现，领域模型和设计类图非常相似，面向对象终于有了雏形了</p>
-<h1 id="第二十四章"><a href="#第二十四章" class="headerlink" title="第二十四章"></a>第二十四章</h1><p>完成领域类到软件类的转换，这就是面向对象领域设计阶段的主要任务。</p>
-<p>经过领域模型的分析后，面向对象已经初具雏形，但领域类并不能指导我们进行编码工作，因为领域类只是从用例模型中提炼出来的反应业务领域的概念，而并不是真正意义上的软件类。</p>
-<p>“革命尚未成功，同志还需努力”，我们需要再进一步，完成<strong>领域类到软件类的转换</strong>，这就是面向对象领域设计阶段的主要任务。</p>
-<p>设计阶段是整个面向对象分析和设计的高潮阶段。在设计阶段中，我们将要输出设计模型，并且需要综合各种方法、技巧，运用十八般武艺，使出浑身解数，以求能够设计出满足各种需要的设计方案。</p>
-<p>这也是最考验设计师功力的时候，因为设计并没有一个量化的标准，也没有一个标准答案，更多的时候需要设计师综合知识、技能、经验、灵感等因素，综合权衡而得出一个方案。世界上找不到两片相同的叶子，同样，你也找不到两个完全一样的设计方案。毫不夸张的说，面向对象的设计更多时候是一项艺术。</p>
-<p>虽然我们说面向对象设计是一门艺术，但这并不意味着只有天才才能进行面向对象设计，面向对象设计也是有一定的规律和方法可寻的，我们将在接下来的章节逐一介绍。</p>
-<p>【设计模型总览】<br>设计模型主要包含2部分内容：<strong>静态模型、动态模型</strong>，任何一个模型的缺失或者不完善，都将导致最终的设计质量不高，甚至可能导致最终的系统没有实现业务需求。</p>
-<p>静态模型又可以称为“类模型”，主要关注系统的“静态”结构，描述了系统包含的类， 以及类的名称、职责、属性、方法，类与类之间的关系。<br>动态模型关注系统的“动态”行为，描述类本身的一些动作或者状态变化，以及类之间如何配合以完成最终的业务功能。只有结合静态模型和动态模型，我们才能够真正的将一个系统描述清楚。</p>
-<p>静态模型和动态模型对于后续的编码也具有不同的指导意义。静态模型主要用于指导类的声明，包括类名称，属性名，方法名；而动态模型主要用于指导类的实现，主要就是每个方法内部的具体实现。</p>
-<h1 id="第二十五章"><a href="#第二十五章" class="headerlink" title="第二十五章"></a>第二十五章</h1><p>面向对象设计和弹吉他差不多，有很多成熟的理论和技巧，学会弹吉他并不难，你只需要应用这些理论和技巧即可！</p>
-<p><strong>【师傅领进门，修行在个人】</strong><br>“类模型”是整个面向对象设计模型的核心，是面向对象设计阶段的主要输出，也是设计师们最能够发挥自己才能的地方。</p>
-<p>虽然“类模型”如此重要，但面向对象设计技术经过几十年的发展后，目前已经形成了很成熟的一套体系，因此真正在进行“类模型”设计的时候，其实难度并不高，这也是多亏了众多前辈们的无私贡献，才能使得我们这些芸芸众生也能轻松掌握这些原本带有艺术色彩的技能。</p>
-<p>不过话又说回来了，入门容易精通难，“类模型”的设计也是如此，虽然有前辈们各种各样的思想结晶指导着我们，但毕竟如何理解、如何应用这些思想结晶，还是要看个人的领悟力和把握力。就像同样的《葵花宝典》，岳不群看了创立了气宗，蔡子峰看了创立了剑宗，渡元禅师听了后悟出了辟邪剑法，东方不败看了竟然练出了绣花针绝技！所以接下来的内容，也只是“师父领进门，修行在个人”，如果希望做出优秀的设计，更多还是依靠个人的领悟和实践！</p>
-<p><strong>【设计的魔法崇拜】</strong><br>面向对象类的设计很多时候都蒙上了一层神秘的面纱。一个常见的场景是：“设计师”拿到需求后，经过一段时间的设计，感觉就像变戏法一样，然后就拿出了一个类模型。普通的开发人员看到这样的类模型，很难想象如何从需求才能够得到了这些类，由于大部分公司的设计人员确实也都是公司里面的牛人，因此大家就自然而然地认为这是水平和创造力的表现，心底不由得产生由衷的赞叹：“牛逼啊！”</p>
-<p>我称这种现象为设计的“魔法崇拜”，具体表现就是认为设计是一种魔法，做设计的人是魔法师，只有牛逼的人才能够做设计。</p>
-<p>但这种认识并不准确，就像我们前面提到的，面向对象领域已经发展了几十年，各种思想、理论都已经基本成熟，绝大部分人在做设计的时候，都不可能有什么天才的创新或者天才的灵感，而只是这些已经成熟的思想和理论的应用而已。</p>
-<p>之所以现在还会出现这种现象，主要原因还是在于各种思想、理论、方法都是针对具体问题的分析或者总结，但并没有谁明确的将这些东东形成一套完整的面向对象设计体系。</p>
-<p>可能很多人都有这种感觉：面向对象我也懂，设计模式我也知道，设计原则我也明白，但真的要进行设计的时候，就不知道如何下手了，比如说：<br>对象从哪里来？<br>什么时候用设计模式？<br>如何判断设计是否正确？<br>什么样的设计才是优秀的设计？<br>。。。。。。。。。。。</p>
-<p>正因为存在这样的原因，我们自然会对那些能够设计出完整的类模型的设计师们刮目相看了。</p>
-<p>其实面向对象设计并不是什么高深的技术，也不需要天才的创新，更不需要变魔法，而是有章可循的，只要我们按照一定的步骤，一步一个脚印，不断精益求精，就能够完成面向对象的设计。</p>
-<p>但正如前面提到的一样，面向对象设计更多的时候是一门艺术。虽然我们按照一定的步骤能够完成面向对象的设计，但在这些步骤实施的过程中，如何应用相关技术，如何做出设计选择等，更多时候是带有艺术色彩的。就像很多人都会弹吉他，但真正的吉他大师弹出来的感觉，肯定和一个普通人弹的不一样。</p>
-<p>接下来我们将会分几个小节讲述如何进行面向对象的类设计：</p>
-<p>第一步（照猫画虎）：领域类映射 — 告诉你类从哪里来<br>第二步（精雕细琢）：应用设计原则和设计模式   —告诉你如何设计“好”类<br>第三步（照本宣科）：拆分辅助类   —告诉你如何和你的开发框架结合起来</p>
-<h1 id="第二十六章"><a href="#第二十六章" class="headerlink" title="第二十六章"></a>第二十六章</h1><p><strong>类模型设计其实就是程咬金打天下 – 三板斧 而已 ：）</strong></p>
-<hr>
-<h2 id="第一斧（照猫画虎）：领域类映射"><a href="#第一斧（照猫画虎）：领域类映射" class="headerlink" title="第一斧（照猫画虎）：领域类映射"></a><strong>第一斧（照猫画虎）：领域类映射</strong></h2><p>面向对象类设计首先要解决的一个问题是：类从哪里来 ？</p>
-<p>有的人可能会认为，要发挥想象力、创造力。。。。。等各种“力”——这种方法的主要问题是：我们不是在进行纯粹的艺术创造，而是要最终满足客户需求，而不能天马行空。</p>
-<p>有的人可能会想到，参考其它的系统吧，把类似系统拿过来改吧改吧 ——这种方法的主要问题是：如果没有其它类似系统给你参考呢 ？还有的人干脆就说：拍脑袋吧，凭感觉吧 —— 这种方法的主要问题是：猴子能敲出莎士比亚全集么 ？看起来以上方法都不太可行，那究竟如何才能从哪里找到我们需要的类呢？</p>
-<p>相信绝大部分认真看书的同学都会灵光一闪：领域模型。我们将上一章中的领域模型图拿出来，重新再看一下：<img src="http://ww2.sinaimg.cn/large/666cc9e3gw1f4973z2vcdj20wp0g90w8.jpg" alt="">相信不用我多说，绝大部分同学一眼就能看出：哇塞，这不就是类么？</p>
-<p>确实是这样的，<strong>领域模型中的“领域类”，是设计模型中“软件类”最好的来源</strong>。通过“领域类”来启发我们设计最初的“软件类”，具有如下几个明显的<strong>优点</strong>：1）软件类来自领域类，领域类来自用例，用例来自客户，这样一环扣一环，软件类的正确性得到了保证，不用担心拍脑袋带来的问题；2）领域类到软件类的转换非常简单，不需要天才的创新，或者丰富的想象力，只要掌握基本的面向对象的知识就能完成，菜鸟也能做设计；3）不需要参考其它系统，不用担心没有参照物时无法设计的问题；从领域类到软件类的转换操作非常简单，基本上就是一个照猫画虎的过程。</p>
-<p><strong>【类筛选】</strong>虽然我们说从领域类到软件类是一个照猫画虎的过程，但并不意味着将领域类全盘拷贝过来即可。主要的原因在于“软件类”是软件系统内部的一个概念，而领域类是业务领域的概念，并不是每个领域类最终都会体现在软件系统中。以POS机的领域类为例，领域类“顾客”不需要转换为软件类，因为顾客是POS机业务领域的一个重要参与者，但并不是POS机内部需要实现的一个实体，在POS机业务中，顾客甚至都不是和POS机直接交互的实体，站在POS软件系统的角度来说，顾客和POS机其实没有任何关系。对于屏幕、键盘、扫描仪这些输入输出设备，一般情况下我们认为它们是POS机系统硬件的一部分，而并不是POS机软件系统的一部分。但假如POS机有一个需求是既支持图形界面输出，又支持字符界面输出，那么POS的软件系统就需要处理这种和屏幕相关的需求了，此时屏幕就是POS机软件系统的一部分了，需要将领域类转换为软件类。为了简单处理，接下来的分析中，输入输出设备不做转换。经过筛选后，剩下的领域类就需要都转换为软件类，具体如下：收银员、商品、交易、小票、支付、信用卡、会员卡、现金、购物卡。</p>
-<p><strong>【名称映射】</strong>筛选完成后，我们开始讲领域类转换为软件类，转换的方法很简单，首先不管三七二十一，将每个领域类都用一个软件类与对应，名称都保持一样即可。有的同学可能担心这样设计是否会不符合面向对象设计的要求，是否会导致设计质量不高。。。。。。等等，其实这种担心是多余的，因为我们后续还有很多工作要做，目前做的只是一个开始工作。</p>
-<p><strong>【属性映射】</strong>通过名称映射的方法得到软件类后，接下来就是要设计类的属性了。由于领域类中也已经有了属性，因此我们也只需简单的照搬过来即可。</p>
-<p><strong>【提炼方法】</strong>软件类的属性设计完成后，接下来就需要设计软件类的方法了。但这次我们就没有那么好的运气了，因为领域类中并没有方法！因此我们不能通过简单映射的方法来获取方法，必须采取其它手段。和类的设计一样，类方法的设计同样不能采取“创造力、参考其它系统、拍脑袋”等方式来完成，为了确保正确性，类的方法设计也同样应该能够从已有的模型中推导出来。由于已经明确领域模型中没有方法了，因此就不能从领域模型中得到软件类的方法，剩余只有一个“用例模型”了，因此我们锁定“用例模型”，看看如何从中找到我们所需要的方法。其实方法也很简单，概括一下就是：<strong>找动词</strong>。你可能不敢相信自己的眼睛，这么简单，那几乎初中生都会做设计啊，找动词谁不会呢？然而不管你信不信，这一步确实是这么简单，当然，如果面向对象设计只是到此为止，那确实初中生也是可以做的，但实际上这只是面向对象类设计的开始步骤而已，后面的工作还多着了，所以完全不用担心初中生来抢你的饭碗。我们以POS机为例，来看看如何通过“找动词”这种技巧来找到软件类的方法。如下是POS机的用例，我们将相关动词都<strong>加粗</strong>显示：<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">【用例名称】</span><br><span class="line">买单</span><br><span class="line">【场景】</span><br><span class="line">Who：顾客、收银员</span><br><span class="line">Where：商店的收银台</span><br><span class="line">When：营业时间</span><br><span class="line">【用例描述】</span><br><span class="line">1. 顾客*<span class="strong">*携带*</span><span class="strong">*选择好的商品到收银台；</span><br><span class="line">（这一步没有异常）</span><br><span class="line">2. 收银员逐一*</span><span class="strong">*扫描*</span><span class="strong">*商品条形码，系统根据条形码*</span><span class="strong">*查询*</span><span class="strong">*商品信息；</span><br><span class="line">2.1 扫描仪坏了，必须支持*</span><span class="strong">*手工输入*</span><span class="strong">*条形码；</span><br><span class="line">2.2 商品的条形码无法扫描，必须支持*</span><span class="strong">*手工输入*</span><span class="strong">*条形码；</span><br><span class="line">2.3 条形码能够扫描，但查询不到信息，需要收银员和顾客*</span><span class="strong">*沟通*</span><span class="strong">*，放弃购买此产品</span><br><span class="line">3. 扫描完毕，系统*</span><span class="strong">*显示*</span><span class="strong">*商品总额，收银员*</span><span class="strong">*告诉*</span><span class="strong">*顾客商品总额；</span><br><span class="line">（这一步没有异常）</span><br><span class="line">4. 顾客将钱*</span><span class="strong">*交给*</span><span class="strong">*收银员；</span><br><span class="line">4.1 顾客的钱不够，顾客和收银员沟通，*</span><span class="strong">*删除*</span><span class="strong">*某商品；</span><br><span class="line">4.2 顾客的钱不够，顾客和收银员沟通，*</span><span class="strong">*删除*</span><span class="strong">*某类商品中的一个或几个（例如买了5包烟，去掉两包）</span><br><span class="line">4.3 顾客觉得某个商品价格太高，要求*</span><span class="strong">*删除*</span><span class="strong">*某商品；</span><br><span class="line">4-A：顾客使用信用卡*</span><span class="strong">*支付*</span>*</span><br><span class="line">4-A.1 信用卡支付流程（请读者自行思考完善，可以写在这里，如果太多，也可以另外写一个子用例）</span><br><span class="line">4-B：顾客使用购物卡*<span class="strong">*支付*</span>*</span><br><span class="line">        4-B.1 购物卡支付流程</span><br><span class="line">4-C：顾客使用会员卡积分*<span class="strong">*支付*</span>*</span><br><span class="line">        4-C.1 会员卡积分支付流程</span><br><span class="line">5. 收银员*<span class="strong">*清点*</span><span class="strong">*钱数，*</span><span class="strong">*输入*</span><span class="strong">*收到的款额，系统*</span><span class="strong">*给出找零*</span><span class="strong">*的数目；</span><br><span class="line">（这一步没有异常）</span><br><span class="line">6. 收银员将找零的钱还给顾客，并*</span><span class="strong">*打印*</span><span class="strong">*小票；</span><br><span class="line">7. 买单完成，顾客*</span><span class="strong">*携带*</span><span class="strong">*商品和小票*</span><span class="strong">*离开*</span><span class="strong">*；</span><br><span class="line">【用例价值】</span><br><span class="line">顾客买完单以后，就可以携带商品离开，而超市也将得到收入；</span><br><span class="line">【约束和限制】</span><br><span class="line">1. POS机必须符合国标XXX；</span><br><span class="line">2. 键盘使用中文，因为收银员都是中国人；</span><br><span class="line">3. 一次买单数额不能超过99999RMB；</span><br><span class="line">4. POS机要非常稳定，至少一天内不要出现故障；</span></span><br></pre></td></tr></table></figure></p>
-<p>标识出所有的动词后，还需要进一步的工作：<br>【筛选】并不是所有的动词都一定是软件类的方法，我们需要将这些动词识别出来并排除在后续设计范围之外。<br>例如：“顾客携带选择好的商品到收银台”：这里的“携带”是顾客的一个动作，而顾客并不是我们的软件类；“收银员告诉顾客商品总额”：这里的“告诉”确实是收银员的一个动作，而且“收银员”确实也是我们的软件类，但这里也要排除“告诉”，因为“告诉”这个动作和POS系统并没有关系，只是业务流程中的一个步骤而已。其它需要排除的动词还有：“需要收银员和顾客沟通”、“顾客将钱交给收银员”、“收银员清点钱数”、“收银员将找零的钱还给顾客”、“顾客携带商品和小票离开”<br>【提炼】筛选完不需要的动词后，剩下的就是我们需要的动词了，但此时并不能简单的将所有动词拿出来直接扔给某个软件类就行了，我们还需要进行一些加工。</p>
-<p>继续以POS机为例：“收银员逐一扫描商品条形码”：这里的“扫描”看起来是“收银员”的一个动作，而且“收银员”确实也是我们的软件类，但其实深究一下，“扫描”这个动词并不能分配给“收银员”这个软件类，因为真正执行“扫描”功能的是“扫描仪”，收银员只是拿着扫描仪扫描商品，并不是收银员自己去读取商品条形码；类似的动词还有“必须支持手工输入条形码”，也不能算作“收银员”的功能。</p>
-<p>那我们为什么不排除这两个动词呢？秘密就在于我们要从这两个动词提炼出软件类的方法。稍作分析，我们就可以发现，无论是“扫描条形码”，还是“手工输入条形码”，其实最终的目的都是“添加本次交易的商品”，因此我们可以提炼出“增加交易商品”的动词。</p>
-<p>还有一种提炼的方法需要从已有的动词中推断出来，例如：“扫描完毕，系统显示商品总额”，这里只提到了“显示”这个动词，但相信大部分人都能一眼看出，“显示”之前肯定要“计算”，不然显示出来的值从哪里来呢？</p>
-<p>有的朋友可能会疑惑，为什么不在用例的时候就写清楚呢？例如：扫描完毕，系统计算商品总额，然后系统显示商品总额。这样不就一目了然的看出来了么？</p>
-<p>理想情况下这种想法当然没错，但现实往往没有那么美好，写用例的产品人员可能经验不足，也可能表达能力有限，还有可能比较马虎，或者遗漏了。。。。。。总之会有很多异常情况，因此设计人员必须具备这样的推断和判断能力。</p>
-<p>经过这一步骤后，我们获得的动词如下：</p>
-<ul>
-<li>增加商品</li>
-<li>计算商品总额</li>
-<li>显示商品总额</li>
-<li>删除商品</li>
-<li>现金支付</li>
-<li>信用卡支付</li>
-<li>购物卡支付</li>
-<li>会员卡积分支付</li>
-<li>打印小票<br>当然，以上列出来的动词并不是就一定是100%的标准答案，不同的人来进行分析和设计，可能略有不同，但总体应该比较相似，毕竟业务是一样的，而业务需求就是设计最强的约束。<br>【分配】<br>识别出有效的动词后，最有一步就是分配了，即：将从用例中提炼出来的动词，分配给已经有了属性的软件类。这种分配操作很多时候都是按图索骥，特别是对于有领域经验的人来说，基本上凭直觉就能基本分配正确。当然，如果你的经验并不是很丰富，那么还是老老实实的一个一个来分析吧。<br>以POS机为例：</li>
-<li>增加商品：很明显应该分配给“交易”类</li>
-<li>计算商品总额：分配给“交易”类</li>
-<li>显示商品总额：分配给“交易”类</li>
-<li>删除商品：分配给“交易”类</li>
-<li>现金支付：分配给“现金”类</li>
-<li>信用卡支付：分配给“信用卡”类</li>
-<li>购物卡支付：分配给“购物卡”类</li>
-<li>会员卡积分支付：分配给“会员卡”类</li>
-<li>打印小票：这个动词的分配存在一定的灵活性，有的人可能认为应该分配给“交易”类，因为打印小票可以认为是“交易”流程中的一个步骤；有的人可能认为应该分配给“小票”类，因为打印小票可以认为是“小票”类的一个基本功能。其实两者都有一定道理，如果没有其它更有力的选择因素，我建议根据个人经验选择一个即可，这里我们选择分配给“小票”。分配完成后，我们可以看到“交易”、“小票”、“信用卡”、“购物卡”、“会员卡”、“现金”都已经有方法了。</li>
-</ul>
-<p>当然，对于有经验的人来说，以上步骤完全可以在脑海中就迅速完成了，而并不会这样一步一步的演示给别人看，所以看起来就像变戏法一样，不知怎么就设计出来了很多的软件类。</p>
-<p>经过上面的处理步骤后，我们得到如下的类图：<img src="http://ww2.sinaimg.cn/large/666cc9e3gw1f4974v4brbj20ls0fkjux.jpg" alt=""><br>与领域模型相比，部分领域类被剔除了，留下来的领域类映射成软件类后，又增加了方法。虽然还不完善，但软件类的是越来越有型，越来越清晰了。</p>
-<h2 id="第二斧（精雕细琢）：应用设计原则和设计模式"><a href="#第二斧（精雕细琢）：应用设计原则和设计模式" class="headerlink" title="第二斧（精雕细琢）：应用设计原则和设计模式"></a><strong>第二斧（精雕细琢）：应用设计原则和设计模式</strong></h2><p>完成了从领域类到软件类的映射后，类出来了，属性也出来了，方法也有了，看起来设计已经大功告成了。事实上也确实有很多人基本上做到这一步就开始动手编码了，而且经过一番拼搏，最后发布的系统也能用。</p>
-<p>但相信很多人都会有这个疑问：这样做就够了么，这样设计是否是好的设计呢？要回答这个问题，我们首先要明确：什么叫做“好”的设计呢 ？</p>
-<p>到目前为止，我们已经有了一个类的设计模型，而且如果按照这个模型去实现的话，最终应该也是能够满足用户的需求，毕竟我们这个类模型是按照“需求模型 -&gt; 领域模型 -&gt; 类模型”这样一路推导过来的，不会出现大的偏差。</p>
-<p>那么，满足了用户需求的设计就是好的设计么？相信有经验的朋友都会知道答案：“满足用户需求”只是设计的一个最基本要求，而不是一个“好设计”的评判标准。</p>
-<p>既然如此，那么到底什么才是好的设计呢，是否有明确的标准来进行评价呢？幸运的是，面向对象领域经过几十年的发展，确实已经发展出了很多成熟的指导思想和方法，用于评价和指导如何才能做好面向对象的设计。其中最具代表性的就是<strong>“设计原则”和“设计模式”</strong>。</p>
-<p><strong>【设计原则】</strong></p>
-<p>当我们谈到面向对象领域的设计原则的时候，我们其实都是在谈论罗伯特.C.马丁（Robert C. Martin ，又叫Bob大叔）的SOLID原则。这也难怪，Bod大叔实在是太牛了，面向对象领域的设计原则几乎被他全部包揽了，加上他在他的畅销书《敏捷软件开发：原则、模式与实践》中详细的将这些原则集中一 一阐述，面向对象领域设计原则的权威非他莫属。毫不夸张的说，Bob大叔的威名和在面向对象领域中的地位，和设计模式的“四人帮”是不相上下的。虽然很多资料都将SOLID原则和敏捷开发、测试驱动开发等方法绑定在一起，但我觉得只要是面向对象设计，不管是瀑布流程、、CMM流程、RUP流程、还是敏捷开发流程，都应该应用设计原则以提高设计质量。参考wiki百科，SOLID设计原则简单介绍如下：SOLID实际上是取5个设计原则的首字母拼起来的一个助记单词。具体的设计原则如下（详细的设计原则，我们会在后面详细阐述，这里不再详细展开）：</p>
-<table>
-<thead>
-<tr>
-<th>首字母</th>
-<th>英文简写</th>
-<th>英文名称</th>
-<th>中文名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>S</td>
-<td>SRP</td>
-<td>Single Responsibility Principle</td>
-<td>单一职责原则</td>
-<td>对象应该只具备单一职责</td>
-</tr>
-<tr>
-<td>O</td>
-<td>OCP</td>
-<td>Open/Close Principle</td>
-<td>开放/封闭原则</td>
-<td>认为“软件体应该是对于扩展开放的，但是对于修改封闭的”的概念。</td>
-</tr>
-<tr>
-<td>L</td>
-<td>LSP</td>
-<td>Liskov Substitution Principle</td>
-<td>Liskov替换原则</td>
-<td>认为“程序中的对象应该是可以在不改变程序正确性的前提下被它的子类所替换的”的概念</td>
-</tr>
-<tr>
-<td>I</td>
-<td>ISP</td>
-<td>Interface Segregation Principle</td>
-<td><a href="http://zh.wikipedia.org/w/index.php?title=%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99&amp;action=edit&amp;redlink=1" target="_blank" rel="external">接口隔离原则</a></td>
-<td>多个特定客户端接口要好于一个宽泛用途的接口</td>
-</tr>
-<tr>
-<td>D</td>
-<td>DIP</td>
-<td>Dependency Inversion Principle</td>
-<td><a href="http://zh.wikipedia.org/wiki/%E4%BE%9D%E8%B5%96%E5%8F%8D%E8%BD%AC%E5%8E%9F%E5%88%99" target="_blank" rel="external">依赖反转原则</a></td>
-<td>依赖于抽象而不是一个实例</td>
-</tr>
-</tbody>
-</table>
-<p>[wik链接]（<a href="http://zh.wikipedia.org/wiki/SOLID_(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1）" target="_blank" rel="external">http://zh.wikipedia.org/wiki/SOLID_(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1）</a></p>
-<p>前面我们简单的八卦了一下，现在回归正题：设计原则有什么用？其实和所有的原则一样，设计原则也是一个判断标准，说通俗点，设计原则就像是木匠手中的尺子，尺子是用来衡量木材的长短的，而设计原则就是衡量类设计的“尺子”：量一量，看长了还是短了，还是正好，长了就裁短一些，短了就加长一些。经过如此衡量并调整，最终就能够得到我们希望的设计作品。当然，和木匠的尺子稍有不同，木匠不用尺子就做不出能用的家具，但我们不用设计原则的话，其实还是能够做出满足需求的系统的。<br>既然这样，我们为什么一定要用设计原则呢？ARTHUR J.RIEL在《OOD启思录》一书中针对这个问题给出了非常形象的解释：你不必严格遵守这些原则，违背它也不会被处以宗教刑罚。但你应当把这些原则看做警铃，若违背了其中的一条，那么警铃就会响起。”——-ARTHUR J.RIEL,《OOD启思录》<br>也就是说，如果违背了这些设计原则，就可能有危险，但究竟是什么危险呢，警铃要警告我们什么呢，是火灾、水灾、地震、陷阱、还是有狮子、老虎。。。。。？</p>
-<p>要回答这个问题，还需要回到面向对象的本源：我们在第一章解释为什么要面向对象的时候提到了面向对象的核心思想是“可扩展性”，这其实就是我们应用设计原则的根本目的：保证可扩展性。如果我们不遵守这些设计原则，警铃就会响起，提醒我们：你的设计可扩展性会有问题！除了设计原则外，后面要讲到的设计模式，其本质也是为了提高可扩展性。这也是为什么我们通过领域类映射得到了很多软件类之后，还需要不辞辛劳的继续应用设计原则和设计模式的主要原因，本质上都是为了提高设计的可扩展性。</p>
-<p>SOLID设计原则的各个子原则详细介绍会在后面详细介绍，这里我们简单的以POS机为例，看看如何应用设计原则。</p>
-<p>仔细观察我们通过领域类映射得到的软件类，可以发现一个很明显不符合SOLID原则中的DIP原则的地方，即：“交易类”直接依赖“会员卡”、“购物卡”、“信用卡”、“现金”4个子类，这样的实现不符合DIP原则，当需要增加新的支付方式时，“交易类”也需要跟着修改。</p>
-<p>既然不满足DIP设计原则，那么我们就按照DIP原则的要求，提取出一个支付的父类来，即：“交易类”依赖“支付类”，“会员卡”、“购物卡”、“信用卡”、“现金”都继承“支付”类。具体实现如下：<br><img src="http://ww4.sinaimg.cn/large/666cc9e3gw1f4975xrknaj20m00kkq6x.jpg" alt=""></p>
-<p>可以看到，应用DIP设计原则之后，我们又多出了一个“支付”的类，这个类原来在领域模型中是没有的，而是我们在设计阶段“创造”出来的。对于其它各个类，我们都可以依次使用设计原则进行判断，当发现不符合设计原则的设计时，就采取增加、删除、合并、拆分等手段，使我们的设计逐步改进，最终达到符合设计原则的目的。</p>
-<p><strong>【设计模式】</strong></p>
-<p>相比设计原则来说，设计模式更加普及和流行，当我们谈到设计方法的时候，大部分人肯定都会想到设计模式，设计模式如此深入人心，几乎到了言必谈设计模式的地步。<br>和设计原则类似，当我们谈论设计模式的时候，我们其实都是在谈论GOF（Gang of Four，中文翻译为“四人帮”）在经典名作《设计模式  –可复用面向对象软件的基础》一书中提到的设计模式。<br>通俗的讲，设计模式是用于指导我们如何做出更好的设计方案，而前面提到的设计原则，其作用也是这样的。那么，设计原则和设计模式，我们该如何选择？<br>有的朋友可能会以为这两个是二选一的关系，要么用设计原则，要么用设计模式。这种理解是错误的，设计原则和设计模式并不是竞争关系，正好相反，它们是互补的关系。<br>设计原则和设计模式互补体现在：<strong>设计原则主要用于指导“类的定义”的设计，而设计模式主要用于指导“类的行为”的设计</strong>，更通俗一点的讲：设计原则是类的静态设计原则，设计模式是类的动态设计原则。</p>
-<p>一般情况下，我们是采用“先设计原则，后设计模式”的方法来操作的。</p>
-<p>设计模式的相关内容会在后文详细介绍，这里我们以POS机为例，看看如何应用设计模式来优化我们的设计。</p>
-<p>通过分析应用设计原则优化后的类，我们发现“信用卡”这个类存在优化的空间，因为国际上存在不同的信用卡，最常见的有中国银联（UnionPay）、Visa、MasterCard这几种，每种信用卡在支付的时候需要接入不同的机构，其接入方式和协议肯定都是有一定差异的。为了封装这种差异以支持后续更好的扩展，我们应用设计模式的Bridge模式，提取出“信用卡处理”这个类，这个类的主要处理“连接、认证、扣款”这样的职责。UnionPay、Visa、MasterCard都继承“信用卡处理”这个类。具体如下：<br><img src="http://ww3.sinaimg.cn/large/666cc9e3gw1f4976hjbucj20yp0omafe.jpg" alt=""></p>
-<h2 id="第三斧（照本宣科）：拆分辅助类"><a href="#第三斧（照本宣科）：拆分辅助类" class="headerlink" title="第三斧（照本宣科）：拆分辅助类"></a><strong>第三斧（照本宣科）：拆分辅助类</strong></h2><p>**经过前面的设计步骤之后，面向对象类的设计工作已经完成，我们输出了完整的类模型，看起来已经可以开始动手编码了，你是否舒了一口气，看着自己的设计作品，不由得产生了一种自豪感呢？</p>
-<p>确实值得自豪，毕竟我们一步一个脚印，从最初仅仅存在于客户脑袋中的需求，逐步的推导、演变、设计出了能够付诸实施的类模型了。但在最终实施之前，还有一点小小的动作要完成，这就是我们的拆分辅助类操作。</p>
-<p>拆分辅助类的主要目的是为了使我们的类在编码的时候能够满足一些框架或者规范的要求。比如说常见的MVC模式，将一个业务拆分成Control、Model、View三个元素；J2EE模式中，将对象分为PO、BO、VO、DTO等众多对象。</p>
-<p>之所以说这是一点小小的动作，是因为这个动作确实很简单，只要将我们设计出来的类，按照规范要求，一 一对应分拆即可。</p>
-<p>以POS机为例，假如我们的框架要求提供DAO对象，负责数据库的相关操作，则“购物卡”类就应该拆分为两个：“购物卡”、“购物卡DAO”，其中“购物卡”用于负责提供“支付”功能给“交易”类调用，“购物卡DAO”用于负责从数据库读取购物卡信息，修改数据库中购物卡余额等操作。<br><img src="http://ww3.sinaimg.cn/large/666cc9e3gw1f4976wzbsgj20ch03vmxu.jpg" alt=""><br>需要注意的是，拆分设计辅助类仅仅是为了满足框架或者规范的要求，<strong>本身并不是一个设计的步骤，而是实施的一个步骤</strong>，所以我们一般都不需要将拆分的辅助类体现在类模型中，仅仅在编码的时候拆分即可。</p>
-<h1 id="第二十七章"><a href="#第二十七章" class="headerlink" title="第二十七章"></a>第二十七章</h1><p>类模型指导我们如何<strong>声明类</strong>，动态模型指导我们如何<strong>实现类</strong>！</p>
-<p>动态模型设计一般都是在类模型设计完成后才开始，因为动态模型设计的时候一般都需要用到类模型中的类。相对类模型来说，动态模型要相对简单一些，主要原因在于动态模型设计的时候没有什么设计原则和设计模式需要应用，只需要对照用例模型，根据用例模型的特点，选取一个合适的动态模型将其表述出来即可。</p>
-<p>动态模型在实际开发过程中有非常重要的作用，简单来说，如果没有动态模型，那么你虽然完成了类设计，但还是不能编码，或者只能编写类的声明代码（类属性、方法名称），但不能写类的实现代码（方法里面的实现逻辑，即：每个方法的实现）。动态模型就是用来指导我们如何编写具体的方法的。</p>
-<p>有的同学可能会有疑问：那些地方要进行动态模型设计呢？<br>还是那句老话，你觉得比较复杂你就设计，简单你就不设计，总之：<strong>你需要你就设计</strong>！<br>像我在实际开发中，基本上一个中等项目就一两个业务设计动态模型（小项目看到需求就编码了 ：） ），其它业务看需求文档就能看出如何编码，这也是有经验和经验不足的差别。</p>
-<p>参考UML标准，常见的动态模型如下：<br>【状态模型】<br>状态模型主要用于描述对象的生命周期的状态变化。通过状态图，我们可以了解到对象有哪些状态，状态之间如何转换，转换的触发条件等。当我们发现一个对象的状态比较复杂的时候，就需要设计对象的状态模型。<br>UML中使用状态图来描述状态模型</p>
-<p><strong>【活动模型】</strong><br>活动模型主要用于描述一个工作流程或者计算流程。其关注点是在完成某项工作的过程中，系统中的哪些对象承担了什么样的任务、做了什么处理，以及这些对象之间的先后交互关系。当我们发现一个处理流程比较复杂的时候，就需要设计流程的活动模型。<br>UML中使用活动图来描述活动模型</p>
-<p><strong>【序列模型】</strong><br>序列模型主要用于描述对象按照时间顺序组织的消息交互过程，其关键特征是强调按照“时间顺序”来组织对象的交互，所以序列图有时又称为“时序图”或者“顺序图”。序列模型是我们最常用的动态模型，特别适合将用例模型或者SSD转换为系统的动态模型。<br>UML中使用序列图来描述序列模型</p>
-<p><strong>【协作模型】</strong><br>协作模型主要用于描述按照对象之间的关联来组织的消息交互过程，其关键特征是强调“对象关系”来组织对象的交互。协作模型的作用和序列模型一样，只是强调的点不同，大部分的时候我们都是选择“序列模型”，因为序列模型的时间顺序很多时候和用例模型的步骤不谋而合。<br>UML中使用协助图来描述协作模型</p>
-<p>注意：以上模型并不是每个都必须有的，根据实际需要选择即可</p>
-<p><strong>建模实践</strong><br>以上这些模型都可以从用例模型推导出来，活动模型、序列模型、协作模型基本上都是和用例模型一一对应的，或者对应用例中的某个分支。一般情况下不推荐一个模型中包含多个分支，因为这样会导致图比较复杂，而且主题不突出。</p>
-<p>状态模型和其它模型相比要复杂一些，因为并不能从单个用例或者单个用例分支推导出某个对象的所有状态，而需要综合多个用例模型，从中提取出和某个对象状态相关的内容，再统一设计状态模型。</p>
-<p>从用例模型推导出动态模型是一个“分解和分配”的过程，因为在用例模型中，系统是当做一个“黑盒”来看待的，而在动态模型中，系统不再是一个黑盒，而是分解成了一个一个的类。因此我们需要将原来笼统的划分给系统的功能和职责，进一步分解并分配给不同的类。通俗的讲，动态模型就是说：为了完成系统的XXX功能， 先需要类A做任务1，然后需要类B需要做任务2，再由类C做任务3。。。。。。依次分解下去，最终就能够实现将类串起来，相互配合，最后实现了系统的需求。</p>
-<p>我们以POS机为例，假设我们基于买单这个用例的正常分支设计“序列模型”，则可以得到如下的“序列模型”：<br><img src="http://ww3.sinaimg.cn/large/666cc9e3gw1f4977ftgrwj20qh0zq41q.jpg" alt="">有了上面这个“序列图”，假设我们要开始写代码，则基本可以按照如下伪码的方式实现（实际的编码肯定不会这么简单，但方法是一样）：</p>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">main()&#123;  </span><br><span class="line">  </span><br><span class="line">    Trade trade = <span class="literal">new</span> Trade();                  </span><br><span class="line">    <span class="built_in">Integer</span> tradeId =trade.makeNewTrade();  <span class="comment">//创建  </span></span><br><span class="line">    trade.addGoods();                       <span class="comment">//增加商品  </span></span><br><span class="line">    trade.cacuMoney();                      <span class="comment">//计算总额  </span></span><br><span class="line">    <span class="attr">...</span><span class="attr">...</span><span class="attr">...</span><span class="attr">...</span><span class="comment">//省略一大段代码  </span></span><br><span class="line">    Receipt receipt = <span class="literal">new</span> Receipt();          </span><br><span class="line">    receipt.print(trade);                   <span class="comment">//打印小票  </span></span><br><span class="line">    <span class="attr">...</span><span class="attr">...</span><span class="attr">...</span>..<span class="comment">//省略一大段代码  </span></span><br><span class="line">    trade.finish();                         <span class="comment">//结束  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;无意间发现这篇文章，文章讲解由浅入深，读完后感触很深&lt;br&gt;特全文转到自己的博客，方便以后自己随时查看&lt;br&gt;文章转载自爱技术的华仔的博客[&lt;a href=&quot;http://blog.csdn.net/yunhua_lee&quot;&gt;http://blog.csdn.net/yunhua_lee&lt;/a&gt;]&lt;br&gt;非常感谢&lt;a href=&quot;http://blog.csdn.net/yunhua_lee&quot;&gt;爱技术的华仔&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;第二十一章-SSD&quot;&gt;&lt;a href=&quot;#第二十一章-SSD&quot; class=&quot;headerlink&quot; title=&quot;第二十一章 SSD&quot;&gt;&lt;/a&gt;第二十一章 SSD&lt;/h1&gt;&lt;p&gt;用例图是用来描述系统的，而SSD（系统序列图）又是来描述用例的，oh my god，这不是在玩我们么？&lt;img src=&quot;http://static.blog.csdn.net/xheditor/xheditor_emot/default/crazy.gif&quot; alt=&quot;抓狂&quot;&gt;
     
     </summary>
     

@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>pythonの将数组写入oracle内 | Phantom</title>
+  <title>后续跟进问题 | Phantom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="将给定的数组写入oracle内，保存到指定新表内首先需要安装插件cx_oracle">
+  <meta name="description" content="1）时间要取最大值 不能取当天">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pythonの将数组写入oracle内">
-<meta property="og:url" content="http://i90s.vip/2016/05/19/pythonの将数组写入oracle内/index.html">
+<meta property="og:title" content="后续跟进问题">
+<meta property="og:url" content="http://i90s.vip/2016/12/27/后续跟进问题/index.html">
 <meta property="og:site_name" content="Phantom">
-<meta property="og:description" content="将给定的数组写入oracle内，保存到指定新表内首先需要安装插件cx_oracle">
-<meta property="og:updated_time" content="2016-05-19T13:23:17.000Z">
+<meta property="og:description" content="1）时间要取最大值 不能取当天">
+<meta property="og:updated_time" content="2016-12-27T03:32:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="pythonの将数组写入oracle内">
-<meta name="twitter:description" content="将给定的数组写入oracle内，保存到指定新表内首先需要安装插件cx_oracle">
+<meta name="twitter:title" content="后续跟进问题">
+<meta name="twitter:description" content="1）时间要取最大值 不能取当天">
   
     <link rel="alternative" href="/atom.xml" title="Phantom" type="application/atom+xml">
   
@@ -204,11 +204,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-pythonの将数组写入oracle内" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-后续跟进问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/19/pythonの将数组写入oracle内/" class="article-date">
-  	<time datetime="2016-05-19T13:09:08.000Z" itemprop="datePublished">2016-05-19</time>
+      <a href="/2016/12/27/后续跟进问题/" class="article-date">
+  	<time datetime="2016-12-27T03:30:13.000Z" itemprop="datePublished">2016-12-27</time>
 </a>
     </div>
   
@@ -221,7 +221,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      pythonの将数组写入oracle内
+      后续跟进问题
     </h1>
   
 
@@ -236,7 +236,7 @@
 
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle/">Oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/产品经理/">产品经理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/任务跟进/">任务跟进</a></li></ul>
 	</div>
 
         <div class="clearfix"></div>
@@ -246,11 +246,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <blockquote>
-<p>将给定的数组写入oracle内，保存到指定新表内<br>首先需要安装插件cx_oracle<br><a id="more"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> cx_Oracle</span><br><span class="line"><span class="comment">#程序目的：将二维数组内的数值写入oracle数据库相应的表内</span></span><br><span class="line"><span class="comment">#return [状态位，错误信息]</span></span><br><span class="line"><span class="comment">#0表示输出成功，错误信息为空</span></span><br><span class="line"><span class="comment">#1表示输出失败，返回相应错误信息</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p><strong>通过OUTPUT_ORACLE类实现功能 </strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#----连接数据库-----</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OUTPUT_ORACLE</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment">#读取Oracle配置文件</span></span><br><span class="line">        Config_file=open(<span class="string">"Config.txt"</span>)</span><br><span class="line">        self.Oracle_Config=Config_file.readline()</span><br><span class="line">        Config_file.close()</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">RW_Oracle</span><span class="params">(self,table_name,write_array)</span>:</span></span><br><span class="line">        self.tab_name=<span class="string">"create table "</span>+table_name  <span class="comment">#创建新表</span></span><br><span class="line">        self.w_array=write_array</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            conn=cx_Oracle.connect(self.Oracle_Config)</span><br><span class="line">            cursor=conn.cursor()</span><br><span class="line">        <span class="keyword">except</span> cx_Oracle.DatabaseError,msg:</span><br><span class="line">            cursor.close ()</span><br><span class="line">            conn.close ()</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line"><span class="comment">#         try:</span></span><br><span class="line"><span class="comment">#             cursor.execute('drop table table_cc') #先删除表</span></span><br><span class="line"><span class="comment">#         except cx_Oracle.DatabaseError,msg:</span></span><br><span class="line"><span class="comment">#             cursor.close ()</span></span><br><span class="line"><span class="comment">#             conn.close ()</span></span><br><span class="line"><span class="comment">#             return [1,msg]</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            cursor.execute(self.tab_name)  <span class="comment">#新建表格</span></span><br><span class="line">        <span class="keyword">except</span> cx_Oracle.DatabaseError,msg:</span><br><span class="line">            cursor.close ()</span><br><span class="line">            conn.close ()</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.w_array:</span><br><span class="line">            cursor.close ()</span><br><span class="line">            conn.close ()</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>]</span><br><span class="line">        <span class="comment">#获取表名</span></span><br><span class="line">        Table_Name=table_name.split(<span class="string">'('</span>) <span class="comment">#用括号将表名分隔开</span></span><br><span class="line">        Insert_sql_temp=<span class="string">'insert into '</span>+Table_Name[<span class="number">0</span>]+<span class="string">' values('</span></span><br><span class="line">        <span class="comment">#创建插入SQL语句</span></span><br><span class="line">        x_len=len(self.w_array)     <span class="comment">#行数</span></span><br><span class="line">        y_len=len(self.w_array[<span class="number">0</span>])  <span class="comment">#列数</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,x_len):</span><br><span class="line">            array_temp=<span class="string">''</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,y_len):</span><br><span class="line">                <span class="keyword">if</span> j==y_len<span class="number">-1</span>:</span><br><span class="line">                    array_temp=array_temp+str(self.w_array[i][j])</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    array_temp=array_temp+str(self.w_array[i][j])+<span class="string">','</span></span><br><span class="line">            Insert_sql=Insert_sql_temp+array_temp+<span class="string">')'</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                cursor.execute(Insert_sql)</span><br><span class="line">            <span class="keyword">except</span> cx_Oracle.DatabaseError,msg:</span><br><span class="line">                cursor.close ()</span><br><span class="line">                conn.close ()</span><br><span class="line">                <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">        <span class="comment">#提交数据</span></span><br><span class="line">        conn.commit(); </span><br><span class="line">        <span class="comment">#关闭数据库连接</span></span><br><span class="line">        cursor.close ()</span><br><span class="line">        conn.close ()</span><br><span class="line">        <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>]</span><br></pre></td></tr></table></figure></p>
-<p><strong> 存在的问题 </strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">写入效率不高，有待进一步优化</span><br></pre></td></tr></table></figure></p>
+        <p>1）时间要取最大值 不能取当天</p>
 
       
     </div>
@@ -259,13 +255,13 @@
   
     
 <div class="copyright">
-  <p><span>本文标题:</span><a href="/2016/05/19/pythonの将数组写入oracle内/">pythonの将数组写入oracle内</a></p>
+  <p><span>本文标题:</span><a href="/2016/12/27/后续跟进问题/">后续跟进问题</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Phantom 的个人博客">Phantom</a></p>
-  <p><span>发布时间:</span>2016年05月19日 - 21时09分</p>
-  <p><span>最后更新:</span>2016年05月19日 - 21时23分</p>
+  <p><span>发布时间:</span>2016年12月27日 - 11时30分</p>
+  <p><span>最后更新:</span>2016年12月27日 - 11时32分</p>
   <p>
-    <span>原始链接:</span><a class="post-url" href="/2016/05/19/pythonの将数组写入oracle内/" title="pythonの将数组写入oracle内">http://i90s.vip/2016/05/19/pythonの将数组写入oracle内/</a>
-    <span class="copy-path" data-clipboard-text="原文: http://i90s.vip/2016/05/19/pythonの将数组写入oracle内/　　作者: Phantom" title="点击复制文章链接">
+    <span>原始链接:</span><a class="post-url" href="/2016/12/27/后续跟进问题/" title="后续跟进问题">http://i90s.vip/2016/12/27/后续跟进问题/</a>
+    <span class="copy-path" data-clipboard-text="原文: http://i90s.vip/2016/12/27/后续跟进问题/　　作者: Phantom" title="点击复制文章链接">
         <i class="fa fa-clipboard"></i>
     </span>
   </p>
@@ -279,16 +275,10 @@
 
 <nav id="article-nav">
   
-    <div id="article-nav-newer" class="article-nav-title">
-      <a href="/2016/05/28/正交试验法原理/">
-        正交试验法原理
-      </a>
-    </div>
-  
   
     <div id="article-nav-older" class="article-nav-title">
-      <a href="/2016/05/18/pythonの将数组写入excel内/">
-        pythonの将数组写入excel内
+      <a href="/2016/12/19/RF使用笔记-1/">
+        RF使用笔记(1)
       </a>
     </div>
   
@@ -355,7 +345,7 @@
   
   <div class="duoshuo" id="comments">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="pythonの将数组写入oracle内" data-title="pythonの将数组写入oracle内" data-url="http://i90s.vip/2016/05/19/pythonの将数组写入oracle内/"></div>
+	<div class="ds-thread" data-thread-key="后续跟进问题" data-title="后续跟进问题" data-url="http://i90s.vip/2016/12/27/后续跟进问题/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -392,16 +382,14 @@
 
   
   
-    
     <div  class="post-nav-button">
-    <a href="/2016/05/28/正交试验法原理/" title="上一篇: 正交试验法原理">
-    <i class="fa fa-angle-left"></i>
-    </a>
-    <a href="/2016/05/18/pythonの将数组写入excel内/" title="下一篇: pythonの将数组写入excel内">
+    <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+    <a href="/2016/12/19/RF使用笔记-1/" title="下一篇: RF使用笔记(1)">
     <i class="fa fa-angle-right"></i>
     </a>
     </div>
   
+    
 
 
 
