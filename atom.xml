@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://i90s.vip/"/>
-  <updated>2016-12-27T06:37:41.000Z</updated>
+  <updated>2016-12-27T07:34:18.000Z</updated>
   <id>http://i90s.vip/</id>
   
   <author>
@@ -20,14 +20,28 @@
     <link href="http://i90s.vip/2016/12/27/RF%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0-2/"/>
     <id>http://i90s.vip/2016/12/27/RF使用笔记-2/</id>
     <published>2016-12-27T06:18:55.000Z</published>
-    <updated>2016-12-27T06:37:41.000Z</updated>
+    <updated>2016-12-27T07:34:18.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="第一个RF脚本"><a href="#第一个RF脚本" class="headerlink" title="第一个RF脚本"></a>第一个RF脚本</h2><ol>
-<li><p>启动RF<br>安装好RF后，桌面会生成一个图标，双击图标启动，界面如下 </p>
-<a id="more"></a>
-<p><img src="启动页面" alt=""></p>
+<li><p>启动RF</p>
+<p>安装好RF后，桌面会生成一个图标，双击图标启动，界面如下 <a id="more"></a><br><img src="启动页面" alt=""></p>
 </li>
-<li><p>创建项目<br>选择菜单栏file-&gt;new project<br>Name：项目名称 （可以是中文）<br>Parent Directory：项目路径（尽量是英文路径，以防出现各种乱七八糟的错误）<br>Type：<strong>需要选择Directory</strong><br><img src="创建项目" alt=""></p>
+<li><p>创建项目</p>
+<p>选择菜单栏file-&gt;new project(快捷键ctrl+N)<br>Name：项目名称（例如：test测试项目，可以是中文）<br>Parent Directory：项目路径（尽量是英文路径，以防出现各种乱七八糟的错误）<br>Type：<strong>需要选择Directory</strong><br><img src="创建项目" alt=""></p>
+</li>
+<li><p>创建测试套件</p>
+<p>右键点击’测试项目’选择new Suite<br>Name：输入测试模块名称（例如：百度首页模块）<br>Type：选择File<br><img src="测试套件" alt=""></p>
+</li>
+<li><p>创建测试用例</p>
+<p>右键点击’百度首页模块’选择new Test Case<br>name：测试用例的名字（名字主要是测试的功能点）<br><img src="测试案例" alt=""></p>
+</li>
+<li><p>导入seleniumslibrary库</p>
+<p>左键点击测试套件’百度首页模块’，在其’edit’的tab页上，点击右边的’library’，再弹出框「name」内输入’Selenium2Library’，注意大小写，点击’ok’</p>
+<blockquote>
+<p>使用RF编写web的测试用例，需要selenium库的支持，所以需要加载Selenium2Library库<br>点击OK后，若Selenium2Library显示为黑色表示导入成功，若是红色表示没有查找到这个库<br>![]（倒库）</p>
+</blockquote>
+</li>
+<li><p>查询脚本关键字</p>
 </li>
 </ol>
 ]]></content>
@@ -35,7 +49,8 @@
     <summary type="html">
     
       &lt;h2 id=&quot;第一个RF脚本&quot;&gt;&lt;a href=&quot;#第一个RF脚本&quot; class=&quot;headerlink&quot; title=&quot;第一个RF脚本&quot;&gt;&lt;/a&gt;第一个RF脚本&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;启动RF&lt;br&gt;安装好RF后，桌面会生成一个图标，双击图标启动，界面如下 &lt;/p&gt;
+&lt;li&gt;&lt;p&gt;启动RF&lt;/p&gt;
+&lt;p&gt;安装好RF后，桌面会生成一个图标，双击图标启动，界面如下
     
     </summary>
     
