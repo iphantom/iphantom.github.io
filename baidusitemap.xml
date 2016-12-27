@@ -4,16 +4,16 @@
 
     
   <url>
-    <loc>http://i90s.vip/2016/12/27/%E5%90%8E%E7%BB%AD%E8%B7%9F%E8%BF%9B%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2016-12-27T03:32:16.000Z</lastmod>
+    <loc>http://i90s.vip/2016/12/27/RF%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0-2/</loc>
+    <lastmod>2016-12-27T06:37:41.000Z</lastmod>
     <data>
         <display>
-        <title>后续跟进问题</title>
-        <pubTime>2016-12-27T03:30:13.000Z</pubTime>
+        <title>RF使用笔记-2</title>
+        <pubTime>2016-12-27T06:18:55.000Z</pubTime>
         
-        <tag>任务跟进</tag>
+        <tag>Robot Framework</tag>
          
-        <tag>产品经理</tag>
+        <tag>自动化测试</tag>
          
          
            
@@ -27,7 +27,7 @@
     
   <url>
     <loc>http://i90s.vip/2016/12/19/RF%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0-1/</loc>
-    <lastmod>2016-12-19T07:19:25.000Z</lastmod>
+    <lastmod>2016-12-27T06:26:33.000Z</lastmod>
     <data>
         <display>
         <title>RF使用笔记(1)</title>
@@ -36,6 +36,30 @@
         <tag>Robot Framework</tag>
          
         <tag>自动化测试</tag>
+         
+        <tag>chromeDriver</tag>
+         
+         
+           
+             
+              <breadCrumb title="软件笔记" url="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://i90s.vip/2016/12/27/%E5%90%8E%E7%BB%AD%E8%B7%9F%E8%BF%9B%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2016-12-27T03:35:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>后续跟进问题</title>
+        <pubTime>2016-12-27T03:30:13.000Z</pubTime>
+        
+        <tag>任务跟进</tag>
+         
+        <tag>产品经理</tag>
          
          
            
@@ -492,9 +516,9 @@
         <title>pythonの将数组写入oracle内</title>
         <pubTime>2016-05-19T13:09:08.000Z</pubTime>
         
-        <tag>Oracle</tag>
-         
         <tag>python</tag>
+         
+        <tag>Oracle</tag>
          
          
            
@@ -624,9 +648,9 @@
         <title>SQL入门教程（一）</title>
         <pubTime>2016-04-15T14:05:50.000Z</pubTime>
         
-        <tag>Oracle</tag>
-         
         <tag>SQL用法</tag>
+         
+        <tag>Oracle</tag>
          
          
            
@@ -819,9 +843,9 @@
         <title>Python入门网络爬虫之精华版</title>
         <pubTime>2015-12-16T03:29:32.000Z</pubTime>
         
-        <tag>Python</tag>
-         
         <tag>转载</tag>
+         
+        <tag>Python</tag>
          
         <tag>爬虫</tag>
          
