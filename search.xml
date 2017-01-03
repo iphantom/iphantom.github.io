@@ -4,6 +4,18 @@
   
     
     <entry>
+      <title><![CDATA[Jmeter链接Postgres数据库]]></title>
+      <url>http://i90s.vip/2017/01/03/Jmeter%E9%93%BE%E6%8E%A5Postgres%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Jmeter链接Oracle数据库]]></title>
+      <url>http://i90s.vip/2017/01/03/Jmeter%E9%93%BE%E6%8E%A5Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[RF使用笔记-2]]></title>
       <url>http://i90s.vip/2016/12/27/RF%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0-2/</url>
       <content type="html"><![CDATA[<h2 id="第一个RF脚本"><a href="#第一个RF脚本" class="headerlink" title="第一个RF脚本"></a>第一个RF脚本</h2><ol>
@@ -25,7 +37,8 @@
 <p>使用RF编写web的测试用例，需要selenium库的支持，所以需要加载Selenium2Library库<br>点击OK后，若Selenium2Library显示为黑色表示导入成功，若是红色表示没有查找到这个库<br>![]（倒库）</p>
 </blockquote>
 </li>
-<li><p>查询脚本关键字</p>
+<li><p>查询脚本关键字<br>在写测试用例的时候，需要用到很多关键字，可以使用F5查询关键字，点击F5，弹出如下页面，<br>可在search term框里输入关键字</p>
+<p><img src="关键字" alt=""></p>
 </li>
 </ol>
 ]]></content>
@@ -128,12 +141,6 @@
 <p>注意去掉sampleresult.default.encoding=UTF-8前面的#号</p>
 </blockquote>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[使用Jmeter进行接口测试]]></title>
-      <url>http://i90s.vip/2016/09/04/%E4%BD%BF%E7%94%A8Jmeter%E8%BF%9B%E8%A1%8C%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/</url>
-      <content type="html"></content>
     </entry>
     
     <entry>
