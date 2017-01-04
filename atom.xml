@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://i90s.vip/"/>
-  <updated>2017-01-03T09:14:36.000Z</updated>
+  <updated>2017-01-04T02:31:44.000Z</updated>
   <id>http://i90s.vip/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Jmeter使用随笔-4</title>
+    <link href="http://i90s.vip/2017/01/04/Jmeter%E4%BD%BF%E7%94%A8%E9%9A%8F%E7%AC%94-4/"/>
+    <id>http://i90s.vip/2017/01/04/Jmeter使用随笔-4/</id>
+    <published>2017-01-04T02:21:46.000Z</published>
+    <updated>2017-01-04T02:31:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Jmeter启动报错"><a href="#Jmeter启动报错" class="headerlink" title="Jmeter启动报错"></a>Jmeter启动报错</h2><p>　　前段时间电脑重装系统，习惯性的解压了Jmeter压缩包开始修改脚本，但是竟然神奇的报错了····<br>　　报错内容是”Not able to find Java executable or version. Please check your Java installation”，感觉应该是环境变量没有配置，上网查了下配置方法</p>
+<p>网上查的解决方法大部分是在环境变量PATH中添加： %SystemRoot%/system32;%SystemRoot%<br>但是添加了之后发现还是无法正常启动，又查找了一些网页，找到了另外一个方法<br>解决方法：在环境变量PATH里加%JAVA_HOME%\bin；<br>添加之后，就可以正常启动了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Jmeter启动报错&quot;&gt;&lt;a href=&quot;#Jmeter启动报错&quot; class=&quot;headerlink&quot; title=&quot;Jmeter启动报错&quot;&gt;&lt;/a&gt;Jmeter启动报错&lt;/h2&gt;&lt;p&gt;　　前段时间电脑重装系统，习惯性的解压了Jmeter压缩包开始修改脚本，但是
+    
+    </summary>
+    
+      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Jmeter" scheme="http://i90s.vip/tags/Jmeter/"/>
+    
+      <category term="性能测试" scheme="http://i90s.vip/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Jmeter链接Postgres数据库</title>
@@ -491,7 +517,7 @@
 <p>编码转换</p>
 <p>很可能因为字符串中参杂了奇怪的东西，导致即使编码种类正确，依旧无法解码。</p>
 <p>我知道我之前讲过了，但可能有人直接跳疑难问题解答嘛。</p>
-<p>这里可以使用decode的第二个参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
+<p>这里可以使用decode的第二个参数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
 <p>特殊平台下编码</p>
 <p>很多人都说 Windows 是个坑，即使在 Python 3 下面也一样。</p>
 <p>因为中文文件名出来都是乱码。</p>
@@ -947,37 +973,6 @@
       <category term="Oracle" scheme="http://i90s.vip/tags/Oracle/"/>
     
       <category term="python" scheme="http://i90s.vip/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pythonの将数组写入excel内</title>
-    <link href="http://i90s.vip/2016/05/18/python%E3%81%AE%E5%B0%86%E6%95%B0%E7%BB%84%E5%86%99%E5%85%A5excel%E5%86%85/"/>
-    <id>http://i90s.vip/2016/05/18/pythonの将数组写入excel内/</id>
-    <published>2016-05-18T13:00:51.000Z</published>
-    <updated>2016-05-19T13:24:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>将给定的数组写入excel内，保存到指定路径下<br>首先需要安装两个插件 xlrd xlwt<br><a id="more"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*- </span></span><br><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"><span class="keyword">import</span> xlwt</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment">#程序目的：将二维数组内的数值写入excel内，并保存到相应的路径</span></span><br><span class="line"><span class="comment">#return [状态位，错误信息]</span></span><br><span class="line"><span class="comment">#0表示输出成功，错误信息为空</span></span><br><span class="line"><span class="comment">#1表示输出失败，返回相应错误信息</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p><strong> 通过OUTPUT_EXCEL类实现该功能 </strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OUTPUT_EXCEL</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.file=xlwt.Workbook()</span><br><span class="line">        self.table=self.file.add_sheet(<span class="string">'sheet 1'</span>) <span class="comment">#默认存到Sheet 1内</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">RW_Excel</span><span class="params">(self,excel_name,save_path,write_array)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> write_array: <span class="comment">#判断数组是否为空</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                self.file.save(excel_name)</span><br><span class="line">            <span class="keyword">except</span> IOError,msg:</span><br><span class="line">                <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        x_len=len(write_array)</span><br><span class="line">        y_len=len(write_array[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">0</span>,x_len):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,y_len):</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    self.table.write(i,j,write_array[i][j])</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    <span class="keyword">print</span> i ,j</span><br><span class="line">                    <span class="keyword">return</span> [<span class="number">1</span>,<span class="string">'Data error'</span>]</span><br><span class="line">        file_name_path=save_path+excel_name</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            self.file.save(file_name_path)</span><br><span class="line">        <span class="keyword">except</span> IOError,msg:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">        <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>]</span><br></pre></td></tr></table></figure></p>
-<p><strong> 存在的问题 </strong><br><figure class="highlight parser3"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">由于使用xlwt xlrd插件，写入excel的行不能超过</span><span class="number">2</span><span class="xml"></span><span class="keyword">^16</span><span class="xml">，也就是最多只能写入</span><span class="number">65536</span><span class="xml">行</span></span><br></pre></td></tr></table></figure></p>
-<p><strong> 未验证的可行的解决方法 </strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用openpyxl插件代替xlwt和xlrd插件</span><br></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;将给定的数组写入excel内，保存到指定路径下&lt;br&gt;首先需要安装两个插件 xlrd xlwt&lt;br&gt;
-    
-    </summary>
-    
-      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="python" scheme="http://i90s.vip/tags/python/"/>
-    
-      <category term="excel" scheme="http://i90s.vip/tags/excel/"/>
     
   </entry>
   
