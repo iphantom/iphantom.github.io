@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://i90s.vip/"/>
-  <updated>2017-01-04T02:31:44.000Z</updated>
+  <updated>2017-01-04T03:30:51.000Z</updated>
   <id>http://i90s.vip/</id>
   
   <author>
@@ -20,15 +20,15 @@
     <link href="http://i90s.vip/2017/01/04/Jmeter%E4%BD%BF%E7%94%A8%E9%9A%8F%E7%AC%94-4/"/>
     <id>http://i90s.vip/2017/01/04/Jmeter使用随笔-4/</id>
     <published>2017-01-04T02:21:46.000Z</published>
-    <updated>2017-01-04T02:31:44.000Z</updated>
+    <updated>2017-01-04T03:30:51.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Jmeter启动报错"><a href="#Jmeter启动报错" class="headerlink" title="Jmeter启动报错"></a>Jmeter启动报错</h2><p>　　前段时间电脑重装系统，习惯性的解压了Jmeter压缩包开始修改脚本，但是竟然神奇的报错了····<br>　　报错内容是”Not able to find Java executable or version. Please check your Java installation”，感觉应该是环境变量没有配置，上网查了下配置方法</p>
+    <content type="html"><![CDATA[<h2 id="Jmeter启动报错"><a href="#Jmeter启动报错" class="headerlink" title="Jmeter启动报错"></a>Jmeter启动报错</h2><p>　　前段时间电脑重装系统，习惯性的解压了Jmeter压缩包开始修改脚本，但是竟然神奇的报错了····<br>　　报错内容是”Not able to find Java executable or version. Please check your Java installation”，感觉应该是环境变量没有配置，上网查了下配置方法 <a id="more"></a></p>
 <p>网上查的解决方法大部分是在环境变量PATH中添加： %SystemRoot%/system32;%SystemRoot%<br>但是添加了之后发现还是无法正常启动，又查找了一些网页，找到了另外一个方法<br>解决方法：在环境变量PATH里加%JAVA_HOME%\bin；<br>添加之后，就可以正常启动了</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Jmeter启动报错&quot;&gt;&lt;a href=&quot;#Jmeter启动报错&quot; class=&quot;headerlink&quot; title=&quot;Jmeter启动报错&quot;&gt;&lt;/a&gt;Jmeter启动报错&lt;/h2&gt;&lt;p&gt;　　前段时间电脑重装系统，习惯性的解压了Jmeter压缩包开始修改脚本，但是
+      &lt;h2 id=&quot;Jmeter启动报错&quot;&gt;&lt;a href=&quot;#Jmeter启动报错&quot; class=&quot;headerlink&quot; title=&quot;Jmeter启动报错&quot;&gt;&lt;/a&gt;Jmeter启动报错&lt;/h2&gt;&lt;p&gt;　　前段时间电脑重装系统，习惯性的解压了Jmeter压缩包开始修改脚本，但是竟然神奇的报错了····&lt;br&gt;　　报错内容是”Not able to find Java executable or version. Please check your Java installation”，感觉应该是环境变量没有配置，上网查了下配置方法
     
     </summary>
     
@@ -523,7 +523,7 @@
 <p>编码转换</p>
 <p>很可能因为字符串中参杂了奇怪的东西，导致即使编码种类正确，依旧无法解码。</p>
 <p>我知道我之前讲过了，但可能有人直接跳疑难问题解答嘛。</p>
-<p>这里可以使用decode的第二个参数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
+<p>这里可以使用decode的第二个参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
 <p>特殊平台下编码</p>
 <p>很多人都说 Windows 是个坑，即使在 Python 3 下面也一样。</p>
 <p>因为中文文件名出来都是乱码。</p>
