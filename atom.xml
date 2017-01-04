@@ -60,9 +60,63 @@
     <link href="http://i90s.vip/2017/01/03/Jmeter%E9%93%BE%E6%8E%A5Oracle%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     <id>http://i90s.vip/2017/01/03/Jmeter链接Oracle数据库/</id>
     <published>2017-01-03T09:14:20.000Z</published>
-    <updated>2017-01-04T03:00:13.000Z</updated>
+    <updated>2017-01-04T07:50:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="JmeterのJDBC-Request"><a href="#JmeterのJDBC-Request" class="headerlink" title="JmeterのJDBC Request"></a>JmeterのJDBC Request</h2><blockquote>
+<p>JDBC Request：这个sqmpler可以向数据库发送一个jdbc请求（SQL语句），并获取返回的数据库数据的操作，它经常需要和JDBC Connertion Configuration配置原件一起使用，主要是配置数据库的相关属性，比如ip，帐号，密码，链接数等。</p>
+</blockquote>
+<ol>
+<li><p>添加数据库jar包<br>不同的数据库，需要添加的jar包不同，需要根据需求下载自己需要的jar包。<br>下载完成后，可以通过以下两种方式安装jar包<a id="more"></a><br>1）直接将jar包复制到jmeter的lib目录下（推荐）<br>2）通过Tset Plan添加<br>在’add directory or jar to classpath’里面把jar包的路径添加进去</p>
+</li>
+<li><p>配置JDBC Connection Configuration<br>参数含义;<br>. Variable Name:数据库连接池的名称，可以添加多个JDBC Connection Configuration，每个可以七个不同的名称，再jdbc request中可以通过这个名字选择不同的连接池<br>. Database URL：数据库url，具体配置如下<br>. JDBC Driver class:JDBC驱动<br>. username：数据库登录用户名<br>. password：数据库登录密码</p>
+</li>
+</ol>
+<p>不同数据库填写表格：</p>
+<table>
+<thead>
+<tr>
+<th>Database</th>
+<th>Driver calss</th>
+<th>Database URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MySQL</td>
+<td>com.mysql.jdbc.Driver</td>
+<td>jdbc:mysql://host:port/{dbname}</td>
+</tr>
+<tr>
+<td>PostgreSql</td>
+<td>org.postgresql.Driver</td>
+<td>jdbc:postgresql:{dbname}</td>
+</tr>
+<tr>
+<td>Oracle</td>
+<td>oracle.jdbc.driver.OracleDriver</td>
+<td>jdbc:oracle:thin:user/pass@//host:port/service</td>
+</tr>
+<tr>
+<td>ingres(2006)</td>
+<td>ingres.jdbc.IngresDriver</td>
+<td>jdbc:ingres://host:port/db[;attr=value]</td>
+</tr>
+<tr>
+<td>MSSQL</td>
+<td>com.microsoft.sqlserver.jdbc.SQLServerDriver</td>
+<td>jdbc:sqlserver://ip:1433;databaseName=DBname</td>
+</tr>
+</tbody>
+</table>
+]]></content>
     
     <summary type="html">
+    
+      &lt;h2 id=&quot;JmeterのJDBC-Request&quot;&gt;&lt;a href=&quot;#JmeterのJDBC-Request&quot; class=&quot;headerlink&quot; title=&quot;JmeterのJDBC Request&quot;&gt;&lt;/a&gt;JmeterのJDBC Request&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;JDBC Request：这个sqmpler可以向数据库发送一个jdbc请求（SQL语句），并获取返回的数据库数据的操作，它经常需要和JDBC Connertion Configuration配置原件一起使用，主要是配置数据库的相关属性，比如ip，帐号，密码，链接数等。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;添加数据库jar包&lt;br&gt;不同的数据库，需要添加的jar包不同，需要根据需求下载自己需要的jar包。&lt;br&gt;下载完成后，可以通过以下两种方式安装jar包
     
     </summary>
     
@@ -523,7 +577,7 @@
 <p>编码转换</p>
 <p>很可能因为字符串中参杂了奇怪的东西，导致即使编码种类正确，依旧无法解码。</p>
 <p>我知道我之前讲过了，但可能有人直接跳疑难问题解答嘛。</p>
-<p>这里可以使用decode的第二个参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
+<p>这里可以使用decode的第二个参数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
 <p>特殊平台下编码</p>
 <p>很多人都说 Windows 是个坑，即使在 Python 3 下面也一样。</p>
 <p>因为中文文件名出来都是乱码。</p>
