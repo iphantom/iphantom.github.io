@@ -4,6 +4,13 @@
   
     
     <entry>
+      <title><![CDATA[如花谢花开]]></title>
+      <url>http://i90s.vip/2017/02/23/%E5%A6%82%E8%8A%B1%E8%B0%A2%E8%8A%B1%E5%BC%80/</url>
+      <content type="html"><![CDATA[<p>一部两小时电影断断续续看了四天才看完<br>《思悼》虽然描写的皇宫内权利的斗争 用宫斗剧是解释它并不准确  我感觉更像是一部家庭伦理片<br>一个只想当王的父亲<br>一个只想当儿子的储君<br>父子情在影片中表现的淋漓尽致<br>英祖希望世子能早日即位 又不甘心交出权力<br>世子相比王位 更愿得到世祖的爱<br>帝王之家 非比寻常人家 有太多的不可以<br>有时候越是简单的 越无法得到<br>英祖自己的登基有着太多不可细说的过去<br>他一直严格要求世子 让他读书 教他如何权衡庙堂之上的各方势力 但他又无意完全放下权利 父亲的制衡 让世子事事无法得愿<br>被嫌弃的松子的一生啊<br>父子俩虽然彼此并不认同 但仍维持着这微妙的平衡 世孙的出现  让英祖看到了另外一种可能 找到了更适合王位的人 这种微妙的平衡随即被打破<br>第七日父子阴阳相隔的对话 将父子俩内心的纠结表现的淋漓尽致 也将全剧感情推向了高潮<br>第八日 英祖用手去摸米缸里的世子 摸到鼻子时发现世子已经没了呼吸 又赶快用手去摸颈部 英祖当时肯定很纠结吧 即不想让儿子死 又不想让他活着  当他确认儿子已经死掉的时候 瞬间崩溃 嚎啕大哭  哭完 让乐队又奏着凯旋曲回宫<br>高墙华锦为君臣 来生麻衣愿父子<br>世孙从小就知道忍耐 也知道要讨好英祖<br>世子在射箭时和世孙的对话 也暗示了全剧的结局<br>世孙说 我也不喜欢这样的我<br>特别是在他登基后给母亲过花甲时 说 我从小就没玩过 今天就让我尽兴的玩一次吧<br>世孙的扇子舞配上片尾曲 如花谢花开<br>将沉默克制的全片基调打破  让众人能够毫无顾忌的流泪发泄内心的感情<br>附上片尾曲 如花谢花开 歌词<br>如今吾欲去<br>独留伤悲于世<br>纵有千语 未能与君诉<br>托付浮云 就此别去<br>难了却 君之所愿<br>泪如雨 潜然落<br>空留歉疚 孑然离<br>如花开花谢<br>虚空飘荡浮游<br>委身清风别过<br>曾空虚凌晨时分 与星做伴<br>如今吾亦别过<br>纵彼此念念不忘<br>纵然相对 仍难触碰<br>缘何未能相见<br>兴许君心深处一隅<br>吾之体温仍残留<br>清风吹 消散前<br>就此一次 轻抚吾之脸庞</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[风控与征信]]></title>
       <url>http://i90s.vip/2017/02/12/%E9%A3%8E%E6%8E%A7%E4%B8%8E%E5%BE%81%E4%BF%A1/</url>
       <content type="html"></content>
@@ -3394,17 +3401,17 @@ return head;//返回链首指针
     </entry>
     
     <entry>
+      <title><![CDATA[分类 & 标签]]></title>
+      <url>http://i90s.vip/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[搜索结果]]></title>
       <url>http://i90s.vip/search/index.html</url>
       <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.hl &#123;</span><br><span class="line">color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$data = simplexml_load_file(&apos;search.xml&apos;);</span><br><span class="line">define(LEN, 1000);</span><br><span class="line"></span><br><span class="line">echo &apos;&lt;div class=&quot;article-inner article-entry&quot;&gt;&lt;h2&gt;Search Results for: &apos; . $_GET[&quot;s&quot;] . &apos;&lt;/h2&gt;&lt;/div&gt;&apos;;</span><br><span class="line"></span><br><span class="line">foreach($data-&gt;entry as $a) &#123;</span><br><span class="line">	// echo $a-&gt;title;</span><br><span class="line">// echo preg_replace(&quot;/http:\/\/(.*)\//&quot;,&quot;&lt;a href=\&quot;\$&#123;0&#125;\&quot;&gt;\$&#123;0&#125;&lt;/a&gt;&quot;,&quot;$a&quot;);</span><br><span class="line"></span><br><span class="line">	$pattern = &quot;/&quot; . $_GET[&quot;s&quot;] . &quot;/i&quot;;</span><br><span class="line">	$replace = &apos;&lt;span class=hl&gt;&apos; . $_GET[&quot;s&quot;] . &apos;&lt;/span&gt;&apos;;</span><br><span class="line">	// echo $pattern . &quot;&lt;BR&gt;&quot;;</span><br><span class="line">	// echo $replace . &quot;&lt;BR&gt;&quot;;</span><br><span class="line"></span><br><span class="line">	if(preg_match($pattern, $a-&gt;title)  or preg_match($pattern, $a-&gt;content)) &#123;</span><br><span class="line">		echo &apos;&lt;div class=&quot;article-inner article-entry&quot; itemprop=&quot;articleBody&quot;&gt;&lt;a href=&apos; . $a-&gt;url . &apos;&gt;&lt;h3&gt;&apos; . preg_replace($pattern, $replace, $a-&gt;title) . &apos;&lt;/h3&gt;&lt;/a&gt;&apos;;</span><br><span class="line">		$hl_keys = preg_replace($pattern, $replace, $a-&gt;content);</span><br><span class="line"></span><br><span class="line">		$strpos = stripos($a-&gt;content,  $_GET[&apos;s&apos;]);</span><br><span class="line">		$len = min(LEN, strlen($a-&gt;content) - $strpos - 1);</span><br><span class="line"></span><br><span class="line">		echo &apos;&lt;p&gt;&apos; . mb_strcut($hl_keys, $strpos, $len, &quot;utf-8&quot;) . &apos; &lt;span class=article-more-link&gt;&lt;a href=&apos;. $a-&gt;url .&apos;&gt; Detial&gt;&gt;&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&apos;;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[分类 & 标签]]></title>
-      <url>http://i90s.vip/tags/index.html</url>
-      <content type="html"></content>
     </entry>
     
   
