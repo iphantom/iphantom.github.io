@@ -4,17 +4,17 @@
   
     
     <entry>
+      <title><![CDATA[风控与征信]]></title>
+      <url>http://i90s.vip/2017/02/12/%E9%A3%8E%E6%8E%A7%E4%B8%8E%E5%BE%81%E4%BF%A1/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Jmeter使用随笔-4]]></title>
       <url>http://i90s.vip/2017/01/04/Jmeter%E4%BD%BF%E7%94%A8%E9%9A%8F%E7%AC%94-4/</url>
       <content type="html"><![CDATA[<h2 id="Jmeter启动报错"><a href="#Jmeter启动报错" class="headerlink" title="Jmeter启动报错"></a>Jmeter启动报错</h2><p>　　前段时间电脑重装系统，习惯性的解压了Jmeter压缩包开始修改脚本，但是竟然神奇的报错了····<br>　　报错内容是”Not able to find Java executable or version. Please check your Java installation”，感觉应该是环境变量没有配置，上网查了下配置方法 <a id="more"></a></p>
 <p>网上查的解决方法大部分是在环境变量PATH中添加： %SystemRoot%/system32;%SystemRoot%<br>但是添加了之后发现还是无法正常启动，又查找了一些网页，找到了另外一个方法<br>解决方法：在环境变量PATH里加%JAVA_HOME%\bin；<br>添加之后，就可以正常启动了</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Jmeter链接Postgres数据库]]></title>
-      <url>http://i90s.vip/2017/01/03/Jmeter%E9%93%BE%E6%8E%A5Postgres%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
-      <content type="html"></content>
     </entry>
     
     <entry>
@@ -24,11 +24,13 @@
 <p>JDBC Request：这个sqmpler可以向数据库发送一个jdbc请求（SQL语句），并获取返回的数据库数据的操作，它经常需要和JDBC Connertion Configuration配置原件一起使用，主要是配置数据库的相关属性，比如ip，帐号，密码，链接数等。</p>
 </blockquote>
 <ol>
-<li><p>添加数据库jar包<br>不同的数据库，需要添加的jar包不同，需要根据需求下载自己需要的jar包。<br>下载完成后，可以通过以下两种方式安装jar包<a id="more"></a><br>1）直接将jar包复制到jmeter的lib目录下（推荐）<br>2）通过Tset Plan添加<br>在’add directory or jar to classpath’里面把jar包的路径添加进去</p>
-</li>
-<li><p>配置JDBC Connection Configuration<br>参数含义;<br>. Variable Name:数据库连接池的名称，可以添加多个JDBC Connection Configuration，每个可以七个不同的名称，再jdbc request中可以通过这个名字选择不同的连接池<br>. Database URL：数据库url，具体配置如下<br>. JDBC Driver class:JDBC驱动<br>. username：数据库登录用户名<br>. password：数据库登录密码</p>
-</li>
+<li>添加数据库jar包</li>
 </ol>
+<p>不同的数据库，需要添加的jar包不同，需要根据需求下载自己需要的jar包。<br>下载完成后，可以通过以下两种方式安装jar包<a id="more"></a><br>1）直接将jar包复制到jmeter的lib目录下（推荐）<br>2）通过Tset Plan添加<br>在’add directory or jar to classpath’里面把jar包的路径添加进去</p>
+<ol>
+<li>配置JDBC Connection Configuration</li>
+</ol>
+<p>参数含义;<br>. Variable Name:数据库连接池的名称，可以添加多个JDBC Connection Configuration，每个可以七个不同的名称，再jdbc request中可以通过这个名字选择不同的连接池<br>. Database URL：数据库url，具体配置如下<br>. JDBC Driver class:JDBC驱动<br>. username：数据库登录用户名<br>. password：数据库登录密码</p>
 <p>不同数据库填写表格：</p>
 <table>
 <thead>
@@ -66,6 +68,10 @@
 </tr>
 </tbody>
 </table>
+<ol>
+<li>配置JDBC Request</li>
+</ol>
+<p>参数含义：<br>. variable Name：数据连接池名字，需要和JDBC Connection Configuration的Variable Name保持一致<br>. Query：填写的SQL语句，末尾不需要加‘;‘<br>. Parameter values：参数值<br>. Parameter types:参数类型，可参考 ：javadoc for java.sql。types<br>. variable names：保存sql语句返回结果的变量名<br>. Result variable name: 创建一个对象变量，保存所有返回的结果<br>. Query timeout：查询超时时间<br>. Handle result set：定义如何处理由callable statements语句返回的结果</p>
 ]]></content>
     </entry>
     
@@ -95,14 +101,6 @@
 <p><img src="关键字" alt=""></p>
 </li>
 </ol>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[后续跟进问题]]></title>
-      <url>http://i90s.vip/2016/12/27/%E5%90%8E%E7%BB%AD%E8%B7%9F%E8%BF%9B%E9%97%AE%E9%A2%98/</url>
-      <content type="html"><![CDATA[<p>1）时间要取最大值 不能取当天</p>
-<p>2）竞品分析 整理出来 发给相关同事</p>
 ]]></content>
     </entry>
     
@@ -304,7 +302,7 @@
 <p>编码转换</p>
 <p>很可能因为字符串中参杂了奇怪的东西，导致即使编码种类正确，依旧无法解码。</p>
 <p>我知道我之前讲过了，但可能有人直接跳疑难问题解答嘛。</p>
-<p>这里可以使用decode的第二个参数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
+<p>这里可以使用decode的第二个参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
 <p>特殊平台下编码</p>
 <p>很多人都说 Windows 是个坑，即使在 Python 3 下面也一样。</p>
 <p>因为中文文件名出来都是乱码。</p>
