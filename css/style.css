@@ -457,6 +457,7 @@ body {
   content: "\2022";
 }
 .article-category-link {
+  text-align: right;
   display: inline;
   margin: 0;
 }
@@ -659,20 +660,14 @@ a.article-title:hover {
   text-align: center;
 }
 .article-more-link a {
-  color: #1fa0ae;
-  display: inline-block;
-  font-size: 0.9em;
-  line-height: 1em;
-  text-decoration: none;
-  -webkit-transition: all 0.2s ease-in-out;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -ms-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
-.article-more-link a:hover {
-  color: #333;
-  text-decoration: none;
+  float: right;
+  font-size: 14px;
+  color: #444;
+  margin: -10px 0;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }
 .article-footer {
   font-size: 0.85em;
@@ -715,10 +710,8 @@ a.article-title:hover {
   display: inline-block;
   margin-right: 8px;
 }
-.article-comment-link {
-  float: right;
-}
-.article-comment-link:before {
+.article-comment-link:before,
+float float: right:before {
   content: "\f075";
   font-family: FontAwesome;
   padding-right: 8px;
