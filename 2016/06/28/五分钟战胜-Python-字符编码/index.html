@@ -69,10 +69,32 @@
 
 
   
+  
+  <div class="site-header-image">
+    <img id="originBg" width="100%" alt="Hike News" src="">
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
+  </div>
+
+  <script>
+        var imgUrls = "css/images/pose02.jpg".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("originBg").src=imgUrls[random];
+          document.getElementById("blurBg").src=imgUrls[random];
+        } else {
+          document.getElementById("originBg").src='/' + imgUrls[random];
+          document.getElementById("blurBg").src='/' + imgUrls[random];
+        }
+    </script>
+
+
 
 
 <header id="allheader" class="site-header" role="banner" 
-   >
+   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -181,7 +203,7 @@
 <p>编码转换</p>
 <p>很可能因为字符串中参杂了奇怪的东西，导致即使编码种类正确，依旧无法解码。</p>
 <p>我知道我之前讲过了，但可能有人直接跳疑难问题解答嘛。</p>
-<p>这里可以使用decode的第二个参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
+<p>这里可以使用decode的第二个参数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
 <p>特殊平台下编码</p>
 <p>很多人都说 Windows 是个坑，即使在 Python 3 下面也一样。</p>
 <p>因为中文文件名出来都是乱码。</p>
@@ -314,6 +336,9 @@
 
 
     <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
