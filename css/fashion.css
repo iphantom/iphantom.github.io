@@ -268,6 +268,7 @@ object {
 .site-title a {
 	color: #333;
 	text-decoration: none;
+	text-transform: none;
 	}
 .site-description {
 	margin-bottom: 20px;
