@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Jmeter链接Oracle数据库 | Enzo Chen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="JmeterOracle" />
+  
+  
+  
+  
+  <meta name="description" content="JmeterのJDBC Request
+JDBC Request：这个sqmpler可以向数据库发送一个jdbc请求（SQL语句），并获取返回的数据库数据的操作，它经常需要和JDBC Connertion Configuration配置原件一起使用，主要是配置数据库的相关属性，比如ip，帐号，密码，链接数等。
+
+
+添加数据库jar包
+
+不同的数据库，需要添加的jar包不同，需要根据需求下载自己需要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jmeter链接Oracle数据库">
+<meta property="og:url" content="http://i90s.vip/categories/2017/01/03/Jmeter链接Oracle数据库.html">
+<meta property="og:site_name" content="Enzo Chen">
+<meta property="og:description" content="JmeterのJDBC Request
+JDBC Request：这个sqmpler可以向数据库发送一个jdbc请求（SQL语句），并获取返回的数据库数据的操作，它经常需要和JDBC Connertion Configuration配置原件一起使用，主要是配置数据库的相关属性，比如ip，帐号，密码，链接数等。
+
+
+添加数据库jar包
+
+不同的数据库，需要添加的jar包不同，需要根据需求下载自己需要">
+<meta property="og:updated_time" content="2017-01-06T02:44:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jmeter链接Oracle数据库">
+<meta name="twitter:description" content="JmeterのJDBC Request
+JDBC Request：这个sqmpler可以向数据库发送一个jdbc请求（SQL语句），并获取返回的数据库数据的操作，它经常需要和JDBC Connertion Configuration配置原件一起使用，主要是配置数据库的相关属性，比如ip，帐号，密码，链接数等。
+
+
+添加数据库jar包
+
+不同的数据库，需要添加的jar包不同，需要根据需求下载自己需要">
+  
+  <link rel="icon" href="/css/images/avatar.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Enzo Chen" rel="home"> Enzo Chen </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">是我的海</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/atom.xml">rss</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Jmeter链接Oracle数据库" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Jmeter链接Oracle数据库
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/categories/2017/01/03/Jmeter链接Oracle数据库.html" class="article-date">
+	  <time datetime="2017-01-03T09:14:20.000Z" itemprop="datePublished">一月 3, 2017</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JmeterのJDBC-Request"><a href="#JmeterのJDBC-Request" class="headerlink" title="JmeterのJDBC Request"></a>JmeterのJDBC Request</h2><blockquote>
+<p>JDBC Request：这个sqmpler可以向数据库发送一个jdbc请求（SQL语句），并获取返回的数据库数据的操作，它经常需要和JDBC Connertion Configuration配置原件一起使用，主要是配置数据库的相关属性，比如ip，帐号，密码，链接数等。</p>
+</blockquote>
+<ol>
+<li>添加数据库jar包</li>
+</ol>
+<p>不同的数据库，需要添加的jar包不同，需要根据需求下载自己需要的jar包。<br>下载完成后，可以通过以下两种方式安装jar包<a id="more"></a><br>1）直接将jar包复制到jmeter的lib目录下（推荐）<br>2）通过Tset Plan添加<br>在’add directory or jar to classpath’里面把jar包的路径添加进去</p>
+<ol>
+<li>配置JDBC Connection Configuration</li>
+</ol>
+<p>参数含义;<br>. Variable Name:数据库连接池的名称，可以添加多个JDBC Connection Configuration，每个可以七个不同的名称，再jdbc request中可以通过这个名字选择不同的连接池<br>. Database URL：数据库url，具体配置如下<br>. JDBC Driver class:JDBC驱动<br>. username：数据库登录用户名<br>. password：数据库登录密码</p>
+<p>不同数据库填写表格：</p>
+<table>
+<thead>
+<tr>
+<th>Database</th>
+<th>Driver calss</th>
+<th>Database URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MySQL</td>
+<td>com.mysql.jdbc.Driver</td>
+<td>jdbc:mysql://host:port/{dbname}</td>
+</tr>
+<tr>
+<td>PostgreSql</td>
+<td>org.postgresql.Driver</td>
+<td>jdbc:postgresql:{dbname}</td>
+</tr>
+<tr>
+<td>Oracle</td>
+<td>oracle.jdbc.driver.OracleDriver</td>
+<td>jdbc:oracle:thin:user/pass@//host:port/service</td>
+</tr>
+<tr>
+<td>ingres(2006)</td>
+<td>ingres.jdbc.IngresDriver</td>
+<td>jdbc:ingres://host:port/db[;attr=value]</td>
+</tr>
+<tr>
+<td>MSSQL</td>
+<td>com.microsoft.sqlserver.jdbc.SQLServerDriver</td>
+<td>jdbc:sqlserver://ip:1433;databaseName=DBname</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>配置JDBC Request</li>
+</ol>
+<p>参数含义：<br>. variable Name：数据连接池名字，需要和JDBC Connection Configuration的Variable Name保持一致<br>. Query：填写的SQL语句，末尾不需要加‘;‘<br>. Parameter values：参数值<br>. Parameter types:参数类型，可参考 ：javadoc for java.sql。types<br>. variable names：保存sql语句返回结果的变量名<br>. Result variable name: 创建一个对象变量，保存所有返回的结果<br>. Query timeout：查询超时时间<br>. Handle result set：定义如何处理由callable statements语句返回的结果</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jmeter/">Jmeter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle/">Oracle</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/categories/2017/01/03/Jmeter链接Oracle数据库.html" data-title="Jmeter链接Oracle数据库" data-url="http://i90s.vip/categories/2017/01/03/Jmeter链接Oracle数据库.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chengong"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/categories/2017/01/04/Jmeter使用随笔-4.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Jmeter使用随笔-4
+        
+      </div>
+    </a>
+  
+  
+    <a href="/categories/2016/12/27/RF使用笔记-2.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">RF使用笔记-2</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JmeterのJDBC-Request"><span class="nav-number">1.</span> <span class="nav-text">JmeterのJDBC Request</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/atom.xml" class="mobile-nav-link">rss</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+
+  <div class="visit">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261448261'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261448261%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+</body>
+</html>
