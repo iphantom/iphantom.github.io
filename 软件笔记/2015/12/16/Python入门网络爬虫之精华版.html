@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Python入门网络爬虫之精华版 | Enzo Chen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Python转载爬虫教程" />
+  
+  
+  
+  
+  <meta name="description" content="Python学习网络爬虫主要分3个大的版块：抓取，分析，存储  
+另外，比较常用的爬虫框架Scrapy，这里最后也详细介绍一下。    
+首先列举一下本人总结的相关文章，这些覆盖了入门网络爬虫需要的基本概念和技巧：宁哥的小站-网络爬虫  
+
+当我们在浏览器中输入一个url后回车，后台会发生什么？比如说你输入http://www.lining0806.com/，你就会看到宁哥的小站首页。
+简单来说">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python入门网络爬虫之精华版">
+<meta property="og:url" content="http://i90s.vip/软件笔记/2015/12/16/Python入门网络爬虫之精华版.html">
+<meta property="og:site_name" content="Enzo Chen">
+<meta property="og:description" content="Python学习网络爬虫主要分3个大的版块：抓取，分析，存储  
+另外，比较常用的爬虫框架Scrapy，这里最后也详细介绍一下。    
+首先列举一下本人总结的相关文章，这些覆盖了入门网络爬虫需要的基本概念和技巧：宁哥的小站-网络爬虫  
+
+当我们在浏览器中输入一个url后回车，后台会发生什么？比如说你输入http://www.lining0806.com/，你就会看到宁哥的小站首页。
+简单来说">
+<meta property="og:updated_time" content="2015-12-28T07:54:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python入门网络爬虫之精华版">
+<meta name="twitter:description" content="Python学习网络爬虫主要分3个大的版块：抓取，分析，存储  
+另外，比较常用的爬虫框架Scrapy，这里最后也详细介绍一下。    
+首先列举一下本人总结的相关文章，这些覆盖了入门网络爬虫需要的基本概念和技巧：宁哥的小站-网络爬虫  
+
+当我们在浏览器中输入一个url后回车，后台会发生什么？比如说你输入http://www.lining0806.com/，你就会看到宁哥的小站首页。
+简单来说">
+  
+  <link rel="icon" href="/css/images/avatar.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Enzo Chen" rel="home"> Enzo Chen </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">是我的海</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/atom.xml">rss</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Python入门网络爬虫之精华版" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Python入门网络爬虫之精华版
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/软件笔记/2015/12/16/Python入门网络爬虫之精华版.html" class="article-date">
+	  <time datetime="2015-12-16T03:29:32.000Z" itemprop="datePublished">十二月 16, 2015</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>Python学习网络爬虫主要分3个大的版块：<strong>抓取</strong>，<strong>分析</strong>，<strong>存储</strong>  </p>
+<p>另外，比较常用的爬虫框架<a href="http://scrapy.org/" target="_blank" rel="external">Scrapy</a>，这里最后也详细介绍一下。    </p>
+<p>首先列举一下本人总结的相关文章，这些覆盖了入门网络爬虫需要的基本概念和技巧：<a href="http://www.lining0806.com/category/spider/" target="_blank" rel="external">宁哥的小站-网络爬虫</a>  </p>
+<hr>
+<p>当我们在浏览器中输入一个url后回车，后台会发生什么？比如说你输入<a href="http://www.lining0806.com/" target="_blank" rel="external">http://www.lining0806.com/</a>，你就会看到宁哥的小站首页。</p>
+<p>简单来说这段过程发生了以下四个步骤：<br><a id="more"></a></p>
+<ul>
+<li>查找域名对应的IP地址。</li>
+<li>向IP对应的服务器发送请求。</li>
+<li>服务器响应请求，发回网页内容。</li>
+<li>浏览器解析网页内容。</li>
+</ul>
+<p>网络爬虫要做的，简单来说，就是实现浏览器的功能。通过指定url，直接返回给用户所需要的数据，而不需要一步步人工去操纵浏览器获取。</p>
+<h2 id="抓取"><a href="#抓取" class="headerlink" title="抓取"></a>抓取</h2><p>这一步，你要明确要得到的内容是是什么？是HTML源码，还是Json格式的字符串等。  </p>
+<h4 id="1-最基本的抓取"><a href="#1-最基本的抓取" class="headerlink" title="1. 最基本的抓取"></a>1. 最基本的抓取</h4><p>抓取大多数情况属于get请求，即直接从对方服务器上获取数据。  </p>
+<p>首先，Python中自带urllib及urllib2这两个模块，基本上能满足一般的页面抓取。另外，<a href="https://github.com/kennethreitz/requests" target="_blank" rel="external">requests</a>也是非常有用的包，与此类似的，还有<a href="https://github.com/jcgregorio/httplib2" target="_blank" rel="external">httplib2</a>等等。    </p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Requests：</span><br><span class="line">	import requests</span><br><span class="line">	response = requests.<span class="built_in">get</span>(url)</span><br><span class="line">	<span class="built_in">content</span> = requests.<span class="built_in">get</span>(url).<span class="built_in">content</span></span><br><span class="line">	<span class="built_in">print</span> <span class="string">"response headers:"</span>, response.headers</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"content:"</span>, <span class="built_in">content</span></span><br><span class="line">Urllib2：</span><br><span class="line">	import urllib2</span><br><span class="line">	response = urllib2.urlopen(url)</span><br><span class="line">	<span class="built_in">content</span> = urllib2.urlopen(url).<span class="built_in">read</span>()</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"response headers:"</span>, response.headers</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"content:"</span>, <span class="built_in">content</span></span><br><span class="line">Httplib2：</span><br><span class="line">	import httplib2</span><br><span class="line">	http = httplib2.Http()</span><br><span class="line">	response_headers, <span class="built_in">content</span> = http.request(url, 'GET')</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"response headers:"</span>, response_headers</span><br><span class="line">	<span class="built_in">print</span> <span class="string">"content:"</span>, <span class="built_in">content</span></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">此外，对于带有查询字段的url，<span class="built_in">get</span>请求一般会将来请求的数据附在url之后，以?分割url和传输数据，多个参数用&amp;连接。</span><br></pre></td></tr></table></figure>
+<p>data = {‘data1’:’XXXXX’, ‘data2’:’XXXXX’}<br>Requests：data为dict，json<br>    import requests<br>    response = requests.get(url=url, params=data)<br>Urllib2：data为string<br>    import urllib, urllib2<br>    data = urllib.urlencode(data)<br>    full_url = url+’?’+data<br>    response = urllib2.urlopen(full_url)<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">相关参考：[网易新闻排行榜抓取回顾](http:<span class="regexp">//www</span>.lining0806.com/%E7%BD%91%E6%98%93%E6%96%B0%E9%97%BB%E6%8E%92%E8%A1%8C%E6%A6%9C%E6%8A%93%E5%8F%96%E5%9B%9E%E9%A1%BE/)</span><br><span class="line"></span><br><span class="line">参考项目：[网络爬虫之最基本的爬虫：爬取网易新闻排行榜](https:<span class="regexp">//github</span>.com/lining0806/NewsSpider)</span><br><span class="line"></span><br><span class="line"><span class="comment">### 2. 对于登陆情况的处理  </span></span><br><span class="line"></span><br><span class="line">**<span class="number">2.1</span> 使用表单登陆**  </span><br><span class="line"></span><br><span class="line">这种情况属于post请求，即先向服务器发送表单数据，服务器再将返回的cookie存入本地。</span><br></pre></td></tr></table></figure></p>
+<p>data = {‘data1’:’XXXXX’, ‘data2’:’XXXXX’}<br>Requests：data为dict，json<br>    import requests<br>    response = requests.post(url=url, data=data)<br>Urllib2：data为string<br>    import urllib, urllib2<br>    data = urllib.urlencode(data)<br>    req = urllib2.Request(url=url, data=data)<br>    response = urllib2.urlopen(req)<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">*<span class="strong">*2.2 使用cookie登陆*</span>*  </span><br><span class="line"></span><br><span class="line">使用cookie登陆，服务器会认为你是一个已登陆的用户，所以就会返回给你一个已登陆的内容。因此，需要验证码的情况可以使用带验证码登陆的cookie解决。</span><br></pre></td></tr></table></figure></p>
+<p>import requests<br>requests_session = requests.session()<br>response = requests_session.post(url=url_login, data=data)<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">若存在验证码，此时采用response = requests_session.post(url=url_login, <span class="class"><span class="keyword">data</span>=<span class="keyword">data</span>)是不行的，做法应该如下：</span></span><br></pre></td></tr></table></figure></p>
+<p>response_captcha = requests_session.get(url=url_login, cookies=cookies)<br>response1 = requests.get(url_login) # 未登陆<br>response2 = requests_session.get(url_login) # 已登陆，因为之前拿到了Response Cookie！<br>response3 = requests_session.get(url_results) # 已登陆，因为之前拿到了Response Cookie！<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">相关参考：[网络爬虫-验证码登陆](http:<span class="regexp">//www</span>.lining0806.com/<span class="number">6</span>-%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB-%E9%AA%8C%E8%AF%81%E7%A0%81%E7%99%BB%E9%99%86/)  </span><br><span class="line"></span><br><span class="line">参考项目：[网络爬虫之用户名密码及验证码登陆：爬取知乎网站](https:<span class="regexp">//github</span>.com/lining0806/ZhihuSpider)  </span><br><span class="line"></span><br><span class="line"><span class="comment">### 3. 对于反爬虫机制的处理 </span></span><br><span class="line"></span><br><span class="line">**<span class="number">3.1</span> 使用代理** </span><br><span class="line"></span><br><span class="line">适用情况：限制IP地址情况，也可解决由于“频繁点击”而需要输入验证码登陆的情况。  </span><br><span class="line"></span><br><span class="line">这种情况最好的办法就是维护一个代理IP池，网上有很多免费的代理IP，良莠不齐，可以通过筛选找到能用的。对于“频繁点击”的情况，我们还可以通过限制爬虫访问网站的频率来避免被网站禁掉。</span><br></pre></td></tr></table></figure></p>
+<p>proxies = {‘http’:’<a href="http://XX.XX.XX.XX:XXXX&#39;}" target="_blank" rel="external">http://XX.XX.XX.XX:XXXX&#39;}</a><br>Requests：<br>    import requests<br>    response = requests.get(url=url, proxies=proxies)<br>Urllib2：<br>    import urllib2<br>    proxy_support = urllib2.ProxyHandler(proxies)<br>    opener = urllib2.build_opener(proxy_support, urllib2.HTTPHandler)<br>    urllib2.install_opener(opener) # 安装opener，此后调用urlopen()时都会使用安装过的opener对象<br>    response = urllib2.urlopen(url)<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">**3.2 时间设置** </span></span><br><span class="line"></span><br><span class="line">适用情况：限制频率情况。 </span><br><span class="line"></span><br><span class="line">Requests，Urllib2都可以使用time库的<span class="built-in">sleep</span>()函数：</span><br></pre></td></tr></table></figure></p>
+<p>import time<br>time.sleep(1)<br><figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**<span class="number">3.3</span> 伪装成浏览器，或者反“反盗链”**  </span><br><span class="line"></span><br><span class="line">有些网站会检查你是不是真的浏览器访问，还是机器自动访问的。这种情况，加上User<span class="attr">-Agent</span>，表明你是浏览器访问即可。有时还会检查是否带<span class="keyword">Referer</span>信息还会检查你的<span class="keyword">Referer</span>是否合法，一般再加上<span class="keyword">Referer</span>。</span><br></pre></td></tr></table></figure></p>
+<p>headers = {‘User-Agent’:’XXXXX’} # 伪装成浏览器访问，适用于拒绝爬虫的网站<br>headers = {‘Referer’:’XXXXX’}<br>headers = {‘User-Agent’:’XXXXX’, ‘Referer’:’XXXXX’}<br>Requests：<br>    response = requests.get(url=url, headers=headers)<br>Urllib2：<br>    import urllib, urllib2<br>    req = urllib2.Request(url=url, headers=headers)<br>    response = urllib2.urlopen(req)<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">### 4. 对于断线重连  </span></span><br><span class="line"></span><br><span class="line">不多说。</span><br></pre></td></tr></table></figure></p>
+<p>def multi_session(session, <em>arg):<br>    while True:<br>        retryTimes = 20<br>    while retryTimes&gt;0:<br>        try:<br>            return session.post(</em>arg)<br>        except:<br>            print ‘.’,<br>            retryTimes -= 1<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">或者</span><br></pre></td></tr></table></figure></p>
+<p>def multi_open(opener, <em>arg):<br>    while True:<br>        retryTimes = 20<br>    while retryTimes&gt;0:<br>        try:<br>            return opener.open(</em>arg)<br>        except:<br>            print ‘.’,<br>            retryTimes -= 1<br>```</p>
+<p>这样我们就可以使用multi_session或multi_open对爬虫抓取的session或opener进行保持。    </p>
+<h3 id="5-多进程抓取"><a href="#5-多进程抓取" class="headerlink" title="5. 多进程抓取"></a>5. 多进程抓取</h3><p>这里针对<a href="http://live.wallstreetcn.com/" target="_blank" rel="external">华尔街见闻</a>进行并行抓取的实验对比：<a href="https://github.com/lining0806/Spider_Python" target="_blank" rel="external">Python多进程抓取</a> 与 <a href="https://github.com/lining0806/Spider" target="_blank" rel="external">Java单线程和多线程抓取</a>  </p>
+<p>相关参考：<a href="http://www.lining0806.com/%E5%85%B3%E4%BA%8Epython%E5%92%8Cjava%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95%E5%AF%B9%E6%AF%94/" target="_blank" rel="external">关于Python和Java的多进程多线程计算方法对比</a>  </p>
+<h3 id="6-对于Ajax请求的处理"><a href="#6-对于Ajax请求的处理" class="headerlink" title="6. 对于Ajax请求的处理"></a>6. 对于Ajax请求的处理</h3><p>对于“加载更多”情况，使用Ajax来传输很多数据。</p>
+<p>它的工作原理是：从网页的url加载网页的源代码之后，会在浏览器里执行JavaScript程序。这些程序会加载更多的内容，“填充”到网页里。这就是为什么如果你直接去爬网页本身的url，你会找不到页面的实际内容。  </p>
+<p>这里，若使用Google Chrome分析”请求“对应的链接(方法：右键→审查元素→Network→清空，点击”加载更多“，出现对应的GET链接寻找Type为text/html的，点击，查看get参数或者复制Request URL)，循环过程。  </p>
+<ul>
+<li>如果“请求”之前有页面，依据上一步的网址进行分析推导第1页。以此类推，抓取抓Ajax地址的数据。  </li>
+<li>对返回的json格式数据(str)进行正则匹配。json格式数据中，需从’\uxxxx’形式的unicode_escape编码转换成u’\uxxxx’的unicode编码。  </li>
+</ul>
+<h3 id="7-自动化测试工具Selenium"><a href="#7-自动化测试工具Selenium" class="headerlink" title="7. 自动化测试工具Selenium"></a>7. 自动化测试工具Selenium</h3><p>Selenium是一款自动化测试工具。它能实现操纵浏览器，包括字符填充、鼠标点击、获取元素、页面切换等一系列操作。总之，凡是浏览器能做的事，Selenium都能够做到。</p>
+<p>这里列出在给定城市列表后，使用selenium来动态抓取<a href="http://flight.qunar.com/" target="_blank" rel="external">去哪儿网</a>的票价信息的代码。</p>
+<p>参考项目：<a href="https://github.com/lining0806/QunarSpider" target="_blank" rel="external">网络爬虫之Selenium使用代理登陆：爬取去哪儿网站</a> </p>
+<h3 id="8-验证码识别"><a href="#8-验证码识别" class="headerlink" title="8. 验证码识别"></a>8. 验证码识别</h3><p>对于网站有验证码的情况，我们有三种办法：  </p>
+<ul>
+<li>使用代理，更新IP。</li>
+<li>使用cookie登陆。</li>
+<li>验证码识别。</li>
+</ul>
+<p>使用代理和使用cookie登陆之前已经讲过，下面讲一下验证码识别。  </p>
+<p>可以利用开源的Tesseract-OCR系统进行验证码图片的下载及识别，将识别的字符传到爬虫系统进行模拟登陆。如果不成功，可以再次更新验证码识别，直到成功为止。  </p>
+<p>参考项目：<a href="https://github.com/lining0806/Captcha1" target="_blank" rel="external">Captcha1</a></p>
+<p><strong>爬取有两个需要注意的问题：</strong></p>
+<ul>
+<li>如何监控一系列网站的更新情况，也就是说，如何进行增量式爬取？</li>
+<li>对于海量数据，如何实现分布式爬取？</li>
+</ul>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>抓取之后就是对抓取的内容进行分析，你需要什么内容，就从中提炼出相关的内容来。  </p>
+<p>常见的分析工具有<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="external">正则表达式</a>，<a href="http://www.crummy.com/software/BeautifulSoup/" target="_blank" rel="external">BeautifulSoup</a>，<a href="http://lxml.de/" target="_blank" rel="external">lxml</a>等等。  </p>
+<h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p>分析出我们需要的内容之后，接下来就是存储了。  </p>
+<p>我们可以选择存入文本文件，也可以选择存入<a href="http://www.mysql.com/" target="_blank" rel="external">MySQL</a>或<a href="https://www.mongodb.org/" target="_blank" rel="external">MongoDB</a>数据库等。  </p>
+<p><strong>存储有两个需要注意的问题：</strong></p>
+<ul>
+<li>如何进行网页去重？</li>
+<li>内容以什么形式存储？</li>
+</ul>
+<h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a>Scrapy</h2><p>Scrapy是一个基于Twisted的开源的Python爬虫框架，在工业中应用非常广泛。  </p>
+<p>相关内容可以参考<a href="http://www.lining0806.com/%E5%9F%BA%E4%BA%8Escrapy%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%9A%84%E6%90%AD%E5%BB%BA/" target="_blank" rel="external">基于Scrapy网络爬虫的搭建</a>，同时给出这篇文章介绍的<a href="http://weixin.sogou.com/weixin" target="_blank" rel="external">微信搜索</a>爬取的项目代码，给大家作为学习参考。</p>
+<p>参考项目：<a href="https://github.com/lining0806/WechatSearchProjects" target="_blank" rel="external">使用Scrapy或Requests递归抓取微信搜索结果</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/软件笔记/2015/12/16/Python入门网络爬虫之精华版.html" data-title="Python入门网络爬虫之精华版" data-url="http://i90s.vip/软件笔记/2015/12/16/Python入门网络爬虫之精华版.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chengong"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/软件笔记/2015/12/27/编程修养（1）.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          编程修养（1）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/心情笔记/2015/12/15/理解矩阵.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">理解矩阵</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#抓取"><span class="nav-number">1.</span> <span class="nav-text">抓取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-最基本的抓取"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 最基本的抓取</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-多进程抓取"><span class="nav-number">1.1.</span> <span class="nav-text">5. 多进程抓取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-对于Ajax请求的处理"><span class="nav-number">1.2.</span> <span class="nav-text">6. 对于Ajax请求的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-自动化测试工具Selenium"><span class="nav-number">1.3.</span> <span class="nav-text">7. 自动化测试工具Selenium</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-验证码识别"><span class="nav-number">1.4.</span> <span class="nav-text">8. 验证码识别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储"><span class="nav-number">3.</span> <span class="nav-text">存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy"><span class="nav-number">4.</span> <span class="nav-text">Scrapy</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/atom.xml" class="mobile-nav-link">rss</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+
+  <div class="visit">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261448261'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261448261%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+</body>
+</html>
