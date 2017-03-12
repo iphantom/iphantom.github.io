@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>编程修养（3） | Enzo Chen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="转载感悟编程修养" />
+  
+  
+  
+  
+  <meta name="description" content="把相同或近乎相同的代码形成函数和宏—————————————————————有人说，最好的程序员，就是最喜欢“偷懒”的程序，其中不无道理。  
+如果你有一些程序的代码片段很相似，或直接就是一样的，请把他们放在一个函数中。而如果
+这段代码不多，而且会被经常使用，你还想避免函数调用的开销，那么就把他写成宏吧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编程修养（3）">
+<meta property="og:url" content="http://i90s.vip/软件笔记/2015/12/27/编程修养（3）.html">
+<meta property="og:site_name" content="Enzo Chen">
+<meta property="og:description" content="把相同或近乎相同的代码形成函数和宏—————————————————————有人说，最好的程序员，就是最喜欢“偷懒”的程序，其中不无道理。  
+如果你有一些程序的代码片段很相似，或直接就是一样的，请把他们放在一个函数中。而如果
+这段代码不多，而且会被经常使用，你还想避免函数调用的开销，那么就把他写成宏吧。">
+<meta property="og:updated_time" content="2015-12-28T07:54:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编程修养（3）">
+<meta name="twitter:description" content="把相同或近乎相同的代码形成函数和宏—————————————————————有人说，最好的程序员，就是最喜欢“偷懒”的程序，其中不无道理。  
+如果你有一些程序的代码片段很相似，或直接就是一样的，请把他们放在一个函数中。而如果
+这段代码不多，而且会被经常使用，你还想避免函数调用的开销，那么就把他写成宏吧。">
+  
+  <link rel="icon" href="/css/images/avatar.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Enzo Chen" rel="home"> Enzo Chen </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">是我的海</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/atom.xml">rss</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-编程修养（3）" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      编程修养（3）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/软件笔记/2015/12/27/编程修养（3）.html" class="article-date">
+	  <time datetime="2015-12-27T13:59:16.000Z" itemprop="datePublished">十二月 27, 2015</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="把相同或近乎相同的代码形成函数和宏"><a href="#把相同或近乎相同的代码形成函数和宏" class="headerlink" title="把相同或近乎相同的代码形成函数和宏"></a>把相同或近乎相同的代码形成函数和宏</h2><p>—————————————————————<br>有人说，最好的程序员，就是最喜欢“偷懒”的程序，其中不无道理。  </p>
+<p>如果你有一些程序的代码片段很相似，或直接就是一样的，请把他们放在一个函数中。而如果</p>
+<p>这段代码不多，而且会被经常使用，你还想避免函数调用的开销，那么就把他写成宏吧。 <a id="more"></a> </p>
+<p>千万不要让同一份代码或是功能相似的代码在多个地方存在，不然如果功能一变，你就要修改</p>
+<p>好几处地方，这种会给维护带来巨大的麻烦，所以，做到“一改百改”，还是要形成函数或是宏。  </p>
+<h2 id="表达式中的括号"><a href="#表达式中的括号" class="headerlink" title="表达式中的括号"></a>表达式中的括号</h2><p>—————————  </p>
+<p>如果一个比较复杂的表达式中，你并不是很清楚各个操作符的忧先级，即使是你很清楚优先级</p>
+<p>，也请加上括号，不然，别人或是自己下一次读程序时，一不小心就看走眼理解错了，为了避</p>
+<p>免这种“误解”，还有让自己的程序更为清淅，还是加上括号吧。  </p>
+<p>比如，对一个结构的成员取地址：  </p>
+<p>GetUserAge( &amp;( UserInfo-&gt;age ) );  </p>
+<p>虽然，&amp;UserInfo-&gt;age中，-&gt;操作符的优先级最高，但加上一个括号，会让人一眼就看明白你的</p>
+<p>代码是什么意思。  </p>
+<p>再比如，一个很长的条件判断：  </p>
+<p>if ( ( ch[0] &gt;= ‘0’ || ch[0] &lt;= ‘9’ ) &amp;&amp;<br>( ch[1] &gt;= ‘a’ || ch[1] &lt;= ‘z’ ) &amp;&amp;<br>( ch[2] &gt;= ‘A’ || ch[2] &lt;= ‘Z’ ) )  </p>
+<p>括号，再加上空格和换行，你的代码是不是很容易读懂了？  </p>
+<h2 id="函数参数中的const"><a href="#函数参数中的const" class="headerlink" title="函数参数中的const"></a>函数参数中的const</h2><p>———————————  </p>
+<p>对于一些函数中的指针参数，如果在函数中只读，请将其用const修饰，这样，别人一读到你的</p>
+<p>函数接口时，就会知道你的意图是这个参数是[in]，如果没有const时，参数表示[in/out]，注意函</p>
+<p>数接口中的const使用，利于程序的维护和避免犯一些错误。  </p>
+<p>虽然，const修饰的指针，如：const char* p，在C中一点用也没有，因为不管你的声明是不是</p>
+<p>const，指针的内容照样能改，因为编译器会强制转换，但是加上这样一个说明，有利于程序的</p>
+<p>阅读和编译。因为在C中，修改一个const指针所指向的内存时，会报一个Warning。这会引起程</p>
+<p>序员的注意。  </p>
+<p>C++中对const定义的就很严格了，所以C++中要多多的使用const，const的成员函数，const的</p>
+<p>变量，这样会对让你的代码和你的程序更加完整和易读。（关于C++的const我就不多说了）  </p>
+<h2 id="函数的参数个数（多了请用结构）"><a href="#函数的参数个数（多了请用结构）" class="headerlink" title="函数的参数个数（多了请用结构）"></a>函数的参数个数（多了请用结构）</h2><p>—————————————————  </p>
+<p>函数的参数个数最好不要太多，一般来说6个左右就可以了，众多的函数参数会让读代码的人一</p>
+<p>眼看上去就很头昏，而且也不利于维护。如果参数众多，还请使用结构来传递参数。这样做有</p>
+<p>利于数据的封装和程序的简洁性。  </p>
+<p>也利于使用函数的人，因为如果你的函数个数很多，比如12个，调用者很容易搞错参数的顺序</p>
+<p>和个数，而使用结构struct来传递参数，就可以不管参数的顺序。  </p>
+<p>而且，函数很容易被修改，如果需要给函数增加参数，不需要更改函数接口，只需更改结构体</p>
+<p>和函数内部处理，而对于调用函数的程序来说，这个动作是透明的。  </p>
+<h2 id="函数的返回类型，不要省略"><a href="#函数的返回类型，不要省略" class="headerlink" title="函数的返回类型，不要省略"></a>函数的返回类型，不要省略</h2><p>——————————————  </p>
+<p>我看到很多程序写函数时，在函数的返回类型方面不太注意。如果一个函数没有返回值，也请</p>
+<p>在函数前面加上void的修饰。而有的程序员偷懒，在返回int的函数则什么不修饰（因为如果不</p>
+<p>修饰，则默认返回int），这种习惯很不好，还是为了原代码的易读性，加上int吧。  </p>
+<p>所以函数的返回值类型，请不要省略。  </p>
+<p>另外，对于void的函数，我们往往会忘了return，由于某些C/C++的编译器比较敏感，会报一些</p>
+<p>警告，所以即使是void的函数，我们在内部最好也要加上return的语句，这有助于代码的编译。  </p>
+<h2 id="goto语句的使用"><a href="#goto语句的使用" class="headerlink" title="goto语句的使用"></a>goto语句的使用</h2><p>—————————  </p>
+<p>N年前，软件开发的一代宗师——迪杰斯特拉(Dijkstra)说过：“goto statment is harmful !!”，并建</p>
+<p>议取消goto语句。因为goto语句不利于程序代码的维护性。  </p>
+<p>这里我也强烈建议不要使用goto语句，除非下面的这种情况：  </p>
+<p>#define FREE(p) if(p) { \<br>free(p); \<br>p = NULL; \<br>}  </p>
+<p>main()<br>{<br>char <em>fname, </em>lname, *mname;  </p>
+<p>fname = ( char* ) calloc ( 20, sizeof(char) );<br>if ( fname == NULL ){<br>goto ErrHandle;<br>}  </p>
+<p>lname = ( char* ) calloc ( 20, sizeof(char) );<br>if ( lname == NULL ){<br>goto ErrHandle;<br>}  </p>
+<p>mname = ( char* ) calloc ( 20, sizeof(char) );<br>if ( mname == NULL ){<br>goto ErrHandle;<br>}  </p>
+<p>……  </p>
+<p>ErrHandle:<br>FREE(fname);<br>FREE(lname);<br>FREE(mname);<br>ReportError(ERR_NO_MEMOEY);<br>}  </p>
+<p>也只有在这种情况下，goto语句会让你的程序更易读，更容易维护。（在用嵌C来对数据库设置</p>
+<p>游标操作时，或是对数据库建立链接时，也会遇到这种结构）  </p>
+<h2 id="宏的使用"><a href="#宏的使用" class="headerlink" title="宏的使用"></a>宏的使用</h2><p>——————  </p>
+<p>很多程序员不知道C中的“宏”到底是什么意思？特别是当宏有参数的时候，经常把宏和函数混淆</p>
+<p>。我想在这里我还是先讲讲“宏”，宏只是一种定义，他定义了一个语句块，当程序编译时，编译</p>
+<p>器首先要执行一个“替换”源程序的动作，把宏引用的地方替换成宏定义的语句块，就像文本文件</p>
+<p>替换一样。这个动作术语叫“宏的展开”  </p>
+<p>使用宏是比较“危险”的，因为你不知道宏展开后会是什么一个样子。例如下面这个宏：  </p>
+<p>#define MAX(a, b) a&gt;b?a:b  </p>
+<p>当我们这样使用宏时，没有什么问题： MAX( num1, num2 ); 因为宏展开后变成 num1&gt;num2?</p>
+<p>num1:num2；。 但是，如果是这样调用的，MAX( 17+32, 25+21 ); 呢，编译时出现错误，原因</p>
+<p>是，宏展开后变成：17+32&gt;25+21?17+32:25+21，哇，这是什么啊？  </p>
+<p>所以，宏在使用时，参数一定要加上括号，上述的那个例子改成如下所示就能解决问题了。  </p>
+<p>#define MAX( (a), (b) ) (a)&gt;(b)?(a)b)  </p>
+<p>即使是这样，也不这个宏也还是有Bug，因为如果我这样调用 MAX(i++, j++); ， 经过这个宏以</p>
+<p>后，i和j都被累加了两次，这绝不是我们想要的。  </p>
+<p>所以，在宏的使用上还是要谨慎考虑，因为宏展开是的结果是很难让人预料的。而且虽然，宏</p>
+<p>的执行很快（因为没有函数调用的开销），但宏会让源代码澎涨，使目标文件尺寸变大，（如</p>
+<p>：一个50行的宏，程序中有1000个地方用到，宏展开后会很不得了），相反不能让程序执行得</p>
+<p>更快（因为执行文件变大，运行时系统换页频繁）。  </p>
+<p>因此，在决定是用函数，还是用宏时得要小心。  </p>
+<h2 id="static的使用"><a href="#static的使用" class="headerlink" title="static的使用"></a>static的使用</h2><p>————————<br>static关键字，表示了“静态”，一般来说，他会被经常用于变量和函数。一个static的变量，其实</p>
+<p>就是全局变量，只不过他是有作用域的全局变量。比如一个函数中的static变量：<br>char*<br>getConsumerName()<br>{<br>static int cnt = 0;  </p>
+<p>….<br>cnt++;<br>….<br>}  </p>
+<p>cnt变量的值会跟随着函数的调用次而递增，函数退出后，cnt的值还存在，只是cnt只能在函数</p>
+<p>中才能被访问。而cnt的内存也只会在函数第一次被调用时才会被分配和初始化，以后每次进入</p>
+<p>函数，都不为static分配了，而直接使用上一次的值。  </p>
+<p>对于一些被经常调用的函数内的常量，最好也声明成static（参见第12条）  </p>
+<p>但static的最多的用处却不在这里，其最大的作用的控制访问，在C中如果一个函数或是一个全</p>
+<p>局变量被声明为static，那么，这个函数和这个全局变量，将只能在这个C文件中被访问，如果</p>
+<p>别的C文件中调用这个C文件中的函数，或是使用其中的全局（用extern关键字），将会发生链</p>
+<p>接时错误。这个特性可以用于数据和程序保密。  </p>
+<h2 id="函数中的代码尺寸"><a href="#函数中的代码尺寸" class="headerlink" title="函数中的代码尺寸"></a>函数中的代码尺寸</h2><p>——————————<br>一个函数完成一个具体的功能，一般来说，一个函数中的代码最好不要超过600行左右，越少越</p>
+<p>好，最好的函数一般在100行以内，300行左右的孙函数就差不多了。有证据表明，一个函数中</p>
+<p>的代码如果超过500行，就会有和别的函数相同或是相近的代码，也就是说，就可以再写另一个</p>
+<p>函数。  </p>
+<p>另外，函数一般是完成一个特定的功能，千万忌讳在一个函数中做许多件不同的事。函数的功</p>
+<p>能越单一越好，一方面有利于函数的易读性，另一方面更有利于代码的维护和重用，功能越单</p>
+<p>一表示这个函数就越可能给更多的程序提供服务，也就是说共性就越多。  </p>
+<p>虽然函数的调用会有一定的开销，但比起软件后期维护来说，增加一些运行时的开销而换来更</p>
+<p>好的可维护性和代码重用性，是很值得的一件事。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/感悟/">感悟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程修养/">编程修养</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="//软件笔记/2015/12/27/编程修养（3）.html" data-title="编程修养（3）" data-url="http://i90s.vip/软件笔记/2015/12/27/编程修养（3）.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chengong"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/软件笔记/2015/12/28/结构体和链表（1）.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          结构体和链表（1）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/软件笔记/2015/12/27/编程修养（2）.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">编程修养（2）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#把相同或近乎相同的代码形成函数和宏"><span class="nav-number">1.</span> <span class="nav-text">把相同或近乎相同的代码形成函数和宏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表达式中的括号"><span class="nav-number">2.</span> <span class="nav-text">表达式中的括号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数参数中的const"><span class="nav-number">3.</span> <span class="nav-text">函数参数中的const</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的参数个数（多了请用结构）"><span class="nav-number">4.</span> <span class="nav-text">函数的参数个数（多了请用结构）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的返回类型，不要省略"><span class="nav-number">5.</span> <span class="nav-text">函数的返回类型，不要省略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#goto语句的使用"><span class="nav-number">6.</span> <span class="nav-text">goto语句的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#宏的使用"><span class="nav-number">7.</span> <span class="nav-text">宏的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static的使用"><span class="nav-number">8.</span> <span class="nav-text">static的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数中的代码尺寸"><span class="nav-number">9.</span> <span class="nav-text">函数中的代码尺寸</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/atom.xml" class="mobile-nav-link">rss</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+
+  <div class="visit">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261448261'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261448261%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+</body>
+</html>
