@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://i90s.vip/"/>
-  <updated>2017-03-08T15:54:52.000Z</updated>
+  <updated>2017-07-09T05:22:07.000Z</updated>
   <id>http://i90s.vip/</id>
   
   <author>
@@ -14,6 +14,122 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>APP设计中容易忽略的点</title>
+    <link href="http://i90s.vip//%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2017/07/09/APP%E8%AE%BE%E8%AE%A1%E4%B8%AD%E5%AE%B9%E6%98%93%E5%BF%BD%E7%95%A5%E7%9A%84%E7%82%B9.html"/>
+    <id>http://i90s.vip//产品笔记/2017/07/09/APP设计中容易忽略的点.html</id>
+    <published>2017-07-09T05:20:53.000Z</published>
+    <updated>2017-07-09T05:22:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>app设计可以分为两部分，第一APP整体的设计，第二APP各模块设计，针对这两点分别说一下app设计中容易忽略的点</p>
+</blockquote>
+<h1 id="APP整体设计"><a href="#APP整体设计" class="headerlink" title="APP整体设计"></a>APP整体设计</h1><h2 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h2><p>任何一款软件，用户最常用的配置，往往就是系统的默认配置。使用默认状态用户的学习成本会降低很多。<br><strong>需要默认值的地方</strong>：消息推送、声音、振动、个性化推荐、照相机、话筒等等<br><strong>设置</strong>：根据业务需求以及客户习惯决定默认值</p>
+<h2 id="上下限"><a href="#上下限" class="headerlink" title="上下限"></a>上下限</h2><p>任何一个模块的逻辑都需要上下限，从而能够避免产品失控。<br><strong>需要上下限的地方</strong>：模块取值逻辑（牵扯时间等）、文字输入框、文件或者图片上传和下载等<br><strong>设置</strong>：当用户的操作超过上下线时，给予相应的提示</p>
+<h2 id="误操作提示"><a href="#误操作提示" class="headerlink" title="误操作提示"></a>误操作提示</h2><p>对于重要模块，需要进行二次确认，以防误操作。<br><strong>需要设置误操作的地方</strong>：删除、清空、黑名单、举报、取消关注等<br><strong>设置</strong>：通过弹框进行二次提示等</p>
+<h2 id="网络状况"><a href="#网络状况" class="headerlink" title="网络状况"></a>网络状况</h2><p>网络状况会影响到接口的访问速度，以及用户的体验效果，对于新闻网站、消息推送网站，网络情况是需要认真考虑的，对于工具类app（电子书查看、office）可以依靠缓存，用户可以查看缓存的数据<br><strong>需要设置网络的地方</strong>：<br><strong>设置</strong>：图片提示</p>
+<h2 id="权限设计"><a href="#权限设计" class="headerlink" title="权限设计"></a>权限设计</h2><p>对于2B的产品，权限是产品设计中重要的一换，针对不同权限，用户能够查看的模块，执行的操作都不同，即是是能看到相同的模块，看到的数据也可能是不同的，这些都是需要通过权限进行控制。</p>
+<h2 id="无响应状态"><a href="#无响应状态" class="headerlink" title="无响应状态"></a>无响应状态</h2><p>部分模块接口访问速度较慢，需要提醒用户耐性等待。<br>常用的解决方法是，设计加载状态or通过弹窗提醒用户耐心等待。</p>
+<p>缺图【登录词】<br>缺图【loading状态】</p>
+<h2 id="多语言支持"><a href="#多语言支持" class="headerlink" title="多语言支持"></a>多语言支持</h2><p>根据我的经验，如果不是在设计时就要求多语言的，尽量等产品成熟后再去进行多语言支持，否则会占用大量人力，多语言支持不仅是页面更改了语言，还会牵扯到页面展示的修改，另外翻译也是个技术活，不是随便翻译下就行。<br>ps：个人建议，在UI的图上进行修改，这样可以知道你的翻译是否满足页面展示的需求。</p>
+<h2 id="后台可控"><a href="#后台可控" class="headerlink" title="后台可控"></a>后台可控</h2><p>在产品设计初期，部分产品习惯把所有规则都写在前端或者后端里面，这样做类似于饮鸠止渴，如果逻辑有变化，就需要上版本去更改，费时费力。<br>一个好的产品能够在产品设计初期，就把规则给想清楚，通过设计权限层或者读取数据库去控制规则。这样前期会耗费产品和开发很大精力，但是对于规则的维护和修改会方便很多。</p>
+<h2 id="数据埋点"><a href="#数据埋点" class="headerlink" title="数据埋点"></a>数据埋点</h2><p>产品都知道，一个产品或者功能好还是不好，需要用数据说话，这就牵扯到一个很重要的点，如何对产品进行埋点。<br>简单的说三部分，第一确定产品的功能模块，哪些是比较重要的模块，哪些是需要验证的模块，第二进行合理的埋点，第三也是最重要的部分，进行数据分析。</p>
+<h2 id="运营需求"><a href="#运营需求" class="headerlink" title="运营需求"></a>运营需求</h2><p>产品和运营不分家，运营会帮助产品进行更好的宣传，一个好的产品，会在产品内部留下一些运营扩展模块。比如广告位，活动入口等。</p>
+<h1 id="APP-单个模块"><a href="#APP-单个模块" class="headerlink" title="APP 单个模块"></a>APP 单个模块</h1><p>以一个模块的页面的生命周期开始分析：<br>1、 初始状态<br>一个模块在用户第一次进来的时候长什么样，就是该模块的初始状态</p>
+<p>2、加载状态<br>用户发送请求后，如果接口性能较低，就会需要一个加载状态，该状态可以是弹窗，可以是提示语，可以是loading标志</p>
+<p>3、空状态<br>模块可能不存在数据，需要给用户以引导或者提示</p>
+<p>4、数据较少<br>即数据较少时，页面展示效果是否友好，是否需要做特别的设计用以辅助展示</p>
+<p>5、数据正常<br>需要产品第一个考虑的状态，也是模块应该有的常态</p>
+<p>6、 数据过多<br>即，用户操作简单，筛选条件较少，后台返回数据较多时</p>
+<p>7、错误状态<br>接口报错，无网络等</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;app设计可以分为两部分，第一APP整体的设计，第二APP各模块设计，针对这两点分别说一下app设计中容易忽略的点&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;APP整体设计&quot;&gt;&lt;a href=&quot;#APP整体设计&quot; class=&quot;heade
+    
+    </summary>
+    
+      <category term="产品笔记" scheme="http://i90s.vip/categories/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="APP" scheme="http://i90s.vip/tags/APP/"/>
+    
+      <category term="设计" scheme="http://i90s.vip/tags/%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="异常处理" scheme="http://i90s.vip/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>appium+ios10测试环境搭建</title>
+    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2017/03/21/appium%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html"/>
+    <id>http://i90s.vip//软件笔记/2017/03/21/appium测试环境搭建.html</id>
+    <published>2017-03-21T06:29:36.000Z</published>
+    <updated>2017-03-23T02:49:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Appium测试环境搭建（ios测试）"><a href="#Appium测试环境搭建（ios测试）" class="headerlink" title="Appium测试环境搭建（ios测试）"></a>Appium测试环境搭建（ios测试）</h1><h2 id="准备工组"><a href="#准备工组" class="headerlink" title="准备工组"></a>准备工组</h2><blockquote>
+<p>首先要有一台MAC机器，需要能够上网<br>MAC系统版本10+ ，Xcode版本8+，一个Apple id帐号（一般帐号or开发者都ok）外加 一款翻墙软件</p>
+</blockquote>
+<h2 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h2><ol>
+<li>安装brew<blockquote>
+<p>brew 又叫 Homebrew，是 Mac OSX 上的软件包管理工具，能在 Mac 中方便的安装软件或者卸载软件， 只需要一个命令， 非常方便。brew 类似 ubuntu 系统下的 apt-get 的功能</p>
+</blockquote>
+</li>
+</ol>
+<p>‘’’python<br>ruby -e “$(curl -fsSL <a href="https://raw.github.com/mxcl/homebrew/go" target="_blank" rel="external">https://raw.github.com/mxcl/homebrew/go</a>)”<br>‘’’</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Appium测试环境搭建（ios测试）&quot;&gt;&lt;a href=&quot;#Appium测试环境搭建（ios测试）&quot; class=&quot;headerlink&quot; title=&quot;Appium测试环境搭建（ios测试）&quot;&gt;&lt;/a&gt;Appium测试环境搭建（ios测试）&lt;/h1&gt;&lt;h2 i
+    
+    </summary>
+    
+      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Mac" scheme="http://i90s.vip/tags/Mac/"/>
+    
+      <category term="Appium" scheme="http://i90s.vip/tags/Appium/"/>
+    
+      <category term="ios" scheme="http://i90s.vip/tags/ios/"/>
+    
+      <category term="app" scheme="http://i90s.vip/tags/app/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>企查查产品研习</title>
+    <link href="http://i90s.vip//%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2017/03/12/%E4%BC%81%E6%9F%A5%E6%9F%A5%E4%BA%A7%E5%93%81%E7%A0%94%E4%B9%A0.html"/>
+    <id>http://i90s.vip//产品笔记/2017/03/12/企查查产品研习.html</id>
+    <published>2017-03-12T10:23:31.000Z</published>
+    <updated>2017-03-12T11:28:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="产品简介"><a href="#产品简介" class="headerlink" title="产品简介"></a>产品简介</h2><hr>
+<p>产品名称：<br>slogan：<br>成立时间：<br>支持平台：<br>产品介绍：</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;产品简介&quot;&gt;&lt;a href=&quot;#产品简介&quot; class=&quot;headerlink&quot; title=&quot;产品简介&quot;&gt;&lt;/a&gt;产品简介&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;产品名称：&lt;br&gt;slogan：&lt;br&gt;成立时间：&lt;br&gt;支持平台：&lt;br&gt;产品介绍：&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="产品笔记" scheme="http://i90s.vip/categories/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="转载" scheme="http://i90s.vip/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+      <category term="产品" scheme="http://i90s.vip/tags/%E4%BA%A7%E5%93%81/"/>
+    
+  </entry>
   
   <entry>
     <title>微信产品设计原则——Genie访谈记录</title>
@@ -124,9 +240,9 @@
       <category term="心情笔记" scheme="http://i90s.vip/categories/%E5%BF%83%E6%83%85%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="影评" scheme="http://i90s.vip/tags/%E5%BD%B1%E8%AF%84/"/>
-    
       <category term="感悟" scheme="http://i90s.vip/tags/%E6%84%9F%E6%82%9F/"/>
+    
+      <category term="影评" scheme="http://i90s.vip/tags/%E5%BD%B1%E8%AF%84/"/>
     
   </entry>
   
@@ -901,212 +1017,6 @@
       <category term="转载" scheme="http://i90s.vip/tags/%E8%BD%AC%E8%BD%BD/"/>
     
       <category term="需求分析" scheme="http://i90s.vip/tags/%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pythonの生成正交测试数据</title>
-    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2016/05/30/python%E3%81%AE%E7%94%9F%E6%88%90%E6%AD%A3%E4%BA%A4%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE.html"/>
-    <id>http://i90s.vip//软件笔记/2016/05/30/pythonの生成正交测试数据.html</id>
-    <published>2016-05-30T14:14:41.000Z</published>
-    <updated>2016-05-30T14:21:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="程序说明"><a href="#程序说明" class="headerlink" title="程序说明"></a>程序说明</h2><hr>
-<p> 输入为数组，如下所示：<br>a=[[1,2,3],[4,5],[6,7]]<br>a[0],a[1],a[2]···表示各个因素，此时表示a有四个因素<br>a[0]=[1,2,3]表示a[0]有三个值可以选</p>
-<hr>
-<p>输出为数组，如下所示：<a id="more"></a><br>b= [[1, 4, 6], [1, 5, 7], [2, 4, 7], [2, 5, 6]]<br>b[0],b[1]···表示正交法生成的测试数据</p>
-<h2 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h2><h3 id="output-oracle-py"><a href="#output-oracle-py" class="headerlink" title="output_oracle.py"></a>output_oracle.py</h3><blockquote>
-<p>获取数组的因素数和水平数<br>调用Ort_model.py函数 返回相应的正交表<br>将输入数据替换正交表内数 生成正交测试数据</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Ort_model</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ORT_EXPRESSION</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Output_Ort</span><span class="params">(self,input_array)</span>:</span></span><br><span class="line">        self.in_array=input_array</span><br><span class="line">        i_Factors_temp=len(self.in_array)   <span class="comment">#因素数</span></span><br><span class="line">        i_array=[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(i_Factors_temp)]</span><br><span class="line">        <span class="comment">#求取水平数</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,i_Factors_temp):</span><br><span class="line">            i_array[i]=len(self.in_array[i])</span><br><span class="line">        i_array_temp=&#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> i_array:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> i_array_temp:</span><br><span class="line">                i_array_temp[i] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                i_array_temp[i] += <span class="number">1</span> </span><br><span class="line">        i_levels_temp=max(i_array_temp.iteritems(), key = <span class="keyword">lambda</span> x: x[<span class="number">1</span>])[<span class="number">0</span>]  <span class="comment">#水平数       </span></span><br><span class="line">        <span class="comment">#正交模型</span></span><br><span class="line">        Model_Ort=Ort_model.ORT_MODEL()</span><br><span class="line">        return_ort=Model_Ort.Ort_mod(i_Factors_temp,i_levels_temp)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> return_ort:</span><br><span class="line">            msg=<span class="string">'input is wrong'</span></span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,msg,<span class="string">''</span>]</span><br><span class="line">        <span class="comment">#带入数值</span></span><br><span class="line">        i_L=len(return_ort)</span><br><span class="line">        i_Factors=len(return_ort[<span class="number">0</span>])</span><br><span class="line">        return_array = [[<span class="number">0</span> <span class="keyword">for</span> col <span class="keyword">in</span> range(i_Factors)] <span class="keyword">for</span> row <span class="keyword">in</span> range(i_L)]  </span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,i_Factors):</span><br><span class="line">            l_n=[x[j] <span class="keyword">for</span> x <span class="keyword">in</span> return_ort]</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(l_n)):</span><br><span class="line">                <span class="keyword">if</span> l_n[i]&lt;len(self.in_array[j]):               </span><br><span class="line">                    return_array[i][j]=self.in_array[j][l_n[i]]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    return_array[i][j]=random.choice(self.in_array[j])  <span class="comment">#使用随机函数选择当前可选数据</span></span><br><span class="line">        <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>,return_array]</span><br></pre></td></tr></table></figure>
-<h3 id="Ort-model-py"><a href="#Ort-model-py" class="headerlink" title="Ort_model.py"></a>Ort_model.py</h3><blockquote>
-<p>根据因素数和水平数 得到相应的正交表</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ORT_MODEL</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.L4=[</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>]</span><br><span class="line">                ]  <span class="comment">#2 3 </span></span><br><span class="line">        self.L8=[</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">                ] <span class="comment">#2 7</span></span><br><span class="line">        self.L9=[</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>],</span><br><span class="line">                [<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>]</span><br><span class="line">                ]<span class="comment">#3 4</span></span><br><span class="line">        self.L16=[</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">                 ]<span class="comment">#4 5</span></span><br><span class="line">        self.L25=[</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">                  ]<span class="comment">#5 6</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Ort_mod</span><span class="params">(self,i_factors,i_levels)</span>:</span></span><br><span class="line">        self.i_fac=i_factors</span><br><span class="line">        self.i_lev=i_levels</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">3</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">2</span>):<span class="comment">#2 3 </span></span><br><span class="line">            <span class="keyword">return</span> self.L4</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">7</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">2</span>):<span class="comment">#2 7</span></span><br><span class="line">            <span class="keyword">return</span> self.L8</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">4</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">3</span>):<span class="comment">#3 4</span></span><br><span class="line">            <span class="keyword">return</span> self.L9</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">5</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">4</span>):<span class="comment">#4 5</span></span><br><span class="line">            <span class="keyword">return</span> self.L16</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">6</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">5</span>):<span class="comment">#5 6</span></span><br><span class="line">            <span class="keyword">return</span> self.L25</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;程序说明&quot;&gt;&lt;a href=&quot;#程序说明&quot; class=&quot;headerlink&quot; title=&quot;程序说明&quot;&gt;&lt;/a&gt;程序说明&lt;/h2&gt;&lt;hr&gt;
-&lt;p&gt; 输入为数组，如下所示：&lt;br&gt;a=[[1,2,3],[4,5],[6,7]]&lt;br&gt;a[0],a[1],a[2]···表示各个因素，此时表示a有四个因素&lt;br&gt;a[0]=[1,2,3]表示a[0]有三个值可以选&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;输出为数组，如下所示：
-    
-    </summary>
-    
-      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="python" scheme="http://i90s.vip/tags/python/"/>
-    
-      <category term="正交" scheme="http://i90s.vip/tags/%E6%AD%A3%E4%BA%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>标准正交表</title>
-    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2016/05/29/%E6%A0%87%E5%87%86%E6%AD%A3%E4%BA%A4%E8%A1%A8.html"/>
-    <id>http://i90s.vip//软件笔记/2016/05/29/标准正交表.html</id>
-    <published>2016-05-29T13:14:20.000Z</published>
-    <updated>2016-05-30T14:23:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="标准表"><a href="#标准表" class="headerlink" title="标准表"></a>标准表</h2><hr>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">水平数</th>
-<th style="text-align:center">1级</th>
-<th style="text-align:center">2级</th>
-<th style="text-align:center">3级</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">2水平</td>
-<td style="text-align:center">L4(2^3)</td>
-<td style="text-align:center">L8(2^7)</td>
-<td style="text-align:center">L16(2^15)</td>
-</tr>
-<tr>
-<td style="text-align:center">3水平</td>
-<td style="text-align:center">L9(3^4)</td>
-<td style="text-align:center">L27(3^13)</td>
-<td style="text-align:center">L81(3^40)</td>
-</tr>
-<tr>
-<td style="text-align:center">4水平</td>
-<td style="text-align:center">L16(4^5)</td>
-<td style="text-align:center">L64(4^21)</td>
-<td style="text-align:center">L256(4^85)</td>
-</tr>
-<tr>
-<td style="text-align:center">5水平</td>
-<td style="text-align:center">L25(5^6)</td>
-<td style="text-align:center">L125(5^31)</td>
-<td style="text-align:center">L625(5^156)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="标准正交表"><a href="#标准正交表" class="headerlink" title="标准正交表"></a>标准正交表</h2><a id="more"></a>
-<hr>
-<p><strong>L4(2^3):</strong><br>L4=[<br>                [0,0,0],<br>                [0,1,1],<br>                [1,0,1],<br>                [1,1,0]<br>                ]  #2 3 </p>
-<p><strong>L8(2^7):</strong><br>L8=[<br>                [0,0,0,0,0,0,0],<br>                [0,0,0,1,1,1,1],<br>                [0,1,1,0,0,1,1],<br>                [0,1,1,1,1,0,0],<br>                [1,0,1,1,0,1,0],<br>                [1,0,1,1,0,1,0],<br>                [1,1,0,1,0,0,1],<br>                [1,1,0,1,0,0,1]<br>                ] #2 7</p>
-<p><strong>L9(3^4): </strong><br>L9=[<br>                [0,0,0,0],<br>                [0,1,1,1],<br>                [0,2,2,2],<br>                [1,0,1,2],<br>                [1,1,2,0],<br>                [1,2,0,1],<br>                [2,0,2,1],<br>                [2,1,0,2],<br>                [2,2,1,0]<br>                ]#3 4</p>
-<p><strong>L16(4^5): </strong><br>L16=[<br>                 [0,0,0,0,0],<br>                 [0,1,1,1,1],<br>                 [0,2,2,2,2],<br>                 [0,3,3,3,3],<br>                 [1,0,1,2,3],<br>                 [1,1,0,3,2],<br>                 [1,2,3,0,1],<br>                 [1,3,2,1,0],<br>                 [2,0,2,3,1],<br>                 [2,1,3,2,0],<br>                 [2,2,0,1,3],<br>                 [2,3,1,0,2],<br>                 [3,0,3,1,2],<br>                 [3,1,2,0,3],<br>                 [3,2,1,3,0],<br>                 [3,3,0,2,1]<br>                 ]#4 5</p>
-<p><strong>L25(5^6): </strong><br>L25=[<br>                  [1,1,1,1,1,1],<br>                  [1,2,2,2,2,2],<br>                  [1,3,3,3,3,3],<br>                  [1,4,4,4,4,4],<br>                  [1,5,5,5,5,5],<br>                  [2,1,2,3,4,5],<br>                  [2,2,3,4,5,1],<br>                  [2,3,4,5,1,2],<br>                  [2,4,5,1,2,3],<br>                  [2,5,1,2,3,4],<br>                  [3,1,3,5,2,4],<br>                  [3,2,4,1,3,5],<br>                  [3,3,5,2,4,1],<br>                  [3,4,1,3,5,2],<br>                  [3,5,2,4,1,3],<br>                  [4,1,4,2,5,3],<br>                  [4,2,5,3,1,4],<br>                  [4,3,1,4,2,5],<br>                  [4,4,2,5,3,1],<br>                  [4,5,3,1,4,2],<br>                  [5,1,5,4,3,2],<br>                  [5,2,1,5,4,3],<br>                  [5,3,2,1,5,4],<br>                  [5,4,3,2,1,5],<br>                  [5,5,4,3,2,1]<br>                  ]#5 6</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;标准表&quot;&gt;&lt;a href=&quot;#标准表&quot; class=&quot;headerlink&quot; title=&quot;标准表&quot;&gt;&lt;/a&gt;标准表&lt;/h2&gt;&lt;hr&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;水平数&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;1级&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;2级&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;3级&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;2水平&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;L4(2^3)&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;L8(2^7)&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;L16(2^15)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;3水平&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;L9(3^4)&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;L27(3^13)&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;L81(3^40)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;4水平&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;L16(4^5)&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;L64(4^21)&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;L256(4^85)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;5水平&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;L25(5^6)&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;L125(5^31)&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;L625(5^156)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&quot;标准正交表&quot;&gt;&lt;a href=&quot;#标准正交表&quot; class=&quot;headerlink&quot; title=&quot;标准正交表&quot;&gt;&lt;/a&gt;标准正交表&lt;/h2&gt;
-    
-    </summary>
-    
-      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="正交表" scheme="http://i90s.vip/tags/%E6%AD%A3%E4%BA%A4%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>正交试验法原理</title>
-    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2016/05/28/%E6%AD%A3%E4%BA%A4%E8%AF%95%E9%AA%8C%E6%B3%95%E5%8E%9F%E7%90%86.html"/>
-    <id>http://i90s.vip//软件笔记/2016/05/28/正交试验法原理.html</id>
-    <published>2016-05-28T12:20:08.000Z</published>
-    <updated>2016-05-30T14:21:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>由于要整理测试用例 用到了正交法生成测试用例<br>特对正交实验法进行下整理</p>
-</blockquote>
-<p><strong> 正交实验法概念 </strong><br>来自百度百科的解释<a href="http://baike.baidu.com/link?url=_RWY0sTNRmIpVMElPKw9SzkmJ4j4PbW_vwErYeAsU0c0Oo2jdOSV1YE3nC8EPfWtdSfSh6OEqQLXYts8SAjUQq" target="_blank" rel="external">正交试验法</a><a id="more"></a></p>
-<blockquote>
-<p>正交实验法就是利用排列整齐的表 -、<strong>正交表</strong>来对试验进行整体设计、综合比较、统计分析，实现通过少数的实验次数找到较好的生产条件，以达到最高生产工艺效果，<strong>这种试验设计法是从大量的试验点中挑选适量的具有代表性的点，利用已经造好的表格—正交表来安排试验并进行数据分析的方法。</strong>正交表能够在因素变化范围内均衡抽样，使每次试验都具有较强的代表性，由于正交表具备均衡分散的特点，保证了全面实验的某些要求，这些试验往往能够较好或更好的达到实验的目的。</p>
-</blockquote>
-<p><strong> 关于正交表 </strong></p>
-<blockquote>
-<p>日本著名的统计学家田口玄一将正交试验选择的水平组合列成表格，称为正交表。例如作一个三因素三水平的实验，按全面实验要求，须进行33=27种组合的实验，且尚未考虑每一组合的重复数。若按L9(33) 正交表按排实验，只需作9次，按L18(37) 正交表进行18次实验，显然大大减少了工作量。因而正交实验设计在很多领域的研究中已经得到广泛应用。</p>
-</blockquote>
-<p><strong> 正交实验法特点 </strong></p>
-<blockquote>
-<p>均匀分散，齐整可比</p>
-</blockquote>
-<p><strong>正交表的三个特性</strong><br>一、 正交性</p>
-<ol>
-<li>任一列中，不同数字出现次数相等</li>
-<li>任两列中，同一横行所组成的数字对出现的次数相等<br>二、 可比性</li>
-<li>任一列的个水平都出现，使得部分试验中包含所有因素的所有水平</li>
-<li>任一2列建的所有组合全部出现，使任一两因素间都是全面实验<br>三、 综合可比性</li>
-<li>任一列各水平出现的次数都相等</li>
-<li>任两列间所有可能的组合出现的次数都相等<blockquote>
-<p>正交性即均衡性是核心，是基础，代表性和综合可比性是正交性的必然结果，从而使正交表得以具体应用</p>
-</blockquote>
-</li>
-</ol>
-<p><strong> 正交实验过程 </strong></p>
-<blockquote>
-<p>正交实验设计包括两部分内容：第一，是怎样安排实验；第二，是怎样分析实验结果。</p>
-</blockquote>
-<p><strong>利用正交实验设计测试用例的步骤</strong></p>
-<ol>
-<li>明确实验目的，确定考核指标</li>
-<li>挑因素，选水平</li>
-<li>选择格式的正交表</li>
-<li>进行表头设计</li>
-<li>确定实验方案</li>
-</ol>
-<p><strong>正交表的构成</strong><br>行数(Runs)：正交表中的行的个数，即试验的次数，也是我们通过正交实验法设计的测试用例的个数。<br>因素数(Factors) ：正交表中列的个数，即我们要测试的功能点。<br>水平数(Levels)：任何单个因素能够取得的值的最大个数。正交表中的包含的值为从0到数“水平数-1”或从1到“水平数” 。即要测试功能点的输入条件。<br>正交表的形式：<br>L行数(水平数^因素数)</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;由于要整理测试用例 用到了正交法生成测试用例&lt;br&gt;特对正交实验法进行下整理&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt; 正交实验法概念 &lt;/strong&gt;&lt;br&gt;来自百度百科的解释&lt;a href=&quot;http://baike.baidu.com/link?url=_RWY0sTNRmIpVMElPKw9SzkmJ4j4PbW_vwErYeAsU0c0Oo2jdOSV1YE3nC8EPfWtdSfSh6OEqQLXYts8SAjUQq&quot;&gt;正交试验法&lt;/a&gt;
-    
-    </summary>
-    
-      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="正交实验" scheme="http://i90s.vip/tags/%E6%AD%A3%E4%BA%A4%E5%AE%9E%E9%AA%8C/"/>
     
   </entry>
   

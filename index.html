@@ -100,6 +100,186 @@
         
           <section id="main">
   
+    <article id="post-APP设计中容易忽略的点"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/产品笔记/2017/07/09/APP设计中容易忽略的点.html">APP设计中容易忽略的点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/产品笔记/2017/07/09/APP设计中容易忽略的点.html" class="article-date">
+	  <time datetime="2017-07-09T05:20:53.000Z" itemprop="datePublished">七月 9, 2017</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/产品笔记/">产品笔记</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>app设计可以分为两部分，第一APP整体的设计，第二APP各模块设计，针对这两点分别说一下app设计中容易忽略的点</p>
+</blockquote>
+<h1 id="APP整体设计"><a href="#APP整体设计" class="headerlink" title="APP整体设计"></a>APP整体设计</h1><h2 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h2><p>任何一款软件，用户最常用的配置，往往就是系统的默认配置。使用默认状态用户的学习成本会降低很多。<br><strong>需要默认值的地方</strong>：消息推送、声音、振动、个性化推荐、照相机、话筒等等<br><strong>设置</strong>：根据业务需求以及客户习惯决定默认值</p>
+<h2 id="上下限"><a href="#上下限" class="headerlink" title="上下限"></a>上下限</h2><p>任何一个模块的逻辑都需要上下限，从而能够避免产品失控。<br><strong>需要上下限的地方</strong>：模块取值逻辑（牵扯时间等）、文字输入框、文件或者图片上传和下载等<br><strong>设置</strong>：当用户的操作超过上下线时，给予相应的提示</p>
+<h2 id="误操作提示"><a href="#误操作提示" class="headerlink" title="误操作提示"></a>误操作提示</h2><p>对于重要模块，需要进行二次确认，以防误操作。<br><strong>需要设置误操作的地方</strong>：删除、清空、黑名单、举报、取消关注等<br><strong>设置</strong>：通过弹框进行二次提示等</p>
+<h2 id="网络状况"><a href="#网络状况" class="headerlink" title="网络状况"></a>网络状况</h2><p>网络状况会影响到接口的访问速度，以及用户的体验效果，对于新闻网站、消息推送网站，网络情况是需要认真考虑的，对于工具类app（电子书查看、office）可以依靠缓存，用户可以查看缓存的数据<br><strong>需要设置网络的地方</strong>：<br><strong>设置</strong>：图片提示</p>
+<h2 id="权限设计"><a href="#权限设计" class="headerlink" title="权限设计"></a>权限设计</h2><p>对于2B的产品，权限是产品设计中重要的一换，针对不同权限，用户能够查看的模块，执行的操作都不同，即是是能看到相同的模块，看到的数据也可能是不同的，这些都是需要通过权限进行控制。</p>
+<h2 id="无响应状态"><a href="#无响应状态" class="headerlink" title="无响应状态"></a>无响应状态</h2><p>部分模块接口访问速度较慢，需要提醒用户耐性等待。<br>常用的解决方法是，设计加载状态or通过弹窗提醒用户耐心等待。</p>
+<p>缺图【登录词】<br>缺图【loading状态】</p>
+<h2 id="多语言支持"><a href="#多语言支持" class="headerlink" title="多语言支持"></a>多语言支持</h2><p>根据我的经验，如果不是在设计时就要求多语言的，尽量等产品成熟后再去进行多语言支持，否则会占用大量人力，多语言支持不仅是页面更改了语言，还会牵扯到页面展示的修改，另外翻译也是个技术活，不是随便翻译下就行。<br>ps：个人建议，在UI的图上进行修改，这样可以知道你的翻译是否满足页面展示的需求。</p>
+<h2 id="后台可控"><a href="#后台可控" class="headerlink" title="后台可控"></a>后台可控</h2><p>在产品设计初期，部分产品习惯把所有规则都写在前端或者后端里面，这样做类似于饮鸠止渴，如果逻辑有变化，就需要上版本去更改，费时费力。<br>一个好的产品能够在产品设计初期，就把规则给想清楚，通过设计权限层或者读取数据库去控制规则。这样前期会耗费产品和开发很大精力，但是对于规则的维护和修改会方便很多。</p>
+<h2 id="数据埋点"><a href="#数据埋点" class="headerlink" title="数据埋点"></a>数据埋点</h2><p>产品都知道，一个产品或者功能好还是不好，需要用数据说话，这就牵扯到一个很重要的点，如何对产品进行埋点。<br>简单的说三部分，第一确定产品的功能模块，哪些是比较重要的模块，哪些是需要验证的模块，第二进行合理的埋点，第三也是最重要的部分，进行数据分析。</p>
+<h2 id="运营需求"><a href="#运营需求" class="headerlink" title="运营需求"></a>运营需求</h2><p>产品和运营不分家，运营会帮助产品进行更好的宣传，一个好的产品，会在产品内部留下一些运营扩展模块。比如广告位，活动入口等。</p>
+<h1 id="APP-单个模块"><a href="#APP-单个模块" class="headerlink" title="APP 单个模块"></a>APP 单个模块</h1><p>以一个模块的页面的生命周期开始分析：<br>1、 初始状态<br>一个模块在用户第一次进来的时候长什么样，就是该模块的初始状态</p>
+<p>2、加载状态<br>用户发送请求后，如果接口性能较低，就会需要一个加载状态，该状态可以是弹窗，可以是提示语，可以是loading标志</p>
+<p>3、空状态<br>模块可能不存在数据，需要给用户以引导或者提示</p>
+<p>4、数据较少<br>即数据较少时，页面展示效果是否友好，是否需要做特别的设计用以辅助展示</p>
+<p>5、数据正常<br>需要产品第一个考虑的状态，也是模块应该有的常态</p>
+<p>6、 数据过多<br>即，用户操作简单，筛选条件较少，后台返回数据较多时</p>
+<p>7、错误状态<br>接口报错，无网络等</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/产品笔记/">产品笔记</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/APP/">APP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/异常处理/">异常处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计/">设计</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-appium测试环境搭建"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/软件笔记/2017/03/21/appium测试环境搭建.html">appium+ios10测试环境搭建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/软件笔记/2017/03/21/appium测试环境搭建.html" class="article-date">
+	  <time datetime="2017-03-21T06:29:36.000Z" itemprop="datePublished">三月 21, 2017</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Appium测试环境搭建（ios测试）"><a href="#Appium测试环境搭建（ios测试）" class="headerlink" title="Appium测试环境搭建（ios测试）"></a>Appium测试环境搭建（ios测试）</h1><h2 id="准备工组"><a href="#准备工组" class="headerlink" title="准备工组"></a>准备工组</h2><blockquote>
+<p>首先要有一台MAC机器，需要能够上网<br>MAC系统版本10+ ，Xcode版本8+，一个Apple id帐号（一般帐号or开发者都ok）外加 一款翻墙软件</p>
+</blockquote>
+<h2 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h2><ol>
+<li>安装brew<blockquote>
+<p>brew 又叫 Homebrew，是 Mac OSX 上的软件包管理工具，能在 Mac 中方便的安装软件或者卸载软件， 只需要一个命令， 非常方便。brew 类似 ubuntu 系统下的 apt-get 的功能</p>
+</blockquote>
+</li>
+</ol>
+<p>‘’’python<br>ruby -e “$(curl -fsSL <a href="https://raw.github.com/mxcl/homebrew/go" target="_blank" rel="external">https://raw.github.com/mxcl/homebrew/go</a>)”<br>‘’’</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Appium/">Appium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/">Mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/app/">app</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-企查查产品研习"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/产品笔记/2017/03/12/企查查产品研习.html">企查查产品研习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/产品笔记/2017/03/12/企查查产品研习.html" class="article-date">
+	  <time datetime="2017-03-12T10:23:31.000Z" itemprop="datePublished">三月 12, 2017</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/产品笔记/">产品笔记</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="产品简介"><a href="#产品简介" class="headerlink" title="产品简介"></a>产品简介</h2><hr>
+<p>产品名称：<br>slogan：<br>成立时间：<br>支持平台：<br>产品介绍：</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/产品笔记/">产品笔记</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/产品/">产品</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-微信产品设计原则"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -329,197 +509,11 @@ Genie是腾讯唯一一个p4（专家级）女产品经理，也是我知道的�
 <!-- Table of Contents -->
 
   
-    <article id="post-Jmeter链接Oracle数据库"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/软件笔记/2017/01/03/Jmeter链接Oracle数据库.html">Jmeter链接Oracle数据库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/软件笔记/2017/01/03/Jmeter链接Oracle数据库.html" class="article-date">
-	  <time datetime="2017-01-03T09:14:20.000Z" itemprop="datePublished">一月 3, 2017</time>
-	</a>
-
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-          <div class="entry-summary">
-          JmeterのJDBC Request
-JDBC Request：这个sqmpler可以向数据库发送一个jdbc请求（SQL语句），并获取返回的数据库数据的操作，它经常需要和JDBC Connertion Configuration配置原件一起使用，主要是配置数据库的相关属性，比如ip，帐号，密码，链接数等。
-
-
-添加数据库jar包
-
-不同的数据库，需要添加的jar包不同，需要根据需求下载自己需要的jar包。下载完成后，可以通过以下两种方式安装jar包
-
-        
-          <p class="article-more-link">
-            <a href="/软件笔记/2017/01/03/Jmeter链接Oracle数据库.html#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jmeter/">Jmeter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle/">Oracle</a></li></ul>
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-RF使用笔记-2"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/软件笔记/2016/12/27/RF使用笔记-2.html">RF使用笔记-2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/软件笔记/2016/12/27/RF使用笔记-2.html" class="article-date">
-	  <time datetime="2016-12-27T06:18:55.000Z" itemprop="datePublished">十二月 27, 2016</time>
-	</a>
-
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-          <div class="entry-summary">
-          第一个RF脚本
-启动RF
-安装好RF后，桌面会生成一个图标，双击图标启动，界面如下
-
-        
-          <p class="article-more-link">
-            <a href="/软件笔记/2016/12/27/RF使用笔记-2.html#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Robot-Framework/">Robot Framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动化测试/">自动化测试</a></li></ul>
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-RF使用笔记-1"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/软件笔记/2016/12/19/RF使用笔记-1.html">RF使用笔记-1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/软件笔记/2016/12/19/RF使用笔记-1.html" class="article-date">
-	  <time datetime="2016-12-19T06:33:40.000Z" itemprop="datePublished">十二月 19, 2016</time>
-	</a>
-
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-          <div class="entry-summary">
-          安装chromeDriver　　RF默认的是FireFox和IE浏览器，鉴于目前chrome市场占有率及良好的开发环境，RF测试建议使用chrome进行测试
-1、ChromeDriver下载地址
-
-        
-          <p class="article-more-link">
-            <a href="/软件笔记/2016/12/19/RF使用笔记-1.html#more">阅读全文</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Robot-Framework/">Robot Framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chromeDriver/">chromeDriver</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动化测试/">自动化测试</a></li></ul>
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
 
 </section>
@@ -572,7 +566,7 @@ JDBC Request：这个sqmpler可以向数据库发送一个jdbc请求（SQL语句
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/产品笔记/">产品笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/心情笔记/">心情笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件笔记/">软件笔记</a><span class="category-list-count">39</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/产品笔记/">产品笔记</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/心情笔记/">心情笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件笔记/">软件笔记</a><span class="category-list-count">40</span></li></ul>
     </div>
   </div>
 
@@ -582,7 +576,7 @@ JDBC Request：这个sqmpler可以向数据库发送一个jdbc请求（SQL语句
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CS/" style="font-size: 10px;">CS</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Jmeter/" style="font-size: 18.33px;">Jmeter</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/Oracle/" style="font-size: 15px;">Oracle</a> <a href="/tags/Out-of-memory-error/" style="font-size: 10px;">Out of memory error</a> <a href="/tags/PyDev/" style="font-size: 10px;">PyDev</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/Robot-Framework/" style="font-size: 11.67px;">Robot Framework</a> <a href="/tags/SQL用法/" style="font-size: 10px;">SQL用法</a> <a href="/tags/chromeDriver/" style="font-size: 10px;">chromeDriver</a> <a href="/tags/duoshuo/" style="font-size: 10px;">duoshuo</a> <a href="/tags/excel/" style="font-size: 11.67px;">excel</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hexo用法/" style="font-size: 10px;">hexo用法</a> <a href="/tags/makedown/" style="font-size: 10px;">makedown</a> <a href="/tags/namecheap/" style="font-size: 10px;">namecheap</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/python/" style="font-size: 18.33px;">python</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/产品/" style="font-size: 10px;">产品</a> <a href="/tags/企业信息/" style="font-size: 10px;">企业信息</a> <a href="/tags/企业征信/" style="font-size: 10px;">企业征信</a> <a href="/tags/使用指南/" style="font-size: 10px;">使用指南</a> <a href="/tags/华为/" style="font-size: 10px;">华为</a> <a href="/tags/博客/" style="font-size: 13.33px;">博客</a> <a href="/tags/字符编码/" style="font-size: 10px;">字符编码</a> <a href="/tags/安装方法/" style="font-size: 10px;">安装方法</a> <a href="/tags/影评/" style="font-size: 10px;">影评</a> <a href="/tags/心情/" style="font-size: 10px;">心情</a> <a href="/tags/性能测试/" style="font-size: 15px;">性能测试</a> <a href="/tags/感悟/" style="font-size: 18.33px;">感悟</a> <a href="/tags/感言/" style="font-size: 11.67px;">感言</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/正交/" style="font-size: 10px;">正交</a> <a href="/tags/正交实验/" style="font-size: 10px;">正交实验</a> <a href="/tags/正交表/" style="font-size: 10px;">正交表</a> <a href="/tags/求助/" style="font-size: 10px;">求助</a> <a href="/tags/测试分类/" style="font-size: 11.67px;">测试分类</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/研究生/" style="font-size: 10px;">研究生</a> <a href="/tags/离职/" style="font-size: 10px;">离职</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/结构体/" style="font-size: 11.67px;">结构体</a> <a href="/tags/编程修养/" style="font-size: 13.33px;">编程修养</a> <a href="/tags/自动化测试/" style="font-size: 11.67px;">自动化测试</a> <a href="/tags/转载/" style="font-size: 20px;">转载</a> <a href="/tags/链表/" style="font-size: 11.67px;">链表</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a> <a href="/tags/需求分析/" style="font-size: 10px;">需求分析</a> <a href="/tags/面向对象/" style="font-size: 16.67px;">面向对象</a> <a href="/tags/风控/" style="font-size: 10px;">风控</a>
+      <a href="/tags/APP/" style="font-size: 10px;">APP</a> <a href="/tags/Appium/" style="font-size: 10px;">Appium</a> <a href="/tags/CS/" style="font-size: 10px;">CS</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/Jmeter/" style="font-size: 18.33px;">Jmeter</a> <a href="/tags/Mac/" style="font-size: 16.67px;">Mac</a> <a href="/tags/Oracle/" style="font-size: 15px;">Oracle</a> <a href="/tags/Out-of-memory-error/" style="font-size: 10px;">Out of memory error</a> <a href="/tags/PyDev/" style="font-size: 10px;">PyDev</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/Robot-Framework/" style="font-size: 11.67px;">Robot Framework</a> <a href="/tags/SQL用法/" style="font-size: 10px;">SQL用法</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/chromeDriver/" style="font-size: 10px;">chromeDriver</a> <a href="/tags/duoshuo/" style="font-size: 10px;">duoshuo</a> <a href="/tags/excel/" style="font-size: 11.67px;">excel</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hexo用法/" style="font-size: 10px;">hexo用法</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/makedown/" style="font-size: 10px;">makedown</a> <a href="/tags/namecheap/" style="font-size: 10px;">namecheap</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/python/" style="font-size: 18.33px;">python</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/产品/" style="font-size: 11.67px;">产品</a> <a href="/tags/企业信息/" style="font-size: 10px;">企业信息</a> <a href="/tags/企业征信/" style="font-size: 10px;">企业征信</a> <a href="/tags/使用指南/" style="font-size: 10px;">使用指南</a> <a href="/tags/华为/" style="font-size: 10px;">华为</a> <a href="/tags/博客/" style="font-size: 13.33px;">博客</a> <a href="/tags/字符编码/" style="font-size: 10px;">字符编码</a> <a href="/tags/安装方法/" style="font-size: 10px;">安装方法</a> <a href="/tags/异常处理/" style="font-size: 10px;">异常处理</a> <a href="/tags/影评/" style="font-size: 10px;">影评</a> <a href="/tags/心情/" style="font-size: 10px;">心情</a> <a href="/tags/性能测试/" style="font-size: 15px;">性能测试</a> <a href="/tags/感悟/" style="font-size: 18.33px;">感悟</a> <a href="/tags/感言/" style="font-size: 11.67px;">感言</a> <a href="/tags/投资/" style="font-size: 10px;">投资</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/正交/" style="font-size: 10px;">正交</a> <a href="/tags/正交实验/" style="font-size: 10px;">正交实验</a> <a href="/tags/正交表/" style="font-size: 10px;">正交表</a> <a href="/tags/求助/" style="font-size: 10px;">求助</a> <a href="/tags/测试分类/" style="font-size: 11.67px;">测试分类</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/矩阵/" style="font-size: 10px;">矩阵</a> <a href="/tags/研究生/" style="font-size: 10px;">研究生</a> <a href="/tags/离职/" style="font-size: 10px;">离职</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/结构体/" style="font-size: 11.67px;">结构体</a> <a href="/tags/编程修养/" style="font-size: 13.33px;">编程修养</a> <a href="/tags/自动化测试/" style="font-size: 11.67px;">自动化测试</a> <a href="/tags/设计/" style="font-size: 10px;">设计</a> <a href="/tags/转载/" style="font-size: 20px;">转载</a> <a href="/tags/链表/" style="font-size: 11.67px;">链表</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a> <a href="/tags/需求分析/" style="font-size: 10px;">需求分析</a> <a href="/tags/面向对象/" style="font-size: 16.67px;">面向对象</a> <a href="/tags/风控/" style="font-size: 10px;">风控</a>
     </div>
   </div>
 
@@ -594,6 +588,42 @@ JDBC Request：这个sqmpler可以向数据库发送一个jdbc请求（SQL语句
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/产品笔记/2017/07/09/APP设计中容易忽略的点.html">APP设计中容易忽略的点</a></h6>
+              <span>七月 9, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/软件笔记/2017/03/21/appium测试环境搭建.html">appium+ios10测试环境搭建</a></h6>
+              <span>三月 21, 2017</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/产品笔记/2017/03/12/企查查产品研习.html">企查查产品研习</a></h6>
+              <span>三月 12, 2017</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -627,42 +657,6 @@ JDBC Request：这个sqmpler可以向数据库发送一个jdbc请求（SQL语句
 
               <h6 style="margin: 0;"><a href="/产品笔记/2017/02/12/风控与征信.html">风控与征信</a></h6>
               <span>二月 12, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/软件笔记/2017/01/04/Jmeter使用随笔-4.html">Jmeter使用随笔-4</a></h6>
-              <span>一月 4, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/软件笔记/2017/01/03/Jmeter链接Oracle数据库.html">Jmeter链接Oracle数据库</a></h6>
-              <span>一月 3, 2017</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/软件笔记/2016/12/27/RF使用笔记-2.html">RF使用笔记-2</a></h6>
-              <span>十二月 27, 2016</span>
             </div>
 
           </li>

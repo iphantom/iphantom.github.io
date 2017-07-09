@@ -4,6 +4,57 @@
   
     
     <entry>
+      <title><![CDATA[APP设计中容易忽略的点]]></title>
+      <url>http://i90s.vip/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2017/07/09/APP%E8%AE%BE%E8%AE%A1%E4%B8%AD%E5%AE%B9%E6%98%93%E5%BF%BD%E7%95%A5%E7%9A%84%E7%82%B9.html</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>app设计可以分为两部分，第一APP整体的设计，第二APP各模块设计，针对这两点分别说一下app设计中容易忽略的点</p>
+</blockquote>
+<h1 id="APP整体设计"><a href="#APP整体设计" class="headerlink" title="APP整体设计"></a>APP整体设计</h1><h2 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h2><p>任何一款软件，用户最常用的配置，往往就是系统的默认配置。使用默认状态用户的学习成本会降低很多。<br><strong>需要默认值的地方</strong>：消息推送、声音、振动、个性化推荐、照相机、话筒等等<br><strong>设置</strong>：根据业务需求以及客户习惯决定默认值</p>
+<h2 id="上下限"><a href="#上下限" class="headerlink" title="上下限"></a>上下限</h2><p>任何一个模块的逻辑都需要上下限，从而能够避免产品失控。<br><strong>需要上下限的地方</strong>：模块取值逻辑（牵扯时间等）、文字输入框、文件或者图片上传和下载等<br><strong>设置</strong>：当用户的操作超过上下线时，给予相应的提示</p>
+<h2 id="误操作提示"><a href="#误操作提示" class="headerlink" title="误操作提示"></a>误操作提示</h2><p>对于重要模块，需要进行二次确认，以防误操作。<br><strong>需要设置误操作的地方</strong>：删除、清空、黑名单、举报、取消关注等<br><strong>设置</strong>：通过弹框进行二次提示等</p>
+<h2 id="网络状况"><a href="#网络状况" class="headerlink" title="网络状况"></a>网络状况</h2><p>网络状况会影响到接口的访问速度，以及用户的体验效果，对于新闻网站、消息推送网站，网络情况是需要认真考虑的，对于工具类app（电子书查看、office）可以依靠缓存，用户可以查看缓存的数据<br><strong>需要设置网络的地方</strong>：<br><strong>设置</strong>：图片提示</p>
+<h2 id="权限设计"><a href="#权限设计" class="headerlink" title="权限设计"></a>权限设计</h2><p>对于2B的产品，权限是产品设计中重要的一换，针对不同权限，用户能够查看的模块，执行的操作都不同，即是是能看到相同的模块，看到的数据也可能是不同的，这些都是需要通过权限进行控制。</p>
+<h2 id="无响应状态"><a href="#无响应状态" class="headerlink" title="无响应状态"></a>无响应状态</h2><p>部分模块接口访问速度较慢，需要提醒用户耐性等待。<br>常用的解决方法是，设计加载状态or通过弹窗提醒用户耐心等待。</p>
+<p>缺图【登录词】<br>缺图【loading状态】</p>
+<h2 id="多语言支持"><a href="#多语言支持" class="headerlink" title="多语言支持"></a>多语言支持</h2><p>根据我的经验，如果不是在设计时就要求多语言的，尽量等产品成熟后再去进行多语言支持，否则会占用大量人力，多语言支持不仅是页面更改了语言，还会牵扯到页面展示的修改，另外翻译也是个技术活，不是随便翻译下就行。<br>ps：个人建议，在UI的图上进行修改，这样可以知道你的翻译是否满足页面展示的需求。</p>
+<h2 id="后台可控"><a href="#后台可控" class="headerlink" title="后台可控"></a>后台可控</h2><p>在产品设计初期，部分产品习惯把所有规则都写在前端或者后端里面，这样做类似于饮鸠止渴，如果逻辑有变化，就需要上版本去更改，费时费力。<br>一个好的产品能够在产品设计初期，就把规则给想清楚，通过设计权限层或者读取数据库去控制规则。这样前期会耗费产品和开发很大精力，但是对于规则的维护和修改会方便很多。</p>
+<h2 id="数据埋点"><a href="#数据埋点" class="headerlink" title="数据埋点"></a>数据埋点</h2><p>产品都知道，一个产品或者功能好还是不好，需要用数据说话，这就牵扯到一个很重要的点，如何对产品进行埋点。<br>简单的说三部分，第一确定产品的功能模块，哪些是比较重要的模块，哪些是需要验证的模块，第二进行合理的埋点，第三也是最重要的部分，进行数据分析。</p>
+<h2 id="运营需求"><a href="#运营需求" class="headerlink" title="运营需求"></a>运营需求</h2><p>产品和运营不分家，运营会帮助产品进行更好的宣传，一个好的产品，会在产品内部留下一些运营扩展模块。比如广告位，活动入口等。</p>
+<h1 id="APP-单个模块"><a href="#APP-单个模块" class="headerlink" title="APP 单个模块"></a>APP 单个模块</h1><p>以一个模块的页面的生命周期开始分析：<br>1、 初始状态<br>一个模块在用户第一次进来的时候长什么样，就是该模块的初始状态</p>
+<p>2、加载状态<br>用户发送请求后，如果接口性能较低，就会需要一个加载状态，该状态可以是弹窗，可以是提示语，可以是loading标志</p>
+<p>3、空状态<br>模块可能不存在数据，需要给用户以引导或者提示</p>
+<p>4、数据较少<br>即数据较少时，页面展示效果是否友好，是否需要做特别的设计用以辅助展示</p>
+<p>5、数据正常<br>需要产品第一个考虑的状态，也是模块应该有的常态</p>
+<p>6、 数据过多<br>即，用户操作简单，筛选条件较少，后台返回数据较多时</p>
+<p>7、错误状态<br>接口报错，无网络等</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[appium+ios10测试环境搭建]]></title>
+      <url>http://i90s.vip/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2017/03/21/appium%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html</url>
+      <content type="html"><![CDATA[<h1 id="Appium测试环境搭建（ios测试）"><a href="#Appium测试环境搭建（ios测试）" class="headerlink" title="Appium测试环境搭建（ios测试）"></a>Appium测试环境搭建（ios测试）</h1><h2 id="准备工组"><a href="#准备工组" class="headerlink" title="准备工组"></a>准备工组</h2><blockquote>
+<p>首先要有一台MAC机器，需要能够上网<br>MAC系统版本10+ ，Xcode版本8+，一个Apple id帐号（一般帐号or开发者都ok）外加 一款翻墙软件</p>
+</blockquote>
+<h2 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h2><ol>
+<li>安装brew<blockquote>
+<p>brew 又叫 Homebrew，是 Mac OSX 上的软件包管理工具，能在 Mac 中方便的安装软件或者卸载软件， 只需要一个命令， 非常方便。brew 类似 ubuntu 系统下的 apt-get 的功能</p>
+</blockquote>
+</li>
+</ol>
+<p>‘’’python<br>ruby -e “$(curl -fsSL <a href="https://raw.github.com/mxcl/homebrew/go" target="_blank" rel="external">https://raw.github.com/mxcl/homebrew/go</a>)”<br>‘’’</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[企查查产品研习]]></title>
+      <url>http://i90s.vip/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2017/03/12/%E4%BC%81%E6%9F%A5%E6%9F%A5%E4%BA%A7%E5%93%81%E7%A0%94%E4%B9%A0.html</url>
+      <content type="html"><![CDATA[<h2 id="产品简介"><a href="#产品简介" class="headerlink" title="产品简介"></a>产品简介</h2><hr>
+<p>产品名称：<br>slogan：<br>成立时间：<br>支持平台：<br>产品介绍：</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[微信产品设计原则——Genie访谈记录]]></title>
       <url>http://i90s.vip/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2017/03/08/%E5%BE%AE%E4%BF%A1%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99.html</url>
       <content type="html"><![CDATA[<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95.jpeg" alt=""></p>
@@ -3395,35 +3446,6 @@ return head;//返回链首指针
   
     
     <entry>
-      <title><![CDATA[建站记事]]></title>
-      <url>http://i90s.vip/built/index.html</url>
-      <content type="html"><![CDATA[<h3 id="2015-12-29"><a href="#2015-12-29" class="headerlink" title="2015-12-29"></a>2015-12-29</h3><ul>
-<li>添加文章置顶功能</li>
-<li>添加站长功能</li>
-</ul>
-<h3 id="2015-12-28"><a href="#2015-12-28" class="headerlink" title="2015-12-28"></a>2015-12-28</h3><ul>
-<li>优化分类及标签</li>
-<li>完善站内搜索</li>
-</ul>
-<h3 id="2015-12-14"><a href="#2015-12-14" class="headerlink" title="2015-12-14"></a>2015-12-14</h3><ul>
-<li>修改文章版权问题</li>
-</ul>
-<h3 id="2015-12-13"><a href="#2015-12-13" class="headerlink" title="2015-12-13"></a>2015-12-13</h3><ul>
-<li>修改多说ID问题</li>
-<li>修改主页添加网页问题</li>
-</ul>
-<h3 id="2015-12-11"><a href="#2015-12-11" class="headerlink" title="2015-12-11"></a>2015-12-11</h3><ul>
-<li>添加RSS</li>
-<li>Github、Linkedin增加链接</li>
-</ul>
-<h3 id="2015-12-10"><a href="#2015-12-10" class="headerlink" title="2015-12-10"></a>2015-12-10</h3><ul>
-<li>增加多说功能</li>
-<li>链接网易云音乐</li>
-</ul>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[关于我 & 留言板]]></title>
       <url>http://i90s.vip/about/index.html</url>
       <content type="html"><![CDATA[<style type="text/css">
@@ -3467,6 +3489,35 @@ return head;//返回链首指针
 <div class="player"><br><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="http://music.163.com/outchain/player?type=0&id=146157353&auto=1&height=430"></iframe><br></div>
 
 <ul class="ds-recent-visitors" data-num-items="30" data-avatar-size="56"></ul>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[建站记事]]></title>
+      <url>http://i90s.vip/built/index.html</url>
+      <content type="html"><![CDATA[<h3 id="2015-12-29"><a href="#2015-12-29" class="headerlink" title="2015-12-29"></a>2015-12-29</h3><ul>
+<li>添加文章置顶功能</li>
+<li>添加站长功能</li>
+</ul>
+<h3 id="2015-12-28"><a href="#2015-12-28" class="headerlink" title="2015-12-28"></a>2015-12-28</h3><ul>
+<li>优化分类及标签</li>
+<li>完善站内搜索</li>
+</ul>
+<h3 id="2015-12-14"><a href="#2015-12-14" class="headerlink" title="2015-12-14"></a>2015-12-14</h3><ul>
+<li>修改文章版权问题</li>
+</ul>
+<h3 id="2015-12-13"><a href="#2015-12-13" class="headerlink" title="2015-12-13"></a>2015-12-13</h3><ul>
+<li>修改多说ID问题</li>
+<li>修改主页添加网页问题</li>
+</ul>
+<h3 id="2015-12-11"><a href="#2015-12-11" class="headerlink" title="2015-12-11"></a>2015-12-11</h3><ul>
+<li>添加RSS</li>
+<li>Github、Linkedin增加链接</li>
+</ul>
+<h3 id="2015-12-10"><a href="#2015-12-10" class="headerlink" title="2015-12-10"></a>2015-12-10</h3><ul>
+<li>增加多说功能</li>
+<li>链接网易云音乐</li>
+</ul>
+]]></content>
     </entry>
     
     <entry>
