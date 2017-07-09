@@ -94,7 +94,9 @@
 <p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-071947@2x.png" alt=""></p>
 <p>然后就可以编译了，正常情况下编译是没有错误，如果有错误，如果有错误应该是第10步哪出现了错误，根据错误提示信息自行修改就好了，祝好</p>
 <p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-072407@2x.png" alt=""></p>
-<p>11.建立服务 WebDriverAgent </p>
+<ol>
+<li>建立服务 WebDriverAgent </li>
+</ol>
 <p>此时需要把你心爱的iphone手机和心爱的mac电脑通过一只数据线连接起来<br>1）进入WebDriverAgent<br>‘’ cd  /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent </p>
 <p>2）执行测试语句<br>‘’xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination ‘id=真机的udid’ test</p>
 <p>执行这个语句不出意外的话，你就会得到一个<strong>失败</strong>的提示，哈哈哈哈，惊不惊喜，意不意外</p>
