@@ -4,28 +4,8 @@
 
     
   <url>
-    <loc>http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2015/12/08/Hexo%20%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95.html</loc>
-    <lastmod>2017-07-09T05:24:05.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo 使用方法</title>
-        <pubTime>2015-12-08T02:39:27.000Z</pubTime>
-        
-        <tag>hexo用法</tag>
-         
-         
-           
-             
-              <breadCrumb title="软件笔记" url="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://i90s.vip//%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2017/07/09/APP%E8%AE%BE%E8%AE%A1%E4%B8%AD%E5%AE%B9%E6%98%93%E5%BF%BD%E7%95%A5%E7%9A%84%E7%82%B9.html</loc>
-    <lastmod>2017-07-09T05:22:07.000Z</lastmod>
+    <lastmod>2017-07-09T05:34:08.000Z</lastmod>
     <data>
         <display>
         <title>APP设计中容易忽略的点</title>
@@ -41,6 +21,26 @@
            
              
               <breadCrumb title="产品笔记" url="http://i90s.vip/categories/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2015/12/08/Hexo%20%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95.html</loc>
+    <lastmod>2017-07-09T05:24:05.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo 使用方法</title>
+        <pubTime>2015-12-08T02:39:27.000Z</pubTime>
+        
+        <tag>hexo用法</tag>
+         
+         
+           
+             
+              <breadCrumb title="软件笔记" url="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
           
         </display>
     </data>
