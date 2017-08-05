@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title><![CDATA[热点新闻推荐]]></title>
+      <url>http://i90s.vip/uncategorized/2017/08/05/%E7%83%AD%E7%82%B9%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90.html</url>
+      <content type="html"><![CDATA[<p>自己负责的app也有热点新闻模块，也一直没搞清楚究竟如何进行个性化推荐，最近看到一篇腾讯pm写的文章，收获很多，根据记忆进行下复盘。</p>
+<p>一、基本原理<br>新闻热度分=初始分+用户交互热度分-随时间的衰减分<br>换成公式：Score=S0+S（Users）-S（Time）  <a id="more"></a></p>
+<p>二、初始分要不要一样<br>结论：初始分不要一样<br>原因：<br>1）八卦和娱乐新闻大众用户本身会比较喜欢，历史类新闻喜欢的用户群体较小<br>2）新闻实时性较强，奥运期间用户对体育类新闻比较关注，灾害期间，用户对灾害类相关新闻比较关注<br>3）根据产品不同的属性，对新闻本身的侧重点也不一样，栗子：文化类产品，文化类新闻就会有较高的初始分</p>
+<p>三、初始分如何设置<br>结论：给不同维度新闻不同的权重，特殊情况下调整维度的权重<br>举个例子：<br>初始权重设置</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-7b352f4b7d458597.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>特殊情况下权重如何调整？手动？太low，举个栗子：可以设置热词库<br>再来个栗子：<br>体育类热词库：奥运会，NBA总决赛，世界杯<br>当有大量新闻触发热词库时，超过一定的阈值时，此时可以触发权重调整机制<br>所以这个权重就变成了</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-cef3449be0ce7599.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>四、用户行为分不是固定不变的<br>原因：当产品的用户体量较小时，要体现用户的重要性，这时候用户行为分要高；当产品体量较大时，需要对内容进行运营，此时要适当降低用户的行为分</p>
+<p>用户的行为：阅读（click），收藏（favor），分享（share），评论（comment）</p>
+<p>用户体量较小时，用户行为分：<br>S（Users）=1<em>click+5</em>favor+10<em>share+8</em>comment</p>
+<p>用户体量较大时，用户行为分：<br>S（Users）=（1<em>click+5</em>favor+10<em>share+8</em>comment）*C/DAU<br>C:一个常数<br>DAU：传说中的日活，每日活跃用户数</p>
+<p>五、热度分随时间衰减不应该是线性的<br>原因：新闻都有时效性，随着时间的流逝，热度分必须衰减的越来越快，直致趋近于零<br>换成人话：随着时间的流逝，一个新闻要想维持热度，必须越来越多的人来维护才行</p>
+<p>大概就是这样一个图</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-4907d6280cbf72fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="自己手绘的图，真丑"></p>
+<p>下面就是考察知识面的时候了，牛顿曾经在冰块里面想到了一个定理，所以这个定理就叫：牛顿冷却定理<br>所以<br>T（Time）=e^（K*（T1-T0））<br>T0：新闻发布时间<br>T1：新闻当前时间</p>
+<p>六、最终结论<br>考虑到热度最终要无限趋近于零，所以最终的算法公式就是<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>还在下面<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>这么有毅力<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>竟然看到了这里，夸奖下<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>最终的公式就是：Score=（S0+S（Users））/T（Time）<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>好了，真没了<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>。<br>晚安，愿世界和平！</p>
+<p><img src="//upload-images.jianshu.io/upload_images/1985459-8fec4b9da0bb9ddc.jpg" alt="要坚强"></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[APP设计中容易忽略的点]]></title>
       <url>http://i90s.vip/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2017/07/09/APP%E8%AE%BE%E8%AE%A1%E4%B8%AD%E5%AE%B9%E6%98%93%E5%BF%BD%E7%95%A5%E7%9A%84%E7%82%B9.html</url>
       <content type="html"><![CDATA[<blockquote>
@@ -3599,17 +3622,17 @@ return head;//返回链首指针
     </entry>
     
     <entry>
+      <title><![CDATA[分类 & 标签]]></title>
+      <url>http://i90s.vip/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[搜索结果]]></title>
       <url>http://i90s.vip/search/index.html</url>
       <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.hl &#123;</span><br><span class="line">color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$data = simplexml_load_file(&apos;search.xml&apos;);</span><br><span class="line">define(LEN, 1000);</span><br><span class="line"></span><br><span class="line">echo &apos;&lt;div class=&quot;article-inner article-entry&quot;&gt;&lt;h2&gt;Search Results for: &apos; . $_GET[&quot;s&quot;] . &apos;&lt;/h2&gt;&lt;/div&gt;&apos;;</span><br><span class="line"></span><br><span class="line">foreach($data-&gt;entry as $a) &#123;</span><br><span class="line">	// echo $a-&gt;title;</span><br><span class="line">// echo preg_replace(&quot;/http:\/\/(.*)\//&quot;,&quot;&lt;a href=\&quot;\$&#123;0&#125;\&quot;&gt;\$&#123;0&#125;&lt;/a&gt;&quot;,&quot;$a&quot;);</span><br><span class="line"></span><br><span class="line">	$pattern = &quot;/&quot; . $_GET[&quot;s&quot;] . &quot;/i&quot;;</span><br><span class="line">	$replace = &apos;&lt;span class=hl&gt;&apos; . $_GET[&quot;s&quot;] . &apos;&lt;/span&gt;&apos;;</span><br><span class="line">	// echo $pattern . &quot;&lt;BR&gt;&quot;;</span><br><span class="line">	// echo $replace . &quot;&lt;BR&gt;&quot;;</span><br><span class="line"></span><br><span class="line">	if(preg_match($pattern, $a-&gt;title)  or preg_match($pattern, $a-&gt;content)) &#123;</span><br><span class="line">		echo &apos;&lt;div class=&quot;article-inner article-entry&quot; itemprop=&quot;articleBody&quot;&gt;&lt;a href=&apos; . $a-&gt;url . &apos;&gt;&lt;h3&gt;&apos; . preg_replace($pattern, $replace, $a-&gt;title) . &apos;&lt;/h3&gt;&lt;/a&gt;&apos;;</span><br><span class="line">		$hl_keys = preg_replace($pattern, $replace, $a-&gt;content);</span><br><span class="line"></span><br><span class="line">		$strpos = stripos($a-&gt;content,  $_GET[&apos;s&apos;]);</span><br><span class="line">		$len = min(LEN, strlen($a-&gt;content) - $strpos - 1);</span><br><span class="line"></span><br><span class="line">		echo &apos;&lt;p&gt;&apos; . mb_strcut($hl_keys, $strpos, $len, &quot;utf-8&quot;) . &apos; &lt;span class=article-more-link&gt;&lt;a href=&apos;. $a-&gt;url .&apos;&gt; Detial&gt;&gt;&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&apos;;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[分类 & 标签]]></title>
-      <url>http://i90s.vip/tags/index.html</url>
-      <content type="html"></content>
     </entry>
     
   
