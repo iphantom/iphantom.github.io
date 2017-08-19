@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>产品经理一定要懂得算法（二） | Enzo Chen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="感想产品" />
+  
+  
+  
+  
+  <meta name="description" content="自己负责的 app 也有热点新闻模块，也一直没搞清楚究竟如何进行个性化推荐，最近看到一篇腾讯 pm 写的文章，收获很多，根据记忆进行下复盘。
+
+上篇文章讲了热度算法，链接：产品经理一定要懂得算法（一）
+热度算法适用与产品的初期，且本身有缺陷，热度算法会导致用户的行为过度集中，当产品的日活月活达到一定的量级的时候，就需要考虑用户的个性化推荐，这样用户不仅可以看到当前的热点内容，也可以读到自己感兴趣">
+<meta property="og:type" content="article">
+<meta property="og:title" content="产品经理一定要懂得算法（二）">
+<meta property="og:url" content="http://i90s.vip/产品笔记/2017/08/19/产品经理一定要懂得算法（二）.html">
+<meta property="og:site_name" content="Enzo Chen">
+<meta property="og:description" content="自己负责的 app 也有热点新闻模块，也一直没搞清楚究竟如何进行个性化推荐，最近看到一篇腾讯 pm 写的文章，收获很多，根据记忆进行下复盘。
+
+上篇文章讲了热度算法，链接：产品经理一定要懂得算法（一）
+热度算法适用与产品的初期，且本身有缺陷，热度算法会导致用户的行为过度集中，当产品的日活月活达到一定的量级的时候，就需要考虑用户的个性化推荐，这样用户不仅可以看到当前的热点内容，也可以读到自己感兴趣">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-cf0a6e6f764521c3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-49b6647c70a87631.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-6812c46405b76b83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-39bc27e28566d12b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-1439a494ce6df7c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-70fbf1329e560953.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-b7124bab7d1b5cba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-08-19T09:11:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="产品经理一定要懂得算法（二）">
+<meta name="twitter:description" content="自己负责的 app 也有热点新闻模块，也一直没搞清楚究竟如何进行个性化推荐，最近看到一篇腾讯 pm 写的文章，收获很多，根据记忆进行下复盘。
+
+上篇文章讲了热度算法，链接：产品经理一定要懂得算法（一）
+热度算法适用与产品的初期，且本身有缺陷，热度算法会导致用户的行为过度集中，当产品的日活月活达到一定的量级的时候，就需要考虑用户的个性化推荐，这样用户不仅可以看到当前的热点内容，也可以读到自己感兴趣">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1985459-cf0a6e6f764521c3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+  <link rel="icon" href="/css/images/avatar.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Enzo Chen" rel="home"> Enzo Chen </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">是我的海</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/atom.xml">rss</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-产品经理一定要懂得算法（二）" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      产品经理一定要懂得算法（二）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/产品笔记/2017/08/19/产品经理一定要懂得算法（二）.html" class="article-date">
+	  <time datetime="2017-08-19T09:10:23.000Z" itemprop="datePublished">八月 19, 2017</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/产品笔记/">产品笔记</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>自己负责的 app 也有热点新闻模块，也一直没搞清楚究竟如何进行个性化推荐，最近看到一篇腾讯 pm 写的文章，收获很多，根据记忆进行下复盘。</p>
+</blockquote>
+<p>上篇文章讲了热度算法，链接：<a href="http://www.toutiao.com/i6450826526601511438/" target="_blank" rel="external">产品经理一定要懂得算法（一）</a></p>
+<p>热度算法适用与产品的初期，且本身有缺陷，热度算法会导致用户的行为过度集中，当产品的日活月活达到一定的量级的时候，就需要考虑用户的个性化推荐，这样用户不仅可以看到当前的热点内容，也可以读到自己感兴趣的内容。个性化内容推荐，常用的有两种算法：<br>  1）基于内容的相关推荐<br>  2）基于用户的协同过滤<br>  基于用户的协同过滤相对基于内容的相关推荐对用户的数量要求较高，并且前期要准备的工作会比较多，所以相比基于用户的协同过滤，基于内容的推荐使用场景更多、范围更广。</p>
+<h2 id="基于内容的相关推荐"><a href="#基于内容的相关推荐" class="headerlink" title="基于内容的相关推荐"></a>基于内容的相关推荐</h2><p>这里需要引入一个概念叫做 “新闻特征向量” ，用它来表示新闻的相似度。即把新闻的关键词提取出来，关键词可以看成新闻的特征向量，当两篇新闻的关键词相似度较高时，可以认为这两篇新闻的相关性较高。下面说一下基于内容的相关推荐的实现过程。</p>
+<p><strong>1）分词</strong></p>
+<blockquote>
+<p>什么叫分词，简单的说就是把一片文章分成一个个的词语，望文生义就好</p>
+</blockquote>
+<p>分词需要使用是用到两个词库，一个叫正常词库，一个叫停用词库，字如其名（是不是感觉有点废话）。停用词库就是那些常见但是没有任何意义的分词，比如：中文中的“的”，“了”，英文里的“that”，“are”之类的，这类词出现的频率会很高，但是本身对于分词没有任何帮助，所以需要放入停用词库中进行过滤。</p>
+<p>常用的分词方法有（敲黑板）</p>
+<p>按照分词顺序：正向匹配、逆向匹配<br>按照分词长度：最大匹配、最小匹配</p>
+<p>那么常用的中文分词法是什么？常用的中文分词法既不是正向匹配、逆向匹配，也不是最大匹配、最小匹配，而是</p>
+<p>a)正向最大匹配（从左到右）<br>b)逆向最大匹配（从右到左）<br>c)双向最大匹配（左右摇摆，忽左忽右·····算法怎么这不不严谨，其实是先正向（反向），再反向（正向）进行两次匹配）<br>d)最短路径法（每一句话的分词数最少）</p>
+<p>【小贴士1】正向最大匹配：假设正常词库中最长的词有N个中文字符，则把待处理内容的前 N个字作为匹配字段，查找词库。若词库中存在这样的一个 N字词，则匹配成功，匹配字段被作为一个词切分出来。如果词库中找不到这样的一个 N字词，则匹配失败，按照从左到右，将匹配字段中的<strong>最后一个字去掉</strong>，对剩下的字串重新进行匹配处理，这是个循环，直到匹配成功，即切分出一个词或剩余字串的长度为零为止。</p>
+<p>【小贴士2】词库需要不断的维护，否则你的算法看到完全没见过的词会很懵逼</p>
+<p><strong>2）特征向量指标</strong></p>
+<p>新闻关键词的集合就是新闻的特征向量，所以特征向量的第一个指标就是“关键词”，两篇新闻的内容是否相关就是比较两篇新闻特征向量的重合度。但是两篇新闻的新闻特征向量重合度较高是否两篇文章就一定相关？<br>既然这样问了，那答案肯定是不一定相关<br>原作者当时举了两个栗子，拿来复用<br>新闻一，“广州近期天气较好，……….，大家可以骑着摩拜单车去春游”<br>新闻二，“摩拜单车进驻广州，……,大家可以在天气好的时候骑着摩拜单车去春游”<br>两篇文章都可以分词出来“广州”，“天气”，“摩拜单车”，“春游”，两篇新闻的关键词虽然一样，但是两篇文章讲的完全是不同的事情，新闻一主要是是讲“广州天气”，新闻二主要是讲“摩拜单车”。<br>所以只看新闻的关键词是不够的，这里给特征向量引入第二个指标叫新闻内频率（ TF：Term Frequency），即衡量每个关键词在新闻中出现的频率。<br>还是上面两个新闻，可以得出新闻一，“广州天气”是个高频词，新闻二，“摩拜单车”是个高频词，引入了TF后，可以一定程度的解决上面的问题，但是两篇文章的关键词一样，出现频率一样，那两篇新闻就一定是强关联么？<br>。<br>。<br>。<br>。<br>。<br>答案是肯定的，当两篇文章的关键词一样，出现频率一样，那两篇新闻就一定是强关联，意不意外，惊不惊喜。<br>。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-cf0a6e6f764521c3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>【友情提示】引入TF以后，这个算法就可以去拿出去忽悠了</p>
+<p><strong>继续进阶</strong></p>
+<p>在日常新闻中还存在一种情况，对于地域性新闻，新闻关联程度本身就会很高，比如上海日报（瞎编的），掐指一算，它的新闻关键词无非是“东方明珠”，“陆家嘴”，“人广”，“世纪大道”，“浦东新区”，但是上海日报的每一篇文章都一样么？肯定不是，每一篇文章的侧重点肯定都是不一样的，那如何在关联度很高的新闻里区分出每篇新闻究竟侧重点是什么？？？</p>
+<p>这里需要引入特征向量的第三个指标相反值（IDF：Inverse Document Frequency），即关键词在所有文档中出现的频率的相反值。</p>
+<p>为什么要引入相反值，（敲黑板，重点）<strong>当一个关键词在某条新闻出现的频率最大，在所有文档中出现的频率越小，该关键词对这条新闻的特征标识作用越大</strong>（多读两遍，再来一遍，理解了吧），这是一点很容易被忽略的重点。</p>
+<p>结合上面的几点，我们就可以把每个关键词对新闻的作用就能被衡量出来即 TFIDF=TF * IDF，这也就是著名的 TF-IDF 模型。</p>
+<p>3）相关性算法<br>讲过前两步的分词和确定指标后，可以的出新闻的特征向量:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-49b6647c70a87631.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>其中word0，word1…为新闻的关键词，TFIDF0,TFIDF1…为关键词的指标<br>考察知识面的时候到了，根据<strong>高中</strong>的知识，几何中夹角余弦可以用来衡量两个向量的方向的差异性，因此在我们的算法中使用夹角余弦来计算新闻关键词的相似度。夹角越小，相似度越高。</p>
+<p>举个栗子：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-6812c46405b76b83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>可以看到两条新闻有 3个重合的关键词：上海，摩拜，学生，因此两条新闻的相关性由这 3个关键词决定，计算方式如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-39bc27e28566d12b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>得出两条新闻的相关性最终值；用同样的方法能得出一条新闻与新闻库里面所有内容的相关性。</p>
+<p>4）用户特征<br>得到新闻特征以后，还需要得到用户特征才能对两者进行匹配和推荐，那怎么获得用户特征呢？</p>
+<p>需要通过用户的行为来获得，用户通过阅读，点赞，评论，分享来表达自己对新闻内容的喜爱；跟热度排名类似，我们对用户的各种行为赋予一定的 “喜爱分”，例如阅读 1 分，点赞 2 分，评论 5 分等，这样新闻特征跟用户行为结合后，就能得到用户的特征分。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-1439a494ce6df7c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-70fbf1329e560953.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>计算公式：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-b7124bab7d1b5cba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>而随着用户阅读的新闻数越来越多，该用户的标签也越来越多，并且越发精准。</p>
+<p>从而当我们拿到新闻的特征后，就能与用户的关键词列表做匹配，得出新闻与用户阅读特征的匹配度，做出个性化推荐。</p>
+<p><strong>5）其他运用</strong></p>
+<p>除了个性化推荐，基于内容的相关性算法能精准地给出一篇新闻的相关推荐列表，对相关阅读的实现非常有意义。此外，标签系统对新闻分类的实现和提升准确性，也有重要的意义。</p>
+<p><strong>6）优缺点</strong></p>
+<p>基于内容的推荐算法有几个明显优点：</p>
+<p>对用户数量没有要求，无论日活几千或是几百万，均可以采用；因此个性化推荐早期一般采用这种方式。</p>
+<p>每个用户的特征都是由自己的行为来决定的，是独立存在的，不会有互相干扰，因此恶意刷阅读等新闻不会影响到推荐算法。</p>
+<p>而最主要的缺点就是确定性太强了，所有推荐的内容都是由用户的阅读历史决定，所以没办法挖掘用户的潜在兴趣；也就是由于这一点，基于内容的推荐一般与其他推荐算法同时存在。</p>
+<p><strong>下一篇文章会复盘  基于用户的协同过滤  敬请期待</strong></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/产品笔记/">产品笔记</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/产品/">产品</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/感想/">感想</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="//产品笔记/2017/08/19/产品经理一定要懂得算法（二）.html" data-title="产品经理一定要懂得算法（二）" data-url="http://i90s.vip/产品笔记/2017/08/19/产品经理一定要懂得算法（二）.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chengong"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/产品笔记/2017/08/05/产品经理一定要懂得算法（一）.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">产品经理一定要懂得算法（一）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于内容的相关推荐"><span class="nav-number">1.</span> <span class="nav-text">基于内容的相关推荐</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/atom.xml" class="mobile-nav-link">rss</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+
+  <div class="visit">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261448261'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261448261%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+</body>
+</html>
