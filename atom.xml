@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://i90s.vip/"/>
-  <updated>2017-08-19T09:17:55.000Z</updated>
+  <updated>2017-08-19T10:48:28.000Z</updated>
   <id>http://i90s.vip/</id>
   
   <author>
@@ -20,12 +20,12 @@
     <link href="http://i90s.vip//%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2017/08/19/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E4%B8%80%E5%AE%9A%E8%A6%81%E6%87%82%E5%BE%97%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89.html"/>
     <id>http://i90s.vip//产品笔记/2017/08/19/产品经理一定要懂得算法（二）.html</id>
     <published>2017-08-19T09:10:23.000Z</published>
-    <updated>2017-08-19T09:17:55.000Z</updated>
+    <updated>2017-08-19T10:48:28.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>自己负责的 app 也有热点新闻模块，也一直没搞清楚究竟如何进行个性化推荐，最近看到一篇腾讯 pm 写的文章，收获很多，根据记忆进行下复盘。</p>
 </blockquote>
-<p>上篇文章讲了热度算法，链接：<a href="http://www.toutiao.com/i6450826526601511438/" target="_blank" rel="external">产品经理一定要懂得算法（一）</a></p>
+<p>上篇文章讲了热度算法，链接：<a href="http://blog.i90s.vip/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2017/08/05/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E4%B8%80%E5%AE%9A%E8%A6%81%E6%87%82%E5%BE%97%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89.html" target="_blank" rel="external">产品经理一定要懂得算法（一）</a></p>
 <p>热度算法适用与产品的初期，且本身有缺陷，热度算法会导致用户的行为过度集中，当产品的日活月活达到一定的量级的时候，就需要考虑用户的个性化推荐，这样用户不仅可以看到当前的热点内容，也可以读到自己感兴趣的内容。个性化内容推荐，常用的有两种算法：<a id="more"></a><br>  1）基于内容的相关推荐<br>  2）基于用户的协同过滤<br>  基于用户的协同过滤相对基于内容的相关推荐对用户的数量要求较高，并且前期要准备的工作会比较多，所以相比基于用户的协同过滤，基于内容的推荐使用场景更多、范围更广。</p>
 <h2 id="基于内容的相关推荐"><a href="#基于内容的相关推荐" class="headerlink" title="基于内容的相关推荐"></a>基于内容的相关推荐</h2><p>这里需要引入一个概念叫做 “新闻特征向量” ，用它来表示新闻的相似度。即把新闻的关键词提取出来，关键词可以看成新闻的特征向量，当两篇新闻的关键词相似度较高时，可以认为这两篇新闻的相关性较高。下面说一下基于内容的相关推荐的实现过程。</p>
 <h3 id="1）分词"><a href="#1）分词" class="headerlink" title="1）分词"></a><strong>1）分词</strong></h3><blockquote>
@@ -75,7 +75,7 @@
       &lt;blockquote&gt;
 &lt;p&gt;自己负责的 app 也有热点新闻模块，也一直没搞清楚究竟如何进行个性化推荐，最近看到一篇腾讯 pm 写的文章，收获很多，根据记忆进行下复盘。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;上篇文章讲了热度算法，链接：&lt;a href=&quot;http://www.toutiao.com/i6450826526601511438/&quot;&gt;产品经理一定要懂得算法（一）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;上篇文章讲了热度算法，链接：&lt;a href=&quot;http://blog.i90s.vip/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2017/08/05/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E4%B8%80%E5%AE%9A%E8%A6%81%E6%87%82%E5%BE%97%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89.html&quot;&gt;产品经理一定要懂得算法（一）&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;热度算法适用与产品的初期，且本身有缺陷，热度算法会导致用户的行为过度集中，当产品的日活月活达到一定的量级的时候，就需要考虑用户的个性化推荐，这样用户不仅可以看到当前的热点内容，也可以读到自己感兴趣的内容。个性化内容推荐，常用的有两种算法：
     
     </summary>
