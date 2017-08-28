@@ -3649,6 +3649,12 @@ return head;//返回链首指针
     </entry>
     
     <entry>
+      <title><![CDATA[分类 & 标签]]></title>
+      <url>http://i90s.vip/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[建站记事]]></title>
       <url>http://i90s.vip/built/index.html</url>
       <content type="html"><![CDATA[<h3 id="2015-12-29"><a href="#2015-12-29" class="headerlink" title="2015-12-29"></a>2015-12-29</h3><ul>
@@ -3675,12 +3681,6 @@ return head;//返回链首指针
 <li>链接网易云音乐</li>
 </ul>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[分类 & 标签]]></title>
-      <url>http://i90s.vip/tags/index.html</url>
-      <content type="html"></content>
     </entry>
     
     <entry>
