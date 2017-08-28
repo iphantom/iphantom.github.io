@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>产品经理一定要懂得算法（三） | Enzo Chen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="感想产品" />
+  
+  
+  
+  
+  <meta name="description" content="自己负责的 app 也有热点新闻模块，也一直没搞清楚究竟如何进行个性化推荐，最近看到一篇腾讯 pm 写的文章，收获很多，根据记忆进行下复盘。
+
+上篇文章讲了前两篇文章讲了热点推荐和基于内容的相关推荐，链接：产品经理一定要懂得算法（一）产品经理一定要懂得算法（二）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="产品经理一定要懂得算法（三）">
+<meta property="og:url" content="http://i90s.vip/产品笔记/2017/08/28/产品经理一定要懂得算法（三）.html">
+<meta property="og:site_name" content="Enzo Chen">
+<meta property="og:description" content="自己负责的 app 也有热点新闻模块，也一直没搞清楚究竟如何进行个性化推荐，最近看到一篇腾讯 pm 写的文章，收获很多，根据记忆进行下复盘。
+
+上篇文章讲了前两篇文章讲了热点推荐和基于内容的相关推荐，链接：产品经理一定要懂得算法（一）产品经理一定要懂得算法（二）">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-e7ae208fdb4322e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-9b2c7865124c02ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-80680a9bd9a7d7d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-08-28T09:28:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="产品经理一定要懂得算法（三）">
+<meta name="twitter:description" content="自己负责的 app 也有热点新闻模块，也一直没搞清楚究竟如何进行个性化推荐，最近看到一篇腾讯 pm 写的文章，收获很多，根据记忆进行下复盘。
+
+上篇文章讲了前两篇文章讲了热点推荐和基于内容的相关推荐，链接：产品经理一定要懂得算法（一）产品经理一定要懂得算法（二）">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1985459-e7ae208fdb4322e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+  <link rel="icon" href="/css/images/avatar.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Enzo Chen" rel="home"> Enzo Chen </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">是我的海</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/atom.xml">rss</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-产品经理一定要懂得算法（三）" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      产品经理一定要懂得算法（三）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/产品笔记/2017/08/28/产品经理一定要懂得算法（三）.html" class="article-date">
+	  <time datetime="2017-08-28T07:04:48.000Z" itemprop="datePublished">八月 28, 2017</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/产品笔记/">产品笔记</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>自己负责的 app 也有热点新闻模块，也一直没搞清楚究竟如何进行个性化推荐，最近看到一篇腾讯 pm 写的文章，收获很多，根据记忆进行下复盘。</p>
+</blockquote>
+<p>上篇文章讲了前两篇文章讲了热点推荐和基于内容的相关推荐<br>，链接：<br><a href="http://www.toutiao.com/i6450826526601511438/" target="_blank" rel="external">产品经理一定要懂得算法（一）</a><br><a href="http://www.toutiao.com/i6455913366589276686/" target="_blank" rel="external">产品经理一定要懂得算法（二）</a><a id="more"></a></p>
+<h2 id="基于用户的协同过滤"><a href="#基于用户的协同过滤" class="headerlink" title="基于用户的协同过滤"></a>基于用户的协同过滤</h2><p>当产品的日活月活较高时，热点推荐和基于内容的推荐已经不能满足产品的需求了，虽然热点算法能够推荐当前的热点事件，基于内容的推荐能够基于他感兴趣的内容推荐他可能感兴趣的内容，但是对于用户来说推荐的内容总是却少一些“不期而遇”的感觉，对于产品来说是缺少发现用户兴趣的能力。</p>
+<p>基于用户的协同过滤算法，简单的说就是，根据用户a的兴趣爱好，找到和其兴趣爱好最接近的群体，然后把这个群体里其他人喜欢的文章推荐给a。所以基于用户的系统过滤第一步就是找到用户所属的群体。</p>
+<h3 id="一、用户群体划分"><a href="#一、用户群体划分" class="headerlink" title="一、用户群体划分"></a>一、用户群体划分</h3><p>用户的群体划分可以根据从以下三个方面入手：<br><strong>（1）借用外部数据</strong><br>外部数据以借用社交平台的数据居多，比如：微信、QQ、微信、facebook、github等，借用第三方账户有很多优点，例如降低注册门槛、方便传播等。</p>
+<p>另外第三方帐号都会授权获取用户的部分信息，一般为性别、年龄、工作或者相关社交关系等，这些基础信息可以将用户进行初步的划分。</p>
+<p><strong>（2）产品内主动询问</strong></p>
+<p>常见的方式为在产品首次启动时，弹出提示框询问用户的性别、职业、喜好等，比如一些常见的新闻资讯类app，这样可以帮助产品进行冷启动。不过这种方式性价比不高，而且要避免过度打扰用户。</p>
+<p><strong>（3）对比用户特征</strong></p>
+<p>上篇文章已经提到，新闻的特征加用户的阅读数据能得到用户的特征，然后通过用户的特征划分群体。</p>
+<h2 id="二、内容推荐实施"><a href="#二、内容推荐实施" class="headerlink" title="二、内容推荐实施"></a>二、内容推荐实施</h2><p>我们结合一个很小的实例来了解用户协同过滤的原理，包括如何计算用户之间的相似性和如何做出推荐。</p>
+<p>假设有 A、B、C、D 和 E 共 5 个用户，他们各自阅读了几篇新闻并做出了阅读，赞，收藏，评论，分享操作，我们对这几种行为赋予的分数分别为 1 分、2 分、3 分、4 分和 5 分，这样用户对每条新闻都有自己的得分，其中 “-” 表示未阅读，得分如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-e7ae208fdb4322e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="用户阅读数据"><br>那么问题来了，我们要给用户E推荐4、5、6中的哪一篇？</p>
+<p>用户的阅读特征向量由用户的阅读数据决定，我们以用户E阅读过的数据作为参考标准，来找到与E最相似的用户。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-9b2c7865124c02ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>多维向量的距离需要通过欧几里得距离公式来计算，数值越小，向量距离约接近。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-80680a9bd9a7d7d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="三、内容选取"><a href="#三、内容选取" class="headerlink" title="三、内容选取"></a>三、内容选取</h2><p>我们通过阅读特征向量把用户做群体划分后，接下来就是如何获取新闻推荐的优先级。</p>
+<p>上面的例子里面只需要选出一个相似用户，并且用户 A,B,C,D 都只阅读 news4,5,6 中的一条，所以比较简单，但现实情况中，同一个用户群体阅读的新闻多且随机，用户交互更是错综复杂，如何得出推荐新闻的优先级呢？</p>
+<p>假设用户 X 在系统归属于群体 A，这个群体有 n 个用户，分别为 A0，A1，A2……An，这些用户的集合用 S(X,n) 表示。</p>
+<p>1）首先，我们需要把集合中所有用户交互过（阅读，评论等）的新闻提取出来</p>
+<p>2）需要剔除掉用户 X 已经看过的新闻，这些就不用再推荐了，剩下的新闻集合有 m 条，用 N（X,m）来表示</p>
+<p>3）对余下的新闻进行评分和相似度加权的计算，计算包括两部分，一是用户 X 与 S（X,n） 每一个用户的相似性，二是每个用户对新闻集 N（X,m）中每条新闻的喜好，这样就能得到每条新闻相对于用户 X 的最终得分</p>
+<p>4）将 N（X,m）中的新闻列表按照得分高低的顺序推荐给用户</p>
+<h2 id="四、优缺点"><a href="#四、优缺点" class="headerlink" title="四、优缺点"></a>四、优缺点</h2><p>相比于基于内容的推荐算法，基于用户的协同过滤同样优缺点明显。</p>
+<p>优点主要在于对分词等算法的精确度无太大要求，推荐都是基于用户的行为数据去不断学习和完善；同时能发现用户的潜在阅读兴趣，能 “制造惊喜”。</p>
+<p>而缺点则是启动的门槛高，用户量不够时几乎无法开展；并且学习量不够时推荐结果较差。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/产品笔记/">产品笔记</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/产品/">产品</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/感想/">感想</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="//产品笔记/2017/08/28/产品经理一定要懂得算法（三）.html" data-title="产品经理一定要懂得算法（三）" data-url="http://i90s.vip/产品笔记/2017/08/28/产品经理一定要懂得算法（三）.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chengong"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/产品笔记/2017/08/19/产品经理一定要懂得算法（二）.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">产品经理一定要懂得算法（二）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于用户的协同过滤"><span class="nav-number">1.</span> <span class="nav-text">基于用户的协同过滤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、用户群体划分"><span class="nav-number">1.1.</span> <span class="nav-text">一、用户群体划分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、内容推荐实施"><span class="nav-number">2.</span> <span class="nav-text">二、内容推荐实施</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、内容选取"><span class="nav-number">3.</span> <span class="nav-text">三、内容选取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、优缺点"><span class="nav-number">4.</span> <span class="nav-text">四、优缺点</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/atom.xml" class="mobile-nav-link">rss</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+
+  <div class="visit">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261448261'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261448261%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <!-- 页面点击小心心 -->
+  <script type="text/javascript" src="/js/love.js"></script>
+  <!-- 颗粒漂浮背景 -->
+  <script type="text/javascript" src="/js/particle.js"></script>
+</body>
+</html>

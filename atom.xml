@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://i90s.vip/"/>
-  <updated>2017-08-19T10:48:28.000Z</updated>
+  <updated>2017-08-28T09:28:46.000Z</updated>
   <id>http://i90s.vip/</id>
   
   <author>
@@ -14,6 +14,62 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>产品经理一定要懂得算法（三）</title>
+    <link href="http://i90s.vip//%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2017/08/28/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E4%B8%80%E5%AE%9A%E8%A6%81%E6%87%82%E5%BE%97%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89.html"/>
+    <id>http://i90s.vip//产品笔记/2017/08/28/产品经理一定要懂得算法（三）.html</id>
+    <published>2017-08-28T07:04:48.000Z</published>
+    <updated>2017-08-28T09:28:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>自己负责的 app 也有热点新闻模块，也一直没搞清楚究竟如何进行个性化推荐，最近看到一篇腾讯 pm 写的文章，收获很多，根据记忆进行下复盘。</p>
+</blockquote>
+<p>上篇文章讲了前两篇文章讲了热点推荐和基于内容的相关推荐<br>，链接：<br><a href="http://www.toutiao.com/i6450826526601511438/" target="_blank" rel="external">产品经理一定要懂得算法（一）</a><br><a href="http://www.toutiao.com/i6455913366589276686/" target="_blank" rel="external">产品经理一定要懂得算法（二）</a><a id="more"></a></p>
+<h2 id="基于用户的协同过滤"><a href="#基于用户的协同过滤" class="headerlink" title="基于用户的协同过滤"></a>基于用户的协同过滤</h2><p>当产品的日活月活较高时，热点推荐和基于内容的推荐已经不能满足产品的需求了，虽然热点算法能够推荐当前的热点事件，基于内容的推荐能够基于他感兴趣的内容推荐他可能感兴趣的内容，但是对于用户来说推荐的内容总是却少一些“不期而遇”的感觉，对于产品来说是缺少发现用户兴趣的能力。</p>
+<p>基于用户的协同过滤算法，简单的说就是，根据用户a的兴趣爱好，找到和其兴趣爱好最接近的群体，然后把这个群体里其他人喜欢的文章推荐给a。所以基于用户的系统过滤第一步就是找到用户所属的群体。</p>
+<h3 id="一、用户群体划分"><a href="#一、用户群体划分" class="headerlink" title="一、用户群体划分"></a>一、用户群体划分</h3><p>用户的群体划分可以根据从以下三个方面入手：<br><strong>（1）借用外部数据</strong><br>外部数据以借用社交平台的数据居多，比如：微信、QQ、微信、facebook、github等，借用第三方账户有很多优点，例如降低注册门槛、方便传播等。</p>
+<p>另外第三方帐号都会授权获取用户的部分信息，一般为性别、年龄、工作或者相关社交关系等，这些基础信息可以将用户进行初步的划分。</p>
+<p><strong>（2）产品内主动询问</strong></p>
+<p>常见的方式为在产品首次启动时，弹出提示框询问用户的性别、职业、喜好等，比如一些常见的新闻资讯类app，这样可以帮助产品进行冷启动。不过这种方式性价比不高，而且要避免过度打扰用户。</p>
+<p><strong>（3）对比用户特征</strong></p>
+<p>上篇文章已经提到，新闻的特征加用户的阅读数据能得到用户的特征，然后通过用户的特征划分群体。</p>
+<h2 id="二、内容推荐实施"><a href="#二、内容推荐实施" class="headerlink" title="二、内容推荐实施"></a>二、内容推荐实施</h2><p>我们结合一个很小的实例来了解用户协同过滤的原理，包括如何计算用户之间的相似性和如何做出推荐。</p>
+<p>假设有 A、B、C、D 和 E 共 5 个用户，他们各自阅读了几篇新闻并做出了阅读，赞，收藏，评论，分享操作，我们对这几种行为赋予的分数分别为 1 分、2 分、3 分、4 分和 5 分，这样用户对每条新闻都有自己的得分，其中 “-” 表示未阅读，得分如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-e7ae208fdb4322e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="用户阅读数据"><br>那么问题来了，我们要给用户E推荐4、5、6中的哪一篇？</p>
+<p>用户的阅读特征向量由用户的阅读数据决定，我们以用户E阅读过的数据作为参考标准，来找到与E最相似的用户。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-9b2c7865124c02ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>多维向量的距离需要通过欧几里得距离公式来计算，数值越小，向量距离约接近。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-80680a9bd9a7d7d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="三、内容选取"><a href="#三、内容选取" class="headerlink" title="三、内容选取"></a>三、内容选取</h2><p>我们通过阅读特征向量把用户做群体划分后，接下来就是如何获取新闻推荐的优先级。</p>
+<p>上面的例子里面只需要选出一个相似用户，并且用户 A,B,C,D 都只阅读 news4,5,6 中的一条，所以比较简单，但现实情况中，同一个用户群体阅读的新闻多且随机，用户交互更是错综复杂，如何得出推荐新闻的优先级呢？</p>
+<p>假设用户 X 在系统归属于群体 A，这个群体有 n 个用户，分别为 A0，A1，A2……An，这些用户的集合用 S(X,n) 表示。</p>
+<p>1）首先，我们需要把集合中所有用户交互过（阅读，评论等）的新闻提取出来</p>
+<p>2）需要剔除掉用户 X 已经看过的新闻，这些就不用再推荐了，剩下的新闻集合有 m 条，用 N（X,m）来表示</p>
+<p>3）对余下的新闻进行评分和相似度加权的计算，计算包括两部分，一是用户 X 与 S（X,n） 每一个用户的相似性，二是每个用户对新闻集 N（X,m）中每条新闻的喜好，这样就能得到每条新闻相对于用户 X 的最终得分</p>
+<p>4）将 N（X,m）中的新闻列表按照得分高低的顺序推荐给用户</p>
+<h2 id="四、优缺点"><a href="#四、优缺点" class="headerlink" title="四、优缺点"></a>四、优缺点</h2><p>相比于基于内容的推荐算法，基于用户的协同过滤同样优缺点明显。</p>
+<p>优点主要在于对分词等算法的精确度无太大要求，推荐都是基于用户的行为数据去不断学习和完善；同时能发现用户的潜在阅读兴趣，能 “制造惊喜”。</p>
+<p>而缺点则是启动的门槛高，用户量不够时几乎无法开展；并且学习量不够时推荐结果较差。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;自己负责的 app 也有热点新闻模块，也一直没搞清楚究竟如何进行个性化推荐，最近看到一篇腾讯 pm 写的文章，收获很多，根据记忆进行下复盘。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上篇文章讲了前两篇文章讲了热点推荐和基于内容的相关推荐&lt;br&gt;，链接：&lt;br&gt;&lt;a href=&quot;http://www.toutiao.com/i6450826526601511438/&quot;&gt;产品经理一定要懂得算法（一）&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.toutiao.com/i6455913366589276686/&quot;&gt;产品经理一定要懂得算法（二）&lt;/a&gt;
+    
+    </summary>
+    
+      <category term="产品笔记" scheme="http://i90s.vip/categories/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="感想" scheme="http://i90s.vip/tags/%E6%84%9F%E6%83%B3/"/>
+    
+      <category term="产品" scheme="http://i90s.vip/tags/%E4%BA%A7%E5%93%81/"/>
+    
+  </entry>
   
   <entry>
     <title>产品经理一定要懂得算法（二）</title>
@@ -952,88 +1008,6 @@
     
     
       <category term="测试分类" scheme="http://i90s.vip/tags/%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>五分钟战胜 Python 字符编码</title>
-    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2016/06/28/%E4%BA%94%E5%88%86%E9%92%9F%E6%88%98%E8%83%9C-Python-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81.html"/>
-    <id>http://i90s.vip//软件笔记/2016/06/28/五分钟战胜-Python-字符编码.html</id>
-    <published>2016-06-28T15:27:13.000Z</published>
-    <updated>2016-06-28T15:29:31.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>对于很多接触 Python 的人而言，字符的处理和语言整体的温顺可靠相比显得格外桀骜不驯难以驾驭。</p>
-<p>本文不谈复杂的理论，就经验教你字符处理八字真言：确定编码，同类交互。</p>
-<p>文章针对 Python 2.7 ，主要因为 3 对的编码已经有了很大的改善并且实际原理一样，更改一下操作命令即可。</p>
-<p>了解完本文，你可以轻松解决文字处理，特殊平台（ Windows?）下的编码，爬虫编码等问题。</p>
-<p>阅读建议 <a id="more"></a></p>
-<p>本文分为如下几个部分：</p>
-<blockquote>
-<p>原理<br>具体操作<br>建议的使用习惯<br>疑难问题解答</p>
-</blockquote>
-<p>如果想要了解我给出的使用习惯，可以直接跳到建议的使用习惯。</p>
-<p>如果只想要解决相关问题可以直接跳到疑难问题解答。</p>
-<p>希望本文能够帮到你。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>为了理解方便，这里不谈理论只做类比，具体想要进一步了解各种编码的理论的搜狗一下好了。</p>
-<p>首先说一下我们为什么会碰到各式各样的编码问题：</p>
-<p>因为我们没有统一编码<br>因为我们没有用对命令（传对数据）<br>再说一下编码是什么， Python 的编码看似复杂，实际上可以看做只有两类编码： Unicode ，二进制</p>
-<p>Unicode 相信都很熟悉：，就是\u0000这样的<br>二进制编码也很简单，就是\x00\x00这样的，平常看到的utf-8,cp936都是二进制编码<br>二进制编码是具象的，10001100原样就可以存储，而 Unicode 是抽象的，不能这样存<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Unicode 编码演示</span></span><br><span class="line">print(<span class="string">'Unicode:'</span>)</span><br><span class="line">print(repr(<span class="string">u'Unicode 编码'</span>))`</span><br><span class="line"></span><br><span class="line"><span class="comment"># 二进制编码演示</span></span><br><span class="line">print(<span class="string">u'二进制编码:'</span>)</span><br><span class="line">print(repr(<span class="string">'Unicode 编码'</span>))`</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只是看个样子，代码不必去深究</span></span><br></pre></td></tr></table></figure></p>
-<p>再说怎么做，就是只有同种编码之间才可以操作</p>
-<p>举个简单的类比<br>就把一串数据比为烤鸭，我们作为人和鸭子不同种看待烤鸭的态度完全不一样。<br>我们看到的是晚上的配菜，鸭子看到的是自己二舅。<br>那么我在逛烤鸭店的时候用错编码就会报错。<br>因为我在烤鸭店看到了满世界的二舅。<br>这里说的同种就是我们熟悉的各种编码方式：utf-8,unicode,ucs-bom<br>这也就是编码问题的核心，非常重要。<br>最后说一下 Python 的环境</p>
-<p>本身代码是用 Ascii 解码的，文件里有 Ascii 无法解码的内容的话要告知 Python 怎么解码<br>内部大量命令都是默认接受 Unicode<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 告知的命令就是下面这一行，删掉就会报错</span></span><br><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line">print(<span class="string">u'测试编码'</span>)</span><br></pre></td></tr></table></figure></p>
-<h2 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h2><p>拿到各种编码的内容自然是不用说，那么如果我们想要自己构造怎么做呢，看下面：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串前面加 u 会默认构造出 Unicode 的字符串</span></span><br><span class="line">unicodeString = <span class="string">u'Unicode 字符串'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串前面什么都不加会构造出默认编码（首行限定了现在的 utf8 ）的字符串</span></span><br><span class="line">utf8String = <span class="string">'Utf-8 字符串'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 当然，没有首行，默认的编码是 Ascii</span></span><br><span class="line">那么他们之间怎么转换呢，同样很简单：</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接上一段程序</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Unicode 转化为二进制编码中的一种： utf8</span></span><br><span class="line">unicodeString.encode(<span class="string">'utf8'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 二进制编码根据自己的编码种类转化为 Unicode</span></span><br><span class="line">utf8String.decode(<span class="string">'utf8'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果二进制编码中混进了奇怪的东西可以根据需求用特殊的 decode 策略</span></span><br><span class="line">print(repr(<span class="string">'u8 字\x00 符串'</span>.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line">那么怎么样会出现问题呢：</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接上一段程序</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果我们把他们转化成同样的编码方式就可以操作（例如相加）</span></span><br><span class="line">print(repr(unicodeString + utf8String.decode(<span class="string">'utf8'</span>)))</span><br><span class="line">print(repr(unicodeString.encode(<span class="string">'utf8'</span>) + utf8String))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 但如果不转化，当然就会出现满世界的烤鸭二舅啦</span></span><br><span class="line">unicodeString + utf8String</span><br><span class="line"></span><br><span class="line"><span class="comment"># 所以另一方面也发现，编码转换是需要我们告诉程序怎么做的</span></span><br><span class="line"><span class="comment"># 所有`decode`操作都会生成 Unicode 编码，这是为了方便我之前说的大量接受 Unicode 的内部命令</span></span><br></pre></td></tr></table></figure></p>
-<p>所以我们需要确定程序使用的编码，这是我们需要告诉程序的东西</p>
-<p>一方面在操作字符串的时候确定是同种编码<br>另一方面在使用非自己写的命令时，一般使用 Unicode ，或者使用接收二进制编码的命令<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"><span class="comment"># 这里拿写入文件举例</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 一般使用 Unicode</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'Unicode.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f: f.write(<span class="string">u'Unicode 测试'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者使用接收二进制编码的命令</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'Utf8.txt'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f: f.write(<span class="string">'Utf8 测试'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 你可以反过来做个测试，自然会报错</span></span><br><span class="line"><span class="comment"># 二进制的命令方便了在不知道怎么解码的情况下也能进行操作（写入文件）</span></span><br></pre></td></tr></table></figure></p>
-<p>我建议的使用习惯</p>
-<p>相信到这里我已经把我对于编码的理解讲完了。</p>
-<p>我们为什么会碰到各式各样的编码问题：</p>
-<p>因为我们没有统一编码<br>因为我们没有用对命令（传对数据）<br>所以这里再重申一下八字真言：确定编码，同类交互</p>
-<p>碰到问题，问一下自己，我现在是哪种编码<br>同一种编码才能交互，那我应该是哪种编码<br>这里给出我的使用习惯：</p>
-<p>确定一种内部编码<br>内部编码的选择优先级如下：程序必须使用的编码、第三方包使用的编码、你喜欢的编码、 Unicode<br>在输出时再更改到特定的编码<br>记得在开始整个程序之前确定内部的编码，否则编码一团糟会产生很多不必要的 bug 。</p>
-<p>不要迷信内部 Unicode ，例如 Evernote 开发就应该根据第三方包使用的 Utf8 确定内部编码。</p>
-<h2 id="疑难问题解答"><a href="#疑难问题解答" class="headerlink" title="疑难问题解答"></a>疑难问题解答</h2><p>编码识别</p>
-<p>说了要确定编码，那么拿到一串二进制要怎么确定编码呢？</p>
-<p>最简单的方法是chardet：（需要安装）</p>
-<p>python -m pip install chardet<br>使用非常简单：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> chardet <span class="keyword">import</span> detect</span><br><span class="line">print(detect(<span class="string">'这是一串 utf8 的测试字符'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果：`&#123;'confidence': 0.99, 'encoding': 'utf-8'&#125;`</span></span><br></pre></td></tr></table></figure></p>
-<p>另外例如抓取网站，那么头文件中很有可能有提示如何解码，记得不要忘记了。</p>
-<p>编码转换</p>
-<p>很可能因为字符串中参杂了奇怪的东西，导致即使编码种类正确，依旧无法解码。</p>
-<p>我知道我之前讲过了，但可能有人直接跳疑难问题解答嘛。</p>
-<p>这里可以使用decode的第二个参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
-<p>特殊平台下编码</p>
-<p>很多人都说 Windows 是个坑，即使在 Python 3 下面也一样。</p>
-<p>因为中文文件名出来都是乱码。</p>
-<p>这里使用一个取巧的方法：平台编码再特殊，起码命令行读取和创建一个文件夹不会出乱码吧。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys, os</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> folder <span class="keyword">in</span> os.walk(<span class="string">'.'</span>).next()[<span class="number">1</span>]:</span><br><span class="line">    print(folder.decode(sys.stdin.encoding))</span><br><span class="line">同样的输入输出也可以这样做优化：</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sys_print</span><span class="params">(msg)</span>:</span></span><br><span class="line">    print(msg.encode(sys.stdin.encoding))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sys_input</span><span class="params">(msg)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> raw_input(msg.encode(sys.stdin.encoding)).decode(sys.stdin.encoding)</span><br></pre></td></tr></table></figure></p>
-<p>文件写入</p>
-<p>如果抓下来一个内容不知道怎么解码，但还是想要写入文件怎么办</p>
-<p>写入文件的时候制定用二进制命令即可：<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line">import urllib</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">'Utf8.txt'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f: f.<span class="built_in">write</span>(<span class="string">'Utf8 测试'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 比如抓了个网页，不知道编码也可以写入文件进行一系列操作</span></span><br><span class="line"></span><br><span class="line">content = urllib.urlopen(<span class="string">'http://www.baidu.com'</span>).<span class="built_in">read</span>()</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">'baidu.txt'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f: f.<span class="built_in">write</span>(content)</span><br></pre></td></tr></table></figure></p>
-<p>裸 Unicode 字符</p>
-<p>Unicode 存成六个 Ascii 字符怎么办？其实也可以decode<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"><span class="comment"># 这是普通的 Unicode</span></span><br><span class="line">s = <span class="string">u'测'</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s: print(i)</span><br><span class="line">print(repr(s))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这是裸 Unicode ，实际存成了六个 Ascii</span></span><br><span class="line">s = repr(s)[<span class="number">2</span>:<span class="number">-1</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s: print(i)</span><br><span class="line">print(repr(s))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 转化其实也很简单</span></span><br><span class="line">s = s.decode(<span class="string">'unicode-escape'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s: print(i)</span><br><span class="line">print(repr(s))</span><br></pre></td></tr></table></figure></p>
-<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>希望读完这篇文章能对你有帮助，有什么不足之处万望指正（鞠躬）。</p>
-<p>有什么想法或者想要关注我的更新，欢迎来Github上Star或者Fork我的项目。</p>
-<p>160623</p>
-<p>LittleCoder</p>
-<p>EOF<br><a href="http://www.v2ex.com/t/287727#reply23" target="_blank" rel="external">转载自V2EX</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;对于很多接触 Python 的人而言，字符的处理和语言整体的温顺可靠相比显得格外桀骜不驯难以驾驭。&lt;/p&gt;
-&lt;p&gt;本文不谈复杂的理论，就经验教你字符处理八字真言：确定编码，同类交互。&lt;/p&gt;
-&lt;p&gt;文章针对 Python 2.7 ，主要因为 3 对的编码已经有了很大的改善并且实际原理一样，更改一下操作命令即可。&lt;/p&gt;
-&lt;p&gt;了解完本文，你可以轻松解决文字处理，特殊平台（ Windows?）下的编码，爬虫编码等问题。&lt;/p&gt;
-&lt;p&gt;阅读建议
-    
-    </summary>
-    
-      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="转载" scheme="http://i90s.vip/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-      <category term="python" scheme="http://i90s.vip/tags/python/"/>
-    
-      <category term="字符编码" scheme="http://i90s.vip/tags/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/"/>
     
   </entry>
   
