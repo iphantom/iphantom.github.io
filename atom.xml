@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://i90s.vip/"/>
-  <updated>2017-10-11T07:23:06.000Z</updated>
+  <updated>2017-10-23T02:12:06.000Z</updated>
   <id>http://i90s.vip/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AAPP消息推送のHow</title>
+    <link href="http://i90s.vip//%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2017/10/19/APP%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%EF%BC%882%EF%BC%89.html"/>
+    <id>http://i90s.vip//产品笔记/2017/10/19/APP消息推送（2）.html</id>
+    <published>2017-10-19T02:08:57.000Z</published>
+    <updated>2017-10-23T02:12:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>推送是最常见的运营手段，效果显著，好是推送能即刻提高产品的各类运营指标，当然不合时宜、内容欠妥的推送也会有导致用户直接卸载产品的风险。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-f4c4e52d7bf398c6.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><a id="more"></a></p>
+<p>上一篇文章：<a href="http://blog.i90s.vip/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2017/10/11/app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%EF%BC%881%EF%BC%89.html" target="_blank" rel="external">APP 消息推送の Why</a></p>
+<h1 id="推送常见的指标"><a href="#推送常见的指标" class="headerlink" title="推送常见的指标"></a>推送常见的指标</h1><h2 id="送达率"><a href="#送达率" class="headerlink" title="送达率"></a>送达率</h2><p>有一点要承认，消息推送也会存在推送无法送达的情况，常见的比如，推送功能关闭，用户网络断开，产品卸载等<br>送达率的计算方式如下：<br>举个栗子：假设你是快递员，你有10个快递要送，但是有一个地址有问题，无法送达，那么你的送达率就是90%</p>
+<h2 id="点击率（打开率）"><a href="#点击率（打开率）" class="headerlink" title="点击率（打开率）"></a>点击率（打开率）</h2><p>把消息推送到用户的手机通知栏是消息推送的第一步，点击率是整个推送的核心指标，也是最考验产品运营同事能力的时刻，推送的文案、推送的时间等都会影响点击率的高低。</p>
+<h2 id="转化率"><a href="#转化率" class="headerlink" title="转化率"></a>转化率</h2><p>推送一般分为<br>1) 新闻资讯类：澎湃新闻、ZAKER、今日头条等热点新闻<br>2) 运营活动类：淘宝、京东等活动促销<br>3) 系统通知类：饿了么、美团等外卖送货，中国移动登录提醒等情况<br>其中运营活动类的推送都会牵扯到转化率，消息推送也是运营活动的一个入口。</p>
+<p>PS:常见的推送平台比如友盟、百度等都会自动统计这些指标，具体的信息可以登录相关平台进行查看。</p>
+<h1 id="APP推送相关技术"><a href="#APP推送相关技术" class="headerlink" title="APP推送相关技术"></a>APP推送相关技术</h1><h2 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a>IOS</h2><p>iOS 中提供了 2 中推送通知</p>
+<p>1)本地推送通知 (Local Notification)</p>
+<p>2)远程推送通知 (Remote Notification)</p>
+<blockquote>
+<p>本地推送最常见的就是定时任务，比如闹钟等，有无网络均可推送。我们说的推送多为远程推送通知</p>
+</blockquote>
+<p>IOS的远程推送服务, 名为: APNS (Apple Push Notification Services)，所有的IOS设备的推送通知都是由苹果的 APNs 控制。</p>
+<h2 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h2><p>Android 的官方推送服务器是 GCM。因为众所周知的原因，大部分互联网企业会选择第三方推送服务或者自建服务，保证 APP 能收到推送。</p>
+<p><strong>通过消息推送到转化率的提升，是个细活，需要细拆到各个环节去针对性的分析和改进，才能出效果。希望上面的分析，对你有一些些帮助。</strong></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;推送是最常见的运营手段，效果显著，好是推送能即刻提高产品的各类运营指标，当然不合时宜、内容欠妥的推送也会有导致用户直接卸载产品的风险。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1985459-f4c4e52d7bf398c6.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;
+    
+    </summary>
+    
+      <category term="产品笔记" scheme="http://i90s.vip/categories/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="APP" scheme="http://i90s.vip/tags/APP/"/>
+    
+      <category term="消息推送" scheme="http://i90s.vip/tags/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/"/>
+    
+  </entry>
   
   <entry>
     <title>APP消息推送のWhy</title>
@@ -628,9 +673,9 @@
       <category term="心情笔记" scheme="http://i90s.vip/categories/%E5%BF%83%E6%83%85%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="感悟" scheme="http://i90s.vip/tags/%E6%84%9F%E6%82%9F/"/>
-    
       <category term="影评" scheme="http://i90s.vip/tags/%E5%BD%B1%E8%AF%84/"/>
+    
+      <category term="感悟" scheme="http://i90s.vip/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
@@ -1013,40 +1058,6 @@
       <category term="Jmeter" scheme="http://i90s.vip/tags/Jmeter/"/>
     
       <category term="性能测试" scheme="http://i90s.vip/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac下安装Jmeter</title>
-    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2016/09/04/Mac%E4%B8%8B%E5%AE%89%E8%A3%85Jmeter.html"/>
-    <id>http://i90s.vip//软件笔记/2016/09/04/Mac下安装Jmeter.html</id>
-    <published>2016-09-04T08:47:36.000Z</published>
-    <updated>2016-09-04T09:30:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="下载Jmeter"><a href="#下载Jmeter" class="headerlink" title="下载Jmeter"></a>下载Jmeter</h2><p><a href="http://jmeter.apache.org/download_jmeter.cgi" target="_blank" rel="external">Apache JMeter 3.0</a><br>将压缩包解压</p>
-<h2 id="配置Jmeter环境"><a href="#配置Jmeter环境" class="headerlink" title="配置Jmeter环境"></a>配置Jmeter环境</h2><p>JMeter 是基于 Java 的框架，所以要求系统必须安装JDK。<a id="more"></a></p>
-<p><strong>查看mac是否已经安装JDK</strong></p>
-<p><img src="http://ww1.sinaimg.cn/large/666cc9e3jw1f7ho5ekughj214d0d0q7i.jpg" alt=""></p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -<span class="built_in">version</span></span><br></pre></td></tr></table></figure>
-<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="external">JDK下载地址</a></p>
-<h2 id="运行Jmeter"><a href="#运行Jmeter" class="headerlink" title="运行Jmeter"></a>运行Jmeter</h2><p>进入apache-jmeter-3.0的bin目录下<br>运行 sh jmeter 即可打开jmeter软件</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd apache-<span class="keyword">jmeter-3.0/bin</span><br><span class="line"></span><span class="keyword">sh </span><span class="keyword">jmeter</span></span><br></pre></td></tr></table></figure>
-<p><img src="http://ww3.sinaimg.cn/large/666cc9e3gw1f7hola8tkkj21kw0zkgrz.jpg" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;下载Jmeter&quot;&gt;&lt;a href=&quot;#下载Jmeter&quot; class=&quot;headerlink&quot; title=&quot;下载Jmeter&quot;&gt;&lt;/a&gt;下载Jmeter&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://jmeter.apache.org/download_jmeter.cgi&quot;&gt;Apache JMeter 3.0&lt;/a&gt;&lt;br&gt;将压缩包解压&lt;/p&gt;
-&lt;h2 id=&quot;配置Jmeter环境&quot;&gt;&lt;a href=&quot;#配置Jmeter环境&quot; class=&quot;headerlink&quot; title=&quot;配置Jmeter环境&quot;&gt;&lt;/a&gt;配置Jmeter环境&lt;/h2&gt;&lt;p&gt;JMeter 是基于 Java 的框架，所以要求系统必须安装JDK。
-    
-    </summary>
-    
-      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Mac" scheme="http://i90s.vip/tags/Mac/"/>
-    
-      <category term="Jmeter" scheme="http://i90s.vip/tags/Jmeter/"/>
     
   </entry>
   
