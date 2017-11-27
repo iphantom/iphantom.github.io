@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://i90s.vip/"/>
-  <updated>2017-10-23T02:12:06.000Z</updated>
+  <updated>2017-11-27T07:41:59.000Z</updated>
   <id>http://i90s.vip/</id>
   
   <author>
@@ -14,6 +14,114 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>产品经理访谈记录</title>
+    <link href="http://i90s.vip//%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2017/11/27/PM%E8%AE%BF%E8%B0%88%E8%AE%B0%E5%BD%95.html"/>
+    <id>http://i90s.vip//产品笔记/2017/11/27/PM访谈记录.html</id>
+    <published>2017-11-27T06:46:16.000Z</published>
+    <updated>2017-11-27T07:41:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>产品经理们写了无数篇产品分析报告，却鲜有一篇对于产品经理这个群体的分析报告。PMCAFF 采访了多位拥有着不同经历、处在不同段位的产品经理，试着以此概括出产品经理都有哪些 “典型” 特征。<br><a id="more"></a></p>
+<p>我们选取了有代表性的产品经理及其回答，整理成此文，文中的产品经理皆为化名，先来认识下他们：</p>
+<blockquote>
+<p>• 何川<br>从业三年，某 “独角兽” 公司工作 2 年，目前就职于 BAT 其中一家。</p>
+<p>• 老董<br>从业七年，一手组建了曾在舆论风口浪尖上的某互金企业产品团队，管理经验丰富。</p>
+<p>• 张明<br>从业三年，某上市公司产品经理。</p>
+<p>• 李广<br>从业五年，先后就职于多家公司，曾任国内某知名天气 APP 的产品经理。</p>
+</blockquote>
+<p>需要说明的是，“典型” 其实很难定义，且不说样本太小，即使样本足够大，不同类型公司的产品经理，工作内容和状态可能大不相同。试图以职业划分人群是一种简单粗糙的方法，且极不科学。教育程度、成长环境、年龄等也都是维度。此篇讨论，仅是一种泛指。</p>
+<h2 id="成长就是从乐观到悲观"><a href="#成长就是从乐观到悲观" class="headerlink" title="成长就是从乐观到悲观"></a><strong>成长就是从乐观到悲观</strong></h2><p>有个有意思的现象，年轻的产品经理普遍偏乐观主义，认为一切东西尽在自己的掌控之中。</p>
+<p>何川是 90 后，先在一家 “独角兽” 公司工作 2 年，目前就职于 BAT 其中一家。他对自己的掌控能力有绝对的自信。</p>
+<blockquote>
+<p>@何川：</p>
+<p>我判断出来它有产出，它就一定有产出。所有的东西都是可预期的。你问我什么时候会特别有成就感？因为每一件事都是可预期的，那就不会有太多的兴奋。</p>
+<p> <strong>搞不定的事情都是人的事情，三四个老大观点不一致时，或者跟直接领导产品观念有差异，就很麻烦。</strong>  </p>
+<p>产品上不存在什么棘手的问题，让你做的东西市面上一定存在，没有的东西老板也不会去提，别人做得出来，那我也一定能做出来。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-76fcd3f10292383d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>老董现在带着二三十人的团队，包括产品和研发，他之前一手建立了曾在舆论的风口浪尖上的某互金企业的产品团队，见证了该产品从起步，到腾飞壮大，再到被曝出问题。他坦诚自己是相对悲观主义者。</p>
+<blockquote>
+<p>@老董：</p>
+<p> <strong>在需求输出时足够悲观，这样才能预料到不同的情况。</strong> </p>
+<p>产品从零到一时其实还不是很担心，因为这都在你可控的范围内，真正担心的是上线后。有的问题是事先没预料到的，这很考验你临场反应能力、解决问题的能力；有的问题是事先预料到可能会发生的，因为各种原因，在问题还没被解决时便上线，当它真的发生了，会害怕。</p>
+<p>我们是在正确的方向上做事情，据说神级产品经理可以把任何方向都做正确，如果到了那种程度，可能会变得更乐观，但那种境界是可遇不可求的。</p>
+</blockquote>
+<h2 id="投入没产出，就是战五渣"><a href="#投入没产出，就是战五渣" class="headerlink" title="投入没产出，就是战五渣"></a><strong>投入没产出，就是战五渣</strong></h2><p>产品经理们都很 “功利”，几乎每个受访产品经理都会提到 “值不值” 的问题。</p>
+<p>从业三年的张明认为不存在把需求都满足的情况，因为不值。</p>
+<blockquote>
+<p>@张明：</p>
+<p> <strong>大多数情况下，你只能满足 70% 的需求，因为要再覆盖剩下的 30%，消耗的资源将是巨大的。</strong> </p>
+<p>我们做一款金融产品，老板想把起投额从 100 元降到 10 元，这并非仅仅改个参数那么简单，就好比人民币最小计量单位由 1 毛变成 1 分，每个人的钱包都会变大，你的数据量会激增。但可以预见的是投资额的增长和用户增长都很有限，理财场景下人们对 100 元和 10 元的敏感度没那么大。那这个的优先级就要往后排。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-b08f3105762f3898.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>产品经理们目标导向普遍很强，他们时刻衡量着投入与产出，以及这项功能改进跟大目标的匹配程度。</strong></p>
+<blockquote>
+<p>@张明：</p>
+<p>其实不得不这么做，<strong>产品经理最害怕的是投入没有产出，浪费了大家的时间</strong>，这样你下次提需求时就会面对很大的质疑。所以只要经历过几次评审会，经历过几次舌战群儒，你不自觉地便建立起目标导向。</p>
+</blockquote>
+<h2 id="自己是真牛逼，别人都在装逼"><a href="#自己是真牛逼，别人都在装逼" class="headerlink" title="自己是真牛逼，别人都在装逼"></a><strong>自己是真牛逼，别人都在装逼</strong></h2><p>就像 “文人相轻”，产品经理们多数觉得自己很牛逼，认为别人是在装逼。</p>
+<blockquote>
+<p>@何川：</p>
+<p>我当然会认为自己做出的产品都是好的，如果你都不认为自己做得产品好，那说明你工作很不用心嘛。</p>
+<p>@李广：</p>
+<p> <strong>自己做得产品一定会盯着数据看。</strong> </p>
+<p>我们做天气预报，DAU 很高，但使用时间太短。2014 年的时候，LBS 很热，我们做了基于地理位置的图景功能，你可以看到身边的人都穿得是什么衣服。这比数字直观得多，总之融进去很多轻社交的元素，这样使用时常自然会增加。</p>
+<p>职业经历中做的最骄傲的一款产品？<strong>其实都很骄傲，你要说最骄傲的，下一个产品。</strong></p>
+</blockquote>
+<p>不过谈到如何看待一些网红产品经理，工作年限越高的产品经理，对他们越是不以为意。</p>
+<blockquote>
+<p>@老董：</p>
+<p>最顶尖的那些产品经理是很少发声的，而越往下走，解决问题的套路就越标准化。萌新们看起来干货满满的归纳总结，其实都是一些标准化程度很高的东西。</p>
+<p>@李广：</p>
+<p>至于那些讲产品经理的书籍，我觉得刚入行时是有必要看的，他能帮助你建立一个系统的认知，但书里的案例肯定都是适用于成书时或者成书之前的，在一个日新月异的时代，这些案例的实用价值可能会被刚入行的小白们高估。</p>
+</blockquote>
+<h2 id="最棘手的那些事"><a href="#最棘手的那些事" class="headerlink" title="最棘手的那些事"></a><strong>最棘手的那些事</strong></h2><p>聊起最棘手的事情，受访的产品经理们的回答呈现出高度的相似性。</p>
+<p>一般来说，刚工作没多久时会觉得 “舌战群儒” 的时候很棘手，经常会面对来自各个团队的质疑——为何这个需求是有必要满足的；处在上升期时觉得时间很棘手，总想知道更多东西、做更多东西，经常性加班到很晚；而到了带团队的阶段，会觉得最棘手的问题在于人，老董的论述比较有代表性：</p>
+<blockquote>
+<p>@老董：</p>
+<p>团队成员能力应该有高低，都很牛逼的话，成本核算也不对，基础的事情就没人做了。荣誉感并非每个人都有，有时做价值同步会非常困难，人与人之间，不是难，但经营起来是件很麻烦的事情。</p>
+</blockquote>
+<h2 id="数据也会骗人，但人更会骗人"><a href="#数据也会骗人，但人更会骗人" class="headerlink" title="数据也会骗人，但人更会骗人"></a><strong>数据也会骗人，但人更会骗人</strong></h2><p>产品经理们都会去做一些用户访谈，但用他们的话来说，用户访谈只是片面的，可听不可全听。受访的产品经理普遍都更相信数据，<strong>虽然数据也会骗人，但用户更会骗人。用户是小数据，而非大数据。</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-502073602888fd3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>@何川：</p>
+<p>做产品的过程中难免会犯一些错误，你认为个性化是很重要的一点，等做了之后你发现没什么卵用。证明了你的观点是错的，这一项你就得降级。久而久之你就知道了，该关心的是用户怎么做，而不是用户怎么说。所以<strong>我们更相信用户行为数据，而不是用户怎么说。**</strong>声音大的，不一定代表多数人。**</p>
+</blockquote>
+<h2 id="最重要的能力——解决问题"><a href="#最重要的能力——解决问题" class="headerlink" title="最重要的能力——解决问题"></a><strong>最重要的能力——解决问题</strong></h2><p>聊起产品经理应该具备怎样的素质，年轻的产品经理大多讲得是方法论——<strong>解决问题的能力是最重要的，职业初期首先要能解决问题；其次是发现问题的能力，对需求有所洞察；神级产品经理，可以创造需求。</strong></p>
+<p>而走向管理岗的产品经理，强调的往往是一些软性的素质——<strong>沟通能力好、好奇心强、兴趣广泛</strong>的产品经理一般成长会比较快。</p>
+<h2 id="我的产品很好，都是运营不给力"><a href="#我的产品很好，都是运营不给力" class="headerlink" title="我的产品很好，都是运营不给力"></a><strong>我的产品很好，都是运营不给力</strong></h2><p>虽然网上有很多产品和开发的各种段子，不过当跟本次受访的几个产品经理们聊起这个话题时，普遍倒都觉得跟开发没有太多的沟通问题，但对运营都颇有微词。</p>
+<blockquote>
+<p>@何川：</p>
+<p>产品是提供一个增长曲线，技术就是去实现这条曲线，而运营的工作，就是把曲线的斜率做得更陡峭。</p>
+<p>跟技术倒没什么沟通难度，虽然也会因为一些问题导致延期上线；多数情况下会觉得运营不太给力，产品本身带来的自然增长率可能有 10%，加上运营策略后，可能也就 11% 或者 12%，就会觉得运营没做到位。</p>
+</blockquote>
+<h2 id="产品的问题大多没有对错"><a href="#产品的问题大多没有对错" class="headerlink" title="产品的问题大多没有对错"></a><strong>产品的问题大多没有对错</strong></h2><p>产品经理眼中的产品从不是一个一成不变的东西，他们认为<strong>产品实际上是一个实验性的东西。</strong></p>
+<blockquote>
+<p>@老董：</p>
+<p>不然为什么会有迭代呢？产品需要涵盖很多需求点，有你用过的，有你不会用的，所有用户需求点的并集，就是最终的产品形态。</p>
+<p>产品上的问题大概就两种，一种是没有对错的，你只能去试，然后看数据；另一种可能是涉及到撕逼的，这个时候能屈能伸就很重要，你要知道什么是你必须死守的，同时，在工作中要和同事有一个融洽的工作关系。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-5c83504de566c763?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>你会发现，产品经理们眼中处处是产品，我跟何川约在一个咖啡馆见面，服务生给我们上错了咖啡，他马上接过话去：“我们分析一下为什么会上错咖啡。他们放了一个熊在这里，订单上写的是棕颜色的熊，他们可能是根据熊的颜色来判断该给哪位顾客上什么咖啡。但他们却上错了，这说明熊的颜色可能区分度不够大，解决方案就是把熊做得差异化更大一些。” 这种观察是在潜意识里的，也许产品经理在用任何一个产品的同时，潜意识中都在使用者和设计者两种角色里切换。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>技术的日新月异让好的产品层出不穷，一个优秀的产品会在短时间内吸引数以亿计的用户，这也让这一代产品人普遍都有一种 “产品理想”。你能真真切切地感受到产品经理们做产品的热情——<strong>想做出更好的产品，想让产品变得更好。</strong></p>
+<p>然而互联网的马太效应，让流量入口牢牢地掌握在少数几家巨头和 “独角兽” 手里，一款又一款爆款产品出现在人们眼前的同时，伴随着的，是众多产品的昙花一现，以及更多产品的默默无闻。产品大牛风光无限的背后，是更多产品经理们默默居于一隅，死磕着自己的产品，不断优化功能和性能，以给用户带来更良好的体验。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;产品经理们写了无数篇产品分析报告，却鲜有一篇对于产品经理这个群体的分析报告。PMCAFF 采访了多位拥有着不同经历、处在不同段位的产品经理，试着以此概括出产品经理都有哪些 “典型” 特征。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="产品笔记" scheme="http://i90s.vip/categories/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="转载" scheme="http://i90s.vip/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+      <category term="产品" scheme="http://i90s.vip/tags/%E4%BA%A7%E5%93%81/"/>
+    
+  </entry>
   
   <entry>
     <title>AAPP消息推送のHow</title>
@@ -240,9 +348,9 @@
       <category term="产品笔记" scheme="http://i90s.vip/categories/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="感想" scheme="http://i90s.vip/tags/%E6%84%9F%E6%83%B3/"/>
-    
       <category term="产品" scheme="http://i90s.vip/tags/%E4%BA%A7%E5%93%81/"/>
+    
+      <category term="感想" scheme="http://i90s.vip/tags/%E6%84%9F%E6%83%B3/"/>
     
   </entry>
   
@@ -314,9 +422,9 @@
       <category term="产品笔记" scheme="http://i90s.vip/categories/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="感想" scheme="http://i90s.vip/tags/%E6%84%9F%E6%83%B3/"/>
-    
       <category term="产品" scheme="http://i90s.vip/tags/%E4%BA%A7%E5%93%81/"/>
+    
+      <category term="感想" scheme="http://i90s.vip/tags/%E6%84%9F%E6%83%B3/"/>
     
   </entry>
   
@@ -362,9 +470,9 @@
       <category term="产品笔记" scheme="http://i90s.vip/categories/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="感想" scheme="http://i90s.vip/tags/%E6%84%9F%E6%83%B3/"/>
-    
       <category term="产品" scheme="http://i90s.vip/tags/%E4%BA%A7%E5%93%81/"/>
+    
+      <category term="感想" scheme="http://i90s.vip/tags/%E6%84%9F%E6%83%B3/"/>
     
   </entry>
   
@@ -1001,52 +1109,6 @@
 &lt;p&gt;现在好多网站再用户成功登录时会返回一个登录凭证，在之后的操作上都要带上这个凭证。在使用Jmeter测试的过程中我们需要获取这个凭证。&lt;br&gt;jmeter提供了正则表达式提取器，用变量提取参数，后续通过${变量名}引用参数。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&quot;sessionKey值&quot;&gt;&lt;a href=&quot;#sessionKey值&quot; class=&quot;headerlink&quot; title=&quot;sessionKey值&quot;&gt;&lt;/a&gt;sessionKey值&lt;/h2&gt;&lt;p&gt;添加方式 线程组-后置处理器-正则表达式提取器
-    
-    </summary>
-    
-      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Mac" scheme="http://i90s.vip/tags/Mac/"/>
-    
-      <category term="Jmeter" scheme="http://i90s.vip/tags/Jmeter/"/>
-    
-      <category term="性能测试" scheme="http://i90s.vip/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jmeter 使用随笔(1)</title>
-    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2016/09/19/Jmeter-%E4%BD%BF%E7%94%A8%E9%9A%8F%E7%AC%94.html"/>
-    <id>http://i90s.vip//软件笔记/2016/09/19/Jmeter-使用随笔.html</id>
-    <published>2016-09-19T06:55:10.000Z</published>
-    <updated>2016-12-16T09:48:11.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="HTTP信息头管理器-Content-type"><a href="#HTTP信息头管理器-Content-type" class="headerlink" title="HTTP信息头管理器 Content-type"></a>HTTP信息头管理器 Content-type</h2><p>Content-type：在Request Hearder里，告诉服务器我们发送的请求信息是那种格式的。</p>
-<p>1 默认值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-type：application/x-www-form-urlencoded</span><br></pre></td></tr></table></figure>
-<p>参数格式：key1=value1 &amp; key2=value2</p>
-<p>jmeter参数使用方法<br>(1)Paramenters<br><img src="http://ww1.sinaimg.cn/large/666cc9e3gw1f7yzjihid6j21g711lag9.jpg" alt=""><a id="more"></a><br>(2)Body Data<br><img src="http://ww4.sinaimg.cn/large/666cc9e3gw1f7zw1flrz2j21gd12pq8v.jpg" alt=""></p>
-<p>2 Json格式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-type:application/json</span><br></pre></td></tr></table></figure>
-<p>参数格式：<br>{<br>    “key1”:”value1”,<br>    “key2”:”value2”<br>}</p>
-<p>jmeter参数使用方法<br>(1)添加HTTP信息头管理器<br><img src="http://ww4.sinaimg.cn/large/666cc9e3gw1f7zw6hlpapj21g30h8mz4.jpg" alt=""><br>(2)Body Data输入参数<br><img src="http://ww1.sinaimg.cn/large/666cc9e3gw1f7zw4o86zxj21fh11qn35.jpg" alt=""></p>
-<p>3 传输文件</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-type:multipart/form-data</span><br></pre></td></tr></table></figure>
-<p>(1)HTTP请求页面，勾选Use multipart/form-data for POST<br>(2)Paramenters中输入除了要上传的文件以外的参数<br><img src="http://ww1.sinaimg.cn/large/666cc9e3gw1f7zw940lqgj21fd10zq8p.jpg" alt=""><br>(3)File Upload中上传文件，填写参数名和MIME类型<br><img src="http://ww1.sinaimg.cn/large/666cc9e3gw1f7zwbfcq90j21fe0zdgsi.jpg" alt=""></p>
-<h2 id="返回值中文乱码"><a href="#返回值中文乱码" class="headerlink" title="返回值中文乱码"></a>返回值中文乱码</h2><p>（1）再jmeter安装文件夹中找到bin文件夹，用记事本打开jmeter.properties文件<br>（2）修改sampleresult.default.encoding=UTF-8</p>
-<blockquote>
-<p>注意去掉sampleresult.default.encoding=UTF-8前面的#号</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;HTTP信息头管理器-Content-type&quot;&gt;&lt;a href=&quot;#HTTP信息头管理器-Content-type&quot; class=&quot;headerlink&quot; title=&quot;HTTP信息头管理器 Content-type&quot;&gt;&lt;/a&gt;HTTP信息头管理器 Content-type&lt;/h2&gt;&lt;p&gt;Content-type：在Request Hearder里，告诉服务器我们发送的请求信息是那种格式的。&lt;/p&gt;
-&lt;p&gt;1 默认值&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Content-type：application/x-www-form-urlencoded&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;参数格式：key1=value1 &amp;amp; key2=value2&lt;/p&gt;
-&lt;p&gt;jmeter参数使用方法&lt;br&gt;(1)Paramenters&lt;br&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/666cc9e3gw1f7yzjihid6j21g711lag9.jpg&quot; alt=&quot;&quot;&gt;
     
     </summary>
     
