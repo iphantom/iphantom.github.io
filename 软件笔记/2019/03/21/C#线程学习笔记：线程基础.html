@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>C#线程学习笔记：线程基础 | Enzo Chen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="MacAppiumiosapp" />
+  
+  
+  
+  
+  <meta name="description" content="一、线程的介绍
+进程 (Process) 是应用程序的实例要使用的资源的一个集合，每个应用程序都在各自的进程中运行来确保应用程序不受其他应用程序的影响。
+
+线程是进程中基本执行单元， 一个进程中可以包含多个线程。在进程入口执行的第一个线程是一个进程的主线程，在.NET 应用程序中，都是以 Main () 方法
+作为程序的入口（线程是进程的执行单元，进程是线程的一个容器）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#线程学习笔记：线程基础">
+<meta property="og:url" content="http://i90s.vip/软件笔记/2019/03/21/C#线程学习笔记：线程基础.html">
+<meta property="og:site_name" content="Enzo Chen">
+<meta property="og:description" content="一、线程的介绍
+进程 (Process) 是应用程序的实例要使用的资源的一个集合，每个应用程序都在各自的进程中运行来确保应用程序不受其他应用程序的影响。
+
+线程是进程中基本执行单元， 一个进程中可以包含多个线程。在进程入口执行的第一个线程是一个进程的主线程，在.NET 应用程序中，都是以 Main () 方法
+作为程序的入口（线程是进程的执行单元，进程是线程的一个容器）。">
+<meta property="og:updated_time" content="2019-12-01T09:35:28.873Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C#线程学习笔记：线程基础">
+<meta name="twitter:description" content="一、线程的介绍
+进程 (Process) 是应用程序的实例要使用的资源的一个集合，每个应用程序都在各自的进程中运行来确保应用程序不受其他应用程序的影响。
+
+线程是进程中基本执行单元， 一个进程中可以包含多个线程。在进程入口执行的第一个线程是一个进程的主线程，在.NET 应用程序中，都是以 Main () 方法
+作为程序的入口（线程是进程的执行单元，进程是线程的一个容器）。">
+  
+  <link rel="icon" href="/css/images/avatar.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Enzo Chen" rel="home"> Enzo Chen </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">是我的海</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/atom.xml">rss</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-C#线程学习笔记：线程基础" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      C#线程学习笔记：线程基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/软件笔记/2019/03/21/C#线程学习笔记：线程基础.html" class="article-date">
+	  <time datetime="2019-03-21T06:29:36.000Z" itemprop="datePublished">三月 21, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、线程的介绍</p>
+<pre><code>进程 (Process) 是应用程序的实例要使用的资源的一个集合，每个应用程序都在各自的进程中运行来确保应用程序不受其他应用程序的影响。
+
+线程是进程中基本执行单元， 一个进程中可以包含多个线程。在进程入口执行的第一个线程是一个进程的主线程，在.NET 应用程序中，都是以 Main () 方法
+</code></pre><p>作为程序的入口（线程是进程的执行单元，进程是线程的一个容器）。<br><a id="more"></a></p>
+<p>二、线程调度和优先级  </p>
+<pre><code>Windows 之所以被称为抢占式多线程操作系统，是因为线程可以在任意时间被抢占，并调度另一个线程。
+
+每个线程都分配了从 0~31 的一个优先级，系统首先把高优先级的线程分配给 CPU 执行。
+
+Windows 支持 7 个相对线程优先级：Idle、Lowest、Below Normal、Normal、Above Normal、Highest 和 Time-Critical。Normal 是默认的线程优先级，
+</code></pre><p>然而在程序中可以通过设置 Thread 的 Priority 属性来改变线程的优先级，它的类型为 ThreadPriority 枚举类型：Lowest、BelowNormal、Normal、AboveNormal</p>
+<p>和 Highest，CLR 为自己保留了 Idle 和 Time-Critical 优先级。</p>
+<pre><code>枚举值列表如下：
+</code></pre><p>成员名称    说明<br>Lowest    可以将 Thread 置于其他优先级线程之后。<br>BelowNormal    可以将 Thread 置于 Normal 优先级线程之后 Lowest 优先级线程之前。<br>Normal<br>可以将 Thread 置于 AboveNormal 优先级线程之后 BelowNormal 优先级线程之前。</p>
+<p>默认情况下，线程置于 Normal 优先级。</p>
+<p>AboveNormal    可以将 Thread 置于 Highest 优先级线程之后 Normal 优先级线程之前。<br>Highest    可以将 Thread 置于其他优先级线程之前。<br>    三、前台线程和后台线程</p>
+<pre><code>在.NET 中线程分为前台线程和后台线程：
+
+1、主线程是程序开始时就执行的，如果你需要再创建线程，那么创建的线程就是这个主线程的子线程，它是前台线程。 
+
+2、子线程可以是前台线程也可以是后台线程。
+
+3、前台线程必须全部执行完，即使主线程关闭掉，这时进程仍然存活。
+
+4、当所有前台线程停止运行时，CLR 会强制结束仍在运行的任何后台线程，这些后台线程直接被终止，不会抛出异常。
+
+5、前台线程与后台线程唯一的区别是后台线程不会阻止进程终止，可以在任何时候将前台线程修改为后台线程。
+</code></pre><p>复制代码</p>
+<pre><code>static void Main(string[] args)
+{
+    ThreadType();
+}
+
+/// &lt;summary&gt;
+/// 前台线程与后台线程
+/// &lt;/summary&gt;
+private static void ThreadType()
+{
+    //创建一个新线程(默认为前台线程)
+    Thread backThread = new Thread(Worker)
+    {
+        //将线程更改为后台线程
+        IsBackground = true
+    };
+
+    //通过Start方法启动线程
+    backThread.Start();
+
+    //如果backThread是前台线程，则应用程序5秒后才终止。
+    //如果backThread是后台线程，则应用程序立即终止。
+    Console.WriteLine(&quot;It&apos;s from main thread.&quot;);
+    //Console.Read();
+}
+
+private static void Worker()
+{
+    //休息5秒
+    Thread.Sleep(5000);
+    Console.WriteLine(&quot;It&apos;s from worker thread.&quot;);
+}
+</code></pre><p>复制代码</p>
+<pre><code>假如保留 IsBackground = true; 但又想继续执行 Worker () 方法的话，可以调用 Thread.Join () 方法来实现。Join () 方法能保证主线程（前台线程）在异步线程
+</code></pre><p>Thread（后台线程）运行结束后才会运行。</p>
+<pre><code>注 1：一个线程在执行的过程中，可能调用另一个线程，前者可以称为调用线程，后者成为被调用线程。
+
+注 2：Thread.Join () 方法的使用场景：调用线程挂起，等待被调用线程执行完毕后，继续执行。
+
+注 3：被调用线程执行 Join 方法，告诉调用线程，你先暂停，我执行完了，你再执行。从而保证了先后关系。
+</code></pre><p>复制代码</p>
+<pre><code>static void Main(string[] args)
+{
+    ThreadStatusChange();
+}
+
+/// &lt;summary&gt;
+/// 线程状态之间的转换
+/// &lt;/summary&gt;
+private static void ThreadStatusChange()
+{
+    //创建一个新线程(默认为前台线程)
+    Thread backThread = new Thread(Worker)
+    {
+        //将线程更改为后台线程
+        IsBackground = true
+    };
+
+    //通过Start方法启动线程
+    backThread.Start();
+
+    //Join()方法能保证主线程（前台线程）在异步线程Thread（后台线程）运行结束后才会运行
+    backThread.Join();
+
+    Console.WriteLine(&quot;It&apos;s from main thread.&quot;);
+    Console.Read();
+}
+
+private static void Worker()
+{
+    //休息5秒
+    Thread.Sleep(5000);
+    Console.WriteLine(&quot;It&apos;s from worker thread.&quot;);
+}
+</code></pre><p>复制代码</p>
+<pre><code>运行结果如下：
+
+
+
+四、 Suspend 和 Resume 方法
+
+这两个方法在.NET Framework 1.0 的时候就支持的方法，他们分别可以挂起线程及恢复挂起的线程，但在.NET Framework 2.0 以后的版本中这两个方法都过时了。
+
+MSDN 的解释是这样：
+
+警告：
+
+不要使用 Suspend 和 Resume 方法来同步线程的活动。您无法知道挂起线程时它正在执行什么代码。如果您在安全权限评估期间挂起持有锁的线程，
+</code></pre><p>则 AppDomain 中的其他线程可能被阻止。如果您在线程正在执行类构造函数时挂起它，则 AppDomain 中尝试使用该类的其他线程将被阻止。这样很容易发生死锁。</p>
+<p>复制代码</p>
+<pre><code>static void Main(string[] args)
+{
+    ThreadResume();
+}
+
+/// &lt;summary&gt;
+/// 线程恢复
+/// &lt;/summary&gt;
+private static void ThreadResume()
+{
+    Thread thread = new Thread(ThreadSuspend)
+    {
+        Name = &quot;Thread1&quot;
+    };
+    thread.Start();
+    Thread.Sleep(2000);
+    Console.WriteLine(&quot;Main Thread is running.&quot;);
+    //线程恢复
+    thread.Resume();
+    Console.Read();
+}
+
+/// &lt;summary&gt;
+/// 线程挂起
+/// &lt;/summary&gt;
+private static void ThreadSuspend()
+{
+    Console.WriteLine(&quot;Thread: {0} has been suspended.&quot;, Thread.CurrentThread.Name);
+    //将当前线程挂起
+    Thread.CurrentThread.Suspend();
+    Console.WriteLine(&quot;Thread: {0} has been resumed.&quot;, Thread.CurrentThread.Name);
+}
+</code></pre><p>复制代码</p>
+<pre><code>在上面这段代码中 Thread1 线程是在主线程中恢复的，但当主线程发生异常时，这时候 Thread1 就会一直处于挂起状态，此时 Thread1 所使用的资源就不能释放
+</code></pre><p>（除非强制终止进程），当其它的线程需要使用这快资源的时候， 很有可能就会发生死锁现象。</p>
+<pre><code>上面一段代码还存在一个隐患，假如把 Thread.Sleep (2000); 这段代码注释一下：
+</code></pre><p>复制代码</p>
+<pre><code>static void Main(string[] args)
+{
+    ThreadResume();
+}
+
+/// &lt;summary&gt;
+/// 线程恢复
+/// &lt;/summary&gt;
+private static void ThreadResume()
+{
+    Thread thread = new Thread(ThreadSuspend)
+    {
+        Name = &quot;Thread1&quot;
+    };
+    thread.Start();
+    //Thread.Sleep(2000);
+    Console.WriteLine(&quot;Main Thread is running.&quot;);
+    //线程恢复
+    thread.Resume();
+    Console.Read();
+}
+
+/// &lt;summary&gt;
+/// 线程挂起
+/// &lt;/summary&gt;
+private static void ThreadSuspend()
+{
+    Console.WriteLine(&quot;Thread: {0} has been suspended.&quot;, Thread.CurrentThread.Name);
+    //将当前线程挂起
+    Thread.CurrentThread.Suspend();
+    Console.WriteLine(&quot;Thread: {0} has been resumed.&quot;, Thread.CurrentThread.Name);
+}
+</code></pre><p>复制代码</p>
+<pre><code>这个时候，主线程因为跑（运行）得太快，做完自己的事情去唤醒 Thread1 时，此时 Thread1 还没有挂起，而此时唤醒 Thread1 就会出现异常了。
+
+五、Abort 和 Interrupt 方法
+
+Abort 方法和 Interrupt 都是用来终止线程的，但是两者还是有区别的：
+
+1、它们抛出的异常不一样：Abort 方法抛出的异常是 ThreadAbortException，Interrupt 抛出的异常为 ThreadInterruptedException。
+
+2、调用 Interrupt 方法的线程之后可以被唤醒，然而调用 Abort 方法的线程就直接被终止不能被唤醒了。
+
+下面演示 Abort 方法的使用：
+</code></pre><p>复制代码</p>
+<pre><code>static void Main(string[] args)
+{
+    //ThreadType();
+    //ThreadStatusChange();
+    //ThreadResume();
+    ThreadAbort();
+}        
+
+/// &lt;summary&gt;
+/// 线程中断(不可再唤醒)
+/// &lt;/summary&gt;
+private static void ThreadAbort()
+{
+    Thread threadAbort = new Thread(AbortMethod)
+    {
+        Name = &quot;ThreadAbort&quot;
+    };
+    threadAbort.Start();
+    Thread.Sleep(1000);
+    try
+    {
+        threadAbort.Abort();
+    }
+    catch
+    {
+        Console.WriteLine(&quot;1-&gt; {0} exception happen in main thread.&quot;, Thread.CurrentThread.Name);
+        Console.WriteLine(&quot;2-&gt; {0} status is:{1} in main thread.&quot;, Thread.CurrentThread.Name, Thread.CurrentThread.ThreadState);
+    }
+    finally
+    {
+        Console.WriteLine(&quot;3-&gt; {0} status is:{1} in main thread.&quot;, threadAbort.Name, threadAbort.ThreadState);
+    }
+    threadAbort.Join();
+    Console.WriteLine(&quot;4-&gt; {0} status is:{1}&quot;, threadAbort.Name, threadAbort.ThreadState);
+    Console.Read();
+}
+
+/// &lt;summary&gt;
+/// Abort方法
+/// &lt;/summary&gt;
+private static void AbortMethod()
+{
+    try
+    {
+        Thread.Sleep(5000);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e.GetType().Name);
+        Console.WriteLine(&quot;5-&gt; {0} exception happen in abort thread.&quot;, Thread.CurrentThread.Name);
+        Console.WriteLine(&quot;6-&gt; {0} status is:{1} in abort thread.&quot;, Thread.CurrentThread.Name, Thread.CurrentThread.ThreadState);
+    }
+    finally
+    {
+        Console.WriteLine(&quot;7-&gt; {0} status is:{1} in abort thread.&quot;, Thread.CurrentThread.Name, Thread.CurrentThread.ThreadState);
+    }
+}
+</code></pre><p>复制代码</p>
+<pre><code>运行结果如下：
+
+
+
+从运行结果可以看出，调用 Abort 方法的线程引发的异常类型为 ThreadAbortException，另外异常只会在调用 Abort 方法的线程中发生，而不会在主线程中抛出，
+</code></pre><p>其次调用 Abort 方法后线程的状态不是立即改变为 Aborted 状态，而是从 AbortRequested-&gt;Aborted。 </p>
+<pre><code>下面演示 Interrupt 方法的使用：
+</code></pre><p>复制代码</p>
+<pre><code>static void Main(string[] args)
+{
+    ThreadInterrupt();
+}
+
+/// &lt;summary&gt;
+/// 线程中断(可再唤醒)
+/// &lt;/summary&gt;
+static void ThreadInterrupt()
+{
+    Thread threadInterrupt = new Thread(InterruptMethod)
+    {
+        Name = &quot;ThreadInterrupt&quot;
+    };
+    threadInterrupt.Start();
+    threadInterrupt.Interrupt();
+    threadInterrupt.Join();
+    Console.WriteLine(&quot;1-&gt; {0} status is:{1} &quot;, threadInterrupt.Name, threadInterrupt.ThreadState);
+    Console.Read();
+}
+</code></pre><p>　　　　　<br>        /// <summary><br>        /// Interrupt方法<br>        /// </summary><br>        private static void InterruptMethod()<br>        {<br>            try<br>            {<br>                Thread.Sleep(5000);<br>            }<br>            catch (Exception e)<br>            {<br>                Console.WriteLine(e.GetType().Name);<br>                Console.WriteLine(“2-&gt; {0} exception happen in interrupt thread.”, Thread.CurrentThread.Name);<br>                Console.WriteLine(“3-&gt; {0} status is:{1} in interrupt thread.”, Thread.CurrentThread.Name, Thread.CurrentThread.ThreadState);<br>            }<br>            finally<br>            {<br>                Console.WriteLine(“4-&gt; {0} status is:{1} in interrupt thread.”, Thread.CurrentThread.Name, Thread.CurrentThread.ThreadState);<br>            }<br>        }<br>复制代码</p>
+<pre><code>运行结果如下：
+
+
+
+从结果中可以得到，调用 Interrupt 方法抛出的异常为：ThreadInterruptException， 另外当调用 Interrupt 方法后线程的状态应该是中断的，但是从运行结果看，
+</code></pre><p>此时的线程因为 Join、Sleep 方法而唤醒了线程。</p>
+<pre><code>为了进一步解释调用 Interrupt 方法的线程可以被唤醒， 我们可以在线程执行的方法中运用循环，如果线程可以唤醒，则输出结果中就一定会有循环的部分，
+</code></pre><p>而调用 Abort 方法的线程则不会有循环的部分。</p>
+<pre><code>下面代码相信大家看后肯定会更加理解两个方法的区别：
+</code></pre><p>复制代码</p>
+<pre><code>static void Main(string[] args)
+{
+    //ThreadType();
+    //ThreadStatusChange();
+    //ThreadResume();
+    //ThreadAbort();
+    //ThreadInterrupt();
+    ThreadWake();
+}
+
+/// &lt;summary&gt;
+/// 线程唤醒
+/// &lt;/summary&gt;
+static void ThreadWake()
+{
+    Thread threadWake = new Thread(WakeMethod);
+    threadWake.Start();
+    Thread.Sleep(100);
+
+    threadWake.Interrupt();
+    Thread.Sleep(3000);
+    Console.WriteLine(&quot;1-&gt; After finally block,the threadWake status is:{0}&quot;, threadWake.ThreadState);
+    Console.Read();
+}
+
+/// &lt;summary&gt;
+/// Wake方法
+/// &lt;/summary&gt;
+private static void WakeMethod()
+{
+    for (int i = 0; i &lt; 4; i++)
+    {
+        try
+        {
+            Thread.Sleep(2000);
+            Console.WriteLine(&quot;2-&gt; Thread is Running.&quot;);
+        }
+        catch (Exception ex)
+        {
+            if (ex != null)
+            {
+                Console.WriteLine(&quot;3-&gt; Exception {0} throw.&quot;, ex.GetType().Name);
+            }
+        }
+        finally
+        {
+            Console.WriteLine(&quot;4-&gt; Current thread status is:{0}&quot;, Thread.CurrentThread.ThreadState);
+        }
+    }
+}
+</code></pre><p>复制代码</p>
+<pre><code>运行结果如下：
+
+
+
+如果把上面的 threadWake.Interrupt (); 改为 threadWake.Abort (); 运行结果为：
+
+
+
+六、简单线程的使用
+
+其实在上面介绍前台线程和后台线程的时候已经通过 ThreadStart 委托创建一个线程了，此时已经实现了一个多线程的一个过程。
+
+下面通过 ParameterizedThreadStart 委托的方式来实现多线程：
+
+
+
+    static void Main(string[] args)
+    {
+        ThreadTypeUseParameterized();
+    }
+
+    /// &lt;summary&gt;
+    /// 前台线程与后台线程(使用ParameterizedThreadStart委托的方式来实现多线程)
+    /// &lt;/summary&gt;
+    private static void ThreadTypeUseParameterized()
+    {
+        //创建一个新线程(默认为前台线程)
+        Thread backThread = new Thread(new ParameterizedThreadStart(Worker1));
+
+        //通过Start方法启动线程
+        backThread.Start(123);
+
+        //如果backThread是前台线程，则应用程序5秒后才终止。
+        //如果backThread是后台线程，则应用程序立即终止。
+        Console.WriteLine(&quot;It&apos;s from main thread.&quot;);
+    }
+
+    private static void Worker1(object parameter)
+    {
+        //休息5秒
+        Thread.Sleep(5000);
+        Console.WriteLine(parameter+&quot; is from worker1 thread.&quot;);
+        Console.Read();
+    }
+
+
+运行结果如下：
+</code></pre>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/软件笔记/">软件笔记</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Appium/">Appium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/">Mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/app/">app</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="//软件笔记/2019/03/21/C#线程学习笔记：线程基础.html" data-title="C#线程学习笔记：线程基础" data-url="http://i90s.vip/软件笔记/2019/03/21/C#线程学习笔记：线程基础.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chengong"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/软件笔记/2019/03/21/appium测试环境搭建.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          appium+ios10测试环境搭建
+        
+      </div>
+    </a>
+  
+  
+    <a href="/软件笔记/2019/01/04/Jmeter使用随笔-4.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Jmeter使用随笔-4</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav">无</ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/atom.xml" class="mobile-nav-link">rss</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+
+  <div class="visit">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261448261'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261448261%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <!-- 页面点击小心心 
+  <script type="text/javascript" src="/js/love.js"></script>   
+  -->
+  <!-- 颗粒漂浮背景 
+  <script type="text/javascript" src="/js/particle.js"></script>
+  -->
+</body>
+</html>

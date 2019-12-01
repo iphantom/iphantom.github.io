@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>APP消息推送のWhy | Enzo Chen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="APP消息推送" />
+  
+  
+  
+  
+  <meta name="description" content="根据市场分析公司 Localytics 基于 15 亿部设备和 2.8 万个应用的调研报告，如果用户打开了一款应用的消息推送功能，那么62% 的用户会在几个月之后再次使用这款应用。
+
+
+Localytics 的研究还表明消息推送对 APP 推广是有帮助的： 　　　49.8% 的用户允许设备上接收信息推送　　　 54% 的用户在点击个性化推送后产生转化　　　接收推送通知用户参与度比不接收用户高 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="APP消息推送のWhy">
+<meta property="og:url" content="http://i90s.vip/产品笔记/2019/10/11/app消息推送（1）.html">
+<meta property="og:site_name" content="Enzo Chen">
+<meta property="og:description" content="根据市场分析公司 Localytics 基于 15 亿部设备和 2.8 万个应用的调研报告，如果用户打开了一款应用的消息推送功能，那么62% 的用户会在几个月之后再次使用这款应用。
+
+
+Localytics 的研究还表明消息推送对 APP 推广是有帮助的： 　　　49.8% 的用户允许设备上接收信息推送　　　 54% 的用户在点击个性化推送后产生转化　　　接收推送通知用户参与度比不接收用户高 1">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1985459-5bb638438166916e.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-12-01T09:40:09.840Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="APP消息推送のWhy">
+<meta name="twitter:description" content="根据市场分析公司 Localytics 基于 15 亿部设备和 2.8 万个应用的调研报告，如果用户打开了一款应用的消息推送功能，那么62% 的用户会在几个月之后再次使用这款应用。
+
+
+Localytics 的研究还表明消息推送对 APP 推广是有帮助的： 　　　49.8% 的用户允许设备上接收信息推送　　　 54% 的用户在点击个性化推送后产生转化　　　接收推送通知用户参与度比不接收用户高 1">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1985459-5bb638438166916e.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+  <link rel="icon" href="/css/images/avatar.png">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Enzo Chen" rel="home"> Enzo Chen </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">是我的海</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/atom.xml">rss</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-app消息推送（1）" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      APP消息推送のWhy
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/产品笔记/2019/10/11/app消息推送（1）.html" class="article-date">
+	  <time datetime="2019-10-11T07:19:22.000Z" itemprop="datePublished">十月 11, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/产品笔记/">产品笔记</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>根据市场分析公司 Localytics 基于 15 亿部设备和 2.8 万个应用的调研报告，如果用户打开了一款应用的消息推送功能，那么<strong>62%</strong> 的用户会在几个月之后再次使用这款应用。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-5bb638438166916e.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="localytics公司"></p>
+<p>Localytics 的研究还表明消息推送对 APP 推广是有帮助的：<br> 　　　<strong>49.8% 的用户允许设备上接收信息推送</strong><br>　　　 <strong>54% 的用户在点击个性化推送后产生转化</strong><br>　　　<strong>接收推送通知用户参与度比不接收用户高 171%（环比提高88%！）</strong><br>另外的研究数据表示，如果用户允许接收消息推送，APP 的闲置率会从 21% 下降到 11%。以上数字清晰地表明，消息推送不仅仅是标题党，还能确确实实的吸引用户使用APP 的频率，也是挽留用户离开的重要手段。<br><a id="more"></a></p>
+<h2 id="APP消息推送的特点"><a href="#APP消息推送的特点" class="headerlink" title="APP消息推送的特点"></a>APP消息推送的特点</h2><h3 id="1）实时"><a href="#1）实时" class="headerlink" title="1）实时"></a>1）实时</h3><p>APP Push支持的是7<em>24h，针对实时性要求较高的产品，比如资讯类、通知类APP，APP Push功能提高用户打开app的不二选择，另外针对APP Push的实时性还延伸出了一类产品，最有名的是<em>*即刻</em></em>，用户可以在即刻上关注相应的主题，当该主题有新信息出现时，APP会第一时间通知用户。</p>
+<h3 id="2）精准"><a href="#2）精准" class="headerlink" title="2）精准"></a>2）精准</h3><p>APP Push的前提是用户已经安装了APP，从一定程度上已经筛选出了感兴趣的用户，相比满大街的发宣传页，广告牌，APP Push的人群更加精准，另外在推送消息时，可以根据注册用户的性别、年龄、地区等进行不同的推送。</p>
+<h3 id="3）免费"><a href="#3）免费" class="headerlink" title="3）免费"></a>3）免费</h3><p>相比广告、明星代言，消息推送功能的花费是很少的，部分公司可以完全自主开发APP推送功能，一些小公司也可以依靠市面上的推送平台，比如小米推送、极光、友盟等进行推送，花费也是相对较低。</p>
+<h2 id="APP推送消息分类"><a href="#APP推送消息分类" class="headerlink" title="APP推送消息分类"></a>APP推送消息分类</h2><p>从产品形态和业务类型上可以把消息分成“IM”类（Instant Messaging，IM）和非“IM”类两种</p>
+<h3 id="“IM”类消息"><a href="#“IM”类消息" class="headerlink" title="“IM”类消息"></a>“IM”类消息</h3><p>IM消息主要是指：微信、QQ、Link等即时通讯的消息内容</p>
+<h3 id="非“IM”类消息"><a href="#非“IM”类消息" class="headerlink" title="非“IM”类消息"></a>非“IM”类消息</h3><p>非“IM”类消息可以分为一下几种：<br>1)新闻资讯类：澎湃新闻、ZAKER、今日头条等热点新闻<br>2)运营活动类：淘宝、京东等活动促销<br>3)系统通知类：饿了么、美团等外卖送货，中国移动登录提醒等情况<br>按照消息的推送频率和时间，可以把推送消息分成以下几种：<br>1）实时推送：微信、QQ等实时通讯工具、美团等送货信息<br>2）定时推送：MONO的早午茶（每天早上和下午定时触发），日报类信息<br>3）不定时推送：营销信息、系统消息</p>
+<h2 id="APP消息推送需注意的点"><a href="#APP消息推送需注意的点" class="headerlink" title="APP消息推送需注意的点"></a>APP消息推送需注意的点</h2><p>APP消息推送有很多优点，可以提高运营同事的效率，但是如果滥用推送功能，也会起到反作用，用户也不希望经常被打扰到，下面就说一下需要注意的几个点，主要是对非“IM”信息<br>1）推送时间规避用户休息时间<br>一般的消息推送都要避开，晚上10:00-早上7:00，这段时间大家基本上已经进入了休息or个人时间，尽量不要早这个时间段给客户推送消息。<br>一般来说资讯类推送消息的时间可以为8:00am-9:30am之间，这段时间用户一般都在上班的途中，希望了解下昨天发生的一些相关信息，还有两个时间为12:00-12:30，趁用户中午吃饭前推送下今日的相关信息，最后一个合适的推送时间为晚上8:30-9:30。<br>营销类的推送消息时间一般为中午12:00-13:00和晚上的8:30-9:30，这个时间段用户的消费欲望最高。<br>2）过度使用标题党<br>狼来了的故事大家都听过，适当的“标题党”能够激发用户的好奇心，但是过度的标题党让用户感觉到自己被欺骗了，会降低用户的体验，所以标题党要适度，不要过度夸张事情，也要降低标题党的频率。<br>3）推送消息过于频繁<br>有些产品，什么信息都要推送给用户，不分时间段和频率的推送，会对用户体验造成致命的伤害，这就非常考验产品和运营人员的个人功力，什么消息该推，什么时候推，都需要认真且仔细的分析。<br>4）推送的内容长有错别字<br>一般的消息最好控制在10-20字以内，信息展示的行数最好不要超过三行。最好的消息是用户可以一扫而过并能清楚的知道你要说的是什么。另外由于推送消息字数的简练，所以在推送消息前一定要仔细检查是否有错别字，错别字的出现会直接降低用户的好感。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/产品笔记/">产品笔记</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/APP/">APP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/消息推送/">消息推送</a></li></ul>
+
+      
+        
+	<div id="comment">
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="//产品笔记/2019/10/11/app消息推送（1）.html" data-title="APP消息推送のWhy" data-url="http://i90s.vip/产品笔记/2019/10/11/app消息推送（1）.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chengong"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+	<link rel="stylesheet" href="/css/comment.css">
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/产品笔记/2019/10/19/APP消息推送（2）.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          APP消息推送のHow
+        
+      </div>
+    </a>
+  
+  
+    <a href="/产品笔记/2019/10/10/让产品自己召唤人.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">【转载】马化腾：让产品自己召唤人</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#APP消息推送的特点"><span class="nav-number">1.</span> <span class="nav-text">APP消息推送的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）实时"><span class="nav-number">1.1.</span> <span class="nav-text">1）实时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）精准"><span class="nav-number">1.2.</span> <span class="nav-text">2）精准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）免费"><span class="nav-number">1.3.</span> <span class="nav-text">3）免费</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APP推送消息分类"><span class="nav-number">2.</span> <span class="nav-text">APP推送消息分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#“IM”类消息"><span class="nav-number">2.1.</span> <span class="nav-text">“IM”类消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非“IM”类消息"><span class="nav-number">2.2.</span> <span class="nav-text">非“IM”类消息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APP消息推送需注意的点"><span class="nav-number">3.</span> <span class="nav-text">APP消息推送需注意的点</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/atom.xml" class="mobile-nav-link">rss</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+
+  <div class="visit">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261448261'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261448261%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  
+
+  <!-- 页面点击小心心 
+  <script type="text/javascript" src="/js/love.js"></script>   
+  -->
+  <!-- 颗粒漂浮背景 
+  <script type="text/javascript" src="/js/particle.js"></script>
+  -->
+</body>
+</html>
