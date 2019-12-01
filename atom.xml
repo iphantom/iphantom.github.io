@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://i90s.vip/"/>
-  <updated>2019-12-01T09:54:25.264Z</updated>
+  <updated>2019-12-01T09:52:49.078Z</updated>
   <id>http://i90s.vip/</id>
   
   <author>
@@ -16,11 +16,110 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>pythonの将数组写入excel内</title>
+    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/12/01/python%E3%81%AE%E5%B0%86%E6%95%B0%E7%BB%84%E5%86%99%E5%85%A5excel%E5%86%85.html"/>
+    <id>http://i90s.vip//软件笔记/2019/12/01/pythonの将数组写入excel内.html</id>
+    <published>2019-12-01T13:00:51.000Z</published>
+    <updated>2019-12-01T09:52:49.078Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>将给定的数组写入excel内，保存到指定路径下<br>首先需要安装两个插件 xlrd xlwt<br><a id="more"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*- </span></span><br><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"><span class="keyword">import</span> xlwt</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment">#程序目的：将二维数组内的数值写入excel内，并保存到相应的路径</span></span><br><span class="line"><span class="comment">#return [状态位，错误信息]</span></span><br><span class="line"><span class="comment">#0表示输出成功，错误信息为空</span></span><br><span class="line"><span class="comment">#1表示输出失败，返回相应错误信息</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong> 通过OUTPUT_EXCEL类实现该功能 </strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OUTPUT_EXCEL</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.file=xlwt.Workbook()</span><br><span class="line">        self.table=self.file.add_sheet(<span class="string">'sheet 1'</span>) <span class="comment">#默认存到Sheet 1内</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">RW_Excel</span><span class="params">(self,excel_name,save_path,write_array)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> write_array: <span class="comment">#判断数组是否为空</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                self.file.save(excel_name)</span><br><span class="line">            <span class="keyword">except</span> IOError,msg:</span><br><span class="line">                <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        x_len=len(write_array)</span><br><span class="line">        y_len=len(write_array[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">0</span>,x_len):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,y_len):</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    self.table.write(i,j,write_array[i][j])</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    <span class="keyword">print</span> i ,j</span><br><span class="line">                    <span class="keyword">return</span> [<span class="number">1</span>,<span class="string">'Data error'</span>]</span><br><span class="line">        file_name_path=save_path+excel_name</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            self.file.save(file_name_path)</span><br><span class="line">        <span class="keyword">except</span> IOError,msg:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">        <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>]</span><br></pre></td></tr></table></figure></p>
+<p><strong> 存在的问题 </strong><br><figure class="highlight parser3"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">由于使用xlwt xlrd插件，写入excel的行不能超过</span><span class="number">2</span><span class="xml"></span><span class="keyword">^16</span><span class="xml">，也就是最多只能写入</span><span class="number">65536</span><span class="xml">行</span></span><br></pre></td></tr></table></figure></p>
+<p><strong> 未验证的可行的解决方法 </strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用openpyxl插件代替xlwt和xlrd插件</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;将给定的数组写入excel内，保存到指定路径下&lt;br&gt;首先需要安装两个插件 xlrd xlwt&lt;br&gt;
+    
+    </summary>
+    
+      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="python" scheme="http://i90s.vip/tags/python/"/>
+    
+      <category term="excel" scheme="http://i90s.vip/tags/excel/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>pythonの将数组写入oracle内</title>
+    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/11/29/python%E3%81%AE%E5%B0%86%E6%95%B0%E7%BB%84%E5%86%99%E5%85%A5oracle%E5%86%85.html"/>
+    <id>http://i90s.vip//软件笔记/2019/11/29/pythonの将数组写入oracle内.html</id>
+    <published>2019-11-29T13:09:08.000Z</published>
+    <updated>2019-12-01T09:52:57.243Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>将给定的数组写入oracle内，保存到指定新表内<br>首先需要安装插件cx_oracle<br><a id="more"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> cx_Oracle</span><br><span class="line"><span class="comment">#程序目的：将二维数组内的数值写入oracle数据库相应的表内</span></span><br><span class="line"><span class="comment">#return [状态位，错误信息]</span></span><br><span class="line"><span class="comment">#0表示输出成功，错误信息为空</span></span><br><span class="line"><span class="comment">#1表示输出失败，返回相应错误信息</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>通过OUTPUT_ORACLE类实现功能 </strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#----连接数据库-----</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OUTPUT_ORACLE</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment">#读取Oracle配置文件</span></span><br><span class="line">        Config_file=open(<span class="string">"Config.txt"</span>)</span><br><span class="line">        self.Oracle_Config=Config_file.readline()</span><br><span class="line">        Config_file.close()</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">RW_Oracle</span><span class="params">(self,table_name,write_array)</span>:</span></span><br><span class="line">        self.tab_name=<span class="string">"create table "</span>+table_name  <span class="comment">#创建新表</span></span><br><span class="line">        self.w_array=write_array</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            conn=cx_Oracle.connect(self.Oracle_Config)</span><br><span class="line">            cursor=conn.cursor()</span><br><span class="line">        <span class="keyword">except</span> cx_Oracle.DatabaseError,msg:</span><br><span class="line">            cursor.close ()</span><br><span class="line">            conn.close ()</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line"><span class="comment">#         try:</span></span><br><span class="line"><span class="comment">#             cursor.execute('drop table table_cc') #先删除表</span></span><br><span class="line"><span class="comment">#         except cx_Oracle.DatabaseError,msg:</span></span><br><span class="line"><span class="comment">#             cursor.close ()</span></span><br><span class="line"><span class="comment">#             conn.close ()</span></span><br><span class="line"><span class="comment">#             return [1,msg]</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            cursor.execute(self.tab_name)  <span class="comment">#新建表格</span></span><br><span class="line">        <span class="keyword">except</span> cx_Oracle.DatabaseError,msg:</span><br><span class="line">            cursor.close ()</span><br><span class="line">            conn.close ()</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.w_array:</span><br><span class="line">            cursor.close ()</span><br><span class="line">            conn.close ()</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>]</span><br><span class="line">        <span class="comment">#获取表名</span></span><br><span class="line">        Table_Name=table_name.split(<span class="string">'('</span>) <span class="comment">#用括号将表名分隔开</span></span><br><span class="line">        Insert_sql_temp=<span class="string">'insert into '</span>+Table_Name[<span class="number">0</span>]+<span class="string">' values('</span></span><br><span class="line">        <span class="comment">#创建插入SQL语句</span></span><br><span class="line">        x_len=len(self.w_array)     <span class="comment">#行数</span></span><br><span class="line">        y_len=len(self.w_array[<span class="number">0</span>])  <span class="comment">#列数</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,x_len):</span><br><span class="line">            array_temp=<span class="string">''</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,y_len):</span><br><span class="line">                <span class="keyword">if</span> j==y_len<span class="number">-1</span>:</span><br><span class="line">                    array_temp=array_temp+str(self.w_array[i][j])</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    array_temp=array_temp+str(self.w_array[i][j])+<span class="string">','</span></span><br><span class="line">            Insert_sql=Insert_sql_temp+array_temp+<span class="string">')'</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                cursor.execute(Insert_sql)</span><br><span class="line">            <span class="keyword">except</span> cx_Oracle.DatabaseError,msg:</span><br><span class="line">                cursor.close ()</span><br><span class="line">                conn.close ()</span><br><span class="line">                <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">        <span class="comment">#提交数据</span></span><br><span class="line">        conn.commit(); </span><br><span class="line">        <span class="comment">#关闭数据库连接</span></span><br><span class="line">        cursor.close ()</span><br><span class="line">        conn.close ()</span><br><span class="line">        <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>]</span><br></pre></td></tr></table></figure></p>
+<p><strong> 存在的问题 </strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">写入效率不高，有待进一步优化</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;将给定的数组写入oracle内，保存到指定新表内&lt;br&gt;首先需要安装插件cx_oracle&lt;br&gt;
+    
+    </summary>
+    
+      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Oracle" scheme="http://i90s.vip/tags/Oracle/"/>
+    
+      <category term="python" scheme="http://i90s.vip/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>pythonの生成正交测试数据</title>
+    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/11/28/python%E3%81%AE%E7%94%9F%E6%88%90%E6%AD%A3%E4%BA%A4%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE.html"/>
+    <id>http://i90s.vip//软件笔记/2019/11/28/pythonの生成正交测试数据.html</id>
+    <published>2019-11-28T14:14:41.000Z</published>
+    <updated>2019-12-01T09:53:06.568Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="程序说明"><a href="#程序说明" class="headerlink" title="程序说明"></a>程序说明</h2><hr>
+<p> 输入为数组，如下所示：<br>a=[[1,2,3],[4,5],[6,7]]<br>a[0],a[1],a[2]···表示各个因素，此时表示a有四个因素<br>a[0]=[1,2,3]表示a[0]有三个值可以选</p>
+<hr>
+<p>输出为数组，如下所示：<a id="more"></a><br>b= [[1, 4, 6], [1, 5, 7], [2, 4, 7], [2, 5, 6]]<br>b[0],b[1]···表示正交法生成的测试数据</p>
+<h2 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h2><h3 id="output-oracle-py"><a href="#output-oracle-py" class="headerlink" title="output_oracle.py"></a>output_oracle.py</h3><blockquote>
+<p>获取数组的因素数和水平数<br>调用Ort_model.py函数 返回相应的正交表<br>将输入数据替换正交表内数 生成正交测试数据</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Ort_model</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ORT_EXPRESSION</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Output_Ort</span><span class="params">(self,input_array)</span>:</span></span><br><span class="line">        self.in_array=input_array</span><br><span class="line">        i_Factors_temp=len(self.in_array)   <span class="comment">#因素数</span></span><br><span class="line">        i_array=[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(i_Factors_temp)]</span><br><span class="line">        <span class="comment">#求取水平数</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,i_Factors_temp):</span><br><span class="line">            i_array[i]=len(self.in_array[i])</span><br><span class="line">        i_array_temp=&#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> i_array:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> i_array_temp:</span><br><span class="line">                i_array_temp[i] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                i_array_temp[i] += <span class="number">1</span> </span><br><span class="line">        i_levels_temp=max(i_array_temp.iteritems(), key = <span class="keyword">lambda</span> x: x[<span class="number">1</span>])[<span class="number">0</span>]  <span class="comment">#水平数       </span></span><br><span class="line">        <span class="comment">#正交模型</span></span><br><span class="line">        Model_Ort=Ort_model.ORT_MODEL()</span><br><span class="line">        return_ort=Model_Ort.Ort_mod(i_Factors_temp,i_levels_temp)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> return_ort:</span><br><span class="line">            msg=<span class="string">'input is wrong'</span></span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,msg,<span class="string">''</span>]</span><br><span class="line">        <span class="comment">#带入数值</span></span><br><span class="line">        i_L=len(return_ort)</span><br><span class="line">        i_Factors=len(return_ort[<span class="number">0</span>])</span><br><span class="line">        return_array = [[<span class="number">0</span> <span class="keyword">for</span> col <span class="keyword">in</span> range(i_Factors)] <span class="keyword">for</span> row <span class="keyword">in</span> range(i_L)]  </span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,i_Factors):</span><br><span class="line">            l_n=[x[j] <span class="keyword">for</span> x <span class="keyword">in</span> return_ort]</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(l_n)):</span><br><span class="line">                <span class="keyword">if</span> l_n[i]&lt;len(self.in_array[j]):               </span><br><span class="line">                    return_array[i][j]=self.in_array[j][l_n[i]]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    return_array[i][j]=random.choice(self.in_array[j])  <span class="comment">#使用随机函数选择当前可选数据</span></span><br><span class="line">        <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>,return_array]</span><br></pre></td></tr></table></figure>
+<h3 id="Ort-model-py"><a href="#Ort-model-py" class="headerlink" title="Ort_model.py"></a>Ort_model.py</h3><blockquote>
+<p>根据因素数和水平数 得到相应的正交表</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ORT_MODEL</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.L4=[</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>]</span><br><span class="line">                ]  <span class="comment">#2 3 </span></span><br><span class="line">        self.L8=[</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">                ] <span class="comment">#2 7</span></span><br><span class="line">        self.L9=[</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>],</span><br><span class="line">                [<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>]</span><br><span class="line">                ]<span class="comment">#3 4</span></span><br><span class="line">        self.L16=[</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">                 ]<span class="comment">#4 5</span></span><br><span class="line">        self.L25=[</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">                  ]<span class="comment">#5 6</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Ort_mod</span><span class="params">(self,i_factors,i_levels)</span>:</span></span><br><span class="line">        self.i_fac=i_factors</span><br><span class="line">        self.i_lev=i_levels</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">3</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">2</span>):<span class="comment">#2 3 </span></span><br><span class="line">            <span class="keyword">return</span> self.L4</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">7</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">2</span>):<span class="comment">#2 7</span></span><br><span class="line">            <span class="keyword">return</span> self.L8</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">4</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">3</span>):<span class="comment">#3 4</span></span><br><span class="line">            <span class="keyword">return</span> self.L9</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">5</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">4</span>):<span class="comment">#4 5</span></span><br><span class="line">            <span class="keyword">return</span> self.L16</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">6</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">5</span>):<span class="comment">#5 6</span></span><br><span class="line">            <span class="keyword">return</span> self.L25</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;程序说明&quot;&gt;&lt;a href=&quot;#程序说明&quot; class=&quot;headerlink&quot; title=&quot;程序说明&quot;&gt;&lt;/a&gt;程序说明&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt; 输入为数组，如下所示：&lt;br&gt;a=[[1,2,3],[4,5],[6,7]]&lt;br&gt;a[0],a[1],a[2]···表示各个因素，此时表示a有四个因素&lt;br&gt;a[0]=[1,2,3]表示a[0]有三个值可以选&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;输出为数组，如下所示：
+    
+    </summary>
+    
+      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="python" scheme="http://i90s.vip/tags/python/"/>
+    
+      <category term="正交" scheme="http://i90s.vip/tags/%E6%AD%A3%E4%BA%A4/"/>
+    
+  </entry>
+  
+  <entry>
     <title>编程修养（3）</title>
-    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/12/01/%E7%BC%96%E7%A8%8B%E4%BF%AE%E5%85%BB%EF%BC%883%EF%BC%89.html"/>
-    <id>http://i90s.vip//软件笔记/2019/12/01/编程修养（3）.html</id>
-    <published>2019-12-01T13:59:16.000Z</published>
-    <updated>2019-12-01T09:54:25.264Z</updated>
+    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/11/28/%E7%BC%96%E7%A8%8B%E4%BF%AE%E5%85%BB%EF%BC%883%EF%BC%89.html"/>
+    <id>http://i90s.vip//软件笔记/2019/11/28/编程修养（3）.html</id>
+    <published>2019-11-28T13:59:16.000Z</published>
+    <updated>2019-12-01T09:57:28.528Z</updated>
     
     <content type="html"><![CDATA[<h2 id="把相同或近乎相同的代码形成函数和宏"><a href="#把相同或近乎相同的代码形成函数和宏" class="headerlink" title="把相同或近乎相同的代码形成函数和宏"></a>把相同或近乎相同的代码形成函数和宏</h2><p>—————————————————————<br>有人说，最好的程序员，就是最喜欢“偷懒”的程序，其中不无道理。  </p>
 <p>如果你有一些程序的代码片段很相似，或直接就是一样的，请把他们放在一个函数中。而如果</p>
@@ -137,42 +236,11 @@
   </entry>
   
   <entry>
-    <title>pythonの将数组写入excel内</title>
-    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/12/01/python%E3%81%AE%E5%B0%86%E6%95%B0%E7%BB%84%E5%86%99%E5%85%A5excel%E5%86%85.html"/>
-    <id>http://i90s.vip//软件笔记/2019/12/01/pythonの将数组写入excel内.html</id>
-    <published>2019-12-01T13:00:51.000Z</published>
-    <updated>2019-12-01T09:52:49.078Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>将给定的数组写入excel内，保存到指定路径下<br>首先需要安装两个插件 xlrd xlwt<br><a id="more"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*- </span></span><br><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"><span class="keyword">import</span> xlwt</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment">#程序目的：将二维数组内的数值写入excel内，并保存到相应的路径</span></span><br><span class="line"><span class="comment">#return [状态位，错误信息]</span></span><br><span class="line"><span class="comment">#0表示输出成功，错误信息为空</span></span><br><span class="line"><span class="comment">#1表示输出失败，返回相应错误信息</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p><strong> 通过OUTPUT_EXCEL类实现该功能 </strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OUTPUT_EXCEL</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.file=xlwt.Workbook()</span><br><span class="line">        self.table=self.file.add_sheet(<span class="string">'sheet 1'</span>) <span class="comment">#默认存到Sheet 1内</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">RW_Excel</span><span class="params">(self,excel_name,save_path,write_array)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> write_array: <span class="comment">#判断数组是否为空</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                self.file.save(excel_name)</span><br><span class="line">            <span class="keyword">except</span> IOError,msg:</span><br><span class="line">                <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        x_len=len(write_array)</span><br><span class="line">        y_len=len(write_array[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">0</span>,x_len):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,y_len):</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    self.table.write(i,j,write_array[i][j])</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    <span class="keyword">print</span> i ,j</span><br><span class="line">                    <span class="keyword">return</span> [<span class="number">1</span>,<span class="string">'Data error'</span>]</span><br><span class="line">        file_name_path=save_path+excel_name</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            self.file.save(file_name_path)</span><br><span class="line">        <span class="keyword">except</span> IOError,msg:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">        <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>]</span><br></pre></td></tr></table></figure></p>
-<p><strong> 存在的问题 </strong><br><figure class="highlight parser3"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">由于使用xlwt xlrd插件，写入excel的行不能超过</span><span class="number">2</span><span class="xml"></span><span class="keyword">^16</span><span class="xml">，也就是最多只能写入</span><span class="number">65536</span><span class="xml">行</span></span><br></pre></td></tr></table></figure></p>
-<p><strong> 未验证的可行的解决方法 </strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用openpyxl插件代替xlwt和xlrd插件</span><br></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;将给定的数组写入excel内，保存到指定路径下&lt;br&gt;首先需要安装两个插件 xlrd xlwt&lt;br&gt;
-    
-    </summary>
-    
-      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="python" scheme="http://i90s.vip/tags/python/"/>
-    
-      <category term="excel" scheme="http://i90s.vip/tags/excel/"/>
-    
-  </entry>
-  
-  <entry>
     <title>编程修养（2）</title>
-    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/11/29/%E7%BC%96%E7%A8%8B%E4%BF%AE%E5%85%BB%EF%BC%882%EF%BC%89.html"/>
-    <id>http://i90s.vip//软件笔记/2019/11/29/编程修养（2）.html</id>
-    <published>2019-11-29T13:59:11.000Z</published>
-    <updated>2019-12-01T09:45:30.946Z</updated>
+    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/11/27/%E7%BC%96%E7%A8%8B%E4%BF%AE%E5%85%BB%EF%BC%882%EF%BC%89.html"/>
+    <id>http://i90s.vip//软件笔记/2019/11/27/编程修养（2）.html</id>
+    <published>2019-11-27T13:59:11.000Z</published>
+    <updated>2019-12-01T09:57:26.735Z</updated>
     
     <content type="html"><![CDATA[<h2 id="h和c文件的使用"><a href="#h和c文件的使用" class="headerlink" title="h和c文件的使用"></a>h和c文件的使用</h2><p>—————————<br>H文件和C文件怎么用呢？一般来说，H文件中是declare（声明），C文件中是define（定义）</p>
 <p>。因为C文件要编译成库文件（Windows下是.obj/.lib，UNIX下是.o/.a），如果别人要使用你的</p>
@@ -298,79 +366,270 @@
   </entry>
   
   <entry>
-    <title>pythonの将数组写入oracle内</title>
-    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/11/29/python%E3%81%AE%E5%B0%86%E6%95%B0%E7%BB%84%E5%86%99%E5%85%A5oracle%E5%86%85.html"/>
-    <id>http://i90s.vip//软件笔记/2019/11/29/pythonの将数组写入oracle内.html</id>
-    <published>2019-11-29T13:09:08.000Z</published>
-    <updated>2019-12-01T09:52:57.243Z</updated>
+    <title>产品经理访谈记录</title>
+    <link href="http://i90s.vip//%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2019/11/27/PM%E8%AE%BF%E8%B0%88%E8%AE%B0%E5%BD%95.html"/>
+    <id>http://i90s.vip//产品笔记/2019/11/27/PM访谈记录.html</id>
+    <published>2019-11-27T06:46:16.000Z</published>
+    <updated>2019-12-01T09:39:48.047Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
-<p>将给定的数组写入oracle内，保存到指定新表内<br>首先需要安装插件cx_oracle<br><a id="more"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> cx_Oracle</span><br><span class="line"><span class="comment">#程序目的：将二维数组内的数值写入oracle数据库相应的表内</span></span><br><span class="line"><span class="comment">#return [状态位，错误信息]</span></span><br><span class="line"><span class="comment">#0表示输出成功，错误信息为空</span></span><br><span class="line"><span class="comment">#1表示输出失败，返回相应错误信息</span></span><br></pre></td></tr></table></figure></p>
+    <content type="html"><![CDATA[<p>产品经理们写了无数篇产品分析报告，却鲜有一篇对于产品经理这个群体的分析报告。PMCAFF 采访了多位拥有着不同经历、处在不同段位的产品经理，试着以此概括出产品经理都有哪些 “典型” 特征。<br><a id="more"></a></p>
+<p>我们选取了有代表性的产品经理及其回答，整理成此文，文中的产品经理皆为化名，先来认识下他们：</p>
+<blockquote>
+<p>• 何川<br>从业三年，某 “独角兽” 公司工作 2 年，目前就职于 BAT 其中一家。</p>
+<p>• 老董<br>从业七年，一手组建了曾在舆论风口浪尖上的某互金企业产品团队，管理经验丰富。</p>
+<p>• 张明<br>从业三年，某上市公司产品经理。</p>
+<p>• 李广<br>从业五年，先后就职于多家公司，曾任国内某知名天气 APP 的产品经理。</p>
 </blockquote>
-<p><strong>通过OUTPUT_ORACLE类实现功能 </strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#----连接数据库-----</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OUTPUT_ORACLE</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment">#读取Oracle配置文件</span></span><br><span class="line">        Config_file=open(<span class="string">"Config.txt"</span>)</span><br><span class="line">        self.Oracle_Config=Config_file.readline()</span><br><span class="line">        Config_file.close()</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">RW_Oracle</span><span class="params">(self,table_name,write_array)</span>:</span></span><br><span class="line">        self.tab_name=<span class="string">"create table "</span>+table_name  <span class="comment">#创建新表</span></span><br><span class="line">        self.w_array=write_array</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            conn=cx_Oracle.connect(self.Oracle_Config)</span><br><span class="line">            cursor=conn.cursor()</span><br><span class="line">        <span class="keyword">except</span> cx_Oracle.DatabaseError,msg:</span><br><span class="line">            cursor.close ()</span><br><span class="line">            conn.close ()</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line"><span class="comment">#         try:</span></span><br><span class="line"><span class="comment">#             cursor.execute('drop table table_cc') #先删除表</span></span><br><span class="line"><span class="comment">#         except cx_Oracle.DatabaseError,msg:</span></span><br><span class="line"><span class="comment">#             cursor.close ()</span></span><br><span class="line"><span class="comment">#             conn.close ()</span></span><br><span class="line"><span class="comment">#             return [1,msg]</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            cursor.execute(self.tab_name)  <span class="comment">#新建表格</span></span><br><span class="line">        <span class="keyword">except</span> cx_Oracle.DatabaseError,msg:</span><br><span class="line">            cursor.close ()</span><br><span class="line">            conn.close ()</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.w_array:</span><br><span class="line">            cursor.close ()</span><br><span class="line">            conn.close ()</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>]</span><br><span class="line">        <span class="comment">#获取表名</span></span><br><span class="line">        Table_Name=table_name.split(<span class="string">'('</span>) <span class="comment">#用括号将表名分隔开</span></span><br><span class="line">        Insert_sql_temp=<span class="string">'insert into '</span>+Table_Name[<span class="number">0</span>]+<span class="string">' values('</span></span><br><span class="line">        <span class="comment">#创建插入SQL语句</span></span><br><span class="line">        x_len=len(self.w_array)     <span class="comment">#行数</span></span><br><span class="line">        y_len=len(self.w_array[<span class="number">0</span>])  <span class="comment">#列数</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,x_len):</span><br><span class="line">            array_temp=<span class="string">''</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,y_len):</span><br><span class="line">                <span class="keyword">if</span> j==y_len<span class="number">-1</span>:</span><br><span class="line">                    array_temp=array_temp+str(self.w_array[i][j])</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    array_temp=array_temp+str(self.w_array[i][j])+<span class="string">','</span></span><br><span class="line">            Insert_sql=Insert_sql_temp+array_temp+<span class="string">')'</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                cursor.execute(Insert_sql)</span><br><span class="line">            <span class="keyword">except</span> cx_Oracle.DatabaseError,msg:</span><br><span class="line">                cursor.close ()</span><br><span class="line">                conn.close ()</span><br><span class="line">                <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">        <span class="comment">#提交数据</span></span><br><span class="line">        conn.commit(); </span><br><span class="line">        <span class="comment">#关闭数据库连接</span></span><br><span class="line">        cursor.close ()</span><br><span class="line">        conn.close ()</span><br><span class="line">        <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>]</span><br></pre></td></tr></table></figure></p>
-<p><strong> 存在的问题 </strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">写入效率不高，有待进一步优化</span><br></pre></td></tr></table></figure></p>
+<p>需要说明的是，“典型” 其实很难定义，且不说样本太小，即使样本足够大，不同类型公司的产品经理，工作内容和状态可能大不相同。试图以职业划分人群是一种简单粗糙的方法，且极不科学。教育程度、成长环境、年龄等也都是维度。此篇讨论，仅是一种泛指。</p>
+<h2 id="成长就是从乐观到悲观"><a href="#成长就是从乐观到悲观" class="headerlink" title="成长就是从乐观到悲观"></a><strong>成长就是从乐观到悲观</strong></h2><p>有个有意思的现象，年轻的产品经理普遍偏乐观主义，认为一切东西尽在自己的掌控之中。</p>
+<p>何川是 90 后，先在一家 “独角兽” 公司工作 2 年，目前就职于 BAT 其中一家。他对自己的掌控能力有绝对的自信。</p>
+<blockquote>
+<p>@何川：</p>
+<p>我判断出来它有产出，它就一定有产出。所有的东西都是可预期的。你问我什么时候会特别有成就感？因为每一件事都是可预期的，那就不会有太多的兴奋。</p>
+<p> <strong>搞不定的事情都是人的事情，三四个老大观点不一致时，或者跟直接领导产品观念有差异，就很麻烦。</strong>  </p>
+<p>产品上不存在什么棘手的问题，让你做的东西市面上一定存在，没有的东西老板也不会去提，别人做得出来，那我也一定能做出来。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-76fcd3f10292383d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>老董现在带着二三十人的团队，包括产品和研发，他之前一手建立了曾在舆论的风口浪尖上的某互金企业的产品团队，见证了该产品从起步，到腾飞壮大，再到被曝出问题。他坦诚自己是相对悲观主义者。</p>
+<blockquote>
+<p>@老董：</p>
+<p> <strong>在需求输出时足够悲观，这样才能预料到不同的情况。</strong> </p>
+<p>产品从零到一时其实还不是很担心，因为这都在你可控的范围内，真正担心的是上线后。有的问题是事先没预料到的，这很考验你临场反应能力、解决问题的能力；有的问题是事先预料到可能会发生的，因为各种原因，在问题还没被解决时便上线，当它真的发生了，会害怕。</p>
+<p>我们是在正确的方向上做事情，据说神级产品经理可以把任何方向都做正确，如果到了那种程度，可能会变得更乐观，但那种境界是可遇不可求的。</p>
+</blockquote>
+<h2 id="投入没产出，就是战五渣"><a href="#投入没产出，就是战五渣" class="headerlink" title="投入没产出，就是战五渣"></a><strong>投入没产出，就是战五渣</strong></h2><p>产品经理们都很 “功利”，几乎每个受访产品经理都会提到 “值不值” 的问题。</p>
+<p>从业三年的张明认为不存在把需求都满足的情况，因为不值。</p>
+<blockquote>
+<p>@张明：</p>
+<p> <strong>大多数情况下，你只能满足 70% 的需求，因为要再覆盖剩下的 30%，消耗的资源将是巨大的。</strong> </p>
+<p>我们做一款金融产品，老板想把起投额从 100 元降到 10 元，这并非仅仅改个参数那么简单，就好比人民币最小计量单位由 1 毛变成 1 分，每个人的钱包都会变大，你的数据量会激增。但可以预见的是投资额的增长和用户增长都很有限，理财场景下人们对 100 元和 10 元的敏感度没那么大。那这个的优先级就要往后排。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-b08f3105762f3898.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>产品经理们目标导向普遍很强，他们时刻衡量着投入与产出，以及这项功能改进跟大目标的匹配程度。</strong></p>
+<blockquote>
+<p>@张明：</p>
+<p>其实不得不这么做，<strong>产品经理最害怕的是投入没有产出，浪费了大家的时间</strong>，这样你下次提需求时就会面对很大的质疑。所以只要经历过几次评审会，经历过几次舌战群儒，你不自觉地便建立起目标导向。</p>
+</blockquote>
+<h2 id="自己是真牛逼，别人都在装逼"><a href="#自己是真牛逼，别人都在装逼" class="headerlink" title="自己是真牛逼，别人都在装逼"></a><strong>自己是真牛逼，别人都在装逼</strong></h2><p>就像 “文人相轻”，产品经理们多数觉得自己很牛逼，认为别人是在装逼。</p>
+<blockquote>
+<p>@何川：</p>
+<p>我当然会认为自己做出的产品都是好的，如果你都不认为自己做得产品好，那说明你工作很不用心嘛。</p>
+<p>@李广：</p>
+<p> <strong>自己做得产品一定会盯着数据看。</strong> </p>
+<p>我们做天气预报，DAU 很高，但使用时间太短。2014 年的时候，LBS 很热，我们做了基于地理位置的图景功能，你可以看到身边的人都穿得是什么衣服。这比数字直观得多，总之融进去很多轻社交的元素，这样使用时常自然会增加。</p>
+<p>职业经历中做的最骄傲的一款产品？<strong>其实都很骄傲，你要说最骄傲的，下一个产品。</strong></p>
+</blockquote>
+<p>不过谈到如何看待一些网红产品经理，工作年限越高的产品经理，对他们越是不以为意。</p>
+<blockquote>
+<p>@老董：</p>
+<p>最顶尖的那些产品经理是很少发声的，而越往下走，解决问题的套路就越标准化。萌新们看起来干货满满的归纳总结，其实都是一些标准化程度很高的东西。</p>
+<p>@李广：</p>
+<p>至于那些讲产品经理的书籍，我觉得刚入行时是有必要看的，他能帮助你建立一个系统的认知，但书里的案例肯定都是适用于成书时或者成书之前的，在一个日新月异的时代，这些案例的实用价值可能会被刚入行的小白们高估。</p>
+</blockquote>
+<h2 id="最棘手的那些事"><a href="#最棘手的那些事" class="headerlink" title="最棘手的那些事"></a><strong>最棘手的那些事</strong></h2><p>聊起最棘手的事情，受访的产品经理们的回答呈现出高度的相似性。</p>
+<p>一般来说，刚工作没多久时会觉得 “舌战群儒” 的时候很棘手，经常会面对来自各个团队的质疑——为何这个需求是有必要满足的；处在上升期时觉得时间很棘手，总想知道更多东西、做更多东西，经常性加班到很晚；而到了带团队的阶段，会觉得最棘手的问题在于人，老董的论述比较有代表性：</p>
+<blockquote>
+<p>@老董：</p>
+<p>团队成员能力应该有高低，都很牛逼的话，成本核算也不对，基础的事情就没人做了。荣誉感并非每个人都有，有时做价值同步会非常困难，人与人之间，不是难，但经营起来是件很麻烦的事情。</p>
+</blockquote>
+<h2 id="数据也会骗人，但人更会骗人"><a href="#数据也会骗人，但人更会骗人" class="headerlink" title="数据也会骗人，但人更会骗人"></a><strong>数据也会骗人，但人更会骗人</strong></h2><p>产品经理们都会去做一些用户访谈，但用他们的话来说，用户访谈只是片面的，可听不可全听。受访的产品经理普遍都更相信数据，<strong>虽然数据也会骗人，但用户更会骗人。用户是小数据，而非大数据。</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-502073602888fd3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>@何川：</p>
+<p>做产品的过程中难免会犯一些错误，你认为个性化是很重要的一点，等做了之后你发现没什么卵用。证明了你的观点是错的，这一项你就得降级。久而久之你就知道了，该关心的是用户怎么做，而不是用户怎么说。所以<strong>我们更相信用户行为数据，而不是用户怎么说。**</strong>声音大的，不一定代表多数人。**</p>
+</blockquote>
+<h2 id="最重要的能力——解决问题"><a href="#最重要的能力——解决问题" class="headerlink" title="最重要的能力——解决问题"></a><strong>最重要的能力——解决问题</strong></h2><p>聊起产品经理应该具备怎样的素质，年轻的产品经理大多讲得是方法论——<strong>解决问题的能力是最重要的，职业初期首先要能解决问题；其次是发现问题的能力，对需求有所洞察；神级产品经理，可以创造需求。</strong></p>
+<p>而走向管理岗的产品经理，强调的往往是一些软性的素质——<strong>沟通能力好、好奇心强、兴趣广泛</strong>的产品经理一般成长会比较快。</p>
+<h2 id="我的产品很好，都是运营不给力"><a href="#我的产品很好，都是运营不给力" class="headerlink" title="我的产品很好，都是运营不给力"></a><strong>我的产品很好，都是运营不给力</strong></h2><p>虽然网上有很多产品和开发的各种段子，不过当跟本次受访的几个产品经理们聊起这个话题时，普遍倒都觉得跟开发没有太多的沟通问题，但对运营都颇有微词。</p>
+<blockquote>
+<p>@何川：</p>
+<p>产品是提供一个增长曲线，技术就是去实现这条曲线，而运营的工作，就是把曲线的斜率做得更陡峭。</p>
+<p>跟技术倒没什么沟通难度，虽然也会因为一些问题导致延期上线；多数情况下会觉得运营不太给力，产品本身带来的自然增长率可能有 10%，加上运营策略后，可能也就 11% 或者 12%，就会觉得运营没做到位。</p>
+</blockquote>
+<h2 id="产品的问题大多没有对错"><a href="#产品的问题大多没有对错" class="headerlink" title="产品的问题大多没有对错"></a><strong>产品的问题大多没有对错</strong></h2><p>产品经理眼中的产品从不是一个一成不变的东西，他们认为<strong>产品实际上是一个实验性的东西。</strong></p>
+<blockquote>
+<p>@老董：</p>
+<p>不然为什么会有迭代呢？产品需要涵盖很多需求点，有你用过的，有你不会用的，所有用户需求点的并集，就是最终的产品形态。</p>
+<p>产品上的问题大概就两种，一种是没有对错的，你只能去试，然后看数据；另一种可能是涉及到撕逼的，这个时候能屈能伸就很重要，你要知道什么是你必须死守的，同时，在工作中要和同事有一个融洽的工作关系。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1985459-5c83504de566c763?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>你会发现，产品经理们眼中处处是产品，我跟何川约在一个咖啡馆见面，服务生给我们上错了咖啡，他马上接过话去：“我们分析一下为什么会上错咖啡。他们放了一个熊在这里，订单上写的是棕颜色的熊，他们可能是根据熊的颜色来判断该给哪位顾客上什么咖啡。但他们却上错了，这说明熊的颜色可能区分度不够大，解决方案就是把熊做得差异化更大一些。” 这种观察是在潜意识里的，也许产品经理在用任何一个产品的同时，潜意识中都在使用者和设计者两种角色里切换。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>技术的日新月异让好的产品层出不穷，一个优秀的产品会在短时间内吸引数以亿计的用户，这也让这一代产品人普遍都有一种 “产品理想”。你能真真切切地感受到产品经理们做产品的热情——<strong>想做出更好的产品，想让产品变得更好。</strong></p>
+<p>然而互联网的马太效应，让流量入口牢牢地掌握在少数几家巨头和 “独角兽” 手里，一款又一款爆款产品出现在人们眼前的同时，伴随着的，是众多产品的昙花一现，以及更多产品的默默无闻。产品大牛风光无限的背后，是更多产品经理们默默居于一隅，死磕着自己的产品，不断优化功能和性能，以给用户带来更良好的体验。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;将给定的数组写入oracle内，保存到指定新表内&lt;br&gt;首先需要安装插件cx_oracle&lt;br&gt;
+      &lt;p&gt;产品经理们写了无数篇产品分析报告，却鲜有一篇对于产品经理这个群体的分析报告。PMCAFF 采访了多位拥有着不同经历、处在不同段位的产品经理，试着以此概括出产品经理都有哪些 “典型” 特征。&lt;br&gt;
     
     </summary>
     
-      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
+      <category term="产品笔记" scheme="http://i90s.vip/categories/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Oracle" scheme="http://i90s.vip/tags/Oracle/"/>
+      <category term="转载" scheme="http://i90s.vip/tags/%E8%BD%AC%E8%BD%BD/"/>
     
-      <category term="python" scheme="http://i90s.vip/tags/python/"/>
+      <category term="产品" scheme="http://i90s.vip/tags/%E4%BA%A7%E5%93%81/"/>
     
   </entry>
   
   <entry>
-    <title>pythonの生成正交测试数据</title>
-    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/11/28/python%E3%81%AE%E7%94%9F%E6%88%90%E6%AD%A3%E4%BA%A4%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE.html"/>
-    <id>http://i90s.vip//软件笔记/2019/11/28/pythonの生成正交测试数据.html</id>
-    <published>2019-11-28T14:14:41.000Z</published>
-    <updated>2019-12-01T09:53:06.568Z</updated>
+    <title>编程修养（1）</title>
+    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/11/26/%E7%BC%96%E7%A8%8B%E4%BF%AE%E5%85%BB%EF%BC%881%EF%BC%89.html"/>
+    <id>http://i90s.vip//软件笔记/2019/11/26/编程修养（1）.html</id>
+    <published>2019-11-26T13:55:10.000Z</published>
+    <updated>2019-12-01T09:58:24.895Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="程序说明"><a href="#程序说明" class="headerlink" title="程序说明"></a>程序说明</h2><hr>
-<p> 输入为数组，如下所示：<br>a=[[1,2,3],[4,5],[6,7]]<br>a[0],a[1],a[2]···表示各个因素，此时表示a有四个因素<br>a[0]=[1,2,3]表示a[0]有三个值可以选</p>
-<hr>
-<p>输出为数组，如下所示：<a id="more"></a><br>b= [[1, 4, 6], [1, 5, 7], [2, 4, 7], [2, 5, 6]]<br>b[0],b[1]···表示正交法生成的测试数据</p>
-<h2 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h2><h3 id="output-oracle-py"><a href="#output-oracle-py" class="headerlink" title="output_oracle.py"></a>output_oracle.py</h3><blockquote>
-<p>获取数组的因素数和水平数<br>调用Ort_model.py函数 返回相应的正交表<br>将输入数据替换正交表内数 生成正交测试数据</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Ort_model</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ORT_EXPRESSION</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Output_Ort</span><span class="params">(self,input_array)</span>:</span></span><br><span class="line">        self.in_array=input_array</span><br><span class="line">        i_Factors_temp=len(self.in_array)   <span class="comment">#因素数</span></span><br><span class="line">        i_array=[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(i_Factors_temp)]</span><br><span class="line">        <span class="comment">#求取水平数</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,i_Factors_temp):</span><br><span class="line">            i_array[i]=len(self.in_array[i])</span><br><span class="line">        i_array_temp=&#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> i_array:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> i_array_temp:</span><br><span class="line">                i_array_temp[i] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                i_array_temp[i] += <span class="number">1</span> </span><br><span class="line">        i_levels_temp=max(i_array_temp.iteritems(), key = <span class="keyword">lambda</span> x: x[<span class="number">1</span>])[<span class="number">0</span>]  <span class="comment">#水平数       </span></span><br><span class="line">        <span class="comment">#正交模型</span></span><br><span class="line">        Model_Ort=Ort_model.ORT_MODEL()</span><br><span class="line">        return_ort=Model_Ort.Ort_mod(i_Factors_temp,i_levels_temp)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> return_ort:</span><br><span class="line">            msg=<span class="string">'input is wrong'</span></span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,msg,<span class="string">''</span>]</span><br><span class="line">        <span class="comment">#带入数值</span></span><br><span class="line">        i_L=len(return_ort)</span><br><span class="line">        i_Factors=len(return_ort[<span class="number">0</span>])</span><br><span class="line">        return_array = [[<span class="number">0</span> <span class="keyword">for</span> col <span class="keyword">in</span> range(i_Factors)] <span class="keyword">for</span> row <span class="keyword">in</span> range(i_L)]  </span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,i_Factors):</span><br><span class="line">            l_n=[x[j] <span class="keyword">for</span> x <span class="keyword">in</span> return_ort]</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(l_n)):</span><br><span class="line">                <span class="keyword">if</span> l_n[i]&lt;len(self.in_array[j]):               </span><br><span class="line">                    return_array[i][j]=self.in_array[j][l_n[i]]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    return_array[i][j]=random.choice(self.in_array[j])  <span class="comment">#使用随机函数选择当前可选数据</span></span><br><span class="line">        <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>,return_array]</span><br></pre></td></tr></table></figure>
-<h3 id="Ort-model-py"><a href="#Ort-model-py" class="headerlink" title="Ort_model.py"></a>Ort_model.py</h3><blockquote>
-<p>根据因素数和水平数 得到相应的正交表</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ORT_MODEL</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.L4=[</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>]</span><br><span class="line">                ]  <span class="comment">#2 3 </span></span><br><span class="line">        self.L8=[</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">                ] <span class="comment">#2 7</span></span><br><span class="line">        self.L9=[</span><br><span class="line">                [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">0</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>],</span><br><span class="line">                [<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>],</span><br><span class="line">                [<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>],</span><br><span class="line">                [<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>]</span><br><span class="line">                ]<span class="comment">#3 4</span></span><br><span class="line">        self.L16=[</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">0</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">                 [<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">3</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">0</span>],</span><br><span class="line">                 [<span class="number">3</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">                 ]<span class="comment">#4 5</span></span><br><span class="line">        self.L25=[</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">1</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">2</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>],</span><br><span class="line">                  [<span class="number">5</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">                  ]<span class="comment">#5 6</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Ort_mod</span><span class="params">(self,i_factors,i_levels)</span>:</span></span><br><span class="line">        self.i_fac=i_factors</span><br><span class="line">        self.i_lev=i_levels</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">3</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">2</span>):<span class="comment">#2 3 </span></span><br><span class="line">            <span class="keyword">return</span> self.L4</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">7</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">2</span>):<span class="comment">#2 7</span></span><br><span class="line">            <span class="keyword">return</span> self.L8</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">4</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">3</span>):<span class="comment">#3 4</span></span><br><span class="line">            <span class="keyword">return</span> self.L9</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">5</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">4</span>):<span class="comment">#4 5</span></span><br><span class="line">            <span class="keyword">return</span> self.L16</span><br><span class="line">        <span class="keyword">if</span> (self.i_fac==<span class="number">6</span> <span class="keyword">and</span> self.i_lev&lt;=<span class="number">5</span>):<span class="comment">#5 6</span></span><br><span class="line">            <span class="keyword">return</span> self.L25</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="版权和版本"><a href="#版权和版本" class="headerlink" title="版权和版本"></a>版权和版本</h2><p>———————<br>好的程序员会给自己的每个函数，每个文件，都注上版权和版本。  </p>
+<p>对于C/C++的文件，文件头应该有类似这样的注释：  <a id="more"></a></p>
+<p>而对于函数来说，应该也有类似于这样的注释：  </p>
+<p>这样的描述可以让人对一个函数，一个文件有一个总体的认识，对代码的易读性和易维护性有</p>
+<p>很大的好处 </p>
+<h2 id="缩进、空格、换行、空行、对齐"><a href="#缩进、空格、换行、空行、对齐" class="headerlink" title="缩进、空格、换行、空行、对齐"></a>缩进、空格、换行、空行、对齐</h2><p>————————————————<br>i) 缩进应该是每个程序都会做的，只要学程序过程序就应该知道这个，但是我仍然看过不缩进</p>
+<p>的程序，或是乱缩进的程序，如果你的公司还有写程序不缩进的程序员，请毫不犹豫的开除他</p>
+<p>吧，并以破坏源码罪起诉他，还要他赔偿读过他程序的人的精神损失费。缩进，这是不成文规</p>
+<p>矩，我再重提一下吧，一个缩进一般是一个TAB键或是4个空格。（最好用TAB键）  </p>
+<p>ii) 空格。空格能给程序代来什么损失吗？没有，有效的利用空格可以让你的程序读进来更加赏</p>
+<p>心悦目。而不一堆表达式挤在一起。看看下面的代码：  </p>
+<p>ha=(ha<em>128+</em>key++)%tabPtr-&gt;size;  </p>
+<p>ha = ( ha <em> 128 + </em>key++ ) % tabPtr-&gt;size;<br>有空格和没有空格的感觉不一样吧。一般来说，语句中要在各个操作符间加空格，函数调用时<br>，要以各个参数间加空格。如下面这种加空格的和不加的：<br>if ((hProc=OpenProcess(PROCESS_ALL_ACCESS,FALSE,pid))==NULL){<br>}  </p>
+<p>if ( ( hProc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid) ) == NULL ){<br>}  </p>
+<p>iii) 换行。不要把语句都写在一行上，这样很不好。如：  </p>
+<p>for(i=0;i’9’)&amp;&amp;(a[i]&lt;’a’||a[i]&gt;’z’)) break;  </p>
+<p>我拷，这种即无空格，又无换行的程序在写什么啊？加上空格和换行吧。  </p>
+<p>for ( i=0; i if ( ( a[i] &lt; ‘0’ || a[i] &gt; ‘9’ ) &amp;&amp;<br>( a[i] &lt; ‘a’ || a[i] &gt; ‘z’ ) ) {<br>break;<br>}<br>}  </p>
+<p>好多了吧？有时候，函数参数多的时候，最好也换行，如：  </p>
+<p>CreateProcess(<br>NULL,<br>cmdbuf,<br>NULL,<br>NULL,<br>bInhH,<br>dwCrtFlags,<br>enVBuf,<br>NULL,<br>&amp;siStartInfo,<br>&amp;prInfo<br>);  </p>
+<p>条件语句也应该在必要时换行：  </p>
+<p>if ( ch &gt;= ‘0’ || ch &lt;= ‘9’ ||<br>ch &gt;= ‘a’ || ch &lt;= ‘z’ ||<br>ch &gt;= ‘A’ || ch &lt;= ‘Z’ )  </p>
+<p>iv) 空行。不要不加空行，空行可以区分不同的程序块，程序块间，最好加上空行。如：  </p>
+<p>HANDLE hProcess;<br>PROCESS_T procInfo;  </p>
+<p>if((hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid)) == NULL)<br>{<br>return LSE_MISC_SYS;<br>}  </p>
+<p>memset(&amp;procInfo, 0, sizeof(procInfo));<br>procInfo.idProc = pid;<br>procInfo.hdProc = hProcess;<br>procInfo.misc |= MSCAVA_PROC;  </p>
+<p>return(0);  </p>
+<p>v) 对齐。用TAB键对齐你的一些变量的声明或注释，一样会让你的程序好看一些。如：  </p>
+<p>typedef struct _pt_man<em>t</em> {<br>int numProc;<br>int maxProc;<br>int numEvnt;<br>int maxEvnt;<br>HANDLE* pHndEvnt;<br>DWORD timeout;<br>HANDLE hPipe;<br>TCHAR usr[MAXUSR];<br>int numMsg;<br>int Msg[MAXMSG];<br>} PT_MAN_T;  </p>
+<h2 id="程序注释"><a href="#程序注释" class="headerlink" title="程序注释"></a>程序注释</h2><p>i) 对于行注释（“//”）比块注释（“”）要好的说法，我并不是很同意。因为一些老版本的C编</p>
+<p>译器并不支持行注释，所以为了你的程序的移植性，请你还是尽量使用块注释。  </p>
+<p>ii) 你也许会为块注释的不能嵌套而不爽，那么你可以用预编译来完成这个功能。使用“#if 0”和</p>
+<p>“#endif”括起来的代码，将不被编译，而且还可以嵌套。  </p>
+<h2 id="函数的-in-out-参数"><a href="#函数的-in-out-参数" class="headerlink" title="函数的[in][out]参数"></a>函数的[in][out]参数</h2><p>———————————  </p>
+<p>我经常看到这样的程序：<br>FuncName(char* str)<br>{<br>int len = strlen(str);<br>…..<br>}  </p>
+<p>char<em><br>GetUserName(struct user</em> pUser)<br>{<br>return pUser-&gt;name;<br>}  </p>
+<p>不！请不要这样做。  </p>
+<p>你应该先判断一下传进来的那个指针是不是为空。如果传进来的指针为空的话，那么，你的一</p>
+<p>个大的系统就会因为这一个小的函数而崩溃。一种更好的技术是使用断言（assert），这里我就</p>
+<p>不多说这些技术细节了。当然，如果是在C++中，引用要比指针好得多，但你也需要对各个参</p>
+<p>数进行检查。  </p>
+<p>写有参数的函数时，首要工作，就是要对传进来的所有参数进行合法性检查。而对于传出的参</p>
+<p>数也应该进行检查，这个动作当然应该在函数的外部，也就是说，调用完一个函数后，应该对</p>
+<p>其传出的值进行检查。  </p>
+<p>当然，检查会浪费一点时间，但为了整个系统不至于出现“非法操作”或是“Core Dump”的系统级</p>
+<p>的错误，多花这点时间还是很值得的。  </p>
+<h2 id="对系统调用的返回进行判断"><a href="#对系统调用的返回进行判断" class="headerlink" title="对系统调用的返回进行判断"></a>对系统调用的返回进行判断</h2><p>——————————————<br>继续上一条，对于一些系统调用，比如打开文件，我经常看到，许多程序员对fopen返回的指针</p>
+<p>不做任何判断，就直接使用了。然后发现文件的内容怎么也读出不，或是怎么也写不进去。还</p>
+<p>是判断一下吧：  </p>
+<p>fp = fopen(“log.txt”, “a”);<br>if ( fp == NULL ){<br>printf(“Error: open file error\n”);<br>return FALSE;<br>}  </p>
+<p>其它还有许多啦，比如：socket返回的socket号，malloc返回的内存。请对这些系统调用返回的</p>
+<p>东西进行判断。</p>
+<h2 id="if-语句对出错的处理"><a href="#if-语句对出错的处理" class="headerlink" title="if 语句对出错的处理"></a>if 语句对出错的处理</h2><p>———————————<br>我看见你说了，这有什么好说的。还是先看一段程序代码吧。<br>if ( ch &gt;= ‘0’ &amp;&amp; ch &lt;= ‘9’ ){  </p>
+<p>}else{  </p>
+<p>printf(“error ……\n”);<br>return ( FALSE );<br>}  </p>
+<p>这种结构很不好，特别是如果“正常处理代码”很长时，对于这种情况，最好不要用else。先判断</p>
+<p>错误，如：  </p>
+<p>if ( ch &lt; ‘0’ || ch &gt; ‘9’ ){  </p>
+<p>printf(“error ……\n”);<br>return ( FALSE );<br>}  </p>
+<p>……  </p>
+<p>这样的结构，不是很清楚吗？突出了错误的条件，让别人在使用你的函数的时候，第一眼就能</p>
+<p>看到不合法的条件，于是就会更下意识的避免。  </p>
+<h2 id="头文件中的-ifndef"><a href="#头文件中的-ifndef" class="headerlink" title="头文件中的#ifndef"></a>头文件中的#ifndef</h2><p>——————————<br>千万不要忽略了头件的中的#ifndef，这是一个很关键的东西。比如你有两个C文件，这两个C文</p>
+<p>件都include了同一个头文件。而编译时，这两个C文件要一同编译成一个可运行文件，于是问</p>
+<p>题来了，大量的声明冲突。  </p>
+<p>还是把头文件的内容都放在#ifndef和#endif中吧。不管你的头文件会不会被多个文件引用，你都</p>
+<p>要加上这个。一般格式是这样的：  </p>
+<p>#ifndef &lt;标识&gt;  </p>
+<p>#define &lt;标识&gt;  </p>
+<p>……<br>……  </p>
+<p>#endif  </p>
+<p>&lt;标识&gt;在理论上来说可以是自由命名的，但每个头文件的这个“标识”都应该是唯一的。标识的</p>
+<p>命名规则一般是头文件名全大写，前后加下划线，并把文件名中的“.”也变成下划线，如：</p>
+<p>stdio.h  </p>
+<p>#ifndef _STDIO<em>H</em>  </p>
+<p>#define _STDIO<em>H</em>  </p>
+<p>……  </p>
+<p>#endif  </p>
+<p>（BTW：预编译有多很有用的功能。你会用预编译吗？）  </p>
+<h2 id="在堆上分配内存"><a href="#在堆上分配内存" class="headerlink" title="在堆上分配内存"></a>在堆上分配内存</h2><p>—————————<br>可能许多人对内存分配上的“栈 stack”和“堆 heap”还不是很明白。包括一些科班出身的人也不明</p>
+<p>白这两个概念。我不想过多的说这两个东西。简单的来讲，stack上分配的内存系统自动释放，</p>
+<p>heap上分配的内存，系统不释放，哪怕程序退出，那一块内存还是在那里。stack一般是静态分</p>
+<p>配内存，heap上一般是动态分配内存。  </p>
+<p>由malloc系统函数分配的内存就是从堆上分配内存。从堆上分配的内存一定要自己释放。用free</p>
+<p>释放，不然就是术语——“内存泄露”（或是“内存漏洞”）—— Memory Leak。于是，系统的可分</p>
+<p>配内存会随malloc越来越少，直到系统崩溃。还是来看看“栈内存”和“堆内存”的差别吧。  </p>
+<p>栈内存分配<br>—————<br>char*<br>AllocStrFromStack()<br>{<br>char pstr[100];<br>return pstr;<br>}  </p>
+<p>堆内存分配<br>—————<br>char<em><br>AllocStrFromHeap(int len)<br>{<br>char </em>pstr;  </p>
+<p>if ( len &lt;= 0 ) return NULL;<br>return ( char* ) malloc( len );<br>}  </p>
+<p>对于第一个函数，那块pstr的内存在函数返回时就被系统释放了。于是所返回的char*什么也没</p>
+<p>有。而对于第二个函数，是从堆上分配内存，所以哪怕是程序退出时，也不释放，所以第二个</p>
+<p>函数的返回的内存没有问题，可以被使用。但一定要调用free释放，不然就是Memory Leak！  </p>
+<p>在堆上分配内存很容易造成内存泄漏，这是C/C++的最大的“克星”，如果你的程序要稳定，那么</p>
+<p>就不要出现Memory Leak。所以，我还是要在这里千叮咛万嘱付，在使用malloc系统函数（包</p>
+<p>括calloc，realloc）时千万要小心。  </p>
+<p>记得有一个UNIX上的服务应用程序，大约有几百的C文件编译而成，运行测试良好，等使用时</p>
+<p>，每隔三个月系统就是down一次，搞得许多人焦头烂额，查不出问题所在。只好，每隔两个月</p>
+<p>人工手动重启系统一次。出现这种问题就是Memery Leak在做怪了，在C/C++中这种问题总是</p>
+<p>会发生，所以你一定要小心。一个Rational的检测工作——Purify，可以帮你测试你的程序有没</p>
+<p>有内存泄漏。  </p>
+<p>我保证，做过许多C/C++的工程的程序员，都会对malloc或是new有些感冒。当你什么时候在使</p>
+<p>用malloc和new时，有一种轻度的紧张和惶恐的感觉时，你就具备了这方面的修养了。  </p>
+<p>对于malloc和free的操作有以下规则：  </p>
+<p>1) 配对使用，有一个malloc，就应该有一个free。（C++中对应为new和delete）<br>2) 尽量在同一层上使用，不要像上面那种，malloc在函数中，而free在函数外。最好在同一调用</p>
+<p>层上使用这两个函数。<br>3) malloc分配的内存一定要初始化。free后的指针一定要设置为NULL。  </p>
+<p>注：虽然现在的操作系统（如：UNIX和Win2k/NT）都有进程内存跟踪机制，也就是如果你有没</p>
+<p>有释放的内存，操作系统会帮你释放。但操作系统依然不会释放你程序中所有产生了Memory  </p>
+<p>Leak的内存，所以，最好还是你自己来做这个工作。（有的时候不知不觉就出现Memory Leak</p>
+<p>了，而且在几百万行的代码中找无异于海底捞针，Rational有一个工具叫Purify，可能很好的帮</p>
+<p>你检查程序中的Memory Leak）  </p>
+<h2 id="变量的初始化"><a href="#变量的初始化" class="headerlink" title="变量的初始化"></a>变量的初始化</h2><p>————————<br>接上一条，变量一定要被初始化再使用。C/C++编译器在这个方面不会像Java一样帮你初始化</p>
+<p>，这一切都需要你自己来，如果你使用了没有初始化的变量，结果未知。好的程序员从来都会</p>
+<p>在使用变量前初始化变量的。如：  </p>
+<p>1) 对malloc分配的内存进行memset清零操作。（可以使用calloc分配一块全零的内存）<br>2) 对一些栈上分配的struct或数组进行初始化。（最好也是清零）  </p>
+<p>不过话又说回来了，初始化也会造成系统运行时间有一定的开销，所以，也不要对所有的变量</p>
+<p>做初始化，这个也没有意义。好的程序员知道哪些变量需要初始化，哪些则不需要。如：以下</p>
+<p>这种情况，则不需要。  </p>
+<p>char <em>pstr;<br>pstr = ( char</em> ) malloc( 50 );<br>if ( pstr == NULL ) exit(0);<br>strcpy( pstr, “Hello Wrold” );  </p>
+<p>但如果是下面一种情况，最好进行内存初始化。（指针是一个危险的东西，一定要初始化）  </p>
+<p>char <strong>pstr;<br>pstr = ( char</strong> ) malloc( 50 );<br>if ( pstr == NULL ) exit(0);  </p>
+<p>memset( pstr, 0, 50<em>sizeof(char</em>) );  </p>
+<p>而对于全局变量，和静态变量，一定要声明时就初始化。因为你不知道它第一次会在哪里被使</p>
+<p>用。所以使用前初始这些变量是比较不现实的，一定要在声明时就初始化它们。如：  </p>
+<p>Links *plnk = NULL;   </p>
+]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;程序说明&quot;&gt;&lt;a href=&quot;#程序说明&quot; class=&quot;headerlink&quot; title=&quot;程序说明&quot;&gt;&lt;/a&gt;程序说明&lt;/h2&gt;&lt;hr&gt;
-&lt;p&gt; 输入为数组，如下所示：&lt;br&gt;a=[[1,2,3],[4,5],[6,7]]&lt;br&gt;a[0],a[1],a[2]···表示各个因素，此时表示a有四个因素&lt;br&gt;a[0]=[1,2,3]表示a[0]有三个值可以选&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;输出为数组，如下所示：
+      &lt;h2 id=&quot;版权和版本&quot;&gt;&lt;a href=&quot;#版权和版本&quot; class=&quot;headerlink&quot; title=&quot;版权和版本&quot;&gt;&lt;/a&gt;版权和版本&lt;/h2&gt;&lt;p&gt;———————&lt;br&gt;好的程序员会给自己的每个函数，每个文件，都注上版权和版本。  &lt;/p&gt;
+&lt;p&gt;对于C/C++的文件，文件头应该有类似这样的注释：
     
     </summary>
     
       <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="python" scheme="http://i90s.vip/tags/python/"/>
+      <category term="转载" scheme="http://i90s.vip/tags/%E8%BD%AC%E8%BD%BD/"/>
     
-      <category term="正交" scheme="http://i90s.vip/tags/%E6%AD%A3%E4%BA%A4/"/>
+      <category term="感悟" scheme="http://i90s.vip/tags/%E6%84%9F%E6%82%9F/"/>
+    
+      <category term="编程修养" scheme="http://i90s.vip/tags/%E7%BC%96%E7%A8%8B%E4%BF%AE%E5%85%BB/"/>
     
   </entry>
   
   <entry>
     <title>小项目推广清单</title>
-    <link href="http://i90s.vip//%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2019/11/28/%E5%B0%8F%E9%A1%B9%E7%9B%AE%E6%8E%A8%E5%B9%BF%E6%B8%85%E5%8D%95.html"/>
-    <id>http://i90s.vip//产品笔记/2019/11/28/小项目推广清单.html</id>
-    <published>2019-11-28T06:32:16.000Z</published>
-    <updated>2019-12-01T09:52:23.653Z</updated>
+    <link href="http://i90s.vip//%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2019/11/26/%E5%B0%8F%E9%A1%B9%E7%9B%AE%E6%8E%A8%E5%B9%BF%E6%B8%85%E5%8D%95.html"/>
+    <id>http://i90s.vip//产品笔记/2019/11/26/小项目推广清单.html</id>
+    <published>2019-11-26T06:32:16.000Z</published>
+    <updated>2019-12-01T09:58:08.715Z</updated>
     
     <content type="html"><![CDATA[<p>这份 Side Project 推广清单主要包含了 Side Project 从启动前的市场调研到项目发布后的推广的各个方面以及注意事项。这份清单免费而且开源，中文版翻译自</p>
 <p><a href="https://github.com/karllhughes/side-project-marketing" target="_blank" rel="external">side-project-marketing</a>, 英文原版地址请戳<a href="https://www.sideprojectchecklist.com/marketing-checklist/" target="_blank" rel="external">这里</a><br><a id="more"></a></p>
@@ -710,268 +969,6 @@
   </entry>
   
   <entry>
-    <title>编程修养（1）</title>
-    <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/11/27/%E7%BC%96%E7%A8%8B%E4%BF%AE%E5%85%BB%EF%BC%881%EF%BC%89.html"/>
-    <id>http://i90s.vip//软件笔记/2019/11/27/编程修养（1）.html</id>
-    <published>2019-11-27T13:55:10.000Z</published>
-    <updated>2019-12-01T09:45:06.260Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="版权和版本"><a href="#版权和版本" class="headerlink" title="版权和版本"></a>版权和版本</h2><p>———————<br>好的程序员会给自己的每个函数，每个文件，都注上版权和版本。  </p>
-<p>对于C/C++的文件，文件头应该有类似这样的注释：  <a id="more"></a></p>
-<p>而对于函数来说，应该也有类似于这样的注释：  </p>
-<p>这样的描述可以让人对一个函数，一个文件有一个总体的认识，对代码的易读性和易维护性有</p>
-<p>很大的好处 </p>
-<h2 id="缩进、空格、换行、空行、对齐"><a href="#缩进、空格、换行、空行、对齐" class="headerlink" title="缩进、空格、换行、空行、对齐"></a>缩进、空格、换行、空行、对齐</h2><p>————————————————<br>i) 缩进应该是每个程序都会做的，只要学程序过程序就应该知道这个，但是我仍然看过不缩进</p>
-<p>的程序，或是乱缩进的程序，如果你的公司还有写程序不缩进的程序员，请毫不犹豫的开除他</p>
-<p>吧，并以破坏源码罪起诉他，还要他赔偿读过他程序的人的精神损失费。缩进，这是不成文规</p>
-<p>矩，我再重提一下吧，一个缩进一般是一个TAB键或是4个空格。（最好用TAB键）  </p>
-<p>ii) 空格。空格能给程序代来什么损失吗？没有，有效的利用空格可以让你的程序读进来更加赏</p>
-<p>心悦目。而不一堆表达式挤在一起。看看下面的代码：  </p>
-<p>ha=(ha<em>128+</em>key++)%tabPtr-&gt;size;  </p>
-<p>ha = ( ha <em> 128 + </em>key++ ) % tabPtr-&gt;size;  </p>
-<p>有空格和没有空格的感觉不一样吧。一般来说，语句中要在各个操作符间加空格，函数调用时</p>
-<p>，要以各个参数间加空格。如下面这种加空格的和不加的：  </p>
-<p>if ((hProc=OpenProcess(PROCESS_ALL_ACCESS,FALSE,pid))==NULL){<br>}  </p>
-<p>if ( ( hProc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid) ) == NULL ){<br>}  </p>
-<p>iii) 换行。不要把语句都写在一行上，这样很不好。如：  </p>
-<p>for(i=0;i’9’)&amp;&amp;(a[i]&lt;’a’||a[i]&gt;’z’)) break;  </p>
-<p>我拷，这种即无空格，又无换行的程序在写什么啊？加上空格和换行吧。  </p>
-<p>for ( i=0; i if ( ( a[i] &lt; ‘0’ || a[i] &gt; ‘9’ ) &amp;&amp;<br>( a[i] &lt; ‘a’ || a[i] &gt; ‘z’ ) ) {<br>break;<br>}<br>}  </p>
-<p>好多了吧？有时候，函数参数多的时候，最好也换行，如：  </p>
-<p>CreateProcess(<br>NULL,<br>cmdbuf,<br>NULL,<br>NULL,<br>bInhH,<br>dwCrtFlags,<br>enVBuf,<br>NULL,<br>&amp;siStartInfo,<br>&amp;prInfo<br>);  </p>
-<p>条件语句也应该在必要时换行：  </p>
-<p>if ( ch &gt;= ‘0’ || ch &lt;= ‘9’ ||<br>ch &gt;= ‘a’ || ch &lt;= ‘z’ ||<br>ch &gt;= ‘A’ || ch &lt;= ‘Z’ )  </p>
-<p>iv) 空行。不要不加空行，空行可以区分不同的程序块，程序块间，最好加上空行。如：  </p>
-<p>HANDLE hProcess;<br>PROCESS_T procInfo;  </p>
-<p>if((hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid)) == NULL)<br>{<br>return LSE_MISC_SYS;<br>}  </p>
-<p>memset(&amp;procInfo, 0, sizeof(procInfo));<br>procInfo.idProc = pid;<br>procInfo.hdProc = hProcess;<br>procInfo.misc |= MSCAVA_PROC;  </p>
-<p>return(0);  </p>
-<p>v) 对齐。用TAB键对齐你的一些变量的声明或注释，一样会让你的程序好看一些。如：  </p>
-<p>typedef struct _pt_man<em>t</em> {<br>int numProc;<br>int maxProc;<br>int numEvnt;<br>int maxEvnt;<br>HANDLE* pHndEvnt;<br>DWORD timeout;<br>HANDLE hPipe;<br>TCHAR usr[MAXUSR];<br>int numMsg;<br>int Msg[MAXMSG];<br>} PT_MAN_T;  </p>
-<h2 id="程序注释"><a href="#程序注释" class="headerlink" title="程序注释"></a>程序注释</h2><p>i) 对于行注释（“//”）比块注释（“”）要好的说法，我并不是很同意。因为一些老版本的C编</p>
-<p>译器并不支持行注释，所以为了你的程序的移植性，请你还是尽量使用块注释。  </p>
-<p>ii) 你也许会为块注释的不能嵌套而不爽，那么你可以用预编译来完成这个功能。使用“#if 0”和</p>
-<p>“#endif”括起来的代码，将不被编译，而且还可以嵌套。  </p>
-<h2 id="函数的-in-out-参数"><a href="#函数的-in-out-参数" class="headerlink" title="函数的[in][out]参数"></a>函数的[in][out]参数</h2><p>———————————  </p>
-<p>我经常看到这样的程序：<br>FuncName(char* str)<br>{<br>int len = strlen(str);<br>…..<br>}  </p>
-<p>char<em><br>GetUserName(struct user</em> pUser)<br>{<br>return pUser-&gt;name;<br>}  </p>
-<p>不！请不要这样做。  </p>
-<p>你应该先判断一下传进来的那个指针是不是为空。如果传进来的指针为空的话，那么，你的一</p>
-<p>个大的系统就会因为这一个小的函数而崩溃。一种更好的技术是使用断言（assert），这里我就</p>
-<p>不多说这些技术细节了。当然，如果是在C++中，引用要比指针好得多，但你也需要对各个参</p>
-<p>数进行检查。  </p>
-<p>写有参数的函数时，首要工作，就是要对传进来的所有参数进行合法性检查。而对于传出的参</p>
-<p>数也应该进行检查，这个动作当然应该在函数的外部，也就是说，调用完一个函数后，应该对</p>
-<p>其传出的值进行检查。  </p>
-<p>当然，检查会浪费一点时间，但为了整个系统不至于出现“非法操作”或是“Core Dump”的系统级</p>
-<p>的错误，多花这点时间还是很值得的。  </p>
-<h2 id="对系统调用的返回进行判断"><a href="#对系统调用的返回进行判断" class="headerlink" title="对系统调用的返回进行判断"></a>对系统调用的返回进行判断</h2><p>——————————————<br>继续上一条，对于一些系统调用，比如打开文件，我经常看到，许多程序员对fopen返回的指针</p>
-<p>不做任何判断，就直接使用了。然后发现文件的内容怎么也读出不，或是怎么也写不进去。还</p>
-<p>是判断一下吧：  </p>
-<p>fp = fopen(“log.txt”, “a”);<br>if ( fp == NULL ){<br>printf(“Error: open file error\n”);<br>return FALSE;<br>}  </p>
-<p>其它还有许多啦，比如：socket返回的socket号，malloc返回的内存。请对这些系统调用返回的</p>
-<p>东西进行判断。</p>
-<h2 id="if-语句对出错的处理"><a href="#if-语句对出错的处理" class="headerlink" title="if 语句对出错的处理"></a>if 语句对出错的处理</h2><p>———————————<br>我看见你说了，这有什么好说的。还是先看一段程序代码吧。<br>if ( ch &gt;= ‘0’ &amp;&amp; ch &lt;= ‘9’ ){  </p>
-<p>}else{  </p>
-<p>printf(“error ……\n”);<br>return ( FALSE );<br>}  </p>
-<p>这种结构很不好，特别是如果“正常处理代码”很长时，对于这种情况，最好不要用else。先判断</p>
-<p>错误，如：  </p>
-<p>if ( ch &lt; ‘0’ || ch &gt; ‘9’ ){  </p>
-<p>printf(“error ……\n”);<br>return ( FALSE );<br>}  </p>
-<p>……  </p>
-<p>这样的结构，不是很清楚吗？突出了错误的条件，让别人在使用你的函数的时候，第一眼就能</p>
-<p>看到不合法的条件，于是就会更下意识的避免。  </p>
-<h2 id="头文件中的-ifndef"><a href="#头文件中的-ifndef" class="headerlink" title="头文件中的#ifndef"></a>头文件中的#ifndef</h2><p>——————————<br>千万不要忽略了头件的中的#ifndef，这是一个很关键的东西。比如你有两个C文件，这两个C文</p>
-<p>件都include了同一个头文件。而编译时，这两个C文件要一同编译成一个可运行文件，于是问</p>
-<p>题来了，大量的声明冲突。  </p>
-<p>还是把头文件的内容都放在#ifndef和#endif中吧。不管你的头文件会不会被多个文件引用，你都</p>
-<p>要加上这个。一般格式是这样的：  </p>
-<p>#ifndef &lt;标识&gt;  </p>
-<p>#define &lt;标识&gt;  </p>
-<p>……<br>……  </p>
-<p>#endif  </p>
-<p>&lt;标识&gt;在理论上来说可以是自由命名的，但每个头文件的这个“标识”都应该是唯一的。标识的</p>
-<p>命名规则一般是头文件名全大写，前后加下划线，并把文件名中的“.”也变成下划线，如：</p>
-<p>stdio.h  </p>
-<p>#ifndef _STDIO<em>H</em>  </p>
-<p>#define _STDIO<em>H</em>  </p>
-<p>……  </p>
-<p>#endif  </p>
-<p>（BTW：预编译有多很有用的功能。你会用预编译吗？）  </p>
-<h2 id="在堆上分配内存"><a href="#在堆上分配内存" class="headerlink" title="在堆上分配内存"></a>在堆上分配内存</h2><p>—————————<br>可能许多人对内存分配上的“栈 stack”和“堆 heap”还不是很明白。包括一些科班出身的人也不明</p>
-<p>白这两个概念。我不想过多的说这两个东西。简单的来讲，stack上分配的内存系统自动释放，</p>
-<p>heap上分配的内存，系统不释放，哪怕程序退出，那一块内存还是在那里。stack一般是静态分</p>
-<p>配内存，heap上一般是动态分配内存。  </p>
-<p>由malloc系统函数分配的内存就是从堆上分配内存。从堆上分配的内存一定要自己释放。用free</p>
-<p>释放，不然就是术语——“内存泄露”（或是“内存漏洞”）—— Memory Leak。于是，系统的可分</p>
-<p>配内存会随malloc越来越少，直到系统崩溃。还是来看看“栈内存”和“堆内存”的差别吧。  </p>
-<p>栈内存分配<br>—————<br>char*<br>AllocStrFromStack()<br>{<br>char pstr[100];<br>return pstr;<br>}  </p>
-<p>堆内存分配<br>—————<br>char<em><br>AllocStrFromHeap(int len)<br>{<br>char </em>pstr;  </p>
-<p>if ( len &lt;= 0 ) return NULL;<br>return ( char* ) malloc( len );<br>}  </p>
-<p>对于第一个函数，那块pstr的内存在函数返回时就被系统释放了。于是所返回的char*什么也没</p>
-<p>有。而对于第二个函数，是从堆上分配内存，所以哪怕是程序退出时，也不释放，所以第二个</p>
-<p>函数的返回的内存没有问题，可以被使用。但一定要调用free释放，不然就是Memory Leak！  </p>
-<p>在堆上分配内存很容易造成内存泄漏，这是C/C++的最大的“克星”，如果你的程序要稳定，那么</p>
-<p>就不要出现Memory Leak。所以，我还是要在这里千叮咛万嘱付，在使用malloc系统函数（包</p>
-<p>括calloc，realloc）时千万要小心。  </p>
-<p>记得有一个UNIX上的服务应用程序，大约有几百的C文件编译而成，运行测试良好，等使用时</p>
-<p>，每隔三个月系统就是down一次，搞得许多人焦头烂额，查不出问题所在。只好，每隔两个月</p>
-<p>人工手动重启系统一次。出现这种问题就是Memery Leak在做怪了，在C/C++中这种问题总是</p>
-<p>会发生，所以你一定要小心。一个Rational的检测工作——Purify，可以帮你测试你的程序有没</p>
-<p>有内存泄漏。  </p>
-<p>我保证，做过许多C/C++的工程的程序员，都会对malloc或是new有些感冒。当你什么时候在使</p>
-<p>用malloc和new时，有一种轻度的紧张和惶恐的感觉时，你就具备了这方面的修养了。  </p>
-<p>对于malloc和free的操作有以下规则：  </p>
-<p>1) 配对使用，有一个malloc，就应该有一个free。（C++中对应为new和delete）<br>2) 尽量在同一层上使用，不要像上面那种，malloc在函数中，而free在函数外。最好在同一调用</p>
-<p>层上使用这两个函数。<br>3) malloc分配的内存一定要初始化。free后的指针一定要设置为NULL。  </p>
-<p>注：虽然现在的操作系统（如：UNIX和Win2k/NT）都有进程内存跟踪机制，也就是如果你有没</p>
-<p>有释放的内存，操作系统会帮你释放。但操作系统依然不会释放你程序中所有产生了Memory  </p>
-<p>Leak的内存，所以，最好还是你自己来做这个工作。（有的时候不知不觉就出现Memory Leak</p>
-<p>了，而且在几百万行的代码中找无异于海底捞针，Rational有一个工具叫Purify，可能很好的帮</p>
-<p>你检查程序中的Memory Leak）  </p>
-<h2 id="变量的初始化"><a href="#变量的初始化" class="headerlink" title="变量的初始化"></a>变量的初始化</h2><p>————————<br>接上一条，变量一定要被初始化再使用。C/C++编译器在这个方面不会像Java一样帮你初始化</p>
-<p>，这一切都需要你自己来，如果你使用了没有初始化的变量，结果未知。好的程序员从来都会</p>
-<p>在使用变量前初始化变量的。如：  </p>
-<p>1) 对malloc分配的内存进行memset清零操作。（可以使用calloc分配一块全零的内存）<br>2) 对一些栈上分配的struct或数组进行初始化。（最好也是清零）  </p>
-<p>不过话又说回来了，初始化也会造成系统运行时间有一定的开销，所以，也不要对所有的变量</p>
-<p>做初始化，这个也没有意义。好的程序员知道哪些变量需要初始化，哪些则不需要。如：以下</p>
-<p>这种情况，则不需要。  </p>
-<p>char <em>pstr;<br>pstr = ( char</em> ) malloc( 50 );<br>if ( pstr == NULL ) exit(0);<br>strcpy( pstr, “Hello Wrold” );  </p>
-<p>但如果是下面一种情况，最好进行内存初始化。（指针是一个危险的东西，一定要初始化）  </p>
-<p>char <strong>pstr;<br>pstr = ( char</strong> ) malloc( 50 );<br>if ( pstr == NULL ) exit(0);  </p>
-<p>memset( pstr, 0, 50<em>sizeof(char</em>) );  </p>
-<p>而对于全局变量，和静态变量，一定要声明时就初始化。因为你不知道它第一次会在哪里被使</p>
-<p>用。所以使用前初始这些变量是比较不现实的，一定要在声明时就初始化它们。如：  </p>
-<p>Links *plnk = NULL;   </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;版权和版本&quot;&gt;&lt;a href=&quot;#版权和版本&quot; class=&quot;headerlink&quot; title=&quot;版权和版本&quot;&gt;&lt;/a&gt;版权和版本&lt;/h2&gt;&lt;p&gt;———————&lt;br&gt;好的程序员会给自己的每个函数，每个文件，都注上版权和版本。  &lt;/p&gt;
-&lt;p&gt;对于C/C++的文件，文件头应该有类似这样的注释：
-    
-    </summary>
-    
-      <category term="软件笔记" scheme="http://i90s.vip/categories/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="转载" scheme="http://i90s.vip/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-      <category term="感悟" scheme="http://i90s.vip/tags/%E6%84%9F%E6%82%9F/"/>
-    
-      <category term="编程修养" scheme="http://i90s.vip/tags/%E7%BC%96%E7%A8%8B%E4%BF%AE%E5%85%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>产品经理访谈记录</title>
-    <link href="http://i90s.vip//%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/2019/11/27/PM%E8%AE%BF%E8%B0%88%E8%AE%B0%E5%BD%95.html"/>
-    <id>http://i90s.vip//产品笔记/2019/11/27/PM访谈记录.html</id>
-    <published>2019-11-27T06:46:16.000Z</published>
-    <updated>2019-12-01T09:39:48.047Z</updated>
-    
-    <content type="html"><![CDATA[<p>产品经理们写了无数篇产品分析报告，却鲜有一篇对于产品经理这个群体的分析报告。PMCAFF 采访了多位拥有着不同经历、处在不同段位的产品经理，试着以此概括出产品经理都有哪些 “典型” 特征。<br><a id="more"></a></p>
-<p>我们选取了有代表性的产品经理及其回答，整理成此文，文中的产品经理皆为化名，先来认识下他们：</p>
-<blockquote>
-<p>• 何川<br>从业三年，某 “独角兽” 公司工作 2 年，目前就职于 BAT 其中一家。</p>
-<p>• 老董<br>从业七年，一手组建了曾在舆论风口浪尖上的某互金企业产品团队，管理经验丰富。</p>
-<p>• 张明<br>从业三年，某上市公司产品经理。</p>
-<p>• 李广<br>从业五年，先后就职于多家公司，曾任国内某知名天气 APP 的产品经理。</p>
-</blockquote>
-<p>需要说明的是，“典型” 其实很难定义，且不说样本太小，即使样本足够大，不同类型公司的产品经理，工作内容和状态可能大不相同。试图以职业划分人群是一种简单粗糙的方法，且极不科学。教育程度、成长环境、年龄等也都是维度。此篇讨论，仅是一种泛指。</p>
-<h2 id="成长就是从乐观到悲观"><a href="#成长就是从乐观到悲观" class="headerlink" title="成长就是从乐观到悲观"></a><strong>成长就是从乐观到悲观</strong></h2><p>有个有意思的现象，年轻的产品经理普遍偏乐观主义，认为一切东西尽在自己的掌控之中。</p>
-<p>何川是 90 后，先在一家 “独角兽” 公司工作 2 年，目前就职于 BAT 其中一家。他对自己的掌控能力有绝对的自信。</p>
-<blockquote>
-<p>@何川：</p>
-<p>我判断出来它有产出，它就一定有产出。所有的东西都是可预期的。你问我什么时候会特别有成就感？因为每一件事都是可预期的，那就不会有太多的兴奋。</p>
-<p> <strong>搞不定的事情都是人的事情，三四个老大观点不一致时，或者跟直接领导产品观念有差异，就很麻烦。</strong>  </p>
-<p>产品上不存在什么棘手的问题，让你做的东西市面上一定存在，没有的东西老板也不会去提，别人做得出来，那我也一定能做出来。</p>
-</blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/1985459-76fcd3f10292383d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>老董现在带着二三十人的团队，包括产品和研发，他之前一手建立了曾在舆论的风口浪尖上的某互金企业的产品团队，见证了该产品从起步，到腾飞壮大，再到被曝出问题。他坦诚自己是相对悲观主义者。</p>
-<blockquote>
-<p>@老董：</p>
-<p> <strong>在需求输出时足够悲观，这样才能预料到不同的情况。</strong> </p>
-<p>产品从零到一时其实还不是很担心，因为这都在你可控的范围内，真正担心的是上线后。有的问题是事先没预料到的，这很考验你临场反应能力、解决问题的能力；有的问题是事先预料到可能会发生的，因为各种原因，在问题还没被解决时便上线，当它真的发生了，会害怕。</p>
-<p>我们是在正确的方向上做事情，据说神级产品经理可以把任何方向都做正确，如果到了那种程度，可能会变得更乐观，但那种境界是可遇不可求的。</p>
-</blockquote>
-<h2 id="投入没产出，就是战五渣"><a href="#投入没产出，就是战五渣" class="headerlink" title="投入没产出，就是战五渣"></a><strong>投入没产出，就是战五渣</strong></h2><p>产品经理们都很 “功利”，几乎每个受访产品经理都会提到 “值不值” 的问题。</p>
-<p>从业三年的张明认为不存在把需求都满足的情况，因为不值。</p>
-<blockquote>
-<p>@张明：</p>
-<p> <strong>大多数情况下，你只能满足 70% 的需求，因为要再覆盖剩下的 30%，消耗的资源将是巨大的。</strong> </p>
-<p>我们做一款金融产品，老板想把起投额从 100 元降到 10 元，这并非仅仅改个参数那么简单，就好比人民币最小计量单位由 1 毛变成 1 分，每个人的钱包都会变大，你的数据量会激增。但可以预见的是投资额的增长和用户增长都很有限，理财场景下人们对 100 元和 10 元的敏感度没那么大。那这个的优先级就要往后排。</p>
-</blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/1985459-b08f3105762f3898.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><strong>产品经理们目标导向普遍很强，他们时刻衡量着投入与产出，以及这项功能改进跟大目标的匹配程度。</strong></p>
-<blockquote>
-<p>@张明：</p>
-<p>其实不得不这么做，<strong>产品经理最害怕的是投入没有产出，浪费了大家的时间</strong>，这样你下次提需求时就会面对很大的质疑。所以只要经历过几次评审会，经历过几次舌战群儒，你不自觉地便建立起目标导向。</p>
-</blockquote>
-<h2 id="自己是真牛逼，别人都在装逼"><a href="#自己是真牛逼，别人都在装逼" class="headerlink" title="自己是真牛逼，别人都在装逼"></a><strong>自己是真牛逼，别人都在装逼</strong></h2><p>就像 “文人相轻”，产品经理们多数觉得自己很牛逼，认为别人是在装逼。</p>
-<blockquote>
-<p>@何川：</p>
-<p>我当然会认为自己做出的产品都是好的，如果你都不认为自己做得产品好，那说明你工作很不用心嘛。</p>
-<p>@李广：</p>
-<p> <strong>自己做得产品一定会盯着数据看。</strong> </p>
-<p>我们做天气预报，DAU 很高，但使用时间太短。2014 年的时候，LBS 很热，我们做了基于地理位置的图景功能，你可以看到身边的人都穿得是什么衣服。这比数字直观得多，总之融进去很多轻社交的元素，这样使用时常自然会增加。</p>
-<p>职业经历中做的最骄傲的一款产品？<strong>其实都很骄傲，你要说最骄傲的，下一个产品。</strong></p>
-</blockquote>
-<p>不过谈到如何看待一些网红产品经理，工作年限越高的产品经理，对他们越是不以为意。</p>
-<blockquote>
-<p>@老董：</p>
-<p>最顶尖的那些产品经理是很少发声的，而越往下走，解决问题的套路就越标准化。萌新们看起来干货满满的归纳总结，其实都是一些标准化程度很高的东西。</p>
-<p>@李广：</p>
-<p>至于那些讲产品经理的书籍，我觉得刚入行时是有必要看的，他能帮助你建立一个系统的认知，但书里的案例肯定都是适用于成书时或者成书之前的，在一个日新月异的时代，这些案例的实用价值可能会被刚入行的小白们高估。</p>
-</blockquote>
-<h2 id="最棘手的那些事"><a href="#最棘手的那些事" class="headerlink" title="最棘手的那些事"></a><strong>最棘手的那些事</strong></h2><p>聊起最棘手的事情，受访的产品经理们的回答呈现出高度的相似性。</p>
-<p>一般来说，刚工作没多久时会觉得 “舌战群儒” 的时候很棘手，经常会面对来自各个团队的质疑——为何这个需求是有必要满足的；处在上升期时觉得时间很棘手，总想知道更多东西、做更多东西，经常性加班到很晚；而到了带团队的阶段，会觉得最棘手的问题在于人，老董的论述比较有代表性：</p>
-<blockquote>
-<p>@老董：</p>
-<p>团队成员能力应该有高低，都很牛逼的话，成本核算也不对，基础的事情就没人做了。荣誉感并非每个人都有，有时做价值同步会非常困难，人与人之间，不是难，但经营起来是件很麻烦的事情。</p>
-</blockquote>
-<h2 id="数据也会骗人，但人更会骗人"><a href="#数据也会骗人，但人更会骗人" class="headerlink" title="数据也会骗人，但人更会骗人"></a><strong>数据也会骗人，但人更会骗人</strong></h2><p>产品经理们都会去做一些用户访谈，但用他们的话来说，用户访谈只是片面的，可听不可全听。受访的产品经理普遍都更相信数据，<strong>虽然数据也会骗人，但用户更会骗人。用户是小数据，而非大数据。</strong></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1985459-502073602888fd3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>@何川：</p>
-<p>做产品的过程中难免会犯一些错误，你认为个性化是很重要的一点，等做了之后你发现没什么卵用。证明了你的观点是错的，这一项你就得降级。久而久之你就知道了，该关心的是用户怎么做，而不是用户怎么说。所以<strong>我们更相信用户行为数据，而不是用户怎么说。**</strong>声音大的，不一定代表多数人。**</p>
-</blockquote>
-<h2 id="最重要的能力——解决问题"><a href="#最重要的能力——解决问题" class="headerlink" title="最重要的能力——解决问题"></a><strong>最重要的能力——解决问题</strong></h2><p>聊起产品经理应该具备怎样的素质，年轻的产品经理大多讲得是方法论——<strong>解决问题的能力是最重要的，职业初期首先要能解决问题；其次是发现问题的能力，对需求有所洞察；神级产品经理，可以创造需求。</strong></p>
-<p>而走向管理岗的产品经理，强调的往往是一些软性的素质——<strong>沟通能力好、好奇心强、兴趣广泛</strong>的产品经理一般成长会比较快。</p>
-<h2 id="我的产品很好，都是运营不给力"><a href="#我的产品很好，都是运营不给力" class="headerlink" title="我的产品很好，都是运营不给力"></a><strong>我的产品很好，都是运营不给力</strong></h2><p>虽然网上有很多产品和开发的各种段子，不过当跟本次受访的几个产品经理们聊起这个话题时，普遍倒都觉得跟开发没有太多的沟通问题，但对运营都颇有微词。</p>
-<blockquote>
-<p>@何川：</p>
-<p>产品是提供一个增长曲线，技术就是去实现这条曲线，而运营的工作，就是把曲线的斜率做得更陡峭。</p>
-<p>跟技术倒没什么沟通难度，虽然也会因为一些问题导致延期上线；多数情况下会觉得运营不太给力，产品本身带来的自然增长率可能有 10%，加上运营策略后，可能也就 11% 或者 12%，就会觉得运营没做到位。</p>
-</blockquote>
-<h2 id="产品的问题大多没有对错"><a href="#产品的问题大多没有对错" class="headerlink" title="产品的问题大多没有对错"></a><strong>产品的问题大多没有对错</strong></h2><p>产品经理眼中的产品从不是一个一成不变的东西，他们认为<strong>产品实际上是一个实验性的东西。</strong></p>
-<blockquote>
-<p>@老董：</p>
-<p>不然为什么会有迭代呢？产品需要涵盖很多需求点，有你用过的，有你不会用的，所有用户需求点的并集，就是最终的产品形态。</p>
-<p>产品上的问题大概就两种，一种是没有对错的，你只能去试，然后看数据；另一种可能是涉及到撕逼的，这个时候能屈能伸就很重要，你要知道什么是你必须死守的，同时，在工作中要和同事有一个融洽的工作关系。</p>
-</blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/1985459-5c83504de566c763?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>你会发现，产品经理们眼中处处是产品，我跟何川约在一个咖啡馆见面，服务生给我们上错了咖啡，他马上接过话去：“我们分析一下为什么会上错咖啡。他们放了一个熊在这里，订单上写的是棕颜色的熊，他们可能是根据熊的颜色来判断该给哪位顾客上什么咖啡。但他们却上错了，这说明熊的颜色可能区分度不够大，解决方案就是把熊做得差异化更大一些。” 这种观察是在潜意识里的，也许产品经理在用任何一个产品的同时，潜意识中都在使用者和设计者两种角色里切换。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>技术的日新月异让好的产品层出不穷，一个优秀的产品会在短时间内吸引数以亿计的用户，这也让这一代产品人普遍都有一种 “产品理想”。你能真真切切地感受到产品经理们做产品的热情——<strong>想做出更好的产品，想让产品变得更好。</strong></p>
-<p>然而互联网的马太效应，让流量入口牢牢地掌握在少数几家巨头和 “独角兽” 手里，一款又一款爆款产品出现在人们眼前的同时，伴随着的，是众多产品的昙花一现，以及更多产品的默默无闻。产品大牛风光无限的背后，是更多产品经理们默默居于一隅，死磕着自己的产品，不断优化功能和性能，以给用户带来更良好的体验。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;产品经理们写了无数篇产品分析报告，却鲜有一篇对于产品经理这个群体的分析报告。PMCAFF 采访了多位拥有着不同经历、处在不同段位的产品经理，试着以此概括出产品经理都有哪些 “典型” 特征。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="产品笔记" scheme="http://i90s.vip/categories/%E4%BA%A7%E5%93%81%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="转载" scheme="http://i90s.vip/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-      <category term="产品" scheme="http://i90s.vip/tags/%E4%BA%A7%E5%93%81/"/>
-    
-  </entry>
-  
-  <entry>
     <title>如花谢花开——《思悼》观后感</title>
     <link href="http://i90s.vip//%E5%BF%83%E6%83%85%E7%AC%94%E8%AE%B0/2019/11/23/%E5%A6%82%E8%8A%B1%E8%B0%A2%E8%8A%B1%E5%BC%80.html"/>
     <id>http://i90s.vip//心情笔记/2019/11/23/如花谢花开.html</id>
@@ -991,9 +988,9 @@
       <category term="心情笔记" scheme="http://i90s.vip/categories/%E5%BF%83%E6%83%85%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="感悟" scheme="http://i90s.vip/tags/%E6%84%9F%E6%82%9F/"/>
-    
       <category term="影评" scheme="http://i90s.vip/tags/%E5%BD%B1%E8%AF%84/"/>
+    
+      <category term="感悟" scheme="http://i90s.vip/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
@@ -1297,9 +1294,9 @@
     
       <category term="转载" scheme="http://i90s.vip/tags/%E8%BD%AC%E8%BD%BD/"/>
     
-      <category term="研究生" scheme="http://i90s.vip/tags/%E7%A0%94%E7%A9%B6%E7%94%9F/"/>
-    
       <category term="感悟" scheme="http://i90s.vip/tags/%E6%84%9F%E6%82%9F/"/>
+    
+      <category term="研究生" scheme="http://i90s.vip/tags/%E7%A0%94%E7%A9%B6%E7%94%9F/"/>
     
   </entry>
   
@@ -1308,7 +1305,7 @@
     <link href="http://i90s.vip//%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/11/10/python%E3%81%AE%E8%AF%BB%E5%8F%96excel%E5%86%85%E5%AE%B9.html"/>
     <id>http://i90s.vip//软件笔记/2019/11/10/pythonの读取excel内容.html</id>
     <published>2019-11-10T13:58:06.000Z</published>
-    <updated>2019-12-01T09:53:11.017Z</updated>
+    <updated>2019-12-01T09:54:10.847Z</updated>
     
     <content type="html"><![CDATA[<h2 id="任务要求：读取excel内数据，并对数据进行校验后返回数据"><a href="#任务要求：读取excel内数据，并对数据进行校验后返回数据" class="headerlink" title="任务要求：读取excel内数据，并对数据进行校验后返回数据"></a>任务要求：读取excel内数据，并对数据进行校验后返回数据</h2><a id="more"></a>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"><span class="comment">#类使用方法：用来查询excel表中数据名称（name）、数据类型(type_code)、数据大小(internal_size)</span></span><br><span class="line"><span class="comment">#return [状态位，错误信息,col_data]</span></span><br><span class="line"><span class="comment">#col_data=[name, type_code internal_size]</span></span><br><span class="line"><span class="comment">#状态位 0为正确 1为错误</span></span><br><span class="line"><span class="comment">#若状态位为0，则错误信息为空，</span></span><br><span class="line"><span class="comment">#若状态位为1，则只返回错误信息，不返回查询值</span></span><br><span class="line"><span class="comment">#-------目前只支持一下数据类型的插入----------</span></span><br><span class="line"><span class="comment">#         oracle_type=["CHAR","VARCHAR2","NCHAR",</span></span><br><span class="line"><span class="comment">#                      "NVARCHAR2","DATE","TIMESTAMP",</span></span><br><span class="line"><span class="comment">#                      "LONG","RAW","LONG RAW",</span></span><br><span class="line"><span class="comment">#                      "BLOB","CLOB","NCLOB",</span></span><br><span class="line"><span class="comment">#                      "BFILE","ROWID","NROWID",</span></span><br><span class="line"><span class="comment">#                      "NUMBER","DECIMAL","INTEGER",</span></span><br><span class="line"><span class="comment">#                      "FLOAT","REAL"]</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EXCEL_ALL</span>:</span>    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Open_Excel</span><span class="params">(self,excel_name,excel_sheet=<span class="string">"Sheet1"</span>)</span>:</span></span><br><span class="line">        self.fname = excel_name.decode(<span class="string">'utf-8'</span>)</span><br><span class="line">        self.fsheet = excel_sheet</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            self.bk = xlrd.open_workbook(self.fname)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,<span class="string">"no %s named excel"</span> % self.fname]</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            sh = self.bk.sheet_by_name(self.fsheet)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>,<span class="string">"no sheet in %s named %s"</span> % (self.fname,self.fsheet)]</span><br><span class="line">        <span class="comment">#获取行数</span></span><br><span class="line">        nrows = sh.nrows</span><br><span class="line">        <span class="comment">#获取列数</span></span><br><span class="line">        ncols = sh.ncols</span><br><span class="line"><span class="comment">#-----------校验----------</span></span><br><span class="line">    <span class="comment">#---校验数据是否完整 是否有空值---</span></span><br><span class="line">        <span class="comment">#获取各列数值  </span></span><br><span class="line">        col_0=sh.col_values(<span class="number">0</span>)</span><br><span class="line">        col_1=sh.col_values(<span class="number">1</span>)  </span><br><span class="line">        col_2=sh.col_values(<span class="number">2</span>)</span><br><span class="line">        col_3=sh.col_values(<span class="number">3</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,nrows):</span><br><span class="line">            <span class="keyword">if</span>(col_0[i]==<span class="string">''</span> <span class="keyword">or</span> col_1[i]==<span class="string">''</span> <span class="keyword">or</span> col_2[i]==<span class="string">''</span> <span class="keyword">or</span> col_3[i]==<span class="string">''</span>):  </span><br><span class="line">                msg=<span class="string">'Data length is not consistent'</span></span><br><span class="line">                <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">    <span class="comment">#---校验导入数据类型---</span></span><br><span class="line">        <span class="comment">#获取第一列数值</span></span><br><span class="line">        col_1=sh.col_values(<span class="number">1</span>)  </span><br><span class="line">        n_col_1=len(col_1)</span><br><span class="line">        <span class="comment">#ORACLE 数据库所有数据类型</span></span><br><span class="line">        oracle_type=[<span class="string">"CHAR"</span>,<span class="string">"VARCHAR2"</span>,<span class="string">"NCHAR"</span>,</span><br><span class="line">                     <span class="string">"NVARCHAR2"</span>,<span class="string">"DATE"</span>,<span class="string">"TIMESTAMP"</span>,</span><br><span class="line">                     <span class="string">"LONG"</span>,<span class="string">"RAW"</span>,<span class="string">"LONG RAW"</span>,</span><br><span class="line">                     <span class="string">"BLOB"</span>,<span class="string">"CLOB"</span>,<span class="string">"NCLOB"</span>,</span><br><span class="line">                     <span class="string">"BFILE"</span>,<span class="string">"ROWID"</span>,<span class="string">"NROWID"</span>,</span><br><span class="line">                     <span class="string">"NUMBER"</span>,<span class="string">"DECIMAL"</span>,<span class="string">"INTEGER"</span>,</span><br><span class="line">                     <span class="string">"FLOAT"</span>,<span class="string">"REAL"</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,n_col_1):</span><br><span class="line">            col_type=col_1[i].upper()   <span class="comment">#最大化</span></span><br><span class="line">            <span class="keyword">if</span> col_type <span class="keyword">not</span> <span class="keyword">in</span> oracle_type:</span><br><span class="line">                msg=<span class="string">"Some data type does not belong to the oracle database"</span></span><br><span class="line">                <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">    <span class="comment">#---校验第三、四列是否为整数类型----</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,nrows): </span><br><span class="line">            cc_2=sh.cell_value(i,<span class="number">2</span>)</span><br><span class="line">            cc_3=sh.cell_value(i,<span class="number">3</span>)</span><br><span class="line">            <span class="keyword">if</span> cc_2%<span class="number">1</span>!=<span class="number">0</span> <span class="keyword">or</span> cc_3%<span class="number">1</span>!=<span class="number">0</span>:</span><br><span class="line">                msg=<span class="string">'internal_size is not int'</span></span><br><span class="line">                <span class="keyword">return</span> [<span class="number">1</span>,msg]</span><br><span class="line">                  </span><br><span class="line">        col_data = [[<span class="number">0</span> <span class="keyword">for</span> col <span class="keyword">in</span> range(ncols)] <span class="keyword">for</span> row <span class="keyword">in</span> range(nrows)]  </span><br><span class="line">        <span class="comment">#获取各行数据</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,nrows):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,ncols):</span><br><span class="line">                col_data[i][j]=str(sh.cell_value(i,j)).decode(<span class="string">'utf-8'</span>).encode(<span class="string">'gb2312'</span>)       </span><br><span class="line">        <span class="keyword">return</span> [<span class="number">0</span>,<span class="string">''</span>,col_data]</span><br></pre></td></tr></table></figure>]]></content>
