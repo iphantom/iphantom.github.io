@@ -1972,7 +1972,7 @@ return head;//返回链首指针
 <p>编码转换</p>
 <p>很可能因为字符串中参杂了奇怪的东西，导致即使编码种类正确，依旧无法解码。</p>
 <p>我知道我之前讲过了，但可能有人直接跳疑难问题解答嘛。</p>
-<p>这里可以使用decode的第二个参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
+<p>这里可以使用decode的第二个参数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串中混进了\x00</span></span><br><span class="line">rubbishUtf8String = <span class="string">'Utf-8 字\x00 符串'</span></span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'replace'</span>)))</span><br><span class="line"></span><br><span class="line">print(repr(rubbishUtf8String.decode(<span class="string">'utf8'</span>, <span class="string">'ignore'</span>)))</span><br></pre></td></tr></table></figure></p>
 <p>特殊平台下编码</p>
 <p>很多人都说 Windows 是个坑，即使在 Python 3 下面也一样。</p>
 <p>因为中文文件名出来都是乱码。</p>
@@ -3939,6 +3939,100 @@ return head;//返回链首指针
     </entry>
     
     <entry>
+      <title><![CDATA[appium+ios10测试环境搭建]]></title>
+      <url>http://i90s.vip/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/03/21/appium%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html</url>
+      <content type="html"><![CDATA[<h1 id="Appium测试环境搭建（ios测试）"><a href="#Appium测试环境搭建（ios测试）" class="headerlink" title="Appium测试环境搭建（ios测试）"></a>Appium测试环境搭建（ios测试）</h1><blockquote>
+<p>参考了很多网上的资料，自己也整理了一些，最终写成了这篇文章，感谢那些一直努力研究又乐于分享的测试前辈们。由于本人能力有限，所以肯定会有一些疏漏，还望大家谅解，时间紧任务重，使用的makedown排版。                                 ———— Enzo Chen</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="准备工组"><a href="#准备工组" class="headerlink" title="准备工组"></a>准备工组</h2><p>1）首先要有一台MAC机器，需要能够上网<br>2）MAC系统版本10+ ，Xcode版本8+，一个Apple id帐号（一般帐号or开发者都ok）外加 一款翻墙软件</p>
+<h2 id="搭建须知"><a href="#搭建须知" class="headerlink" title="搭建须知"></a>搭建须知</h2><p>1）以下所有操作都是在<strong>‘非root用户’</strong>权限下执行，若在安装过程中出现权限相关问题，根据提示信息，进入root用户，把相应的文件权限修改一下，然后退出root用户，继续执行<br>进入root<br>‘’su root<br>退出root<br> ‘’exit<br>付权限  PathForFile指向相应的文件即可<br> ‘’chmod  -R 775   PathForFile</p>
+<h2 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h2><p>1.安装brew</p>
+<blockquote>
+<p>brew 又叫 Homebrew，是 Mac OSX 上的软件包管理工具，能在 Mac 中方便的安装软件或者卸载软件， 只需要一个命令， 非常方便。brew 类似 ubuntu 系统下的 apt-get 的功能<br>安装命令<br>‘’ ruby -e “$(curl -fsSL <a href="https://raw.github.com/mxcl/homebrew/go" target="_blank" rel="external">https://raw.github.com/mxcl/homebrew/go</a>)”</p>
+</blockquote>
+<p>安装完成后，可以通过以下命令查看安装的版本，若能查看到版本信息则安装成功，若查不到，则表示安装失败<br>‘’ brew -v</p>
+<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-075116@2x.png" alt=""></p>
+<p>2.安装 libimobiledevice</p>
+<blockquote>
+<p>在 windows or mac 上大家可以使用 iTunes 来与 iPhone 进行通信，但是 Linux 上没有这类的官方软件，所以一些爱好者就破解了 iTunes 的通信协议，然后在 Linux 上实现了该协议，也就是 libimobiledevice </p>
+</blockquote>
+<p>安装命令<br>‘’brew install libimobiledevice –HEAD </p>
+<p>3.安装carthage</p>
+<blockquote>
+<p>提到 iOS/OS X 项目的依赖管理，最常用的有两个，CocoaPods和carthage，和CocoaPods相比carthage是一个简单、去集中化的 Cocoa 依赖管理器。说了这么多，其实就是萝卜白菜各有所爱，选那个都可以。</p>
+</blockquote>
+<p>安装命令<br>‘’ brew install carthage</p>
+<p>4.安装node</p>
+<blockquote>
+<p>因为要用npm 所以要安装node，为什么一定要安装node，因为npm是node的套件管理工具</p>
+</blockquote>
+<p>最简单的安装方法<br>网站 [<a href="https://nodejs.org/en/download/" target="_blank" rel="external">https://nodejs.org/en/download/</a>] 直接下载相应版本的pkg进行安装</p>
+<p>5.安装cnmp </p>
+<blockquote>
+<p>nmp不好用，存在不知名的网络问题，思考再三决定安装她妹妹cnmp<br>安装命令<br>‘’ npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a></p>
+</blockquote>
+<p>6.安装ios-deploy</p>
+<blockquote>
+<p>ios-deploy 字如其名，是用来部署iOS的<br>‘’ cnpm install -g ios-deploy</p>
+</blockquote>
+<p>7.安装xcpretty</p>
+<blockquote>
+<p>xcpretty用于对 xcodebuild 的输出进行格式化。并包含输出 report 功能<br>‘’gem install xcpretty</p>
+</blockquote>
+<p>8.安装appium</p>
+<blockquote>
+<p>努力了这么久 终于可以安装appium了 根据当前最新版本号，更改安装命令后面的版本就行，截至本文写的时间目前最新的是1.6.3 （由于网络等原因，这一步耗时较长，且极容易报错，一定要多次尝试，革命刚开始，同志们需多努力）<br>‘’ cnpm install -g appium@1.6.3</p>
+</blockquote>
+<p>9.安装appium-xcuitest-driver依赖</p>
+<blockquote>
+<p>若你走到这一步，表示你终于走上了万里长征路的第一步</p>
+</blockquote>
+<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/IMG_0756.JPG" alt=""></p>
+<p>进入WebDriverAgent目录（你的路径可能和我的不一样，自己去找到它就好了）<br>‘’ cd  /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent<br>‘’ mkdir -p Resources/WebDriverAgent.bundle<br>运行bootstrap    注意 此处需要翻墙，开启VPN<br>‘’sh ./Scripts/bootstrap.sh -d</p>
+<p>10.使用xcode编译WebDriverAgent</p>
+<blockquote>
+<p>这里后面的步骤需要用到苹果帐号，如果有开发者帐号最好，不过我没有，开发者帐号是要钱的，但我穷。没有开发者帐号也没关系，xcode7之后苹果已经开始支持真机调试了，</p>
+</blockquote>
+<p>同步骤9，进入WebDriverAgent目录，使用鼠标轻轻的双击WebDriverAgent.xcodeproj 这个项目，不出意外的就会用xcode打开项目<br>1）编译 WebDriverAgentLib<br>步骤如下图，选中1打开编辑框，2中的bundle identifier默认是Facebook，但是需要改成自己的，随便改个就好，当然也最好不要和我的一样，万一咱俩冲突了也不好办，需要把3中的auto打开，xcode会提示你输入苹果帐号，你输入就好了，4中的team选择自己的帐号即可，需要注意的是5这里要保证signing这块没有报错。6这里选择最小的就好ios版本，个人感觉其实选9.0也是可以的，至少我这边是可以的。</p>
+<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-070607@2x.png" alt=""></p>
+<p>2）编译 WebDriverAgentRunner<br>步骤1如下图，选中1打开编辑框，把2中的auto打开，在3中选择自己的帐号，4没有报错</p>
+<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-071604@2x.png" alt=""></p>
+<p>步骤2如下图，选中1打开编辑框，2切换tab，切换到bulid settings，3选择这里的最小版本，我是后续补的截图，所以不要按照我截图去做，按照我说的去做，还是选择9.0吧，4修改bundle identifier成自己的</p>
+<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-071947@2x.png" alt=""></p>
+<p>然后就可以编译了，正常情况下编译是没有错误，如果有错误，如果有错误应该是第10步哪出现了错误，根据错误提示信息自行修改就好了，祝好</p>
+<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-072407@2x.png" alt=""></p>
+<ol>
+<li>建立服务 WebDriverAgent </li>
+</ol>
+<p>此时需要把你心爱的iphone手机和心爱的mac电脑通过一只数据线连接起来<br>1）进入WebDriverAgent<br>‘’ cd  /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent </p>
+<p>2）执行测试语句<br>‘’xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination ‘id=真机的udid’ test</p>
+<p>执行这个语句不出意外的话，你就会得到一个<strong>失败</strong>的提示，哈哈哈哈，惊不惊喜，意不意外</p>
+<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/FullSizeRender 9.jpg" alt=""></p>
+<p>错误如下，</p>
+<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-080133@2x.png" alt=""></p>
+<p>其实他的意思就是，你手机么有信任这个应用，这个时候进入手机的<strong>设置</strong>——<strong>通用</strong>——<strong>设备管理</strong> 然后信任你的帐号就可以了</p>
+<p>完成上述操作后，你在执行2）语句，就会得到这样的界面，</p>
+<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/FullSizeRender 10.jpg" alt=""></p>
+<p>恩，不要怀疑了，这就是正常执行的界面，代表你已经小小的成功了，这时候就可以晒图发朋友圈了。<br>闹，这就是我的朋友圈截图，哈哈哈哈哈</p>
+<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/IMG_2028.PNG" alt=""></p>
+<p>12.运行appium</p>
+<p>没什么好说的，一个语句<br>‘’ appium -p 4723<br>启动时间有点长，不过这点时间和安装时间相比是没什么的</p>
+<p>13.桌面版appium-desktop</p>
+<p>在安装appium的时候，偶然发现了appium-desktop这个，目前还是1.0.0版本，不过经过我的试用感觉还是不错的，已经给电脑装上了，也写了一个小栗子，具体使用方式可以自行研究，毕竟我只是个过客</p>
+<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-074425@2x.png" alt=""><br><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-074434@2x.png" alt=""><br><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-074510@2x.png" alt=""></p>
+<p>14.运行appium-desktop可能会出现的一个问题，<strong>编号65</strong><br>‘’ Unable to launch WebDriverAgent because of xcodebuild failure: xcodebuild failed with code 65</p>
+<p>解决方法<br>重新在你的真机上编译 WebDriverAgent<br>重新编译还会遇到问题可以尝试下：</p>
+<pre><code>1.    到 webdriverAgent 目录下
+2.    运行 sh ./Scripts/bootstrap.sh
+3.    再使用 xCode build 一次。
+</code></pre><p>我能给的不多，但能给的我都给了~</p>
+<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WechatIMG62.jpeg" alt=""></p>
+<p>自动化测试不是一时就可以学会，需要花费很长的时间去不断的学习和练习，希望大家多练习，遇到问题多百度，多谷歌，当然还要多github和stackoverflow。<br>啥，你不知道github和stackoverflow~~~<br><img src="http://7xujfx.com1.z0.glb.clouddn.com/IMG_1597.JPG" alt=""></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[C#线程学习笔记：线程基础]]></title>
       <url>http://i90s.vip/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/03/21/C#%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80.html</url>
       <content type="html"><![CDATA[<p>一、线程的介绍</p>
@@ -4341,100 +4435,6 @@ private static void WakeMethod()
     </entry>
     
     <entry>
-      <title><![CDATA[appium+ios10测试环境搭建]]></title>
-      <url>http://i90s.vip/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/03/21/appium%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html</url>
-      <content type="html"><![CDATA[<h1 id="Appium测试环境搭建（ios测试）"><a href="#Appium测试环境搭建（ios测试）" class="headerlink" title="Appium测试环境搭建（ios测试）"></a>Appium测试环境搭建（ios测试）</h1><blockquote>
-<p>参考了很多网上的资料，自己也整理了一些，最终写成了这篇文章，感谢那些一直努力研究又乐于分享的测试前辈们。由于本人能力有限，所以肯定会有一些疏漏，还望大家谅解，时间紧任务重，使用的makedown排版。                                 ———— Enzo Chen</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="准备工组"><a href="#准备工组" class="headerlink" title="准备工组"></a>准备工组</h2><p>1）首先要有一台MAC机器，需要能够上网<br>2）MAC系统版本10+ ，Xcode版本8+，一个Apple id帐号（一般帐号or开发者都ok）外加 一款翻墙软件</p>
-<h2 id="搭建须知"><a href="#搭建须知" class="headerlink" title="搭建须知"></a>搭建须知</h2><p>1）以下所有操作都是在<strong>‘非root用户’</strong>权限下执行，若在安装过程中出现权限相关问题，根据提示信息，进入root用户，把相应的文件权限修改一下，然后退出root用户，继续执行<br>进入root<br>‘’su root<br>退出root<br> ‘’exit<br>付权限  PathForFile指向相应的文件即可<br> ‘’chmod  -R 775   PathForFile</p>
-<h2 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h2><p>1.安装brew</p>
-<blockquote>
-<p>brew 又叫 Homebrew，是 Mac OSX 上的软件包管理工具，能在 Mac 中方便的安装软件或者卸载软件， 只需要一个命令， 非常方便。brew 类似 ubuntu 系统下的 apt-get 的功能<br>安装命令<br>‘’ ruby -e “$(curl -fsSL <a href="https://raw.github.com/mxcl/homebrew/go" target="_blank" rel="external">https://raw.github.com/mxcl/homebrew/go</a>)”</p>
-</blockquote>
-<p>安装完成后，可以通过以下命令查看安装的版本，若能查看到版本信息则安装成功，若查不到，则表示安装失败<br>‘’ brew -v</p>
-<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-075116@2x.png" alt=""></p>
-<p>2.安装 libimobiledevice</p>
-<blockquote>
-<p>在 windows or mac 上大家可以使用 iTunes 来与 iPhone 进行通信，但是 Linux 上没有这类的官方软件，所以一些爱好者就破解了 iTunes 的通信协议，然后在 Linux 上实现了该协议，也就是 libimobiledevice </p>
-</blockquote>
-<p>安装命令<br>‘’brew install libimobiledevice –HEAD </p>
-<p>3.安装carthage</p>
-<blockquote>
-<p>提到 iOS/OS X 项目的依赖管理，最常用的有两个，CocoaPods和carthage，和CocoaPods相比carthage是一个简单、去集中化的 Cocoa 依赖管理器。说了这么多，其实就是萝卜白菜各有所爱，选那个都可以。</p>
-</blockquote>
-<p>安装命令<br>‘’ brew install carthage</p>
-<p>4.安装node</p>
-<blockquote>
-<p>因为要用npm 所以要安装node，为什么一定要安装node，因为npm是node的套件管理工具</p>
-</blockquote>
-<p>最简单的安装方法<br>网站 [<a href="https://nodejs.org/en/download/" target="_blank" rel="external">https://nodejs.org/en/download/</a>] 直接下载相应版本的pkg进行安装</p>
-<p>5.安装cnmp </p>
-<blockquote>
-<p>nmp不好用，存在不知名的网络问题，思考再三决定安装她妹妹cnmp<br>安装命令<br>‘’ npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a></p>
-</blockquote>
-<p>6.安装ios-deploy</p>
-<blockquote>
-<p>ios-deploy 字如其名，是用来部署iOS的<br>‘’ cnpm install -g ios-deploy</p>
-</blockquote>
-<p>7.安装xcpretty</p>
-<blockquote>
-<p>xcpretty用于对 xcodebuild 的输出进行格式化。并包含输出 report 功能<br>‘’gem install xcpretty</p>
-</blockquote>
-<p>8.安装appium</p>
-<blockquote>
-<p>努力了这么久 终于可以安装appium了 根据当前最新版本号，更改安装命令后面的版本就行，截至本文写的时间目前最新的是1.6.3 （由于网络等原因，这一步耗时较长，且极容易报错，一定要多次尝试，革命刚开始，同志们需多努力）<br>‘’ cnpm install -g appium@1.6.3</p>
-</blockquote>
-<p>9.安装appium-xcuitest-driver依赖</p>
-<blockquote>
-<p>若你走到这一步，表示你终于走上了万里长征路的第一步</p>
-</blockquote>
-<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/IMG_0756.JPG" alt=""></p>
-<p>进入WebDriverAgent目录（你的路径可能和我的不一样，自己去找到它就好了）<br>‘’ cd  /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent<br>‘’ mkdir -p Resources/WebDriverAgent.bundle<br>运行bootstrap    注意 此处需要翻墙，开启VPN<br>‘’sh ./Scripts/bootstrap.sh -d</p>
-<p>10.使用xcode编译WebDriverAgent</p>
-<blockquote>
-<p>这里后面的步骤需要用到苹果帐号，如果有开发者帐号最好，不过我没有，开发者帐号是要钱的，但我穷。没有开发者帐号也没关系，xcode7之后苹果已经开始支持真机调试了，</p>
-</blockquote>
-<p>同步骤9，进入WebDriverAgent目录，使用鼠标轻轻的双击WebDriverAgent.xcodeproj 这个项目，不出意外的就会用xcode打开项目<br>1）编译 WebDriverAgentLib<br>步骤如下图，选中1打开编辑框，2中的bundle identifier默认是Facebook，但是需要改成自己的，随便改个就好，当然也最好不要和我的一样，万一咱俩冲突了也不好办，需要把3中的auto打开，xcode会提示你输入苹果帐号，你输入就好了，4中的team选择自己的帐号即可，需要注意的是5这里要保证signing这块没有报错。6这里选择最小的就好ios版本，个人感觉其实选9.0也是可以的，至少我这边是可以的。</p>
-<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-070607@2x.png" alt=""></p>
-<p>2）编译 WebDriverAgentRunner<br>步骤1如下图，选中1打开编辑框，把2中的auto打开，在3中选择自己的帐号，4没有报错</p>
-<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-071604@2x.png" alt=""></p>
-<p>步骤2如下图，选中1打开编辑框，2切换tab，切换到bulid settings，3选择这里的最小版本，我是后续补的截图，所以不要按照我截图去做，按照我说的去做，还是选择9.0吧，4修改bundle identifier成自己的</p>
-<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-071947@2x.png" alt=""></p>
-<p>然后就可以编译了，正常情况下编译是没有错误，如果有错误，如果有错误应该是第10步哪出现了错误，根据错误提示信息自行修改就好了，祝好</p>
-<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-072407@2x.png" alt=""></p>
-<ol>
-<li>建立服务 WebDriverAgent </li>
-</ol>
-<p>此时需要把你心爱的iphone手机和心爱的mac电脑通过一只数据线连接起来<br>1）进入WebDriverAgent<br>‘’ cd  /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent </p>
-<p>2）执行测试语句<br>‘’xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination ‘id=真机的udid’ test</p>
-<p>执行这个语句不出意外的话，你就会得到一个<strong>失败</strong>的提示，哈哈哈哈，惊不惊喜，意不意外</p>
-<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/FullSizeRender 9.jpg" alt=""></p>
-<p>错误如下，</p>
-<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-080133@2x.png" alt=""></p>
-<p>其实他的意思就是，你手机么有信任这个应用，这个时候进入手机的<strong>设置</strong>——<strong>通用</strong>——<strong>设备管理</strong> 然后信任你的帐号就可以了</p>
-<p>完成上述操作后，你在执行2）语句，就会得到这样的界面，</p>
-<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/FullSizeRender 10.jpg" alt=""></p>
-<p>恩，不要怀疑了，这就是正常执行的界面，代表你已经小小的成功了，这时候就可以晒图发朋友圈了。<br>闹，这就是我的朋友圈截图，哈哈哈哈哈</p>
-<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/IMG_2028.PNG" alt=""></p>
-<p>12.运行appium</p>
-<p>没什么好说的，一个语句<br>‘’ appium -p 4723<br>启动时间有点长，不过这点时间和安装时间相比是没什么的</p>
-<p>13.桌面版appium-desktop</p>
-<p>在安装appium的时候，偶然发现了appium-desktop这个，目前还是1.0.0版本，不过经过我的试用感觉还是不错的，已经给电脑装上了，也写了一个小栗子，具体使用方式可以自行研究，毕竟我只是个过客</p>
-<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-074425@2x.png" alt=""><br><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-074434@2x.png" alt=""><br><img src="http://7xujfx.com1.z0.glb.clouddn.com/WX20170606-074510@2x.png" alt=""></p>
-<p>14.运行appium-desktop可能会出现的一个问题，<strong>编号65</strong><br>‘’ Unable to launch WebDriverAgent because of xcodebuild failure: xcodebuild failed with code 65</p>
-<p>解决方法<br>重新在你的真机上编译 WebDriverAgent<br>重新编译还会遇到问题可以尝试下：</p>
-<pre><code>1.    到 webdriverAgent 目录下
-2.    运行 sh ./Scripts/bootstrap.sh
-3.    再使用 xCode build 一次。
-</code></pre><p>我能给的不多，但能给的我都给了~</p>
-<p><img src="http://7xujfx.com1.z0.glb.clouddn.com/WechatIMG62.jpeg" alt=""></p>
-<p>自动化测试不是一时就可以学会，需要花费很长的时间去不断的学习和练习，希望大家多练习，遇到问题多百度，多谷歌，当然还要多github和stackoverflow。<br>啥，你不知道github和stackoverflow~~~<br><img src="http://7xujfx.com1.z0.glb.clouddn.com/IMG_1597.JPG" alt=""></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[搭建博客急需解决的问题]]></title>
       <url>http://i90s.vip/%E8%BD%AF%E4%BB%B6%E7%AC%94%E8%AE%B0/2019/01/12/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%80%A5%E9%9C%80%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98.html</url>
       <content type="html"><![CDATA[<h2 id="本地网页如何链接"><a href="#本地网页如何链接" class="headerlink" title="本地网页如何链接"></a>本地网页如何链接</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><blockquote>
@@ -4542,14 +4542,14 @@ private static void WakeMethod()
     
     <entry>
       <title></title>
-      <url>http://i90s.vip/baidu_verify_zt1CpRaiFG.html</url>
-      <content type="html"><![CDATA[zt1CpRaiFG]]></content>
+      <url>http://i90s.vip/google3b23d7eee847463e.html</url>
+      <content type="html"><![CDATA[google-site-verification: google3b23d7eee847463e.html]]></content>
     </entry>
     
     <entry>
       <title></title>
-      <url>http://i90s.vip/google3b23d7eee847463e.html</url>
-      <content type="html"><![CDATA[google-site-verification: google3b23d7eee847463e.html]]></content>
+      <url>http://i90s.vip/baidu_verify_zt1CpRaiFG.html</url>
+      <content type="html"><![CDATA[zt1CpRaiFG]]></content>
     </entry>
     
     <entry>
@@ -4628,17 +4628,17 @@ private static void WakeMethod()
     </entry>
     
     <entry>
-      <title><![CDATA[分类 & 标签]]></title>
-      <url>http://i90s.vip/tags/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[搜索结果]]></title>
       <url>http://i90s.vip/search/index.html</url>
       <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.hl &#123;</span><br><span class="line">color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$data = simplexml_load_file(&apos;search.xml&apos;);</span><br><span class="line">define(LEN, 1000);</span><br><span class="line"></span><br><span class="line">echo &apos;&lt;div class=&quot;article-inner article-entry&quot;&gt;&lt;h2&gt;Search Results for: &apos; . $_GET[&quot;s&quot;] . &apos;&lt;/h2&gt;&lt;/div&gt;&apos;;</span><br><span class="line"></span><br><span class="line">foreach($data-&gt;entry as $a) &#123;</span><br><span class="line">	// echo $a-&gt;title;</span><br><span class="line">// echo preg_replace(&quot;/http:\/\/(.*)\//&quot;,&quot;&lt;a href=\&quot;\$&#123;0&#125;\&quot;&gt;\$&#123;0&#125;&lt;/a&gt;&quot;,&quot;$a&quot;);</span><br><span class="line"></span><br><span class="line">	$pattern = &quot;/&quot; . $_GET[&quot;s&quot;] . &quot;/i&quot;;</span><br><span class="line">	$replace = &apos;&lt;span class=hl&gt;&apos; . $_GET[&quot;s&quot;] . &apos;&lt;/span&gt;&apos;;</span><br><span class="line">	// echo $pattern . &quot;&lt;BR&gt;&quot;;</span><br><span class="line">	// echo $replace . &quot;&lt;BR&gt;&quot;;</span><br><span class="line"></span><br><span class="line">	if(preg_match($pattern, $a-&gt;title)  or preg_match($pattern, $a-&gt;content)) &#123;</span><br><span class="line">		echo &apos;&lt;div class=&quot;article-inner article-entry&quot; itemprop=&quot;articleBody&quot;&gt;&lt;a href=&apos; . $a-&gt;url . &apos;&gt;&lt;h3&gt;&apos; . preg_replace($pattern, $replace, $a-&gt;title) . &apos;&lt;/h3&gt;&lt;/a&gt;&apos;;</span><br><span class="line">		$hl_keys = preg_replace($pattern, $replace, $a-&gt;content);</span><br><span class="line"></span><br><span class="line">		$strpos = stripos($a-&gt;content,  $_GET[&apos;s&apos;]);</span><br><span class="line">		$len = min(LEN, strlen($a-&gt;content) - $strpos - 1);</span><br><span class="line"></span><br><span class="line">		echo &apos;&lt;p&gt;&apos; . mb_strcut($hl_keys, $strpos, $len, &quot;utf-8&quot;) . &apos; &lt;span class=article-more-link&gt;&lt;a href=&apos;. $a-&gt;url .&apos;&gt; Detial&gt;&gt;&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&apos;;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[分类 & 标签]]></title>
+      <url>http://i90s.vip/tags/index.html</url>
+      <content type="html"></content>
     </entry>
     
   
